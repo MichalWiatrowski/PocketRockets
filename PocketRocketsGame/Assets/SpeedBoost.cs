@@ -23,7 +23,7 @@ public class SpeedBoost : MonoBehaviour {
         Move movement = player.GetComponent<Move>();
         movement.speed *= boost;
 
-        // "removes" the player before the timer
+        // "removes" the power up before the timer
         GetComponent<MeshRenderer>().enabled = false;
         GetComponent<SphereCollider>().enabled = false;
 
