@@ -325,7 +325,7 @@ GameObject:
   - component: {fileID: 863483235}
   - component: {fileID: 863483234}
   m_Layer: 0
-  m_Name: Sphere
+  m_Name: SpeedBoost
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
