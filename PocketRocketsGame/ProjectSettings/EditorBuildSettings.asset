@@ -8,7 +8,10 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/mobile.unity
     guid: 63379cad3f28f8b479c50ea94ca09cd0
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/game.unity
     guid: f6ebdbb971ff8e240b16045aacde2d37
+  - enabled: 1
+    path: Assets/Scenes/camera.unity
+    guid: 664aadc5a32dff5429d3e453c6fb105d
   m_configObjects: {}

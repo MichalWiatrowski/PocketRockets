@@ -10,7 +10,7 @@ public class networkServerUIbuttons : MonoBehaviour {
 
     //BasicTrap referencedScript = GetComponent<BasicTrap>();
     public BasicTrap basicTrap;
-
+    public GameObject car1;
 
 
     bool debug1;
@@ -19,10 +19,11 @@ public class networkServerUIbuttons : MonoBehaviour {
     void Start()
     {
         //start listening on port 25000
-        NetworkServer.Listen(25000);
+        NetworkServer.Listen(63192);
         NetworkServer.RegisterHandler(112, serverReceiveButton1);
         NetworkServer.RegisterHandler(113, serverReceiveButton2);
         basicTrap = GameObject.FindObjectOfType(typeof(BasicTrap)) as BasicTrap;
+        
 
     }
     void OnGUI()

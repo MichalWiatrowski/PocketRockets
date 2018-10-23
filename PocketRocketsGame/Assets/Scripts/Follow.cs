@@ -24,10 +24,10 @@ public class Follow : MonoBehaviour {
         smoothing = 0.2f;
 
         // FOV settings
-        minZoom = 40f;
-        maxZoom = 15f;
+        minZoom = 150f;
+        maxZoom = 50f;
         zoomLimit = 50;
-        offset = new Vector3(30, 7, -9);
+        offset = new Vector3(30, 10, -9);
 	}
 	
 	// Update is called once per frame

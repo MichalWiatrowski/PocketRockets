@@ -43,7 +43,7 @@ public class networkClientUIbuttons : MonoBehaviour {
 	}
 	void Connect()
     {
-        client.Connect("192.168.0.10", 25000);
+        client.Connect("193.60.172.195", 63192);
     }
 
    void sendButton1Info()
