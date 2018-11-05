@@ -7,19 +7,19 @@ public class FreezeTrap : MonoBehaviour {
     public float iceTime = 3f;
     public float carDelay = 0.8f;
 
-    public GameObject iceEffect;
-    Vector3 effectPos;
+    //public GameObject iceEffect;
+    //Vector3 effectPos;
 
     void Start()
     {
         // hides the ice block untill it is collided with
         GetComponent<MeshRenderer>().enabled = false;
 
-        // offset the effect slightly
-        effectPos = new Vector3(transform.position.x, transform.position.y + 5, transform.position.z);
+        //// offset the effect slightly
+        //effectPos = new Vector3(transform.position.x, transform.position.y + 5, transform.position.z);
 
-        // creates a particle affect where the ice block is
-        Instantiate(iceEffect, effectPos, transform.rotation);
+        //// creates a particle affect where the ice block is
+        //Instantiate(iceEffect, effectPos, transform.rotation);
     }
 
     void OnTriggerEnter(Collider collided)

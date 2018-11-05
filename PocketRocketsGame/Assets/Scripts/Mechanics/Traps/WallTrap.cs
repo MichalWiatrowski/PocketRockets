@@ -46,7 +46,7 @@ public class WallTrap : MonoBehaviour {
         // if the trap has been triggered move the wall up untill it reaches a certain point
         if (moving)
         {
-            if (transform.position.y < 2)
+            if (transform.position.y <= -1)
             {
                 transform.Translate(0f, wallSpeed * Time.deltaTime, 0f);
             }
