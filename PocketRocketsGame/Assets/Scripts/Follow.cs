@@ -29,7 +29,7 @@ public class Follow : MonoBehaviour {
         zoomLimit = 50;
         offset = new Vector3(30, 10, -9);
 	}
-	
+
 	// Update is called once per frame
 	void LateUpdate () {
         GetEncapsulatingBounds();
