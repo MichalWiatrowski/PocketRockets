@@ -18,12 +18,20 @@ public class clientGameManager : MonoBehaviour {
     int playerID = 0;
     int playerIDchoice = 0;
 
-    int powerUPchoice = 1; // will store the selected powerup ID
+    int powerUPchoice = 0; // will store the selected powerup ID; 1 for void, 2 for immunity
+    int trapChoice = 0; // will store the selected trap; 1 for freeze, 2 for barrier
+
     // Use this for initialization
     void Start()
     {
         amountOfPlayers = networkClientUIbuttons.networkClient.getAmountOfPlayers();
         playerID = networkClientUIbuttons.networkClient.getPlayerID();
+
+        powerUPchoice = networkClientUIbuttons.networkClient.getPowerUp();
+        trapChoice = networkClientUIbuttons.networkClient.getTrap();
+
+
+
         //init panels
         mainSelectionPanel.SetActive(true);
         playerSelectionPanel4.SetActive(false);
@@ -179,7 +187,7 @@ public class clientGameManager : MonoBehaviour {
 
     public void finishActivation(int playerIDchoice, int gateChoice)
     {
-        networkClientUIbuttons.networkClient.sendActivateTrap(gateChoice, playerIDchoice);
+        networkClientUIbuttons.networkClient.sendActivateTrap(gateChoice, playerIDchoice, trapChoice);
         gateSelectionPanel.SetActive(false);
         mainSelectionPanel.SetActive(true);
     }

@@ -22,6 +22,10 @@ public class networkClientUIbuttons : MonoBehaviour {
     int playerID = 0; //keeps the ID of the clients player ID on the server e.g. Player 1 or 2 etc
     int amountOfPlayers = 1; //keeps the track of how many players there are in the game
 
+    int powerUp = 0;
+    int trap = 0;
+
+    private bool clientReady = false;
     // Use this for initialization
     void Start()
     {
@@ -96,24 +100,45 @@ public class networkClientUIbuttons : MonoBehaviour {
         GUI.Box(new Rect(10, Screen.height - 80, 100, 80), "Debug Info");
         GUI.Label(new Rect(20, Screen.height - 60, 100, 20), "Status:" + client.isConnected);
         GUI.Label(new Rect(20, Screen.height - 40, 100, 20), "PlayerID:" + playerID);
-        GUI.Label(new Rect(20, Screen.height - 20, 100, 20), "Amount:" + amountOfPlayers);
+        GUI.Label(new Rect(20, Screen.height - 20, 100, 20), "ready:" + System.Convert.ToInt16(clientReady));
     }
 
 	void Connect(string IP, int portNumber)
     {
-        
         client.Connect(IP, portNumber);
-        StartCoroutine(askPlayerID());
+        StartCoroutine(askPlayerID());   
     }
 
+    public void setPowers(int p, int t)
+    {
+        powerUp = p;
+        trap = t;
+    }
+    public int getTrap()
+    {
+        return trap;
+    }
+    public int getPowerUp()
+    {
+        return powerUp;
+    }
     
-   public void sendActivateTrap(int gate, int playerIDchoice)
+    public void toggleReady()
+    {
+        clientReady = !clientReady;
+    }
+
+    public bool getReady()
+    {
+        return clientReady;
+    }
+
+   public void sendActivateTrap(int gate, int playerIDchoice, int trapChoice)
     {
         
         StringMessage msg = new StringMessage();
-        msg.value = playerIDchoice + "|" + gate;
-        client.Send(130, msg);
-          
+        msg.value = playerIDchoice + "|" + gate + "|" + trapChoice;
+        client.Send(130, msg);     
     }
 
     public void sendActivatePowerUP(int powerUP, int playerID)
@@ -123,48 +148,32 @@ public class networkClientUIbuttons : MonoBehaviour {
         client.Send(131, msg);
     }
 
-
-
-
-
-    //public void sendPlayerID(int playerID)
-    //{
-        
-    //    IntegerMessage msg = new IntegerMessage();
-    //    msg.value = playerID;
-    //    client.Send(131, msg);
-        
-    //}
-
-
-    //checking for max players - not working
-    //private void clientReceiveMaxPlayers(NetworkMessage message)
-    //{
-    //    IntegerMessage msg = new IntegerMessage();
-    //    msg = message.ReadMessage<IntegerMessage>();
-    //    if (msg.value == 1)
-    //    {
-    //        client.Disconnect();
-    //    }
-    //}
-
-
+    public void sendReadyUp()
+    {
+        StringMessage msg = new StringMessage();
+        msg.value = System.Convert.ToInt16(clientReady) + "|" + playerID;
+       // msg.value = 1 + "|" + playerID;
+        client.Send(133, msg);
+    }
 
     private void clientReceivePlayerID(NetworkMessage message)
     {
         IntegerMessage msg = new IntegerMessage();
         msg = message.ReadMessage<IntegerMessage>();
-        //if (msg.value == 6)
-        //{
-        //    client.Disconnect();
-        //}
-        //else
-       // {
-            playerID = msg.value;
-       // }
-       
-    }
+        
+        playerID = msg.value;
 
+        if (playerID <= 4)
+        {
+            GameObject.Find("sceneManager").GetComponent<clientMenuManager>().joinGamePanel.SetActive(false);
+            GameObject.Find("sceneManager").GetComponent<clientMenuManager>().powerUpSelectionPanel.SetActive(true);
+        }
+        else
+        {
+            client.Disconnect();
+        }
+    }
+    
     private void clientReceiveStartGame(NetworkMessage message)
     {
         IntegerMessage msg = new IntegerMessage();
@@ -180,6 +189,7 @@ public class networkClientUIbuttons : MonoBehaviour {
     }
 
 
+   
     //ask the server for the player ID after 2 seconds, lets the client to connect to the server first
     private IEnumerator askPlayerID()
     {
@@ -199,7 +209,6 @@ public class networkClientUIbuttons : MonoBehaviour {
 
         SceneManager.UnloadSceneAsync(scene);
     }
-
 
     // Update is called once per frame
     void Update () {

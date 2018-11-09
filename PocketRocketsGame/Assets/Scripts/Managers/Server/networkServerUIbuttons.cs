@@ -15,9 +15,10 @@ public class networkServerUIbuttons : MonoBehaviour {
     int sceneIndex = 1;
     bool gameStart = false;
 
-
     private int playerID = 0;
-   
+
+    List<bool> readyClients = new List<bool>(); //for storing client ready states
+
     // Use this for initialization
     void Start()
     {
@@ -33,6 +34,8 @@ public class networkServerUIbuttons : MonoBehaviour {
         NetworkServer.RegisterHandler(131, serverReceiveActivatePowerUP);
         //NetworkServer.RegisterHandler(131, serverReceivePlayerID);
         NetworkServer.RegisterHandler(132, serverReceiveRequestID);
+        NetworkServer.RegisterHandler(133, serverReceiveReadyUp);
+       
 
         if (!gameStart)
         {
@@ -57,11 +60,22 @@ public class networkServerUIbuttons : MonoBehaviour {
     }
     public void hostGame()
     {
-        
-        sceneIndex = 2;
-        SceneManager.LoadSceneAsync(sceneIndex, LoadSceneMode.Additive);
-        UnloadScene(1);
-        sendStartGame(); // send a message to all cients which will change their scene
+        if (readyClients.Contains(false))
+        {
+            // say clients not ready code
+        }
+        else
+        {
+            if (playerID > 1)
+            {
+                sceneIndex = 2;
+                SceneManager.LoadSceneAsync(sceneIndex, LoadSceneMode.Additive);
+                UnloadScene(1);
+
+                sendStartGame(); // send a message to all cients which will change their scene
+            }
+   
+        }   
     }
 
     public int getPlayerAmount()
@@ -117,11 +131,15 @@ public class networkServerUIbuttons : MonoBehaviour {
         GUI.Label(new Rect(20, Screen.height - 85, 100, 20), "Status:" + NetworkServer.active);
         GUI.Label(new Rect(20, Screen.height - 60, 100, 20), "Connected:" + (NetworkServer.connections.Count));
         GUI.Label(new Rect(20, Screen.height - 45, 100, 20), "PlayerID:" + playerID);
+        //GUI.Label(new Rect(20, Screen.height - 30, 100, 20), "Ready:" + readyClients[0]);
     }
 
-    void activateTrap(int playerIDchoice, int trap)
+    void activateTrap(int playerIDchoice, int gateNo, int trapChoice)
     {
-        GameObject.Find("Gate" + trap + "/WallTrap" + playerIDchoice).GetComponent<BoxCollider>().enabled = true;
+        if (trapChoice == 1)
+        GameObject.Find("Gate" + gateNo + "/FreezeTrap" + playerIDchoice).GetComponent<BoxCollider>().enabled = true;
+        else if (trapChoice == 2)
+        GameObject.Find("Gate" + gateNo + "/WallTrap" + playerIDchoice).GetComponent<BoxCollider>().enabled = true;
     }
 
     void activatePowerUP(int player, int powerUP)
@@ -151,7 +169,8 @@ public class networkServerUIbuttons : MonoBehaviour {
             msg.value = playerID;
             
             NetworkServer.SendToClient(playerID, 121, msg);
-            
+        readyClients.Add(false);
+
         if (playerID > 4)
             playerID = 4;
     }
@@ -162,21 +181,27 @@ public class networkServerUIbuttons : MonoBehaviour {
         StringMessage msg = new StringMessage();
         msg.value = message.ReadMessage<StringMessage>().value;
 
-        string[] playerID_gateNO = msg.value.Split('|');
-        activatePowerUP(System.Convert.ToInt16(playerID_gateNO[0]), System.Convert.ToInt16(playerID_gateNO[1]));
+        string[] playerID_power = msg.value.Split('|');
+        activatePowerUP(System.Convert.ToInt16(playerID_power[0]), System.Convert.ToInt16(playerID_power[1]));
     }
 
+    private void serverReceiveReadyUp(NetworkMessage message)
+    {
+        StringMessage msg = new StringMessage();
+        msg.value = message.ReadMessage<StringMessage>().value;
 
-
+        string[] ready_playerID = msg.value.Split('|');
+        readyClients[System.Convert.ToInt16(ready_playerID[1]) - 1] = System.Convert.ToBoolean(System.Convert.ToInt16(ready_playerID[0]));
+    }
 
     private void serverReceiveActivateTrap(NetworkMessage message)
     {
         StringMessage msg = new StringMessage();
         msg.value = message.ReadMessage<StringMessage>().value;
 
-        string[] playerID_gateNO = msg.value.Split('|');
+        string[] playerID_gateNO_trap = msg.value.Split('|');
 
-        activateTrap(System.Convert.ToInt16(playerID_gateNO[0]), System.Convert.ToInt16(playerID_gateNO[1]));
+        activateTrap(System.Convert.ToInt16(playerID_gateNO_trap[0]), System.Convert.ToInt16(playerID_gateNO_trap[1]), System.Convert.ToInt16(playerID_gateNO_trap[2]));
     }
 
    
