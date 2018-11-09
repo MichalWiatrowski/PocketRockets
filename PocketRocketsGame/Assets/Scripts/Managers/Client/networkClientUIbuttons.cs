@@ -50,8 +50,9 @@ public class networkClientUIbuttons : MonoBehaviour {
         client.Configure(config, 1);
 
         //connect to the server
+        
         //Connect(GameObject.Find("Canvas/joinGamePanel/IPaddress").GetComponent<InputField>().text, System.Convert.ToInt32(GameObject.Find("Canvas/joinGamePanel/portNumber").GetComponent<InputField>().text));
-        Connect("192.168.0.10", 2500); //for quick debugging
+        Connect("193.60.172.195", 50828); //for quick debugging
     }
     //this will load the first scene of the mobile side of the game "Menu"
     void Awake()
@@ -113,6 +114,13 @@ public class networkClientUIbuttons : MonoBehaviour {
         msg.value = playerIDchoice + "|" + gate;
         client.Send(130, msg);
           
+    }
+
+    public void sendActivatePowerUP(int powerUP, int playerID)
+    {
+        StringMessage msg = new StringMessage();
+        msg.value = playerID + "|" + powerUP;
+        client.Send(131, msg);
     }
 
 

@@ -656,6 +656,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 4
+--- !u!114 &175295286
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 175295279}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e33bb4deeebd65b448f9f11398bc2666, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  immunityTime: 5
 --- !u!4 &175295287 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: f3732f7815a73274ca72729ea39f0a1f, type: 3}
@@ -1308,6 +1320,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &577816619
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 577816612}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e33bb4deeebd65b448f9f11398bc2666, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  immunityTime: 5
 --- !u!4 &577816620 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: f3732f7815a73274ca72729ea39f0a1f, type: 3}
@@ -3035,7 +3059,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1202460725}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bba5ec1d17a03ca4e9c0b80bd23b9bd1, type: 3}
   m_Name: 
@@ -3078,6 +3102,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &1202460732
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1202460725}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e33bb4deeebd65b448f9f11398bc2666, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  immunityTime: 5
 --- !u!1 &1237055516
 GameObject:
   m_ObjectHideFlags: 0
@@ -3611,6 +3647,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &1723936374
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1723936367}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e33bb4deeebd65b448f9f11398bc2666, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  immunityTime: 5
 --- !u!1 &1728008940
 GameObject:
   m_ObjectHideFlags: 0

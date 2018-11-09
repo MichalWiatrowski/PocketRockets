@@ -14,8 +14,22 @@ public class Immunity : MonoBehaviour {
             StartCoroutine(  Pickup(collided));
         }
     }
+    public void activateImmunity()
+    {
+        StartCoroutine(activate());
+    }
+    IEnumerator activate()
+    {
+        Immune imm = GetComponent<Immune>();
+        imm.immune = true;
 
-    IEnumerator Pickup(Collider player) {
+        yield return new WaitForSeconds(immunityTime);
+
+        imm.immune = false;
+
+       
+    }
+        IEnumerator Pickup(Collider player) {
         //Get Car Immunity information from immune script and apply immunity.
         Immune imm = player.GetComponent<Immune>();
         imm.immune = true;

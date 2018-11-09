@@ -17,11 +17,13 @@ public class clientGameManager : MonoBehaviour {
     int amountOfPlayers = 0;
     int playerID = 0;
     int playerIDchoice = 0;
+
+    int powerUPchoice = 1; // will store the selected powerup ID
     // Use this for initialization
     void Start()
     {
         amountOfPlayers = networkClientUIbuttons.networkClient.getAmountOfPlayers();
-
+        playerID = networkClientUIbuttons.networkClient.getPlayerID();
         //init panels
         mainSelectionPanel.SetActive(true);
         playerSelectionPanel4.SetActive(false);
@@ -162,6 +164,7 @@ public class clientGameManager : MonoBehaviour {
     public void activatePowerUp()
     {
         // activate power up code here
+        networkClientUIbuttons.networkClient.sendActivatePowerUP(powerUPchoice, playerID);
     }
     public void activateVehicleAbility()
     {

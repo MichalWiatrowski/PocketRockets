@@ -30,6 +30,7 @@ public class networkServerUIbuttons : MonoBehaviour {
     {
         //register any necessary handlers
         NetworkServer.RegisterHandler(130, serverReceiveActivateTrap);
+        NetworkServer.RegisterHandler(131, serverReceiveActivatePowerUP);
         //NetworkServer.RegisterHandler(131, serverReceivePlayerID);
         NetworkServer.RegisterHandler(132, serverReceiveRequestID);
 
@@ -123,6 +124,10 @@ public class networkServerUIbuttons : MonoBehaviour {
         GameObject.Find("Gate" + trap + "/WallTrap" + playerIDchoice).GetComponent<BoxCollider>().enabled = true;
     }
 
+    void activatePowerUP(int player, int powerUP)
+    {
+        GameObject.Find("Player " + player).GetComponent<Immunity>().activateImmunity();
+    }
     ////////////////////////////////////Network Messages
     
     void sendStartGame()
@@ -135,6 +140,10 @@ public class networkServerUIbuttons : MonoBehaviour {
         }
     }
 
+    private void serverReceiveRequestID(NetworkMessage message)
+    {
+        sendPlayerID();
+    }
     private void sendPlayerID()
     {
         playerID++;
@@ -147,14 +156,18 @@ public class networkServerUIbuttons : MonoBehaviour {
             playerID = 4;
     }
 
-   
 
-
-
-    private void serverReceiveRequestID(NetworkMessage message)
+    private void serverReceiveActivatePowerUP(NetworkMessage message)
     {
-        sendPlayerID();
+        StringMessage msg = new StringMessage();
+        msg.value = message.ReadMessage<StringMessage>().value;
+
+        string[] playerID_gateNO = msg.value.Split('|');
+        activatePowerUP(System.Convert.ToInt16(playerID_gateNO[0]), System.Convert.ToInt16(playerID_gateNO[1]));
     }
+
+
+
 
     private void serverReceiveActivateTrap(NetworkMessage message)
     {
