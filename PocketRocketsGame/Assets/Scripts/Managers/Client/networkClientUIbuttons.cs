@@ -55,8 +55,8 @@ public class networkClientUIbuttons : MonoBehaviour {
 
         //connect to the server
         
-        //Connect(GameObject.Find("Canvas/joinGamePanel/IPaddress").GetComponent<InputField>().text, System.Convert.ToInt32(GameObject.Find("Canvas/joinGamePanel/portNumber").GetComponent<InputField>().text));
-        Connect("193.60.172.195", 50828); //for quick debugging
+        Connect(GameObject.Find("Canvas/joinGamePanel/IPaddress").GetComponent<InputField>().text, System.Convert.ToInt32(GameObject.Find("Canvas/joinGamePanel/portNumber").GetComponent<InputField>().text));
+        //Connect("193.60.172.195", 50828); //for quick debugging
     }
     //this will load the first scene of the mobile side of the game "Menu"
     void Awake()

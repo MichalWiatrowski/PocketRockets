@@ -144,7 +144,11 @@ public class networkServerUIbuttons : MonoBehaviour {
 
     void activatePowerUP(int player, int powerUP)
     {
+        if (powerUP == 1)
+        GameObject.Find("Player " + player).GetComponent<PortalPowerUp>().CreatePortals();
+        else if (powerUP == 2)
         GameObject.Find("Player " + player).GetComponent<Immunity>().activateImmunity();
+
     }
     ////////////////////////////////////Network Messages
     

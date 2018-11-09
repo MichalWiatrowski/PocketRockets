@@ -672,6 +672,34 @@ MonoBehaviour:
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: f3732f7815a73274ca72729ea39f0a1f, type: 3}
   m_PrefabInternal: {fileID: 898755829}
+--- !u!114 &175295288
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 175295279}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbae2535dc059e742afd0a4388b5af64, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  teleportDistance: 25
+  exitPortal: {fileID: 1133396264140134, guid: 3fa11200538f90844b40aad2cff8115a, type: 2}
+  entrancePortal: {fileID: 1133396264140134, guid: 3fa11200538f90844b40aad2cff8115a,
+    type: 2}
+--- !u!114 &175295289
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 175295279}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e333acac1eb1072438e3ff4ab503d8d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  immune: 0
+  fallingThroughTeleport: 0
 --- !u!1 &201050192
 GameObject:
   m_ObjectHideFlags: 0
@@ -1336,6 +1364,34 @@ MonoBehaviour:
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: f3732f7815a73274ca72729ea39f0a1f, type: 3}
   m_PrefabInternal: {fileID: 400221142}
+--- !u!114 &577816621
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 577816612}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e333acac1eb1072438e3ff4ab503d8d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  immune: 0
+  fallingThroughTeleport: 0
+--- !u!114 &577816622
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 577816612}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbae2535dc059e742afd0a4388b5af64, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  teleportDistance: 25
+  exitPortal: {fileID: 1133396264140134, guid: 3fa11200538f90844b40aad2cff8115a, type: 2}
+  entrancePortal: {fileID: 1133396264140134, guid: 3fa11200538f90844b40aad2cff8115a,
+    type: 2}
 --- !u!1 &580497636
 GameObject:
   m_ObjectHideFlags: 0
@@ -3114,6 +3170,34 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   immunityTime: 5
+--- !u!114 &1202460733
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1202460725}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e333acac1eb1072438e3ff4ab503d8d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  immune: 0
+  fallingThroughTeleport: 0
+--- !u!114 &1202460734
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1202460725}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbae2535dc059e742afd0a4388b5af64, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  teleportDistance: 25
+  exitPortal: {fileID: 1133396264140134, guid: 3fa11200538f90844b40aad2cff8115a, type: 2}
+  entrancePortal: {fileID: 1133396264140134, guid: 3fa11200538f90844b40aad2cff8115a,
+    type: 2}
 --- !u!1 &1237055516
 GameObject:
   m_ObjectHideFlags: 0
@@ -3659,6 +3743,34 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   immunityTime: 5
+--- !u!114 &1723936375
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1723936367}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e333acac1eb1072438e3ff4ab503d8d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  immune: 0
+  fallingThroughTeleport: 0
+--- !u!114 &1723936376
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1723936367}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbae2535dc059e742afd0a4388b5af64, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  teleportDistance: 25
+  exitPortal: {fileID: 1133396264140134, guid: 3fa11200538f90844b40aad2cff8115a, type: 2}
+  entrancePortal: {fileID: 1133396264140134, guid: 3fa11200538f90844b40aad2cff8115a,
+    type: 2}
 --- !u!1 &1728008940
 GameObject:
   m_ObjectHideFlags: 0
