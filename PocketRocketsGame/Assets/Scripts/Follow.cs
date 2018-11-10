@@ -11,14 +11,20 @@ public class Follow : MonoBehaviour {
     public float maxZoom;
     public float zoomLimit;
 
-    public Vector3 offset;
+    public bool behindCam;
 
+    public Vector3 normalOffset;
+    public Vector3 behindOffset;
+
+    private Vector3 newPos;
     private Vector3 velocity;
     private Camera cam;
 
     // Use this for initialization
     void Start () {
         cam = GetComponent<Camera>();
+
+        behindCam = false;
 
         // Camera smoothing value
         smoothing = 0.2f;
@@ -27,7 +33,8 @@ public class Follow : MonoBehaviour {
         minZoom = 150f;
         maxZoom = 50f;
         zoomLimit = 50;
-        offset = new Vector3(30, 10, -9);
+        normalOffset = new Vector3(15, 6, -3);
+        behindOffset = new Vector3(0, 3, -6);
 	}
 
 	// Update is called once per frame
@@ -43,7 +50,16 @@ public class Follow : MonoBehaviour {
         Vector3 camCenter = GetEncapsulatingBounds().center;
 
         // find the new camera position with the offset
-        Vector3 newPos = camCenter + offset;
+        if (behindCam)
+        {
+            newPos = camCenter + behindOffset;
+            transform.LookAt(cars[2]);
+        }
+        else
+        {
+            newPos = camCenter + normalOffset;
+            transform.LookAt(cars[2]);
+        }
 
         // move camera to new position
         transform.position = Vector3.SmoothDamp(transform.position, newPos, ref velocity, smoothing);
