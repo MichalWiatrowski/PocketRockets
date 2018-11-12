@@ -21,6 +21,7 @@ public class networkClientUIbuttons : MonoBehaviour {
 
     int playerID = 0; //keeps the ID of the clients player ID on the server e.g. Player 1 or 2 etc
     int amountOfPlayers = 1; //keeps the track of how many players there are in the game
+    int points = 0;
 
     int powerUp = 0;
     int trap = 0;
@@ -35,7 +36,7 @@ public class networkClientUIbuttons : MonoBehaviour {
         //client.RegisterHandler(121, clientReceiveMaxPlayers);
         client.RegisterHandler(120, clientReceiveStartGame);
         client.RegisterHandler(121, clientReceivePlayerID);
-        
+        client.RegisterHandler(122, clientReceivePoints);
     }
     public int getPlayerID()
     {
@@ -44,6 +45,10 @@ public class networkClientUIbuttons : MonoBehaviour {
     public int getAmountOfPlayers()
     {
         return amountOfPlayers;
+    }
+    public int getPoints()
+    {
+        return points;
     }
    public void joinGame()
     {
@@ -97,10 +102,10 @@ public class networkClientUIbuttons : MonoBehaviour {
             }
         }
         
-        GUI.Box(new Rect(10, Screen.height - 80, 100, 80), "Debug Info");
-        GUI.Label(new Rect(20, Screen.height - 60, 100, 20), "Status:" + client.isConnected);
-        GUI.Label(new Rect(20, Screen.height - 40, 100, 20), "PlayerID:" + playerID);
-        GUI.Label(new Rect(20, Screen.height - 20, 100, 20), "ready:" + System.Convert.ToInt16(clientReady));
+        GUI.Box(new Rect(10, Screen.height - 80, 100, 160), "Debug Info");
+        GUI.Label(new Rect(20, Screen.height - 140, 100, 20), "Status:" + client.isConnected);
+        GUI.Label(new Rect(20, Screen.height - 120, 100, 20), "PlayerID:" + playerID);
+        GUI.Label(new Rect(20, Screen.height - 100, 100, 20), "ready:" + System.Convert.ToInt16(clientReady));
     }
 
 	void Connect(string IP, int portNumber)
@@ -148,6 +153,13 @@ public class networkClientUIbuttons : MonoBehaviour {
         client.Send(131, msg);
     }
 
+    //public void sendPlayerID()
+    //{
+    //    IntegerMessage msg = new IntegerMessage();
+    //    msg.value = playerID;
+    //    client.Send(134, msg);
+    //}
+
     public void sendReadyUp()
     {
         StringMessage msg = new StringMessage();
@@ -188,7 +200,21 @@ public class networkClientUIbuttons : MonoBehaviour {
         UnloadScene(1);
     }
 
+    private void clientReceivePoints(NetworkMessage message)
+    {
+        // get points from server
+        StringMessage msg = new StringMessage();
+        msg.value = message.ReadMessage<StringMessage>().value;
 
+        // split into an array of each players
+        string[] points1_points2_points3_points4 = msg.value.Split('|');
+
+        for (int x = 0; x < 4; x++)
+        {
+            // check to see this clients points
+            if (playerID == x+1) points = System.Convert.ToInt16(points1_points2_points3_points4[x]);
+        }
+    }
    
     //ask the server for the player ID after 2 seconds, lets the client to connect to the server first
     private IEnumerator askPlayerID()
@@ -212,6 +238,5 @@ public class networkClientUIbuttons : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
-        
     }
 }

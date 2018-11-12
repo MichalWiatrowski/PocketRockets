@@ -6580,10 +6580,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f3732f7815a73274ca72729ea39f0a1f, type: 3}
   m_IsPrefabParent: 0
---- !u!4 &129404576 stripped
-Transform:
-  m_PrefabParentObject: {fileID: 400000, guid: f3732f7815a73274ca72729ea39f0a1f, type: 3}
-  m_PrefabInternal: {fileID: 129404575}
 --- !u!1 &129446363
 GameObject:
   m_ObjectHideFlags: 0
@@ -8506,7 +8502,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d06fcd3c5483f194da6d599264f9ddcc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 4
 --- !u!4 &175295287 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: f3732f7815a73274ca72729ea39f0a1f, type: 3}
@@ -8549,7 +8544,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd332e6bf41c9834ca4c17664dc3d96a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerName: 
+  playerName: Dylan
   speed: 4
   immune: 0
   points: 0
@@ -10942,8 +10937,9 @@ GameObject:
   - component: {fileID: 227436330}
   - component: {fileID: 227436332}
   - component: {fileID: 227436331}
+  - component: {fileID: 227436333}
   m_Layer: 5
-  m_Name: Text (1)
+  m_Name: Player 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10960,7 +10956,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 728816721}
-  m_RootOrder: 4
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -11006,6 +11002,19 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 227436329}
+--- !u!114 &227436333
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 227436329}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ea89422a4f664d4ea597fcd9c50381b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 383666914}
+  name: {fileID: 227436331}
 --- !u!1 &227830631
 GameObject:
   m_ObjectHideFlags: 0
@@ -16141,7 +16150,7 @@ GameObject:
   - component: {fileID: 344311555}
   - component: {fileID: 344311557}
   m_Layer: 5
-  m_Name: Text
+  m_Name: Position 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -16158,7 +16167,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 728816721}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -18305,8 +18314,8 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 383666923}
-  - component: {fileID: 383666922}
   - component: {fileID: 383666921}
+  - component: {fileID: 383666922}
   - component: {fileID: 383666920}
   - component: {fileID: 383666919}
   - component: {fileID: 383666918}
@@ -18330,7 +18339,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd332e6bf41c9834ca4c17664dc3d96a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerName: 
+  playerName: Michal
   speed: 4
   immune: 0
   points: 0
@@ -18363,7 +18372,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d06fcd3c5483f194da6d599264f9ddcc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 4
 --- !u!114 &383666919
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20776,8 +20784,9 @@ GameObject:
   - component: {fileID: 438989468}
   - component: {fileID: 438989470}
   - component: {fileID: 438989469}
+  - component: {fileID: 438989471}
   m_Layer: 5
-  m_Name: Text
+  m_Name: Player 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -20794,7 +20803,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 728816721}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -20840,6 +20849,19 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 438989467}
+--- !u!114 &438989471
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 438989467}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ea89422a4f664d4ea597fcd9c50381b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 175295279}
+  name: {fileID: 438989469}
 --- !u!1 &439941825
 GameObject:
   m_ObjectHideFlags: 0
@@ -23780,7 +23802,7 @@ GameObject:
   - component: {fileID: 495348217}
   - component: {fileID: 495348216}
   m_Layer: 5
-  m_Name: Text (2)
+  m_Name: Position 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -27396,7 +27418,7 @@ GameObject:
   - component: {fileID: 571429713}
   - component: {fileID: 571429712}
   m_Layer: 5
-  m_Name: Text (6)
+  m_Name: Winner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -27803,7 +27825,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d06fcd3c5483f194da6d599264f9ddcc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 4
 --- !u!122 &577816616
 Halo:
   m_ObjectHideFlags: 0
@@ -28103,8 +28124,9 @@ GameObject:
   - component: {fileID: 581464018}
   - component: {fileID: 581464020}
   - component: {fileID: 581464019}
+  - component: {fileID: 581464021}
   m_Layer: 5
-  m_Name: Text
+  m_Name: Player 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -28121,7 +28143,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 728816721}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -28167,6 +28189,19 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 581464017}
+--- !u!114 &581464021
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 581464017}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ea89422a4f664d4ea597fcd9c50381b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 1252592638}
+  name: {fileID: 581464019}
 --- !u!1 &581635263
 GameObject:
   m_ObjectHideFlags: 0
@@ -35973,11 +36008,11 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
-  - {fileID: 948272308}
-  - {fileID: 581464018}
   - {fileID: 438989468}
-  - {fileID: 344311554}
   - {fileID: 227436330}
+  - {fileID: 581464018}
+  - {fileID: 948272308}
+  - {fileID: 344311554}
   - {fileID: 495348215}
   - {fileID: 1135017472}
   - {fileID: 1050761182}
@@ -39236,7 +39271,7 @@ GameObject:
   - component: {fileID: 802738146}
   - component: {fileID: 802738145}
   m_Layer: 5
-  m_Name: Text (5)
+  m_Name: Wins
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -46214,8 +46249,9 @@ GameObject:
   - component: {fileID: 948272308}
   - component: {fileID: 948272310}
   - component: {fileID: 948272309}
+  - component: {fileID: 948272311}
   m_Layer: 5
-  m_Name: Text
+  m_Name: Player 4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -46232,7 +46268,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 728816721}
-  m_RootOrder: 0
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -46278,6 +46314,19 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 948272307}
+--- !u!114 &948272311
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 948272307}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ea89422a4f664d4ea597fcd9c50381b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 1723936367}
+  name: {fileID: 948272309}
 --- !u!1 &949059106
 GameObject:
   m_ObjectHideFlags: 0
@@ -51962,7 +52011,7 @@ GameObject:
   - component: {fileID: 1050761184}
   - component: {fileID: 1050761183}
   m_Layer: 5
-  m_Name: Text (4)
+  m_Name: Position 4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -56086,7 +56135,7 @@ GameObject:
   - component: {fileID: 1135017474}
   - component: {fileID: 1135017473}
   m_Layer: 5
-  m_Name: Text (3)
+  m_Name: Position 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -56121,7 +56170,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f4889429d6953f47827c80d2ac6b720, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 129404576}
+  player: {fileID: 1252592646}
   position: {fileID: 1135017474}
 --- !u!114 &1135017474
 MonoBehaviour:
@@ -59470,7 +59519,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d06fcd3c5483f194da6d599264f9ddcc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 4
 --- !u!114 &1202460727
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -61699,12 +61747,13 @@ GameObject:
   - component: {fileID: 1252592645}
   - component: {fileID: 1252592644}
   - component: {fileID: 1252592643}
+  - component: {fileID: 1252592640}
   - component: {fileID: 1252592642}
   - component: {fileID: 1252592641}
   - component: {fileID: 1252592639}
   m_Layer: 0
   m_Name: Player 3
-  m_TagString: Untagged
+  m_TagString: Car
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -61720,13 +61769,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd332e6bf41c9834ca4c17664dc3d96a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerName: 
+  playerName: Ruaraidh
   speed: 4
   immune: 0
   points: 0
   position: 1
   winner: 0
   fallingThroughTeleport: 0
+--- !u!122 &1252592640
+Halo:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1252592638}
+  m_Enabled: 0
+  m_Color:
+    serializedVersion: 2
+    rgba: 4286611584
+  m_Size: 5
 --- !u!114 &1252592641
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -61738,7 +61798,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d06fcd3c5483f194da6d599264f9ddcc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 4
 --- !u!114 &1252592642
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -83840,7 +83899,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d06fcd3c5483f194da6d599264f9ddcc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 4
 --- !u!114 &1723936369
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -83928,7 +83986,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd332e6bf41c9834ca4c17664dc3d96a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerName: 
+  playerName: Nameless
   speed: 4
   immune: 0
   points: 0

@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Move : MonoBehaviour {
 
-    public float speed = 4f;
     private PlayerStats stats;
     void Start()
     {
@@ -17,7 +16,7 @@ public class Move : MonoBehaviour {
         // movement
         if (stats.fallingThroughTeleport == false)
         {
-            transform.Translate(0f, 0f, speed * Time.deltaTime);
+            transform.Translate(0f, 0f, stats.speed * Time.deltaTime);
         }
 	}
 }

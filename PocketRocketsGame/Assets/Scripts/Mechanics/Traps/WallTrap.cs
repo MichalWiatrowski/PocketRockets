@@ -28,14 +28,14 @@ public class WallTrap : MonoBehaviour {
         yield return new WaitForSeconds(carDelay); 
 
         // get information from move script on the vehicles and apply boost
-        Move movement = player.GetComponent<Move>();
-        movement.speed = 0f;
+        PlayerStats stats = player.GetComponent<PlayerStats>();
+        stats.speed = 0f;
 
         // how long the player is stoped for
         yield return new WaitForSeconds(wallTime);
 
         // return the player to normal speed
-        movement.speed = 4f;
+        stats.speed = 4f;
 
         // clean up
         Destroy(gameObject);

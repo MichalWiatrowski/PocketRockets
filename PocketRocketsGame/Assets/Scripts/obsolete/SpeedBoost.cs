@@ -20,8 +20,8 @@ public class SpeedBoost : MonoBehaviour {
     IEnumerator Pickup(Collider player)
     {
         // get information from move script on the vehicles and apply boost
-        Move movement = player.GetComponent<Move>();
-        movement.speed *= boost;
+        PlayerStats stats = player.GetComponent<PlayerStats>();
+        stats.speed *= boost;
 
         // "removes" the power up before the timer
         GetComponent<MeshRenderer>().enabled = false;
@@ -30,7 +30,7 @@ public class SpeedBoost : MonoBehaviour {
         yield return new WaitForSeconds(boostTime);
 
         // return vehicle speed to normal after boost
-        movement.speed /= boost;
+        stats.speed /= boost;
 
         // clean up
         Destroy(gameObject);

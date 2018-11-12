@@ -25,26 +25,27 @@ public class Gate : MonoBehaviour
         {
             stats.points += 300;
             stats.position = 1;
-            yield return new WaitForSeconds(0.1f);
+            yield return new WaitForSeconds(0.5f);
         }
         else if (count == 2)
         {
             stats.points += 225;
             stats.position = 2;
-            yield return new WaitForSeconds(0.1f);
+            yield return new WaitForSeconds(0.5f);
         }
         else if (count == 3)
         {
             stats.points += 150;
             stats.position = 3;
-            yield return new WaitForSeconds(0.1f);
+            yield return new WaitForSeconds(0.5f);
         }
         else if (count == 4)
         {
             stats.position += 100;
             stats.position = 4;
-            yield return new WaitForSeconds(0.1f);
+            yield return new WaitForSeconds(0.5f);
         }
         count++;
+        networkServerUIbuttons.networkServer.sendPoints();
     }
 }

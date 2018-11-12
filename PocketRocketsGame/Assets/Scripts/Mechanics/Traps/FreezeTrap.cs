@@ -40,14 +40,14 @@ public class FreezeTrap : MonoBehaviour {
 
         // get information from move script on the vehicles and apply the freeze and reveal the ice
         GetComponent<MeshRenderer>().enabled = true;
-        Move movement = player.GetComponent<Move>();
-        movement.speed = 0f;
+        PlayerStats stats = player.GetComponent<PlayerStats>();
+        stats.speed = 0f;
 
         // how long the player is stoped for
         yield return new WaitForSeconds(iceTime);
 
         // return the player to normal speed
-        movement.speed = 4f;
+        stats.speed = 4f;
 
         // clean up
         Destroy(gameObject);

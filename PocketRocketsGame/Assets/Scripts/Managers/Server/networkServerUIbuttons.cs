@@ -35,7 +35,7 @@ public class networkServerUIbuttons : MonoBehaviour {
         //NetworkServer.RegisterHandler(131, serverReceivePlayerID);
         NetworkServer.RegisterHandler(132, serverReceiveRequestID);
         NetworkServer.RegisterHandler(133, serverReceiveReadyUp);
-       
+
 
         if (!gameStart)
         {
@@ -179,6 +179,24 @@ public class networkServerUIbuttons : MonoBehaviour {
             playerID = 4;
     }
 
+    public void sendPoints()
+    {
+        int[] playerPoints = new int[4];
+
+        StringMessage msg = new StringMessage();
+
+        // get the points for each player
+        for (int x = 0; x < 4; x++)
+        {
+            playerPoints[x] = GameObject.Find("Player " + x + 1).GetComponent<PlayerStats>().points;
+        }
+
+        // send all the players points to all the players
+        msg.value = playerPoints[0] + "|" + playerPoints[1] + "|" + playerPoints[2] + "|" + playerPoints[3];
+
+        NetworkServer.SendToAll(122, msg);
+    }
+
 
     private void serverReceiveActivatePowerUP(NetworkMessage message)
     {
@@ -212,6 +230,5 @@ public class networkServerUIbuttons : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
-       
     }
 }
