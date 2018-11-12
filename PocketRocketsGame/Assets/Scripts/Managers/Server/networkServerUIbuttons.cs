@@ -181,18 +181,19 @@ public class networkServerUIbuttons : MonoBehaviour {
 
     public void sendPoints()
     {
-        int[] playerPoints = new int[4];
+        //CHANGED THIS FOR 2 PLAYERS - MAKE THIS 4 PLAYERS
+        int[] playerPoints = new int[2];
 
         StringMessage msg = new StringMessage();
 
         // get the points for each player
-        for (int x = 0; x < 4; x++)
+        for (int x = 1; x < 3; x++)
         {
-            playerPoints[x] = GameObject.Find("Player " + x + 1).GetComponent<PlayerStats>().points;
+            playerPoints[x - 1] = GameObject.Find("Player " + x).GetComponent<PlayerStats>().points;
         }
 
         // send all the players points to all the players
-        msg.value = playerPoints[0] + "|" + playerPoints[1] + "|" + playerPoints[2] + "|" + playerPoints[3];
+        msg.value = playerPoints[0] + "|" + playerPoints[1]; 
 
         NetworkServer.SendToAll(122, msg);
     }
@@ -230,5 +231,7 @@ public class networkServerUIbuttons : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
+
+        sendPoints();
     }
 }

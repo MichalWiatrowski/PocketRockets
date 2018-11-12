@@ -103,9 +103,12 @@ public class networkClientUIbuttons : MonoBehaviour {
         }
         
         GUI.Box(new Rect(10, Screen.height - 80, 100, 160), "Debug Info");
-        GUI.Label(new Rect(20, Screen.height - 140, 100, 20), "Status:" + client.isConnected);
-        GUI.Label(new Rect(20, Screen.height - 120, 100, 20), "PlayerID:" + playerID);
-        GUI.Label(new Rect(20, Screen.height - 100, 100, 20), "ready:" + System.Convert.ToInt16(clientReady));
+        GUI.Label(new Rect(20, Screen.height - 80, 100, 20), "Status:" + client.isConnected);
+        GUI.Label(new Rect(20, Screen.height - 60, 100, 20), "PlayerID:" + playerID);
+        GUI.Label(new Rect(20, Screen.height - 40, 100, 20), "ready:" + System.Convert.ToInt16(clientReady));
+
+        GUI.Label(new Rect(20, Screen.height - 20, 100, 20), "points:" + points);
+        
     }
 
 	void Connect(string IP, int portNumber)
@@ -209,11 +212,15 @@ public class networkClientUIbuttons : MonoBehaviour {
         // split into an array of each players
         string[] points1_points2_points3_points4 = msg.value.Split('|');
 
-        for (int x = 0; x < 4; x++)
-        {
-            // check to see this clients points
-            if (playerID == x+1) points = System.Convert.ToInt16(points1_points2_points3_points4[x]);
-        }
+        points = System.Convert.ToInt16(points1_points2_points3_points4[playerID - 1]);
+
+
+
+        //for (int x = 1; x < 5; x++)
+        //{
+        //    // check to see this clients points
+        //    if (playerID == x) points = System.Convert.ToInt16(points1_points2_points3_points4[x - 1]);
+        //}
     }
    
     //ask the server for the player ID after 2 seconds, lets the client to connect to the server first
