@@ -9,7 +9,7 @@ public class PortalPowerUp : MonoBehaviour {
 
     private float fallingSpeed = -0.35f;
     private float fallingDistance = 2.0f;
-    private CarValues values;
+    private PlayerStats stats;
     private bool isPortalActive = false;
     private Vector3 trackValues;
     private float fallDistanceUnderTrack = 0.0f;
@@ -25,7 +25,7 @@ public class PortalPowerUp : MonoBehaviour {
 
     void Start()
     {
-        values = GetComponent<CarValues>();
+        stats = GetComponent<PlayerStats>();
         GameObject tempPlane = GameObject.Find("Plane");
         trackValues = new Vector3(tempPlane.transform.position.x, tempPlane.transform.position.y, tempPlane.transform.position.z);
 
@@ -53,7 +53,7 @@ public class PortalPowerUp : MonoBehaviour {
         if (collided.CompareTag("Portal"))
         {
             Debug.Log("Collided with portal");
-            values.fallingThroughTeleport = true;
+            stats.fallingThroughTeleport = true;
         }
 
     }
@@ -68,7 +68,7 @@ public class PortalPowerUp : MonoBehaviour {
         
         fallDistanceUnderTrack = trackValues.y - fallingDistance;
 
-        if (values.fallingThroughTeleport == true)
+        if (stats.fallingThroughTeleport == true)
         {
             transform.Translate(0, fallingSpeed * Time.deltaTime, 0);
             GetComponent<BoxCollider>().enabled = false;
@@ -76,7 +76,7 @@ public class PortalPowerUp : MonoBehaviour {
             if (transform.position.y <= fallDistanceUnderTrack)
             {
                 transform.Translate(0, 8 + fallingDistance, teleportDistance);
-                values.fallingThroughTeleport = false;
+                stats.fallingThroughTeleport = false;
                 GetComponent<BoxCollider>().enabled = true;
 
                 StartCoroutine(PortalCleanup());

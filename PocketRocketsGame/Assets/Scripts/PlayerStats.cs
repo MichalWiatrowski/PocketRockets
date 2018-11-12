@@ -11,4 +11,11 @@ public class PlayerStats : MonoBehaviour {
     public int points = 0;
     public int position = 1;
     public bool winner = false;
+    public bool fallingThroughTeleport = false;
+
+    public bool getFallingThroughTeleport()
+    {
+
+        return fallingThroughTeleport;
+    }
 }

@@ -53,12 +53,10 @@ public class Follow : MonoBehaviour {
         if (behindCam)
         {
             newPos = camCenter + behindOffset;
-            transform.LookAt(cars[2]);
         }
         else
         {
             newPos = camCenter + normalOffset;
-            transform.LookAt(cars[2]);
         }
 
         // move camera to new position
