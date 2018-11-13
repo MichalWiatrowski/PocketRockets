@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311953, g: 0.38074014, b: 0.3587274, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311926, g: 0.38073996, b: 0.35872698, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -6547,7 +6547,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: f3732f7815a73274ca72729ea39f0a1f, type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: f3732f7815a73274ca72729ea39f0a1f, type: 3}
       propertyPath: m_LocalScale.x
@@ -8545,7 +8545,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerName: Dylan
-  speed: 4
+  speed: 40
   immune: 0
   points: 0
   position: 1
@@ -18890,7 +18890,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: f3732f7815a73274ca72729ea39f0a1f, type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: f3732f7815a73274ca72729ea39f0a1f, type: 3}
       propertyPath: m_LocalScale.x
@@ -23837,7 +23837,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f4889429d6953f47827c80d2ac6b720, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 577816620}
+  player: {fileID: 383666923}
   position: {fileID: 495348217}
 --- !u!114 &495348217
 MonoBehaviour:
@@ -27863,10 +27863,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!4 &577816620 stripped
-Transform:
-  m_PrefabParentObject: {fileID: 400000, guid: f3732f7815a73274ca72729ea39f0a1f, type: 3}
-  m_PrefabInternal: {fileID: 400221142}
 --- !u!114 &577816621
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -34652,8 +34648,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 706902949}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -11.608527, y: -1.84, z: 234.6}
-  m_LocalScale: {x: 1.5, y: 1, z: 66.57783}
+  m_LocalPosition: {x: -11.608527, y: -1.84, z: 1256}
+  m_LocalScale: {x: 1.5, y: 1, z: 292.61978}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 14
@@ -74687,7 +74683,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d268a8f25fd804f428c9a24edecaeb32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  winText: []
+  winText:
+  - {fileID: 802738144}
+  - {fileID: 571429711}
 --- !u!1 &1505631505
 GameObject:
   m_ObjectHideFlags: 0
@@ -83678,7 +83676,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: f3732f7815a73274ca72729ea39f0a1f, type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: f3732f7815a73274ca72729ea39f0a1f, type: 3}
       propertyPath: m_LocalScale.x
