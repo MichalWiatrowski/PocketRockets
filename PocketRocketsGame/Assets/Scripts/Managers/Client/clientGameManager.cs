@@ -173,6 +173,15 @@ public class clientGameManager : MonoBehaviour {
     {
         // activate power up code here
         networkClientUIbuttons.networkClient.sendActivatePowerUP(powerUPchoice, playerID);
+        if (powerUPchoice == 1)
+        {
+            // remove points for void trap
+            networkClientUIbuttons.networkClient.removePoints(300);
+        }
+        else if (powerUPchoice == 2)
+        {
+            networkClientUIbuttons.networkClient.removePoints(150);
+        }
     }
     public void activateVehicleAbility()
     {
@@ -188,6 +197,16 @@ public class clientGameManager : MonoBehaviour {
     public void finishActivation(int playerIDchoice, int gateChoice)
     {
         networkClientUIbuttons.networkClient.sendActivateTrap(gateChoice, playerIDchoice, trapChoice);
+        if (trapChoice == 1)
+        {
+            // remove points for freeze trap
+            networkClientUIbuttons.networkClient.removePoints(200);
+        }
+        else if (trapChoice == 2)
+        {
+            // remove points for barrier trap
+            networkClientUIbuttons.networkClient.removePoints(200);
+        }
         gateSelectionPanel.SetActive(false);
         mainSelectionPanel.SetActive(true);
     }

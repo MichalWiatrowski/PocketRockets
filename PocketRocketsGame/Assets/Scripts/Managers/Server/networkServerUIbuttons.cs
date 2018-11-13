@@ -35,6 +35,7 @@ public class networkServerUIbuttons : MonoBehaviour {
         //NetworkServer.RegisterHandler(131, serverReceivePlayerID);
         NetworkServer.RegisterHandler(132, serverReceiveRequestID);
         NetworkServer.RegisterHandler(133, serverReceiveReadyUp);
+        NetworkServer.RegisterHandler(134, serverReceiveRemovePoints);
 
 
         if (!gameStart)
@@ -227,11 +228,21 @@ public class networkServerUIbuttons : MonoBehaviour {
         activateTrap(System.Convert.ToInt16(playerID_gateNO_trap[0]), System.Convert.ToInt16(playerID_gateNO_trap[1]), System.Convert.ToInt16(playerID_gateNO_trap[2]));
     }
 
+    private void serverReceiveRemovePoints(NetworkMessage message)
+    {
+        StringMessage msg = new StringMessage();
+        msg.value = message.ReadMessage<StringMessage>().value;
+
+        string[] playerID_ammount = msg.value.Split('|');
+
+        PlayerStats stats = GameObject.Find("Player " + System.Convert.ToInt16(playerID_ammount[0])).GetComponent<PlayerStats>();
+        stats.points -= System.Convert.ToInt16(playerID_ammount[1]);
+    }
+
    
 
     // Update is called once per frame
     void Update () {
-
         sendPoints();
     }
 }

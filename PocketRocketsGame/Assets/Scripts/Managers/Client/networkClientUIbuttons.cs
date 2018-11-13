@@ -50,7 +50,7 @@ public class networkClientUIbuttons : MonoBehaviour {
     {
         return points;
     }
-   public void joinGame()
+    public void joinGame()
     {
         //create a config, add qos channels, then configure the client to have 1 max connection; the server
         ConnectionConfig config = new ConnectionConfig();
@@ -59,7 +59,7 @@ public class networkClientUIbuttons : MonoBehaviour {
         client.Configure(config, 1);
 
         //connect to the server
-        
+
         Connect(GameObject.Find("Canvas/joinGamePanel/IPaddress").GetComponent<InputField>().text, System.Convert.ToInt32(GameObject.Find("Canvas/joinGamePanel/portNumber").GetComponent<InputField>().text));
         //Connect("193.60.172.195", 50828); //for quick debugging
     }
@@ -77,12 +77,12 @@ public class networkClientUIbuttons : MonoBehaviour {
 
     void OnGUI()
     {
-       
+
         if (sceneIndex == 1)
         {
             if (!client.isConnected)
             {
-                
+
                 //if (GUI.Button(new Rect(10, 10, 100, 70), "Connect"))
                 //{
                 //    joinGame();
@@ -90,31 +90,31 @@ public class networkClientUIbuttons : MonoBehaviour {
             }
             else
             {
-                    //if (GUI.Button(new Rect((Screen.width / 2) - 150, (Screen.height / 2) - 50, 200, 100), "Previous"))
-                    //{
-                    //    //go to previous car selection
+                //if (GUI.Button(new Rect((Screen.width / 2) - 150, (Screen.height / 2) - 50, 200, 100), "Previous"))
+                //{
+                //    //go to previous car selection
 
-                    //}
-                    //if (GUI.Button(new Rect((Screen.width / 2) + 150, (Screen.height / 2) - 50, 200, 100), "Next"))
-                    //{
-                    //    // go to the next car selection
-                    //}             
+                //}
+                //if (GUI.Button(new Rect((Screen.width / 2) + 150, (Screen.height / 2) - 50, 200, 100), "Next"))
+                //{
+                //    // go to the next car selection
+                //}             
             }
         }
-        
+
         GUI.Box(new Rect(10, Screen.height - 80, 100, 160), "Debug Info");
         GUI.Label(new Rect(20, Screen.height - 80, 100, 20), "Status:" + client.isConnected);
         GUI.Label(new Rect(20, Screen.height - 60, 100, 20), "PlayerID:" + playerID);
         GUI.Label(new Rect(20, Screen.height - 40, 100, 20), "ready:" + System.Convert.ToInt16(clientReady));
 
         GUI.Label(new Rect(20, Screen.height - 20, 100, 20), "points:" + points);
-        
+
     }
 
-	void Connect(string IP, int portNumber)
+    void Connect(string IP, int portNumber)
     {
         client.Connect(IP, portNumber);
-        StartCoroutine(askPlayerID());   
+        StartCoroutine(askPlayerID());
     }
 
     public void setPowers(int p, int t)
@@ -130,7 +130,7 @@ public class networkClientUIbuttons : MonoBehaviour {
     {
         return powerUp;
     }
-    
+
     public void toggleReady()
     {
         clientReady = !clientReady;
@@ -141,13 +141,22 @@ public class networkClientUIbuttons : MonoBehaviour {
         return clientReady;
     }
 
-   public void sendActivateTrap(int gate, int playerIDchoice, int trapChoice)
+    public void sendActivateTrap(int gate, int playerIDchoice, int trapChoice)
     {
-        
+
         StringMessage msg = new StringMessage();
         msg.value = playerIDchoice + "|" + gate + "|" + trapChoice;
-        client.Send(130, msg);     
+        client.Send(130, msg);
     }
+
+    public void removePoints(int ammount)
+    {
+        points -= ammount;
+        StringMessage msg = new StringMessage();
+        msg.value = playerID + "|" + ammount;
+        client.Send(134, msg);
+    }
+
 
     public void sendActivatePowerUP(int powerUP, int playerID)
     {
