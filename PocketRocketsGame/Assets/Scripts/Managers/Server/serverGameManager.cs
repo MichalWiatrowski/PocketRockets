@@ -14,6 +14,8 @@ public class serverGameManager : MonoBehaviour {
         for (int i = 4; i > amountOfPlayers; i--)
         {
             GameObject.Find("Player " + i).SetActive(false);
+            GameObject.Find("Player_" + i).SetActive(false);
+            GameObject.Find("Position_" + i).SetActive(false);
         }
         mainCamera.GetComponent<Follow>().cars.RemoveRange(amountOfPlayers, mainCamera.GetComponent<Follow>().cars.Count - amountOfPlayers);
 

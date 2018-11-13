@@ -50,6 +50,7 @@ public class clientMenuManager : MonoBehaviour {
     }
     public void join()
     {
+        networkClientUIbuttons.networkClient.setName();
         networkClientUIbuttons.networkClient.joinGame();
         //joinGamePanel.SetActive(false);
         //vehicleSelectionPanel.SetActive(true);   

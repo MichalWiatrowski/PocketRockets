@@ -10,6 +10,10 @@ public class Name : MonoBehaviour {
 
     private void Start()
     {
+    }
+
+    void Update()
+    {
         name.text = player.GetComponent<PlayerStats>().playerName;
     }
 }

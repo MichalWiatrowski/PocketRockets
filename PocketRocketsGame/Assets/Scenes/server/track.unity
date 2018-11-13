@@ -8544,10 +8544,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd332e6bf41c9834ca4c17664dc3d96a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerName: Dylan
-  speed: 40
+  playerName: 
+  speed: 4
   immune: 0
-  points: 0
+  points: 200
   position: 1
   winner: 0
   fallingThroughTeleport: 0
@@ -10939,7 +10939,7 @@ GameObject:
   - component: {fileID: 227436331}
   - component: {fileID: 227436333}
   m_Layer: 5
-  m_Name: Player 2
+  m_Name: Player_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -16150,7 +16150,7 @@ GameObject:
   - component: {fileID: 344311555}
   - component: {fileID: 344311557}
   m_Layer: 5
-  m_Name: Position 1
+  m_Name: Position_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -18339,10 +18339,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd332e6bf41c9834ca4c17664dc3d96a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerName: Michal
+  playerName: 
   speed: 4
   immune: 0
-  points: 0
+  points: 200
   position: 1
   winner: 0
   fallingThroughTeleport: 0
@@ -20786,7 +20786,7 @@ GameObject:
   - component: {fileID: 438989469}
   - component: {fileID: 438989471}
   m_Layer: 5
-  m_Name: Player 1
+  m_Name: Player_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -23802,7 +23802,7 @@ GameObject:
   - component: {fileID: 495348217}
   - component: {fileID: 495348216}
   m_Layer: 5
-  m_Name: Position 2
+  m_Name: Position_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -27453,7 +27453,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5eda32912f4c244687a28cfeee1b0f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  players: []
+  players:
+  - {fileID: 175295287}
+  - {fileID: 383666923}
+  - {fileID: 1252592646}
+  - {fileID: 1720084116}
   winner: {fileID: 571429713}
 --- !u!114 &571429713
 MonoBehaviour:
@@ -28122,7 +28126,7 @@ GameObject:
   - component: {fileID: 581464019}
   - component: {fileID: 581464021}
   m_Layer: 5
-  m_Name: Player 3
+  m_Name: Player_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -46247,7 +46251,7 @@ GameObject:
   - component: {fileID: 948272309}
   - component: {fileID: 948272311}
   m_Layer: 5
-  m_Name: Player 4
+  m_Name: Player_4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -52007,7 +52011,7 @@ GameObject:
   - component: {fileID: 1050761184}
   - component: {fileID: 1050761183}
   m_Layer: 5
-  m_Name: Position 4
+  m_Name: Position_4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -56131,7 +56135,7 @@ GameObject:
   - component: {fileID: 1135017474}
   - component: {fileID: 1135017473}
   m_Layer: 5
-  m_Name: Position 3
+  m_Name: Position_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -61765,10 +61769,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd332e6bf41c9834ca4c17664dc3d96a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerName: Ruaraidh
+  playerName: 
   speed: 4
   immune: 0
-  points: 0
+  points: 200
   position: 1
   winner: 0
   fallingThroughTeleport: 0
@@ -74659,8 +74663,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 14.52, y: 1, z: 1}
-  m_Center: {x: 8.32, y: 0, z: 0}
+  m_Size: {x: 14.52, y: 1, z: 44.47}
+  m_Center: {x: 8.32, y: 0, z: 21.7}
 --- !u!114 &1504863328
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -83702,6 +83706,10 @@ Prefab:
       propertyPath: m_TagString
       value: Car
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: f3732f7815a73274ca72729ea39f0a1f, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f3732f7815a73274ca72729ea39f0a1f, type: 3}
   m_IsPrefabParent: 0
@@ -83984,10 +83992,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd332e6bf41c9834ca4c17664dc3d96a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerName: Nameless
+  playerName: 
   speed: 4
   immune: 0
-  points: 0
+  points: 200
   position: 1
   winner: 0
   fallingThroughTeleport: 0

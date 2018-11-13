@@ -36,6 +36,7 @@ public class networkServerUIbuttons : MonoBehaviour {
         NetworkServer.RegisterHandler(132, serverReceiveRequestID);
         NetworkServer.RegisterHandler(133, serverReceiveReadyUp);
         NetworkServer.RegisterHandler(134, serverReceiveRemovePoints);
+        NetworkServer.RegisterHandler(135, serverReceiveName);
 
 
         if (!gameStart)
@@ -183,18 +184,18 @@ public class networkServerUIbuttons : MonoBehaviour {
     public void sendPoints()
     {
         //CHANGED THIS FOR 2 PLAYERS - MAKE THIS 4 PLAYERS
-        int[] playerPoints = new int[2];
+        int[] playerPoints = new int[4];
 
         StringMessage msg = new StringMessage();
 
         // get the points for each player
-        for (int x = 1; x < 3; x++)
+        for (int x = 1; x < 5; x++)
         {
             playerPoints[x - 1] = GameObject.Find("Player " + x).GetComponent<PlayerStats>().points;
         }
 
         // send all the players points to all the players
-        msg.value = playerPoints[0] + "|" + playerPoints[1]; 
+        msg.value = playerPoints[0] + "|" + playerPoints[1] + "|" + playerPoints[2] + "|" + playerPoints[3]; 
 
         NetworkServer.SendToAll(122, msg);
     }
@@ -216,6 +217,16 @@ public class networkServerUIbuttons : MonoBehaviour {
 
         string[] ready_playerID = msg.value.Split('|');
         readyClients[System.Convert.ToInt16(ready_playerID[1]) - 1] = System.Convert.ToBoolean(System.Convert.ToInt16(ready_playerID[0]));
+    }
+
+    private void serverReceiveName(NetworkMessage message)
+    {
+        StringMessage msg = new StringMessage();
+        msg.value = message.ReadMessage<StringMessage>().value;
+
+        string[] playerID_name = msg.value.Split('|');
+        PlayerStats stats = GameObject.Find("Player " + System.Convert.ToInt16(playerID_name[0])).GetComponent<PlayerStats>();
+        stats.playerName = playerID_name[1];
     }
 
     private void serverReceiveActivateTrap(NetworkMessage message)

@@ -22,6 +22,7 @@ public class networkClientUIbuttons : MonoBehaviour {
     int playerID = 0; //keeps the ID of the clients player ID on the server e.g. Player 1 or 2 etc
     int amountOfPlayers = 1; //keeps the track of how many players there are in the game
     int points = 0;
+    string name;
 
     int powerUp = 0;
     int trap = 0;
@@ -131,6 +132,16 @@ public class networkClientUIbuttons : MonoBehaviour {
         return powerUp;
     }
 
+    public void setName()
+    {
+        name = GameObject.Find("Canvas/joinGamePanel/Name").GetComponent<InputField>().text;
+    }
+
+    public string getName()
+    {
+        return name;
+    }
+
     public void toggleReady()
     {
         clientReady = !clientReady;
@@ -176,8 +187,15 @@ public class networkClientUIbuttons : MonoBehaviour {
     {
         StringMessage msg = new StringMessage();
         msg.value = System.Convert.ToInt16(clientReady) + "|" + playerID;
-       // msg.value = 1 + "|" + playerID;
+        // msg.value = 1 + "|" + playerID;
         client.Send(133, msg);
+    }
+
+    public void sendName()
+    {
+        StringMessage msg = new StringMessage();
+        msg.value = playerID + "|" + name;
+        client.Send(135, msg);
     }
 
     private void clientReceivePlayerID(NetworkMessage message)

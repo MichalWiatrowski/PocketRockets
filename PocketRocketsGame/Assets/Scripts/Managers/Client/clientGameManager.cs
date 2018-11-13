@@ -17,9 +17,13 @@ public class clientGameManager : MonoBehaviour {
     int amountOfPlayers = 0;
     int playerID = 0;
     int playerIDchoice = 0;
+    int points = 0;
+    string name;
 
     int powerUPchoice = 0; // will store the selected powerup ID; 1 for void, 2 for immunity
+    int[] powerUPcost = new int[2]; // stores the cost for each powerup
     int trapChoice = 0; // will store the selected trap; 1 for freeze, 2 for barrier
+    int[] trapCost = new int[2]; // stores the cost for each trap
 
     // Use this for initialization
     void Start()
@@ -29,8 +33,12 @@ public class clientGameManager : MonoBehaviour {
 
         powerUPchoice = networkClientUIbuttons.networkClient.getPowerUp();
         trapChoice = networkClientUIbuttons.networkClient.getTrap();
+        name = networkClientUIbuttons.networkClient.getName();
 
-
+        powerUPcost[0] = 300;
+        powerUPcost[1] = 150;
+        trapCost[0] = 200;
+        trapCost[1] = 200;
 
         //init panels
         mainSelectionPanel.SetActive(true);
@@ -46,7 +54,8 @@ public class clientGameManager : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-
+        points = networkClientUIbuttons.networkClient.getPoints();
+        networkClientUIbuttons.networkClient.sendName();
     }
     
     //code for 2 players, no need to create another script
@@ -155,32 +164,31 @@ public class clientGameManager : MonoBehaviour {
 
     public void activateTrap()
     {
-        switch (amountOfPlayers)
+        if (points > trapCost[trapChoice - 1])
         {
-            case 2:
-                moveToGateSelection();
-                break;
-            case 3:
-                playerSelectionPanel3.SetActive(true);
-                break;
-            case 4:
-                playerSelectionPanel4.SetActive(true);
-                break;
+            switch (amountOfPlayers)
+            {
+                case 2:
+                    moveToGateSelection();
+                    break;
+                case 3:
+                    playerSelectionPanel3.SetActive(true);
+                    break;
+                case 4:
+                    playerSelectionPanel4.SetActive(true);
+                    break;
+            }
+            mainSelectionPanel.SetActive(false);
         }
-        mainSelectionPanel.SetActive(false); 
     }
     public void activatePowerUp()
     {
-        // activate power up code here
-        networkClientUIbuttons.networkClient.sendActivatePowerUP(powerUPchoice, playerID);
-        if (powerUPchoice == 1)
+        if (points > powerUPcost[powerUPchoice - 1])
         {
-            // remove points for void trap
-            networkClientUIbuttons.networkClient.removePoints(300);
-        }
-        else if (powerUPchoice == 2)
-        {
-            networkClientUIbuttons.networkClient.removePoints(150);
+            // activate power up code here
+            networkClientUIbuttons.networkClient.sendActivatePowerUP(powerUPchoice, playerID);
+            // remove points for trap
+            networkClientUIbuttons.networkClient.removePoints(powerUPcost[powerUPchoice - 1]);
         }
     }
     public void activateVehicleAbility()
@@ -196,17 +204,10 @@ public class clientGameManager : MonoBehaviour {
 
     public void finishActivation(int playerIDchoice, int gateChoice)
     {
+        
         networkClientUIbuttons.networkClient.sendActivateTrap(gateChoice, playerIDchoice, trapChoice);
-        if (trapChoice == 1)
-        {
-            // remove points for freeze trap
-            networkClientUIbuttons.networkClient.removePoints(200);
-        }
-        else if (trapChoice == 2)
-        {
-            // remove points for barrier trap
-            networkClientUIbuttons.networkClient.removePoints(200);
-        }
+        // remove points for trap
+        networkClientUIbuttons.networkClient.removePoints(trapCost[trapChoice - 1]);
         gateSelectionPanel.SetActive(false);
         mainSelectionPanel.SetActive(true);
     }
