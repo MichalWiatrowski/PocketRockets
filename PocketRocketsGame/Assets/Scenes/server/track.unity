@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311953, g: 0.38074014, b: 0.3587274, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311992, g: 0.38074034, b: 0.35872713, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -14278,6 +14278,52 @@ Transform:
   m_Father: {fileID: 427003956}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &303463165
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4320271048044508, guid: b72b1ef36a92007488e1953517461431, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4320271048044508, guid: b72b1ef36a92007488e1953517461431, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -0.22
+      objectReference: {fileID: 0}
+    - target: {fileID: 4320271048044508, guid: b72b1ef36a92007488e1953517461431, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -86.81
+      objectReference: {fileID: 0}
+    - target: {fileID: 4320271048044508, guid: b72b1ef36a92007488e1953517461431, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4320271048044508, guid: b72b1ef36a92007488e1953517461431, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4320271048044508, guid: b72b1ef36a92007488e1953517461431, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4320271048044508, guid: b72b1ef36a92007488e1953517461431, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4320271048044508, guid: b72b1ef36a92007488e1953517461431, type: 2}
+      propertyPath: m_RootOrder
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 1993071283188636, guid: b72b1ef36a92007488e1953517461431, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: b72b1ef36a92007488e1953517461431, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &304264908
 GameObject:
   m_ObjectHideFlags: 0
@@ -18321,6 +18367,7 @@ GameObject:
   - component: {fileID: 383666918}
   - component: {fileID: 383666917}
   - component: {fileID: 383666915}
+  - component: {fileID: 383666916}
   m_Layer: 0
   m_Name: Player 2
   m_TagString: Car
@@ -18346,6 +18393,19 @@ MonoBehaviour:
   position: 1
   winner: 0
   fallingThroughTeleport: 0
+--- !u!114 &383666916
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 383666914}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba45ddeb1cab69841a5f0952300c0808, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  holdTime: 3
+  Bubble: {fileID: 1993071283188636, guid: b72b1ef36a92007488e1953517461431, type: 2}
 --- !u!114 &383666917
 MonoBehaviour:
   m_ObjectHideFlags: 0

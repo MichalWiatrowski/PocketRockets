@@ -19,12 +19,14 @@ public class clientGameManager : MonoBehaviour {
     int playerIDchoice = 0;
     int points = 0;
     string name;
+    private bool isAbility = false;
 
     int powerUPchoice = 0; // will store the selected powerup ID; 1 for void, 2 for immunity
     int[] powerUPcost = new int[2]; // stores the cost for each powerup
     int trapChoice = 0; // will store the selected trap; 1 for freeze, 2 for barrier
     int[] trapCost = new int[2]; // stores the cost for each trap
-
+    int vehicleAbility = 0;// will store the selected vehicle ability ID; 1 for nessieBubble
+    int[] abilityCost = new int[1]; // stores the cost for each vehicle (will be increased in size when more abilitys have been implemented)
     // Use this for initialization
     void Start()
     {
@@ -39,6 +41,10 @@ public class clientGameManager : MonoBehaviour {
         powerUPcost[1] = 200;
         trapCost[0] = 200;
         trapCost[1] = 200;
+
+        //For Testing first vehicle ability will be set when vehicle is chosen client side
+        vehicleAbility = 1;
+        abilityCost[0] = 200;
 
         //init panels
         mainSelectionPanel.SetActive(true);
@@ -193,7 +199,23 @@ public class clientGameManager : MonoBehaviour {
     }
     public void activateVehicleAbility()
     {
+        isAbility = true;
+        switch (amountOfPlayers)
+        {
+            case 2:
+                moveToGateSelection();
+                break;
+            case 3:
+                playerSelectionPanel3.SetActive(true);
+                break;
+            case 4:
+                playerSelectionPanel4.SetActive(true);
+                break;
+        }
+        mainSelectionPanel.SetActive(false);
+
         // activate ability code here
+        //networkClientUIbuttons.networkClient.sendActivateVehicleAbiltiy(gateChoice, );
     }
     public void moveToGateSelection()
     {
@@ -204,12 +226,20 @@ public class clientGameManager : MonoBehaviour {
 
     public void finishActivation(int playerIDchoice, int gateChoice)
     {
-        
-        networkClientUIbuttons.networkClient.sendActivateTrap(gateChoice, playerIDchoice, trapChoice);
-        // remove points for trap
-        networkClientUIbuttons.networkClient.removePoints(trapCost[trapChoice - 1]);
-        gateSelectionPanel.SetActive(false);
-        mainSelectionPanel.SetActive(true);
+        if (isAbility == false)
+        {
+            networkClientUIbuttons.networkClient.sendActivateTrap(gateChoice, playerIDchoice, trapChoice);
+            // remove points for trap
+            networkClientUIbuttons.networkClient.removePoints(trapCost[trapChoice - 1]);
+            gateSelectionPanel.SetActive(false);
+            mainSelectionPanel.SetActive(true);
+        }
+        else {
+            networkClientUIbuttons.networkClient.sendActivateVehicleAbiltiy(gateChoice, playerIDchoice, vehicleAbility);
+            isAbility = false;
+            gateSelectionPanel.SetActive(false);
+            mainSelectionPanel.SetActive(true);
+        }
     }
 
     

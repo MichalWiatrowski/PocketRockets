@@ -19,7 +19,7 @@ public class networkClientUIbuttons : MonoBehaviour {
 
     bool gameStart = false; //keeps track of when to start the game
 
-    int playerID = 0; //keeps the ID of the clients player ID on the server e.g. Player 1 or 2 etc
+    int playerID = 0; //keeps the ID of the clients player ID on the server e.g. Player 1 or 2 etc (Set to two for testing nessies ability)
     int amountOfPlayers = 1; //keeps the track of how many players there are in the game
     int points = 0;
     string name;
@@ -158,6 +158,14 @@ public class networkClientUIbuttons : MonoBehaviour {
         StringMessage msg = new StringMessage();
         msg.value = playerIDchoice + "|" + gate + "|" + trapChoice;
         client.Send(130, msg);
+    }
+
+    public void sendActivateVehicleAbiltiy(int gate, int playerIDchoice, int abilityChoice)
+    {
+
+        StringMessage msg = new StringMessage();
+        msg.value = playerID + "|" + playerIDchoice + "|" + gate + "|" + abilityChoice;
+        client.Send(136, msg);
     }
 
     public void removePoints(int ammount)

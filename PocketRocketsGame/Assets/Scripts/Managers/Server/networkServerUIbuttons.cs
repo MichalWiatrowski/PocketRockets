@@ -37,7 +37,7 @@ public class networkServerUIbuttons : MonoBehaviour {
         NetworkServer.RegisterHandler(133, serverReceiveReadyUp);
         NetworkServer.RegisterHandler(134, serverReceiveRemovePoints);
         NetworkServer.RegisterHandler(135, serverReceiveName);
-
+        NetworkServer.RegisterHandler(136, serverReceiveVehicleAbility);
 
         if (!gameStart)
         {
@@ -152,8 +152,29 @@ public class networkServerUIbuttons : MonoBehaviour {
         GameObject.Find("Player " + player).GetComponent<Immunity>().activateImmunity();
 
     }
+
+    void activateVehicleAbility(int playerID, int playerTarget, int gateNo, int abilityChoice) {
+
+        switch (abilityChoice) {
+            case 0:
+                //GameObject.Find("Player " + playerID).GetComponent<NessieBubble>().CreateBubble(GameObject.Find("Gate" + gateNo));
+                Debug.Log("Create Bubble");
+                break;
+            case 1:
+                //Vehicle ability acvivation goes here for Cup Cake Tank
+                Debug.Log("Fire Tank!!");
+                break;
+            case 2:
+                //Vehicle ability acvivation goes here for Bath Tub
+                break;
+            case 3:
+                //Vehicle ability acvivation goes here for Crown
+                break;
+
+        }
+    }
     ////////////////////////////////////Network Messages
-    
+
     void sendStartGame()
     {
         if (NetworkServer.active)
@@ -211,6 +232,14 @@ public class networkServerUIbuttons : MonoBehaviour {
         activatePowerUP(System.Convert.ToInt16(playerID_power[0]), System.Convert.ToInt16(playerID_power[1]));
     }
 
+    private void serverReceiveVehicleAbility(NetworkMessage message)
+    {
+        StringMessage msg = new StringMessage();
+        msg.value = message.ReadMessage<StringMessage>().value;
+
+        string[] vehicleAbility_ = msg.value.Split('|');
+        activateVehicleAbility(System.Convert.ToInt16(vehicleAbility_[0]), System.Convert.ToInt16(vehicleAbility_[1]), System.Convert.ToInt16(vehicleAbility_[2]), System.Convert.ToInt16(vehicleAbility_[3]));
+    }
     private void serverReceiveReadyUp(NetworkMessage message)
     {
         StringMessage msg = new StringMessage();
