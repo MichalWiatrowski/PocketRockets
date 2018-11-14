@@ -8,7 +8,7 @@ public class PlayerStats : MonoBehaviour {
     public string playerName;
     public float speed = 4f;
     public bool immune = false;
-    public int points = 0;
+    public int points = 600;
     public int position = 1;
     public bool winner = false;
     public bool fallingThroughTeleport = false;

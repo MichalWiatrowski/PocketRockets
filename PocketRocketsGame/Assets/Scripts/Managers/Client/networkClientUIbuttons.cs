@@ -79,29 +79,29 @@ public class networkClientUIbuttons : MonoBehaviour {
     void OnGUI()
     {
 
-        if (sceneIndex == 1)
-        {
-            if (!client.isConnected)
-            {
+        //if (sceneIndex == 1)
+        //{
+        //    if (!client.isConnected)
+        //    {
 
-                //if (GUI.Button(new Rect(10, 10, 100, 70), "Connect"))
-                //{
-                //    joinGame();
-                //}
-            }
-            else
-            {
-                //if (GUI.Button(new Rect((Screen.width / 2) - 150, (Screen.height / 2) - 50, 200, 100), "Previous"))
-                //{
-                //    //go to previous car selection
+        //        //if (GUI.Button(new Rect(10, 10, 100, 70), "Connect"))
+        //        //{
+        //        //    joinGame();
+        //        //}
+        //    }
+        //    else
+        //    {
+        //        //if (GUI.Button(new Rect((Screen.width / 2) - 150, (Screen.height / 2) - 50, 200, 100), "Previous"))
+        //        //{
+        //        //    //go to previous car selection
 
-                //}
-                //if (GUI.Button(new Rect((Screen.width / 2) + 150, (Screen.height / 2) - 50, 200, 100), "Next"))
-                //{
-                //    // go to the next car selection
-                //}             
-            }
-        }
+        //        //}
+        //        //if (GUI.Button(new Rect((Screen.width / 2) + 150, (Screen.height / 2) - 50, 200, 100), "Next"))
+        //        //{
+        //        //    // go to the next car selection
+        //        //}             
+        //    }
+        //}
 
         GUI.Box(new Rect(10, Screen.height - 80, 100, 160), "Debug Info");
         GUI.Label(new Rect(20, Screen.height - 80, 100, 20), "Status:" + client.isConnected);

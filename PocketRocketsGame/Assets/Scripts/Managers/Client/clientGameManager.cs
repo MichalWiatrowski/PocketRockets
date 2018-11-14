@@ -35,8 +35,8 @@ public class clientGameManager : MonoBehaviour {
         trapChoice = networkClientUIbuttons.networkClient.getTrap();
         name = networkClientUIbuttons.networkClient.getName();
 
-        powerUPcost[0] = 300;
-        powerUPcost[1] = 150;
+        powerUPcost[0] = 200;
+        powerUPcost[1] = 200;
         trapCost[0] = 200;
         trapCost[1] = 200;
 
@@ -164,7 +164,7 @@ public class clientGameManager : MonoBehaviour {
 
     public void activateTrap()
     {
-        if (points > trapCost[trapChoice - 1])
+        if (points >= trapCost[trapChoice - 1])
         {
             switch (amountOfPlayers)
             {
@@ -183,7 +183,7 @@ public class clientGameManager : MonoBehaviour {
     }
     public void activatePowerUp()
     {
-        if (points > powerUPcost[powerUPchoice - 1])
+        if (points >= powerUPcost[powerUPchoice - 1])
         {
             // activate power up code here
             networkClientUIbuttons.networkClient.sendActivatePowerUP(powerUPchoice, playerID);

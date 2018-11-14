@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311926, g: 0.38073996, b: 0.35872698, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311953, g: 0.38074014, b: 0.3587274, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -8547,7 +8547,7 @@ MonoBehaviour:
   playerName: 
   speed: 4
   immune: 0
-  points: 200
+  points: 600
   position: 1
   winner: 0
   fallingThroughTeleport: 0
@@ -18342,7 +18342,7 @@ MonoBehaviour:
   playerName: 
   speed: 4
   immune: 0
-  points: 200
+  points: 600
   position: 1
   winner: 0
   fallingThroughTeleport: 0
@@ -61772,7 +61772,7 @@ MonoBehaviour:
   playerName: 
   speed: 4
   immune: 0
-  points: 200
+  points: 600
   position: 1
   winner: 0
   fallingThroughTeleport: 0
@@ -83970,18 +83970,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &1723936375
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1723936367}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bba5ec1d17a03ca4e9c0b80bd23b9bd1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1723936377
+--- !u!114 &1723936374
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
@@ -83995,10 +83984,21 @@ MonoBehaviour:
   playerName: 
   speed: 4
   immune: 0
-  points: 200
+  points: 600
   position: 1
   winner: 0
   fallingThroughTeleport: 0
+--- !u!114 &1723936375
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1723936367}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bba5ec1d17a03ca4e9c0b80bd23b9bd1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1724256855
 GameObject:
   m_ObjectHideFlags: 0
