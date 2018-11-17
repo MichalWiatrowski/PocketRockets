@@ -12,7 +12,7 @@ public class WallTrap : MonoBehaviour {
     void OnTriggerEnter(Collider collided)
     {
         // check to see if trap is colliding with a vehicle
-        if (collided.CompareTag("Car") && collided.GetComponent<PlayerStats>().immune == false)
+        if (collided.CompareTag("Car") && collided.GetComponentInParent<PlayerStats>().immune == false)
         {
             // run the trap function when collided with vehicle
             StartCoroutine( Trap(collided));
@@ -28,7 +28,7 @@ public class WallTrap : MonoBehaviour {
         yield return new WaitForSeconds(carDelay); 
 
         // get information from move script on the vehicles and apply boost
-        PlayerStats stats = player.GetComponent<PlayerStats>();
+        PlayerStats stats = player.GetComponentInParent<PlayerStats>();
         stats.speed = 0f;
 
         // how long the player is stoped for

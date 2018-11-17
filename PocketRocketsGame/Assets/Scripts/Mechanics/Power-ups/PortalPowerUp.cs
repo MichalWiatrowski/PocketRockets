@@ -25,7 +25,7 @@ public class PortalPowerUp : MonoBehaviour {
 
     void Start()
     {
-        stats = GetComponent<PlayerStats>();
+        stats = GetComponentInParent<PlayerStats>();
         GameObject tempPlane = GameObject.Find("Plane");
         trackValues = new Vector3(tempPlane.transform.position.x, tempPlane.transform.position.y, tempPlane.transform.position.z);
 
@@ -70,15 +70,18 @@ public class PortalPowerUp : MonoBehaviour {
 
         if (stats.fallingThroughTeleport == true)
         {
-            transform.Translate(0, fallingSpeed * Time.deltaTime, 0);
+            GetComponentInParent<Transform>().transform.Translate(0, fallingSpeed * Time.deltaTime, 0);
+            //transform.Translate(0, fallingSpeed * Time.deltaTime, 0);
+           // GetComponentInChildren<BoxCollider>().enabled = false;
             GetComponent<BoxCollider>().enabled = false;
-
             if (transform.position.y <= fallDistanceUnderTrack)
             {
-                transform.Translate(0, 8 + fallingDistance, teleportDistance);
+              
+               // transform.Translate(0, 8 + fallingDistance, teleportDistance);
+                GetComponentInParent<Transform>().transform.Translate(0, 8 + fallingDistance, teleportDistance);
                 stats.fallingThroughTeleport = false;
+                //GetComponentInChildren<BoxCollider>().enabled = true;
                 GetComponent<BoxCollider>().enabled = true;
-
                 StartCoroutine(PortalCleanup());
             }
         }
@@ -89,15 +92,25 @@ public class PortalPowerUp : MonoBehaviour {
     {
         yield return new WaitForSeconds(2.0f);
 
-        entranceInstance.GetComponent<MeshRenderer>().enabled = false;
-        entranceInstance.GetComponent<CapsuleCollider>().enabled = false;
+        //entranceInstance.GetComponent<MeshRenderer>().enabled = false;
+       // entranceInstance.GetComponent<CapsuleCollider>().enabled = false;
 
-        exitInstance.GetComponent<MeshRenderer>().enabled = false;
-        exitInstance.GetComponent<CapsuleCollider>().enabled = true;
+        ///exitInstance.GetComponent<MeshRenderer>().enabled = false;
+        //exitInstance.GetComponent<CapsuleCollider>().enabled = true;
 
         Debug.Log("Destroying objects");
-        DestroyImmediate(entranceInstance, true);
-        DestroyImmediate(exitInstance, true);
+
+        GameObject[] portals = GameObject.FindGameObjectsWithTag("Portal");
+
+        foreach (GameObject portal in portals)
+            GameObject.Destroy(portal);
+        //Destroy(GameObject.FindGameObjectsWithTag("Portal"));
+
+
+
+
+        //DestroyImmediate(entranceInstance, true);
+       // DestroyImmediate(exitInstance, true);
         isPortalActive = false;
     }
 

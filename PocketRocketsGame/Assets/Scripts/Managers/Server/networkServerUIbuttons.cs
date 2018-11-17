@@ -18,6 +18,10 @@ public class networkServerUIbuttons : MonoBehaviour {
     private int playerID = 0;
 
     List<bool> readyClients = new List<bool>(); //for storing client ready states
+  
+    public List<int> playerVehicles = new List<int>();
+
+
 
     // Use this for initialization
     void Start()
@@ -85,6 +89,7 @@ public class networkServerUIbuttons : MonoBehaviour {
         return playerID;
     }
     
+ 
     //function and ienumerator for unloading scenes
     public void UnloadScene(int scene)
     {
@@ -100,34 +105,6 @@ public class networkServerUIbuttons : MonoBehaviour {
 
     void OnGUI()
     {
-        if (sceneIndex == 1)
-        {
-            if (!NetworkServer.active)
-            {
-                ////when the button is clicked, make a server with the port that has been inputted in the inputfield
-                //if (GUI.Button(new Rect(10, 10, 100, 70), "Connect"))
-                //{
-                //   // hostGame();
-                //}
-            }
-            else
-            {
-                //displays the amount of players connected
-               // GameObject.Find("Canvas/PlayersConnected").GetComponent<Text>().text = "Players connected:" + System.Convert.ToString(NetworkServer.connections.Count - 1);
-
-                //if (GUI.Button(new Rect(Screen.width / 2 - 50, Screen.height / 2 - 35, 100, 70), "Start Game"))
-                //{
-                //    sceneIndex = 2;
-                //    SceneManager.LoadSceneAsync(sceneIndex, LoadSceneMode.Additive);
-                //    UnloadScene(1);
-                //    sendStartGame(); // send a message to all cients which will change their scene
-                //}
-            }
-        }
-
-
-        
-
         //Debug information
         GUI.Box(new Rect(10, Screen.height - 100, 200, 100), "Debug Info");
         GUI.Label(new Rect(20, Screen.height - 85, 100, 20), "Status:" + NetworkServer.active);
@@ -156,18 +133,18 @@ public class networkServerUIbuttons : MonoBehaviour {
     void activateVehicleAbility(int playerID, int playerTarget, int gateNo, int abilityChoice) {
 
         switch (abilityChoice) {
-            case 0:
-                //GameObject.Find("Player " + playerID).GetComponent<NessieBubble>().CreateBubble(GameObject.Find("Gate" + gateNo));
-                Debug.Log("Create Bubble");
-                break;
             case 1:
                 //Vehicle ability acvivation goes here for Cup Cake Tank
                 Debug.Log("Fire Tank!!");
                 break;
             case 2:
-                //Vehicle ability acvivation goes here for Bath Tub
+                GameObject.Find("Player " + playerTarget).GetComponentInChildren<NessieBubble>().CreateBubble(GameObject.Find("Gate" + gateNo), playerTarget);
+                Debug.Log("Create Bubble");
                 break;
             case 3:
+                //Vehicle ability acvivation goes here for Bath Tub
+                break;
+            case 4:
                 //Vehicle ability acvivation goes here for Crown
                 break;
 
@@ -197,14 +174,15 @@ public class networkServerUIbuttons : MonoBehaviour {
             
             NetworkServer.SendToClient(playerID, 121, msg);
         readyClients.Add(false);
+        playerVehicles.Add(1);
 
         if (playerID > 4)
             playerID = 4;
     }
 
-    public void sendPoints()
+    public void sendPoints_Gate()
     {
-        //CHANGED THIS FOR 2 PLAYERS - MAKE THIS 4 PLAYERS
+        
         int[] playerPoints = new int[playerID];
 
         StringMessage msg = new StringMessage();
@@ -216,12 +194,23 @@ public class networkServerUIbuttons : MonoBehaviour {
             msg.value += playerPoints[x - 1] + "|";
         }
 
-        // send all the players points to all the players
-        //msg.value = playerPoints[0] + "|" + playerPoints[1]; //+ "|" + playerPoints[2] + "|" + playerPoints[3]; 
+        for (int x = 1; x < playerID + 1; x++)
+        {
+            msg.value += GameObject.Find("Player " + x).GetComponent<PlayerStats>().nextGate;
+        }
 
-        NetworkServer.SendToAll(122, msg);
+            NetworkServer.SendToAll(122, msg);
     }
 
+    private void serverReceiveActivateTrap(NetworkMessage message)
+    {
+        StringMessage msg = new StringMessage();
+        msg.value = message.ReadMessage<StringMessage>().value;
+
+        string[] playerID_gateNO_trap = msg.value.Split('|');
+
+        activateTrap(System.Convert.ToInt16(playerID_gateNO_trap[0]), System.Convert.ToInt16(playerID_gateNO_trap[1]), System.Convert.ToInt16(playerID_gateNO_trap[2]));
+    }
 
     private void serverReceiveActivatePowerUP(NetworkMessage message)
     {
@@ -240,13 +229,17 @@ public class networkServerUIbuttons : MonoBehaviour {
         string[] vehicleAbility_ = msg.value.Split('|');
         activateVehicleAbility(System.Convert.ToInt16(vehicleAbility_[0]), System.Convert.ToInt16(vehicleAbility_[1]), System.Convert.ToInt16(vehicleAbility_[2]), System.Convert.ToInt16(vehicleAbility_[3]));
     }
+
     private void serverReceiveReadyUp(NetworkMessage message)
     {
         StringMessage msg = new StringMessage();
         msg.value = message.ReadMessage<StringMessage>().value;
 
-        string[] ready_playerID = msg.value.Split('|');
-        readyClients[System.Convert.ToInt16(ready_playerID[1]) - 1] = System.Convert.ToBoolean(System.Convert.ToInt16(ready_playerID[0]));
+        string[] ready_playerID_vehicle_PlayerName = msg.value.Split('|');
+        readyClients[System.Convert.ToInt16(ready_playerID_vehicle_PlayerName[1]) - 1] = System.Convert.ToBoolean(System.Convert.ToInt16(ready_playerID_vehicle_PlayerName[0]));
+        playerVehicles[System.Convert.ToInt16(ready_playerID_vehicle_PlayerName[1]) - 1] = System.Convert.ToInt16(ready_playerID_vehicle_PlayerName[2]);
+
+
     }
 
     private void serverReceiveName(NetworkMessage message)
@@ -259,15 +252,7 @@ public class networkServerUIbuttons : MonoBehaviour {
         stats.playerName = playerID_name[1];
     }
 
-    private void serverReceiveActivateTrap(NetworkMessage message)
-    {
-        StringMessage msg = new StringMessage();
-        msg.value = message.ReadMessage<StringMessage>().value;
-
-        string[] playerID_gateNO_trap = msg.value.Split('|');
-
-        activateTrap(System.Convert.ToInt16(playerID_gateNO_trap[0]), System.Convert.ToInt16(playerID_gateNO_trap[1]), System.Convert.ToInt16(playerID_gateNO_trap[2]));
-    }
+  
 
     private void serverReceiveRemovePoints(NetworkMessage message)
     {

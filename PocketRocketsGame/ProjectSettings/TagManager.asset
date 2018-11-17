@@ -8,6 +8,7 @@ TagManager:
   - Car1
   - Portal
   - Bubble
+  - Plane
   layers:
   - Default
   - TransparentFX

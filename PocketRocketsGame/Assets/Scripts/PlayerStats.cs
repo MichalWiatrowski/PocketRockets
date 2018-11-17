@@ -12,10 +12,18 @@ public class PlayerStats : MonoBehaviour {
     public int position = 1;
     public bool winner = false;
     public bool fallingThroughTeleport = false;
-
+    public bool trappedInBubble = false;
+    public bool inTheAir = false;
+    public int nextGate = 0;
     public bool getFallingThroughTeleport()
     {
 
         return fallingThroughTeleport;
+    }
+
+  
+    private void Update()
+    {
+        
     }
 }

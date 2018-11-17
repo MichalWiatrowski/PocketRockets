@@ -17,8 +17,9 @@ public class Gate : MonoBehaviour
 
     IEnumerator GatePoints(Collider player)
     {
-        PlayerStats stats = player.GetComponent<PlayerStats>();
+        PlayerStats stats = player.GetComponentInParent<PlayerStats>();
 
+        stats.nextGate++;
         // assign vehicle positions based on how many vehicles have passed through gate
         // then assign points
         if (count == 1)
@@ -46,6 +47,6 @@ public class Gate : MonoBehaviour
             yield return new WaitForSeconds(0.1f);
         }
         count++;
-        networkServerUIbuttons.networkServer.sendPoints();
+        networkServerUIbuttons.networkServer.sendPoints_Gate();
     }
 }

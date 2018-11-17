@@ -10,17 +10,21 @@ public class clientMenuManager : MonoBehaviour {
     public GameObject trapSelectionPanel;
     public GameObject readyButton;
 
+    public Text text;
+
+
     private int powerUP = 0;
     private int trap = 0;
 
-
-
+    private int vehicleNo = 1;
+    private bool playerReady = false;
     // Use this for initialization
     void Start () {
         joinGamePanel.SetActive(true);
         powerUpSelectionPanel.SetActive(false);
         vehicleSelectionPanel.SetActive(false);
         trapSelectionPanel.SetActive(false);
+        text.text = "Cupcake";
     }
 	
 	// Update is called once per frame
@@ -31,30 +35,72 @@ public class clientMenuManager : MonoBehaviour {
     public void next()
     {
         //next vehicle code
+        if (playerReady != true)
+        {
+            vehicleNo++;
+            if (vehicleNo > 4)
+                vehicleNo = 1;
+            switch (vehicleNo)
+            {
+                case 1:
+                    text.text = "Cupcake";
+                    break;
+                case 2:
+                    text.text = "Nessie";
+                    break;
+                case 3:
+                    text.text = "Bathtub";
+                    break;
+                case 4:
+                    text.text = "Crown";
+                    break;
+            }
+        } 
     }
     public void previous()
-    {
+    { 
         //previous vehicle code
+        if (playerReady != true)
+        {
+            vehicleNo--;
+            if (vehicleNo < 1)
+                vehicleNo = 4;
+            switch (vehicleNo)
+            {
+                case 1:
+                    text.text = "Cupcake";
+                    break;
+                case 2:
+                    text.text = "Nessie";
+                    break;
+                case 3:
+                    text.text = "Bathtub";
+                    break;
+                case 4:
+                    text.text = "Crown";
+                    break;
+            }
+        }  
     }
     public void ready()
     {
         //set client ready code
-        networkClientUIbuttons.networkClient.toggleReady();
-        networkClientUIbuttons.networkClient.sendReadyUp();
+        playerReady = !playerReady;
+        //networkClientUIbuttons.networkClient.toggleReady();
+        networkClientUIbuttons.networkClient.vehicleChoice = vehicleNo;
+        networkClientUIbuttons.networkClient.sendReadyUp(System.Convert.ToInt16(playerReady));
 
-        if (networkClientUIbuttons.networkClient.getReady())
+       if(playerReady)
             readyButton.GetComponent<Image>().color = Color.green;
         else
             readyButton.GetComponent<Image>().color = Color.red;
 
     }
+
     public void join()
     {
         networkClientUIbuttons.networkClient.setName();
         networkClientUIbuttons.networkClient.joinGame();
-        //joinGamePanel.SetActive(false);
-        //vehicleSelectionPanel.SetActive(true);   
-        //powerUpSelectionPanel.SetActive(true);
     }
 
     public void voidPower()
