@@ -6,15 +6,19 @@ public class Follow : MonoBehaviour {
 
     public List<Transform> cars;
 
-    public float smoothing;
-    public float minZoom;
-    public float maxZoom;
-    public float zoomLimit;
+    public float smoothing = 0.2f;
+    public float minZoom = 150f;
+    public float maxZoom = 50f;
+    public float zoomLimit = 50;
+    public enum camNumber {Back, BackZoom, Side, SideZoom};
+    public camNumber camNum = camNumber.Back;
 
     public bool behindCam;
 
-    public Vector3 normalOffset;
-    public Vector3 behindOffset;
+    public Vector3 normalOffset = new Vector3(5, 6, -6);
+    public Vector3 behindOffset = new Vector3(0, 3, -6);
+    public Vector3 normalRotation = new Vector3(20, 60, 0);
+    public Vector3 behindRotation = new Vector3(0, 0, 0);
 
     private Vector3 newPos;
     private Vector3 velocity;
@@ -25,20 +29,29 @@ public class Follow : MonoBehaviour {
         cam = GetComponent<Camera>();
 
         behindCam = false;
-
-        // Camera smoothing value
-        smoothing = 0.2f;
-
-        // FOV settings
-        minZoom = 150f;
-        maxZoom = 50f;
-        zoomLimit = 50;
-        normalOffset = new Vector3(15, 6, -3);
-        behindOffset = new Vector3(0, 3, -6);
 	}
 
 	// Update is called once per frame
 	void LateUpdate () {
+        switch (camNum)
+        {
+            case camNumber.Back :
+                behindCam = true;
+                Back();
+                break;
+            case camNumber.BackZoom :
+                behindCam = true;
+                BackZoom();
+                break;
+            case camNumber.Side :
+                behindCam = false;
+                Side();
+                break;
+            case camNumber.SideZoom :
+                behindCam = false;
+                SideZoom();
+                break;
+        }
         GetEncapsulatingBounds();
         MoveCam();
         Zoom();
@@ -53,10 +66,12 @@ public class Follow : MonoBehaviour {
         if (behindCam)
         {
             newPos = camCenter + behindOffset;
+            transform.rotation = Quaternion.Euler(behindRotation);
         }
         else
         {
             newPos = camCenter + normalOffset;
+            transform.rotation = Quaternion.Euler(normalRotation);
         }
 
         // move camera to new position
@@ -80,5 +95,31 @@ public class Follow : MonoBehaviour {
             boundsBox.Encapsulate(cars[x].position);
         }
         return boundsBox;
+    }
+
+    void Back()
+    {
+        GetEncapsulatingBounds();
+        MoveCam();
+    }
+
+    void BackZoom()
+    {
+        GetEncapsulatingBounds();
+        MoveCam();
+        Zoom();
+    }
+
+    void Side()
+    {
+        GetEncapsulatingBounds();
+        MoveCam();
+    }
+
+    void SideZoom()
+    {
+        GetEncapsulatingBounds();
+        MoveCam();
+        Zoom();
     }
 }

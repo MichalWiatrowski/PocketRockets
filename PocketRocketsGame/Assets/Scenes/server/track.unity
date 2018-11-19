@@ -10026,7 +10026,7 @@ Prefab:
       objectReference: {fileID: 2100000, guid: 7c2a3ea0a49386a4296a0cd127dd6cf0, type: 2}
     - target: {fileID: 100000, guid: f3732f7815a73274ca72729ea39f0a1f, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f3732f7815a73274ca72729ea39f0a1f, type: 3}
@@ -37968,7 +37968,7 @@ Prefab:
       objectReference: {fileID: 2100000, guid: 7c2a3ea0a49386a4296a0cd127dd6cf0, type: 2}
     - target: {fileID: 100000, guid: f3732f7815a73274ca72729ea39f0a1f, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f3732f7815a73274ca72729ea39f0a1f, type: 3}
@@ -45783,7 +45783,7 @@ Prefab:
       objectReference: {fileID: 2100000, guid: 7c2a3ea0a49386a4296a0cd127dd6cf0, type: 2}
     - target: {fileID: 100000, guid: f3732f7815a73274ca72729ea39f0a1f, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f3732f7815a73274ca72729ea39f0a1f, type: 3}
@@ -46238,13 +46238,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 910039752}
-  m_LocalRotation: {x: 0.077986784, y: -0.5244448, z: 0.04914613, w: 0.84643984}
-  m_LocalPosition: {x: -0.19, y: 1.1700001, z: 36.889275}
+  m_LocalRotation: {x: 0.15038373, y: -0.4924039, z: 0.08682408, w: 0.85286856}
+  m_LocalPosition: {x: -0.19, y: 3.48, z: 36.889275}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 10.578, y: -63.556004, z: 0.082}
+  m_LocalEulerAnglesHint: {x: 20, y: -60, z: 0}
 --- !u!114 &910039757
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -46261,13 +46261,16 @@ MonoBehaviour:
   - {fileID: 1209670891}
   - {fileID: 1869343769}
   - {fileID: 1831183480}
-  smoothing: 0
-  minZoom: 0
-  maxZoom: 0
-  zoomLimit: 0
+  smoothing: 0.2
+  minZoom: 20
+  maxZoom: 50
+  zoomLimit: 100
+  camNum: 0
   behindCam: 0
-  normalOffset: {x: 0, y: 0, z: 0}
-  behindOffset: {x: 0, y: 0, z: 0}
+  normalOffset: {x: 5, y: 6, z: -6}
+  behindOffset: {x: 0, y: 3, z: -10}
+  normalRotation: {x: 20, y: 60, z: 0}
+  behindRotation: {x: 0, y: 0, z: 0}
 --- !u!1 &911874728
 GameObject:
   m_ObjectHideFlags: 0
@@ -104081,7 +104084,7 @@ Prefab:
       objectReference: {fileID: 2100000, guid: 7c2a3ea0a49386a4296a0cd127dd6cf0, type: 2}
     - target: {fileID: 100000, guid: f3732f7815a73274ca72729ea39f0a1f, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f3732f7815a73274ca72729ea39f0a1f, type: 3}
