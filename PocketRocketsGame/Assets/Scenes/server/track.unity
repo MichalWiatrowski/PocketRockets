@@ -46265,7 +46265,7 @@ MonoBehaviour:
   minZoom: 20
   maxZoom: 50
   zoomLimit: 100
-  camNum: 0
+  camNum: 1
   behindCam: 0
   normalOffset: {x: 5, y: 6, z: -6}
   behindOffset: {x: 0, y: 3, z: -10}
