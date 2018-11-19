@@ -10026,7 +10026,7 @@ Prefab:
       objectReference: {fileID: 2100000, guid: 7c2a3ea0a49386a4296a0cd127dd6cf0, type: 2}
     - target: {fileID: 100000, guid: f3732f7815a73274ca72729ea39f0a1f, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f3732f7815a73274ca72729ea39f0a1f, type: 3}
@@ -37968,7 +37968,7 @@ Prefab:
       objectReference: {fileID: 2100000, guid: 7c2a3ea0a49386a4296a0cd127dd6cf0, type: 2}
     - target: {fileID: 100000, guid: f3732f7815a73274ca72729ea39f0a1f, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f3732f7815a73274ca72729ea39f0a1f, type: 3}
@@ -45783,7 +45783,7 @@ Prefab:
       objectReference: {fileID: 2100000, guid: 7c2a3ea0a49386a4296a0cd127dd6cf0, type: 2}
     - target: {fileID: 100000, guid: f3732f7815a73274ca72729ea39f0a1f, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f3732f7815a73274ca72729ea39f0a1f, type: 3}
@@ -46265,11 +46265,11 @@ MonoBehaviour:
   minZoom: 20
   maxZoom: 50
   zoomLimit: 100
-  camNum: 1
+  camNum: 0
   behindCam: 0
-  normalOffset: {x: 5, y: 6, z: -6}
+  normalOffset: {x: 10, y: 6, z: -6}
   behindOffset: {x: 0, y: 3, z: -10}
-  normalRotation: {x: 20, y: 60, z: 0}
+  normalRotation: {x: 20, y: -40, z: 0}
   behindRotation: {x: 0, y: 0, z: 0}
 --- !u!1 &911874728
 GameObject:
@@ -104084,7 +104084,7 @@ Prefab:
       objectReference: {fileID: 2100000, guid: 7c2a3ea0a49386a4296a0cd127dd6cf0, type: 2}
     - target: {fileID: 100000, guid: f3732f7815a73274ca72729ea39f0a1f, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f3732f7815a73274ca72729ea39f0a1f, type: 3}
