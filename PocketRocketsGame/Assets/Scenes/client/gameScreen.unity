@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311953, g: 0.38074014, b: 0.3587274, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311926, g: 0.38073996, b: 0.35872698, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1472,7 +1472,8 @@ MonoBehaviour:
   gateButton2: {fileID: 1786896569}
   gateButton3: {fileID: 1823084980}
   gateButton4: {fileID: 113830736}
-  nextGate: {fileID: 1317220556}
+  gateText: {fileID: 0}
+  nextGate: 0
 --- !u!114 &866135728
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2119,6 +2120,7 @@ GameObject:
   - component: {fileID: 1317220555}
   - component: {fileID: 1317220557}
   - component: {fileID: 1317220556}
+  - component: {fileID: 1317220558}
   m_Layer: 5
   m_Name: nextGateText
   m_TagString: Untagged
@@ -2183,6 +2185,18 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1317220554}
+--- !u!114 &1317220558
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1317220554}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b3bea79d4c9e0c479253b9349553387, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nextGate: {fileID: 1317220556}
 --- !u!1 &1363095084
 GameObject:
   m_ObjectHideFlags: 0

@@ -14,7 +14,8 @@ public class clientGameManager : MonoBehaviour {
     public GameObject gateButton3;
     public GameObject gateButton4;
 
-    public Text nextGate;
+    public Text gateText;
+    public int nextGate;
     int amountOfPlayers = 0;
     int playerID = 0;
     int playerIDchoice = 0;
@@ -58,18 +59,14 @@ public class clientGameManager : MonoBehaviour {
         setUpGateButtons();
       
         numberOfPlayersSetUp();   
-        for (int i = 0; i < amountOfPlayers; i++)
-        {
-            networkClientUIbuttons.networkClient.sendName();
-        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        nextGate.text = "Next Gate: " + networkClientUIbuttons.networkClient.nextGate;
         points = networkClientUIbuttons.networkClient.getPoints();
-        
+        nextGate = networkClientUIbuttons.networkClient.getNextGate();
+        networkClientUIbuttons.networkClient.sendName();
     }
     
     void playerChoice()

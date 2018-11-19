@@ -196,7 +196,7 @@ public class networkServerUIbuttons : MonoBehaviour {
 
         for (int x = 1; x < playerID + 1; x++)
         {
-            msg.value += GameObject.Find("Player " + x).GetComponent<PlayerStats>().nextGate;
+            msg.value += GameObject.Find("Player " + x).GetComponent<PlayerStats>().nextGate + "|";
         }
 
             NetworkServer.SendToAll(122, msg);

@@ -22,7 +22,6 @@ public class networkClientUIbuttons : MonoBehaviour {
     
    
     
-    public int nextGate = 0;
 
     public int vehicleChoice = 0;
     
@@ -35,6 +34,7 @@ public class networkClientUIbuttons : MonoBehaviour {
     private int playerID = 0; //keeps the ID of the clients player ID on the server e.g. Player 1 or 2 etc (Set to two for testing nessies ability)
     private int amountOfPlayers = 0; //keeps the track of how many players there are in the game
     private int points = 0;
+    private int nextGate = 1;
 
     //this will load the first scene of the mobile side of the game "Menu"
     void Awake()
@@ -69,6 +69,11 @@ public class networkClientUIbuttons : MonoBehaviour {
     public int getPoints()
     {
         return points;
+    }
+
+    public int getNextGate()
+    {
+        return nextGate;
     }
 
     public void joinGame()

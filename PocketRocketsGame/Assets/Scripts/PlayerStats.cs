@@ -14,7 +14,7 @@ public class PlayerStats : MonoBehaviour {
     public bool fallingThroughTeleport = false;
     public bool trappedInBubble = false;
     public bool inTheAir = false;
-    public int nextGate = 0;
+    public int nextGate = 1;
     public bool getFallingThroughTeleport()
     {
 
