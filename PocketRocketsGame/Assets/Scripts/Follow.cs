@@ -59,8 +59,13 @@ public class Follow : MonoBehaviour {
 
     void MoveCam()
     {
+        float temp1 = CompareZ(cars[0].transform.position.z, cars[1].transform.position.z);
+        float temp2 = CompareZ(cars[2].transform.position.z, cars[3].transform.position.z);
+        float backCarZ = CompareZ(temp1, temp2);
+
         // find centre of the bouding box
         Vector3 camCenter = GetEncapsulatingBounds().center;
+        camCenter.z = backCarZ;
 
         // find the new camera position with the offset
         if (behindCam)
@@ -95,6 +100,18 @@ public class Follow : MonoBehaviour {
             boundsBox.Encapsulate(cars[x].position);
         }
         return boundsBox;
+    }
+
+    float CompareZ(float x, float y)
+    {
+        if (x <= y)
+        {
+            return x;
+        }
+        else
+        {
+            return y;
+        }
     }
 
     void Back()
