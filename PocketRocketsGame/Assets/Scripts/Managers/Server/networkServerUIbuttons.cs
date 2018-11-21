@@ -135,6 +135,9 @@ public class networkServerUIbuttons : MonoBehaviour {
         switch (abilityChoice) {
             case 1:
                 //Vehicle ability acvivation goes here for Cup Cake Tank
+                GameObject.Find("Gate" + gateNo + "/JellyTotTrap" + playerTarget).GetComponent<BoxCollider>().enabled = true;
+                GameObject.Find("Gate" + gateNo + "/JellyTotTrap" + playerTarget).GetComponent<MeshRenderer>().enabled = true;
+
                 Debug.Log("Fire Tank!!");
                 break;
             case 2:

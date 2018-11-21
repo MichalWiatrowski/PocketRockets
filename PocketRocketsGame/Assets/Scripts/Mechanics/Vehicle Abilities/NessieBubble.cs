@@ -65,6 +65,7 @@ public class NessieBubble : MonoBehaviour {
             GetComponent<BoxCollider>().enabled = false;
             GetComponent<Rigidbody>().useGravity = false;
             transform.Translate(0, bubbleRiseSpeed * Time.deltaTime, 0);
+            //bubbleInstance.GetComponent<Transform>().transform.Translate(0, bubbleRiseSpeed * Time.deltaTime, 0);
             bubbleInstance.transform.Translate(0, bubbleRiseSpeed * Time.deltaTime, 0);
             stats.inTheAir = true;
 
@@ -84,14 +85,16 @@ public class NessieBubble : MonoBehaviour {
 
     void ManageInput()
     {
-        
-
         if (Input.GetButtonDown("Fire1"))
         {
             //CreatePortals();
-            CreateBubble(GameObject.Find("Gate1"), 2);
+            
+
+            if (this == GameObject.Find("Player " + 1)) {
+                GameObject tempTarget = GameObject.Find("Player " + 1);
+                tempTarget.GetComponentInChildren<NessieBubble>().CreateBubble(GameObject.Find("Gate1"), 2);
+
+            }
         }
-
-
     }
 }

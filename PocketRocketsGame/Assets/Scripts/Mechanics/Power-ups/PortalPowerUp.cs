@@ -118,7 +118,7 @@ public class PortalPowerUp : MonoBehaviour {
 
         if (Input.GetButtonDown("Fire1"))
         {
-            CreatePortals();
+           // CreatePortals();
         }
 
     }
