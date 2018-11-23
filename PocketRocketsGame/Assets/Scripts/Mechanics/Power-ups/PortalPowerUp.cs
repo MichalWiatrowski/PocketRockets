@@ -125,7 +125,9 @@ public class PortalPowerUp : MonoBehaviour {
 
         if (Input.GetButtonDown("Fire1"))
         {
-            CreatePortals();
+            PortalPowerUp power = GameObject.Find("Player 1").GetComponent<PortalPowerUp>();
+            power.CreatePortals();
+            //CreatePortals();
         }
 
     }
