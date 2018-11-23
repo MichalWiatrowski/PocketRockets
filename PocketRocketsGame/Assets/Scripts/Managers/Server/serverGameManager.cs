@@ -37,7 +37,6 @@ public class serverGameManager : MonoBehaviour {
         }
         for (int i = 4; i > amountOfPlayers; i--)
         {
-            //GameObject.Find("Player " + i).SetActive(false);
             GameObject.Find("Player_" + i).SetActive(false);
             GameObject.Find("Position_" + i).SetActive(false);
         }
