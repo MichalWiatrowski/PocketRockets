@@ -109,15 +109,15 @@ public class PortalPowerUp : MonoBehaviour {
 
         GameObject[] portals = GameObject.FindGameObjectsWithTag("Portal");
 
-        foreach (GameObject portal in portals)
-            GameObject.Destroy(portal);
+        //foreach (GameObject portal in portals)
+        //    GameObject.Destroy(portal);
         //Destroy(GameObject.FindGameObjectsWithTag("Portal"));
 
 
 
 
-        //DestroyImmediate(entranceInstance, true);
-       // DestroyImmediate(exitInstance, true);
+        DestroyImmediate(entranceInstance, true);
+        DestroyImmediate(exitInstance, true);
         isPortalActive = false;
     }
 

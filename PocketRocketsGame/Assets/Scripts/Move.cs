@@ -20,7 +20,7 @@ public class Move : MonoBehaviour {
         if (stats.fallingThroughTeleport == false && stats.trappedInBubble == false && stats.inTheAir == false)
         {
 
-            transform.Translate(0f, 0f, stats.speed * Time.deltaTime);
+            transform.Translate(0f, 0f, (stats.speed / stats.slowDownFactor) * Time.deltaTime);
         }
 	}
 }

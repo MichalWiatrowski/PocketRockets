@@ -135,6 +135,9 @@ public class networkServerUIbuttons : MonoBehaviour {
         switch (abilityChoice) {
             case 1:
                 //Vehicle ability acvivation goes here for Cup Cake Tank
+                GameObject.Find("Gate" + gateNo + "/JellyTotTrap" + playerTarget).GetComponent<BoxCollider>().enabled = true;
+                GameObject.Find("Gate" + gateNo + "/JellyTotTrap" + playerTarget).GetComponent<MeshRenderer>().enabled = true;
+
                 Debug.Log("Fire Tank!!");
                 break;
             case 2:
@@ -143,9 +146,11 @@ public class networkServerUIbuttons : MonoBehaviour {
                 break;
             case 3:
                 //Vehicle ability acvivation goes here for Bath Tub
+                GameObject.Find("Player " + playerID).GetComponent<SpeedBoost>().activateSpeedBoost();
                 break;
             case 4:
                 //Vehicle ability acvivation goes here for Crown
+                GameObject.Find("Player " + playerID).GetComponent<Immunity>().activateImmunity();
                 break;
 
         }

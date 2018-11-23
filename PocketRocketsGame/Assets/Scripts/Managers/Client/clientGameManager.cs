@@ -47,7 +47,7 @@ public class clientGameManager : MonoBehaviour {
         trapCost[1] = 200;
 
         //For Testing first vehicle ability will be set when vehicle is chosen client side
-        vehicleAbility = 1;
+        vehicleAbility = networkClientUIbuttons.networkClient.getVehicleChoice();
         abilityCost[0] = 200;
 
         //init panels
@@ -135,6 +135,21 @@ public class clientGameManager : MonoBehaviour {
             gateSelectionPanel.SetActive(false);
             mainSelectionPanel.SetActive(true);
         }
+        else if (abiltyType == 1)
+        {
+            // activate nessie ability code here
+            if (amountOfPlayers == 2)
+            {
+                networkClientUIbuttons.networkClient.sendActivateVehicleAbiltiy(System.Convert.ToInt16(buttonData[1]), playerIDchoice, networkClientUIbuttons.networkClient.vehicleChoice);
+            }
+            else if (amountOfPlayers == 3)
+                networkClientUIbuttons.networkClient.sendActivateVehicleAbiltiy(System.Convert.ToInt16(buttonData[1]), GetComponent<players3>().getPlayerChoice(), networkClientUIbuttons.networkClient.vehicleChoice);
+            else if (amountOfPlayers == 4)
+                networkClientUIbuttons.networkClient.sendActivateVehicleAbiltiy(System.Convert.ToInt16(buttonData[1]), GetComponent<players4>().getPlayerChoice(), networkClientUIbuttons.networkClient.vehicleChoice);
+            gateSelectionPanel.SetActive(false);
+            mainSelectionPanel.SetActive(true);
+
+        }
         else if (abiltyType == 5)
         {
             if (amountOfPlayers == 2)
@@ -166,6 +181,21 @@ public class clientGameManager : MonoBehaviour {
                 networkClientUIbuttons.networkClient.sendActivateVehicleAbiltiy(System.Convert.ToInt16(buttonData[1]), GetComponent<players4>().getPlayerChoice(), networkClientUIbuttons.networkClient.vehicleChoice);
             gateSelectionPanel.SetActive(false);
             mainSelectionPanel.SetActive(true);
+        }
+        else if (abiltyType == 1)
+        {
+            // activate nessie ability code here
+            if (amountOfPlayers == 2)
+            {
+                networkClientUIbuttons.networkClient.sendActivateVehicleAbiltiy(System.Convert.ToInt16(buttonData[1]), playerIDchoice, networkClientUIbuttons.networkClient.vehicleChoice);
+            }
+            else if (amountOfPlayers == 3)
+                networkClientUIbuttons.networkClient.sendActivateVehicleAbiltiy(System.Convert.ToInt16(buttonData[1]), GetComponent<players3>().getPlayerChoice(), networkClientUIbuttons.networkClient.vehicleChoice);
+            else if (amountOfPlayers == 4)
+                networkClientUIbuttons.networkClient.sendActivateVehicleAbiltiy(System.Convert.ToInt16(buttonData[1]), GetComponent<players4>().getPlayerChoice(), networkClientUIbuttons.networkClient.vehicleChoice);
+            gateSelectionPanel.SetActive(false);
+            mainSelectionPanel.SetActive(true);
+
         }
         else if (abiltyType == 5)
         {
@@ -200,6 +230,21 @@ public class clientGameManager : MonoBehaviour {
             gateSelectionPanel.SetActive(false);
             mainSelectionPanel.SetActive(true);
         }
+        else if (abiltyType == 1)
+        {
+            // activate nessie ability code here
+            if (amountOfPlayers == 2)
+            {
+                networkClientUIbuttons.networkClient.sendActivateVehicleAbiltiy(System.Convert.ToInt16(buttonData[1]), playerIDchoice, networkClientUIbuttons.networkClient.vehicleChoice);
+            }
+            else if (amountOfPlayers == 3)
+                networkClientUIbuttons.networkClient.sendActivateVehicleAbiltiy(System.Convert.ToInt16(buttonData[1]), GetComponent<players3>().getPlayerChoice(), networkClientUIbuttons.networkClient.vehicleChoice);
+            else if (amountOfPlayers == 4)
+                networkClientUIbuttons.networkClient.sendActivateVehicleAbiltiy(System.Convert.ToInt16(buttonData[1]), GetComponent<players4>().getPlayerChoice(), networkClientUIbuttons.networkClient.vehicleChoice);
+            gateSelectionPanel.SetActive(false);
+            mainSelectionPanel.SetActive(true);
+
+        }
         else if (abiltyType == 5)
         {
             if (amountOfPlayers == 2)
@@ -218,7 +263,7 @@ public class clientGameManager : MonoBehaviour {
     {
         string[] buttonData = gateButton4.GetComponent<Text>().text.Split(' ');
 
-        if (abiltyType == 2) 
+        if (abiltyType == 2)
         {
             // activate nessie ability code here
             if (amountOfPlayers == 2)
@@ -231,6 +276,21 @@ public class clientGameManager : MonoBehaviour {
                 networkClientUIbuttons.networkClient.sendActivateVehicleAbiltiy(System.Convert.ToInt16(buttonData[1]), GetComponent<players4>().getPlayerChoice(), networkClientUIbuttons.networkClient.vehicleChoice);
             gateSelectionPanel.SetActive(false);
             mainSelectionPanel.SetActive(true);
+        }
+        else if (abiltyType == 1)
+        {
+            // activate nessie ability code here
+            if (amountOfPlayers == 2)
+            {
+                networkClientUIbuttons.networkClient.sendActivateVehicleAbiltiy(System.Convert.ToInt16(buttonData[1]), playerIDchoice, networkClientUIbuttons.networkClient.vehicleChoice);
+            }
+            else if (amountOfPlayers == 3)
+                networkClientUIbuttons.networkClient.sendActivateVehicleAbiltiy(System.Convert.ToInt16(buttonData[1]), GetComponent<players3>().getPlayerChoice(), networkClientUIbuttons.networkClient.vehicleChoice);
+            else if (amountOfPlayers == 4)
+                networkClientUIbuttons.networkClient.sendActivateVehicleAbiltiy(System.Convert.ToInt16(buttonData[1]), GetComponent<players4>().getPlayerChoice(), networkClientUIbuttons.networkClient.vehicleChoice);
+            gateSelectionPanel.SetActive(false);
+            mainSelectionPanel.SetActive(true);
+
         }
         else if (abiltyType == 5)
         {
@@ -301,11 +361,24 @@ public class clientGameManager : MonoBehaviour {
         }
         else if (abiltyType == 1)
         {
-            //activate tank slow
+            switch (amountOfPlayers)
+            {
+                case 2:
+                    moveToGateSelection();
+                    break;
+                case 3:
+                    playerSelectionPanel3.SetActive(true);
+                    break;
+                case 4:
+                    playerSelectionPanel4.SetActive(true);
+                    break;
+            }
+            mainSelectionPanel.SetActive(false);
+
         }
         else if (abiltyType == 3)
         {
-            //activate bathtub speed boost
+            finishActivation(playerIDchoice, 0);
         }
       
        
@@ -323,10 +396,17 @@ public class clientGameManager : MonoBehaviour {
             mainSelectionPanel.SetActive(true);
         }
         else {
-            networkClientUIbuttons.networkClient.sendActivateVehicleAbiltiy(gateChoice, playerIDchoice, vehicleAbility);
-            isAbility = false;
-            gateSelectionPanel.SetActive(false);
-            mainSelectionPanel.SetActive(true);
+            if (vehicleAbility == 3)
+            {
+                networkClientUIbuttons.networkClient.sendActivateVehicleAbiltiy(0, playerID, vehicleAbility);
+            }
+            else
+            {
+                networkClientUIbuttons.networkClient.sendActivateVehicleAbiltiy(gateChoice, playerIDchoice, vehicleAbility);
+                isAbility = false;
+                gateSelectionPanel.SetActive(false);
+                mainSelectionPanel.SetActive(true);
+            }
         }
     }
 

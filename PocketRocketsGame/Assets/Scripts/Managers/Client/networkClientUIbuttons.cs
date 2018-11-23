@@ -19,9 +19,13 @@ public class networkClientUIbuttons : MonoBehaviour {
 
     bool gameStart = false; //keeps track of when to start the game
 
-    
-   
-    
+    bool testing = true;
+
+    string testIP = "193.60.172.116";
+    int testPortNum = 51892;
+
+
+
 
     public int vehicleChoice = 0;
     
@@ -85,9 +89,13 @@ public class networkClientUIbuttons : MonoBehaviour {
         client.Configure(config, 1);
 
         //connect to the server
-
-        Connect(GameObject.Find("Canvas/joinGamePanel/IPaddress").GetComponent<InputField>().text, System.Convert.ToInt32(GameObject.Find("Canvas/joinGamePanel/portNumber").GetComponent<InputField>().text));
-        
+        if (testing == false)
+        {
+            Connect(GameObject.Find("Canvas/joinGamePanel/IPaddress").GetComponent<InputField>().text, System.Convert.ToInt32(GameObject.Find("Canvas/joinGamePanel/portNumber").GetComponent<InputField>().text));
+        }
+        else {
+            Connect(testIP, testPortNum);
+        }
 
       
     }
