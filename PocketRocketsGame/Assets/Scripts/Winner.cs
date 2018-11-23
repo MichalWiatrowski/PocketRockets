@@ -8,12 +8,11 @@ public class Winner : MonoBehaviour {
     public List<Transform> players;
     PlayerStats stats;
     public Text winner;
-    public Font jazzBubble;
 
     // get the players stats
     void Start()
     {
-        gameObject.SetActive(false);
+
     }
 
     // draw players position on screen

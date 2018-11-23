@@ -18,7 +18,7 @@ public class FinishGate : MonoBehaviour {
 
     void FindWinner(Collider player)
     {
-        PlayerStats stats = player.GetComponent<PlayerStats>();
+        PlayerStats stats = player.GetComponentInParent<PlayerStats>();
 
         if (count == 1)
         {
