@@ -6,7 +6,7 @@ public class WallTrap : MonoBehaviour {
 
     public float wallTime = 0.4f;
     public float wallSpeed = 1f;
-    public float carDelay = 1f;
+    public float carDelay = 0.1f;
     public bool moving = false;
 
     void OnTriggerEnter(Collider collided)
@@ -15,11 +15,13 @@ public class WallTrap : MonoBehaviour {
         if (collided.CompareTag("Car") && collided.GetComponentInParent<PlayerStats>().immune == false)
         {
             // run the trap function when collided with vehicle
-            StartCoroutine( Trap(collided));
+            PlayerStats stats = collided.GetComponentInParent<PlayerStats>();
+            stats.speed = 0f;
+            StartCoroutine( Trap(stats));
         }
     }
 
-    IEnumerator Trap(Collider player)
+    IEnumerator Trap(PlayerStats stats)
     {
         // start moving the wall up
         moving = true;
@@ -28,14 +30,14 @@ public class WallTrap : MonoBehaviour {
         yield return new WaitForSeconds(carDelay); 
 
         // get information from move script on the vehicles and apply boost
-        PlayerStats stats = player.GetComponentInParent<PlayerStats>();
-        stats.speed = 0f;
+        //PlayerStats stats = player.GetComponentInParent<PlayerStats>();
+        //stats.speed = 0f;
 
         // how long the player is stoped for
         yield return new WaitForSeconds(wallTime);
 
         // return the player to normal speed
-        stats.speed = 4f;
+        stats.speed = stats.defaultSpeed;
 
         // clean up
         Destroy(gameObject);

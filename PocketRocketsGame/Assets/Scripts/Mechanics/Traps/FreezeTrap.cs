@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class FreezeTrap : MonoBehaviour {
 
-    public float iceTime = 3f;
-    public float carDelay = 0.8f;
+    private float iceTime = 1f;
+    private float carDelay = 0.01f;
 
     //public GameObject iceEffect;
     //Vector3 effectPos;
@@ -41,13 +41,13 @@ public class FreezeTrap : MonoBehaviour {
         // get information from move script on the vehicles and apply the freeze and reveal the ice
         GetComponent<MeshRenderer>().enabled = true;
         PlayerStats stats = player.GetComponentInParent<PlayerStats>();
-        stats.speed = 0f;
+        stats.speed = 0.0f;
 
         // how long the player is stoped for
         yield return new WaitForSeconds(iceTime);
 
         // return the player to normal speed
-        stats.speed = 4f;
+        stats.speed = stats.defaultSpeed;
 
         // clean up
         Destroy(gameObject);
