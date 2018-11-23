@@ -146,9 +146,11 @@ public class networkServerUIbuttons : MonoBehaviour {
                 break;
             case 3:
                 //Vehicle ability acvivation goes here for Bath Tub
+                GameObject.Find("Player " + playerID).GetComponent<SpeedBoost>().activateSpeedBoost();
                 break;
             case 4:
                 //Vehicle ability acvivation goes here for Crown
+                GameObject.Find("Player " + playerID).GetComponent<Immunity>().activateImmunity();
                 break;
 
         }

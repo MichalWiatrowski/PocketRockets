@@ -38,7 +38,7 @@ public class clientMenuManager : MonoBehaviour {
         if (playerReady != true)
         {
             vehicleNo++;
-            if (vehicleNo > 4)
+            if (vehicleNo > 3)
                 vehicleNo = 1;
             switch (vehicleNo)
             {
@@ -64,7 +64,7 @@ public class clientMenuManager : MonoBehaviour {
         {
             vehicleNo--;
             if (vehicleNo < 1)
-                vehicleNo = 4;
+                vehicleNo = 3;
             switch (vehicleNo)
             {
                 case 1:

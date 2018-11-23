@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class HaloEffect : MonoBehaviour {
 
-    Immune imm;
+    PlayerStats imm;
 
     // Use this for initialization
     void Start () {
-        imm = gameObject.GetComponent<Immune>();  
+        imm = gameObject.GetComponent<PlayerStats>();  
 	}
 	
 	// Update is called once per frame

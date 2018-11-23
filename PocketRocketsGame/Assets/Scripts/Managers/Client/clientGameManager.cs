@@ -47,7 +47,7 @@ public class clientGameManager : MonoBehaviour {
         trapCost[1] = 200;
 
         //For Testing first vehicle ability will be set when vehicle is chosen client side
-        vehicleAbility = 1;
+        vehicleAbility = networkClientUIbuttons.networkClient.getVehicleChoice();
         abilityCost[0] = 200;
 
         //init panels
@@ -378,7 +378,7 @@ public class clientGameManager : MonoBehaviour {
         }
         else if (abiltyType == 3)
         {
-            //activate bathtub speed boost
+            finishActivation(playerIDchoice, 0);
         }
       
        
@@ -396,10 +396,17 @@ public class clientGameManager : MonoBehaviour {
             mainSelectionPanel.SetActive(true);
         }
         else {
-            networkClientUIbuttons.networkClient.sendActivateVehicleAbiltiy(gateChoice, playerIDchoice, vehicleAbility);
-            isAbility = false;
-            gateSelectionPanel.SetActive(false);
-            mainSelectionPanel.SetActive(true);
+            if (vehicleAbility == 3)
+            {
+                networkClientUIbuttons.networkClient.sendActivateVehicleAbiltiy(0, playerID, vehicleAbility);
+            }
+            else
+            {
+                networkClientUIbuttons.networkClient.sendActivateVehicleAbiltiy(gateChoice, playerIDchoice, vehicleAbility);
+                isAbility = false;
+                gateSelectionPanel.SetActive(false);
+                mainSelectionPanel.SetActive(true);
+            }
         }
     }
 
