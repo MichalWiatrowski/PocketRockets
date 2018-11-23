@@ -12,6 +12,7 @@ public class Position : MonoBehaviour {
     // get the players stats
     void Start()
     {
+       // position.font = Resources.Load<Font>("Fonts/JazzCreateBubble");
         stats = player.GetComponent<PlayerStats>();
     }
 
@@ -19,5 +20,6 @@ public class Position : MonoBehaviour {
     void Update()
     {
         position.text = stats.position.ToString();
+        
     }
 }

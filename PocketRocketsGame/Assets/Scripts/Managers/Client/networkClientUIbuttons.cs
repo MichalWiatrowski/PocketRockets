@@ -20,6 +20,7 @@ public class networkClientUIbuttons : MonoBehaviour {
     bool gameStart = false; //keeps track of when to start the game
 
     bool testing = true;
+
     string testIP = "193.60.172.116";
     int testPortNum = 51892;
 
