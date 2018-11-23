@@ -10,6 +10,7 @@ public class PortalPowerUp : MonoBehaviour {
     private float fallingSpeed = -0.35f;
     private float fallingDistance = 2.0f;
     private PlayerStats stats;
+    private Transform transf;
     private bool isPortalActive = false;
     private Vector3 trackValues;
     private float fallDistanceUnderTrack = 0.0f;
@@ -26,6 +27,7 @@ public class PortalPowerUp : MonoBehaviour {
     void Start()
     {
         stats = GetComponentInParent<PlayerStats>();
+        transf = GetComponentInParent<Transform>();
         GameObject tempPlane = GameObject.Find("Plane");
         trackValues = new Vector3(tempPlane.transform.position.x, tempPlane.transform.position.y, tempPlane.transform.position.z);
 
@@ -70,16 +72,21 @@ public class PortalPowerUp : MonoBehaviour {
 
         if (stats.fallingThroughTeleport == true)
         {
-            GetComponentInParent<Transform>().transform.Translate(0, fallingSpeed * Time.deltaTime, 0);
+            transform.Translate(0, fallingSpeed * Time.deltaTime, 0);
             //transform.Translate(0, fallingSpeed * Time.deltaTime, 0);
            // GetComponentInChildren<BoxCollider>().enabled = false;
             GetComponent<BoxCollider>().enabled = false;
             if (transform.position.y <= fallDistanceUnderTrack)
             {
-              
-               // transform.Translate(0, 8 + fallingDistance, teleportDistance);
-                GetComponentInParent<Transform>().transform.Translate(0, 8 + fallingDistance, teleportDistance);
+
+                // transform.Translate(0, 8 + fallingDistance, teleportDistance);
+                // GetComponentsInChildren<Transform>.transform.Translate(0, 8 + fallingDistance, teleportDistance);
+                transform.parent.gameObject.transform.Translate(0, 0, 25); //good parent child relation
+               // transf.transform.Translate(0, 0, 25);
+                transform.Translate(0, 8 + fallingDistance, 0);
                 stats.fallingThroughTeleport = false;
+
+           
                 //GetComponentInChildren<BoxCollider>().enabled = true;
                 GetComponent<BoxCollider>().enabled = true;
                 StartCoroutine(PortalCleanup());

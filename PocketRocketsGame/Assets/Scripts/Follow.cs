@@ -6,7 +6,7 @@ public class Follow : MonoBehaviour {
 
     public List<Transform> cars;
 
-    public float smoothing = 0.2f;
+    public float smoothing = 1f;
     public float minZoom = 150f;
     public float maxZoom = 50f;
     public float zoomLimit = 50;
@@ -16,17 +16,27 @@ public class Follow : MonoBehaviour {
     public bool behindCam;
 
     public Vector3 normalOffset = new Vector3(5, 6, -6);
-    public Vector3 behindOffset = new Vector3(0, 3, -6);
+    public Vector3 behindOffset = new Vector3(0, 7, -6);
     public Vector3 normalRotation = new Vector3(20, 60, 0);
     public Vector3 behindRotation = new Vector3(0, 0, 0);
+    public Vector3 velocity = new Vector3(0, 0, 1);
 
     private Vector3 newPos;
-    private Vector3 velocity;
+    private int players = 0;
+    private float backCarZ = 0;
     private Camera cam;
 
     // Use this for initialization
     void Start () {
         cam = GetComponent<Camera>();
+
+        for (int x = 0; x < 4; x++)
+        {
+            if (cars[x].gameObject.activeSelf)
+            {
+                players++;
+            }
+        }
 
         behindCam = false;
 	}
@@ -52,16 +62,29 @@ public class Follow : MonoBehaviour {
                 SideZoom();
                 break;
         }
-        GetEncapsulatingBounds();
-        MoveCam();
-        Zoom();
+        //GetEncapsulatingBounds();
+        //MoveCam();
+        //Zoom();
 	}
 
     void MoveCam()
     {
-        float temp1 = CompareZ(cars[0].transform.position.z, cars[1].transform.position.z);
-        float temp2 = CompareZ(cars[2].transform.position.z, cars[3].transform.position.z);
-        float backCarZ = CompareZ(temp1, temp2);
+        if (players == 2)
+        {
+            backCarZ = CompareZ(cars[0].transform.position.z, cars[1].transform.position.z);
+        }
+        else if (players == 3)
+        {
+            float temp1 = CompareZ(cars[0].transform.position.z, cars[1].transform.position.z);
+            float backCarZ = CompareZ(temp1, cars[3].transform.position.z);
+        }
+        else if (players == 4)
+        {
+            float temp1 = CompareZ(cars[0].transform.position.z, cars[1].transform.position.z);
+            float temp2 = CompareZ(cars[2].transform.position.z, cars[3].transform.position.z);
+            backCarZ = CompareZ(temp1, temp2);
+        }
+        //float backCarZ = CompareZ(temp1, temp2);
 
         // find centre of the bouding box
         Vector3 camCenter = GetEncapsulatingBounds().center;
@@ -97,7 +120,10 @@ public class Follow : MonoBehaviour {
 
         for (int x = 0; x < cars.Count; x++)
         {
-            boundsBox.Encapsulate(cars[x].position);
+            if (cars[x].gameObject.activeSelf)
+            {
+                boundsBox.Encapsulate(cars[x].position);
+            }
         }
         return boundsBox;
     }
