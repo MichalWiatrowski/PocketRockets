@@ -1,0 +1,217 @@
+fileFormatVersion: 2
+guid: 73b6b2f99eeb7f6449cbb208a19d0f62
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: Back_Leg_1
+    100002: Back_Leg_2
+    100004: Back_Wheel_1
+    100006: Back_Wheel_2
+    100008: //RootNode
+    100010: Engine_1
+    100012: Engine_2
+    100014: Front_Leg_1
+    100016: Front_Leg_2
+    100018: Front_Wheel_1
+    100020: Front_Wheel_2
+    100022: pCube10
+    100024: pCube10 1
+    100026: pCube8
+    100028: pCube8 1
+    100030: pCube9
+    100032: pCube9 1
+    100034: pCylinder8
+    100036: pCylinder8 1
+    100038: Periscope
+    100040: Propeller_1
+    100042: Propeller_2
+    100044: Rudder
+    100046: Rudder_Spine_1
+    100048: Rudder_Spine_2
+    100050: Rudder_Spine_3
+    100052: Sail
+    100054: Tub_Body
+    400000: Back_Leg_1
+    400002: Back_Leg_2
+    400004: Back_Wheel_1
+    400006: Back_Wheel_2
+    400008: //RootNode
+    400010: Engine_1
+    400012: Engine_2
+    400014: Front_Leg_1
+    400016: Front_Leg_2
+    400018: Front_Wheel_1
+    400020: Front_Wheel_2
+    400022: pCube10
+    400024: pCube10 1
+    400026: pCube8
+    400028: pCube8 1
+    400030: pCube9
+    400032: pCube9 1
+    400034: pCylinder8
+    400036: pCylinder8 1
+    400038: Periscope
+    400040: Propeller_1
+    400042: Propeller_2
+    400044: Rudder
+    400046: Rudder_Spine_1
+    400048: Rudder_Spine_2
+    400050: Rudder_Spine_3
+    400052: Sail
+    400054: Tub_Body
+    2100000: lambert1
+    2300000: Back_Leg_1
+    2300002: Back_Leg_2
+    2300004: Back_Wheel_1
+    2300006: Back_Wheel_2
+    2300008: Engine_1
+    2300010: Engine_2
+    2300012: Front_Leg_1
+    2300014: Front_Leg_2
+    2300016: Front_Wheel_1
+    2300018: Front_Wheel_2
+    2300020: pCube10
+    2300022: pCube10 1
+    2300024: pCube8
+    2300026: pCube8 1
+    2300028: pCube9
+    2300030: pCube9 1
+    2300032: pCylinder8
+    2300034: pCylinder8 1
+    2300036: Periscope
+    2300038: Rudder_Spine_1
+    2300040: Rudder_Spine_2
+    2300042: Rudder_Spine_3
+    2300044: Sail
+    2300046: Tub_Body
+    3300000: Back_Leg_1
+    3300002: Back_Leg_2
+    3300004: Back_Wheel_1
+    3300006: Back_Wheel_2
+    3300008: Engine_1
+    3300010: Engine_2
+    3300012: Front_Leg_1
+    3300014: Front_Leg_2
+    3300016: Front_Wheel_1
+    3300018: Front_Wheel_2
+    3300020: pCube10
+    3300022: pCube10 1
+    3300024: pCube8
+    3300026: pCube8 1
+    3300028: pCube9
+    3300030: pCube9 1
+    3300032: pCylinder8
+    3300034: pCylinder8 1
+    3300036: Periscope
+    3300038: Rudder_Spine_1
+    3300040: Rudder_Spine_2
+    3300042: Rudder_Spine_3
+    3300044: Sail
+    3300046: Tub_Body
+    4300000: Tub_Body
+    4300002: Periscope
+    4300004: Back_Leg_2
+    4300006: Back_Leg_1
+    4300008: Front_Leg_2
+    4300010: Front_Leg_1
+    4300012: Back_Wheel_2
+    4300014: Back_Wheel_1
+    4300016: Front_Wheel_2
+    4300018: Front_Wheel_1
+    4300020: Engine_2
+    4300022: pCylinder8
+    4300024: pCube10
+    4300026: pCube9
+    4300028: pCube8
+    4300030: Engine_1
+    4300032: pCylinder8
+    4300034: pCube10
+    4300036: pCube9
+    4300038: pCube8
+    4300040: Rudder_Spine_3
+    4300042: Rudder_Spine_1
+    4300044: Rudder_Spine_2
+    4300046: Sail
+    7400000: Take 001
+    9500000: //RootNode
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 10
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
