@@ -114,6 +114,13 @@ public class clientGameManager : MonoBehaviour {
     {
         playerSelectionPanel3.SetActive(false);
         playerSelectionPanel4.SetActive(false);
+        //for (int x = 1; x < 11; x++)
+        //{
+        //    if (x >= networkClientUIbuttons.networkClient.getNextGate())
+        //    {
+        //        GameObject.Find("gatePick" + x).SetActive(true);
+        //    }
+        //}
         gateSelectionPanel.SetActive(true);
     }
 
