@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311992, g: 0.38074034, b: 0.35872713, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311953, g: 0.38074014, b: 0.3587274, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -28594,6 +28594,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   winner: {fileID: 571429713}
+  jazzBubble: {fileID: 0}
 --- !u!114 &571429713
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -38083,6 +38084,7 @@ GameObject:
   - component: {fileID: 728816719}
   - component: {fileID: 728816718}
   - component: {fileID: 728816722}
+  - component: {fileID: 728816723}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -38181,6 +38183,17 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 728816717}
+--- !u!114 &728816723
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 728816717}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99e0253b3a3c3fd4482196f475df0302, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &729199414
 GameObject:
   m_ObjectHideFlags: 0
@@ -45785,6 +45798,10 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 077d38d8229bd06488ac0b8ed7edba2a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 077d38d8229bd06488ac0b8ed7edba2a, type: 3}
   m_IsPrefabParent: 0
@@ -46687,7 +46704,7 @@ Prefab:
       objectReference: {fileID: 2100000, guid: 7c2a3ea0a49386a4296a0cd127dd6cf0, type: 2}
     - target: {fileID: 100000, guid: f3732f7815a73274ca72729ea39f0a1f, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f3732f7815a73274ca72729ea39f0a1f, type: 3}
@@ -60112,7 +60129,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerName: 
-  speed: 4
+  speed: 41
   slowDownFactor: 1
   immune: 0
   points: 600
@@ -64159,7 +64176,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerName: 
-  speed: 4
+  speed: 40
   slowDownFactor: 1
   immune: 0
   points: 600
@@ -81143,7 +81160,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1535960850
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -93054,7 +93071,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1781485931
 Transform:
   m_ObjectHideFlags: 0
@@ -95796,7 +95813,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerName: 
-  speed: 4
+  speed: 40
   slowDownFactor: 1
   immune: 0
   points: 600
@@ -97580,7 +97597,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerName: 
-  speed: 4
+  speed: 40
   slowDownFactor: 1
   immune: 0
   points: 600
@@ -106280,7 +106297,7 @@ Prefab:
       objectReference: {fileID: 2100000, guid: 7c2a3ea0a49386a4296a0cd127dd6cf0, type: 2}
     - target: {fileID: 100000, guid: f3732f7815a73274ca72729ea39f0a1f, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f3732f7815a73274ca72729ea39f0a1f, type: 3}
