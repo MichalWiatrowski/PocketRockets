@@ -2287,7 +2287,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &927186712
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2408,6 +2408,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buttonClip: {fileID: 8300000, guid: 17cccbe30c98cf34aa965a6c390050b5, type: 3}
+  ready1: {fileID: 8300000, guid: d4816ba0e04390a4183d97eea3181793, type: 3}
+  ready2: {fileID: 8300000, guid: 00e303eba5205534dacdc8fafcc70e05, type: 3}
   joinGamePanel: {fileID: 1017773198}
   vehicleSelectionPanel: {fileID: 1481791958}
   powerUpSelectionPanel: {fileID: 525575927}

@@ -8,12 +8,20 @@ public class WallTrap : MonoBehaviour {
     public float wallSpeed = 1f;
     public float carDelay = 0.1f;
     public bool moving = false;
+    public AudioClip crash;
+    private AudioSource crashSource;
+
+    private void Awake()
+    {
+        crashSource = GetComponentInParent<AudioSource>();
+    }
 
     void OnTriggerEnter(Collider collided)
     {
         // check to see if trap is colliding with a vehicle
         if (collided.CompareTag("Car") && collided.GetComponentInParent<PlayerStats>().immune == false)
         {
+            crashSource.PlayOneShot(crash, 0.2f);
             // run the trap function when collided with vehicle
             PlayerStats stats = collided.GetComponentInParent<PlayerStats>();
             stats.speed = 0f;
