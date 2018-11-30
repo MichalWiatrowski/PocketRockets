@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 public class clientMenuManager : MonoBehaviour {
 
+    public AudioClip buttonClip;
+
     public GameObject joinGamePanel;
     public GameObject vehicleSelectionPanel;
     public GameObject powerUpSelectionPanel;
@@ -12,12 +14,19 @@ public class clientMenuManager : MonoBehaviour {
 
     public Text text;
 
-
+    public AudioSource buttonSource;
     private int powerUP = 0;
     private int trap = 0;
 
     private int vehicleNo = 1;
     private bool playerReady = false;
+
+    private void Awake()
+    {
+
+        buttonSource = GetComponent<AudioSource>();
+
+    }
     // Use this for initialization
     void Start () {
         joinGamePanel.SetActive(true);
@@ -99,6 +108,7 @@ public class clientMenuManager : MonoBehaviour {
 
     public void join()
     {
+        buttonSource.PlayOneShot(buttonClip);
         networkClientUIbuttons.networkClient.setName();
         networkClientUIbuttons.networkClient.joinGame();
     }
