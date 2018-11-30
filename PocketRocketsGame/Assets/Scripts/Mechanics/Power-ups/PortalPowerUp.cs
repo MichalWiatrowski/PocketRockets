@@ -6,6 +6,7 @@ public class PortalPowerUp : MonoBehaviour {
 
 
     public float teleportDistance = 25.0f;
+    public AudioClip teleportClip;
 
     private float fallingSpeed = -0.35f;
     private float fallingDistance = 2.0f;
@@ -14,7 +15,7 @@ public class PortalPowerUp : MonoBehaviour {
     private bool isPortalActive = false;
     private Vector3 trackValues;
     private float fallDistanceUnderTrack = 0.0f;
-
+    private AudioSource portalSource;
     public GameObject exitPortal;
     public GameObject entrancePortal;
 
@@ -24,6 +25,10 @@ public class PortalPowerUp : MonoBehaviour {
     private Vector3 PortalEntrancePosition;
     private Vector3 PortalExitPosition;
 
+    void Awake() {
+
+        portalSource = GetComponent<AudioSource>();
+    }
     void Start()
     {
         stats = GetComponentInParent<PlayerStats>();
@@ -54,6 +59,7 @@ public class PortalPowerUp : MonoBehaviour {
     {
         if (collided.CompareTag("Portal"))
         {
+            portalSource.PlayOneShot(teleportClip);
             Debug.Log("Collided with portal");
             stats.fallingThroughTeleport = true;
         }

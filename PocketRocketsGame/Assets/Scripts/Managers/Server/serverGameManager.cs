@@ -6,14 +6,22 @@ public class serverGameManager : MonoBehaviour {
 
     private int amountOfPlayers = 0;
     public GameObject mainCamera;
-
+    public AudioClip raceStartClip;
     public List<GameObject> player1Vehicles = new List<GameObject>();
     public List<GameObject> player2Vehicles = new List<GameObject>();
     public List<GameObject> player3Vehicles = new List<GameObject>();
     public List<GameObject> player4Vehicles = new List<GameObject>();
+
+    private AudioSource gameSource;
+
+    void Awake() {
+    gameSource= GetComponent<AudioSource>();
+
+    }
     // Use this for initialization
     void Start()
     {
+        gameSource.PlayOneShot(raceStartClip, 0.1f);
         amountOfPlayers = networkServerUIbuttons.networkServer.getPlayerAmount();
         
 

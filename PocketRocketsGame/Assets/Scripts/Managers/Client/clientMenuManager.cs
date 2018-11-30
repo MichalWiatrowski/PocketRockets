@@ -31,7 +31,7 @@ public class clientMenuManager : MonoBehaviour {
     }
     // Use this for initialization
     void Start () {
-        joinGamePanel.SetActive(true);
+        joinGamePanel.SetActive(false);
         powerUpSelectionPanel.SetActive(false);
         vehicleSelectionPanel.SetActive(true);
         trapSelectionPanel.SetActive(false);

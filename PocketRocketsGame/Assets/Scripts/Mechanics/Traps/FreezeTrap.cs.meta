@@ -3,7 +3,8 @@ guid: a7612f8dc05b9204c811a7a783fcca54
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - blizzard: {fileID: 8300000, guid: b2c90682bf5c8874daea322bb6a40eaf, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

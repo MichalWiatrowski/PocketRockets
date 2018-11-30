@@ -13,6 +13,7 @@ public class WallTrap : MonoBehaviour {
 
     private void Awake()
     {
+
         crashSource = GetComponentInParent<AudioSource>();
     }
 

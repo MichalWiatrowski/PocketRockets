@@ -5,11 +5,21 @@ using UnityEngine.UI;
 public class serverMenuManager : MonoBehaviour {
     public GameObject mainMenuPanel;
     public GameObject preGamePanel;
-    
+    public AudioClip menuMusic;
+
+    private AudioSource menuSource;
+
+
+    void Awake() {
+
+        menuSource = GetComponent<AudioSource>();
+
+    }
 
     // Use this for initialization
     void Start()
     {
+        menuSource.PlayOneShot(menuMusic);
         mainMenuPanel.SetActive(true);
         preGamePanel.SetActive(false);
 

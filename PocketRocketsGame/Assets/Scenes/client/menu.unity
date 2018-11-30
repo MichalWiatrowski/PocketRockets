@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311953, g: 0.38074014, b: 0.3587274, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311992, g: 0.38074034, b: 0.35872713, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2408,8 +2408,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buttonClip: {fileID: 8300000, guid: 17cccbe30c98cf34aa965a6c390050b5, type: 3}
-  ready1: {fileID: 8300000, guid: d4816ba0e04390a4183d97eea3181793, type: 3}
-  ready2: {fileID: 8300000, guid: 00e303eba5205534dacdc8fafcc70e05, type: 3}
+  ready1: {fileID: 8300000, guid: 9717fab7023ecb0419885b376babe02d, type: 3}
+  ready2: {fileID: 8300000, guid: 6046086a0fceee24999669c70db653dc, type: 3}
   joinGamePanel: {fileID: 1017773198}
   vehicleSelectionPanel: {fileID: 1481791958}
   powerUpSelectionPanel: {fileID: 525575927}
