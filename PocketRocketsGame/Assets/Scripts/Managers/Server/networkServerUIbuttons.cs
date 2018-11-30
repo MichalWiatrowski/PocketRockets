@@ -189,9 +189,10 @@ public class networkServerUIbuttons : MonoBehaviour {
     {
         
         int[] playerPoints = new int[playerID];
+        int[] nextGate = new int[playerID];
 
         StringMessage msg = new StringMessage();
-
+        StringMessage gateMsg = new StringMessage();
         // get the points for each player
         for (int x = 1; x < playerID + 1; x++)
         {
@@ -201,10 +202,12 @@ public class networkServerUIbuttons : MonoBehaviour {
 
         for (int x = 1; x < playerID + 1; x++)
         {
-            msg.value += GameObject.Find("Player " + x).GetComponent<PlayerStats>().nextGate + "|";
+            nextGate[x - 1] = GameObject.Find("Player " + x).GetComponent<PlayerStats>().nextGate;
+            gateMsg.value += nextGate[x - 1] + "|";
         }
 
             NetworkServer.SendToAll(122, msg);
+        NetworkServer.SendToAll(123, gateMsg);
     }
 
     private void serverReceiveActivateTrap(NetworkMessage message)
@@ -275,5 +278,9 @@ public class networkServerUIbuttons : MonoBehaviour {
     // Update is called once per frame
     void Update () {
         //sendPoints();
+
+        Debug.Log("Player 1 next gate: " + GameObject.Find("Player 1").GetComponent<PlayerStats>().nextGate);
+        Debug.Log("Player 3 next gate: " + GameObject.Find("Player 3").GetComponent<PlayerStats>().nextGate);
+        Debug.Log("Player 4 next gate: " + GameObject.Find("Player 4").GetComponent<PlayerStats>().nextGate);
     }
 }

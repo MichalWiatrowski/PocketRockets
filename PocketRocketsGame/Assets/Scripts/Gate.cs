@@ -19,7 +19,7 @@ public class Gate : MonoBehaviour
     {
         PlayerStats stats = player.GetComponentInParent<PlayerStats>();
 
-        stats.nextGate++;
+        player.GetComponentInParent<PlayerStats>().nextGate = player.GetComponentInParent<PlayerStats>().nextGate + 1;
         // assign vehicle positions based on how many vehicles have passed through gate
         // then assign points
         if (count == 1)

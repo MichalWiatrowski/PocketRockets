@@ -21,8 +21,8 @@ public class networkClientUIbuttons : MonoBehaviour {
 
     bool testing = true;
 
-    string testIP = "193.60.172.32";
-    int testPortNum = 56165;
+    string testIP = "193.60.172.125";
+    int testPortNum = 53762;
 
 
 
@@ -53,6 +53,7 @@ public class networkClientUIbuttons : MonoBehaviour {
         client.RegisterHandler(120, clientReceiveStartGame);
         client.RegisterHandler(121, clientReceivePlayerID);
         client.RegisterHandler(122, clientReceivePoints);
+        client.RegisterHandler(123, clientReceiveNextGate);
 
         if (!gameStart)
         {
@@ -245,10 +246,22 @@ public class networkClientUIbuttons : MonoBehaviour {
         string[] points1_points2_points3_points4_nextGate1_2_3_4 = msg.value.Split('|');
 
         points = System.Convert.ToInt16(points1_points2_points3_points4_nextGate1_2_3_4[playerID - 1]);
-        nextGate = System.Convert.ToInt16(points1_points2_points3_points4_nextGate1_2_3_4[3 + playerID]);
+        //nextGate = System.Convert.ToInt16(points1_points2_points3_points4_nextGate1_2_3_4[(playerID - 1 - amountOfPlayers) + 3]);
 
     }
-   
+    private void clientReceiveNextGate(NetworkMessage message)
+    {
+        // get points from server
+        StringMessage msg = new StringMessage();
+        msg.value = message.ReadMessage<StringMessage>().value;
+
+        // split into an array of each players
+        string[] points1_points2_points3_points4_nextGate1_2_3_4 = msg.value.Split('|');
+
+        //points = System.Convert.ToInt16(points1_points2_points3_points4_nextGate1_2_3_4[playerID - 1]);
+        nextGate = System.Convert.ToInt16(points1_points2_points3_points4_nextGate1_2_3_4[playerID - 1]);
+
+    }
     //ask the server for the player ID after 2 seconds, will add 'loading icon' lets the client to connect to the server first
     private IEnumerator askPlayerID()
     {

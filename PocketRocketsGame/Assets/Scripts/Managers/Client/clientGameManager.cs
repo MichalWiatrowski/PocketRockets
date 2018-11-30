@@ -67,6 +67,7 @@ public class clientGameManager : MonoBehaviour {
         points = networkClientUIbuttons.networkClient.getPoints();
         nextGate = networkClientUIbuttons.networkClient.getNextGate();
         networkClientUIbuttons.networkClient.sendName();
+        setUpGateButtons();
     }
     
     void playerChoice()
@@ -105,10 +106,10 @@ public class clientGameManager : MonoBehaviour {
     //TODO add dynamic buttons e.g. will only display gate numbers in front not behind
     void setUpGateButtons()
     {
-        gateButton1.GetComponent<Text>().text = "Gate 1";
-        gateButton2.GetComponent<Text>().text = "Gate 2";
-        gateButton3.GetComponent<Text>().text = "Gate 3";
-        gateButton4.GetComponent<Text>().text = "Gate 4";
+        gateButton1.GetComponent<Text>().text = "Gate " + networkClientUIbuttons.networkClient.getNextGate().ToString();
+        gateButton2.GetComponent<Text>().text = "Gate " + (networkClientUIbuttons.networkClient.getNextGate() + 1).ToString();
+        gateButton3.GetComponent<Text>().text = "Gate " + (networkClientUIbuttons.networkClient.getNextGate() + 2).ToString();
+        gateButton4.GetComponent<Text>().text = "Gate " + (networkClientUIbuttons.networkClient.getNextGate() + 3).ToString();
     }
     public void moveToGateSelection()
     {
