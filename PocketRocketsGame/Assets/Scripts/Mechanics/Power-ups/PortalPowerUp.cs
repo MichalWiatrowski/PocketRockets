@@ -113,27 +113,27 @@ public class PortalPowerUp : MonoBehaviour {
 
         Debug.Log("Destroying objects");
 
+        isPortalActive = false;
+
         GameObject[] portals = GameObject.FindGameObjectsWithTag("Portal");
 
-        //foreach (GameObject portal in portals)
-        //    GameObject.Destroy(portal);
+        foreach (GameObject portal in portals) GameObject.DestroyImmediate(portal);
         //Destroy(GameObject.FindGameObjectsWithTag("Portal"));
 
 
 
 
-        DestroyImmediate(entranceInstance, true);
-        DestroyImmediate(exitInstance, true);
-        isPortalActive = false;
+        //DestroyImmediate(entranceInstance, true);
+        //DestroyImmediate(exitInstance, true);
     }
 
     void ManageInput() {
 
         if (Input.GetButtonDown("Fire1"))
         {
-            PortalPowerUp power = GameObject.Find("Player 1").GetComponent<PortalPowerUp>();
-            power.CreatePortals();
-            //CreatePortals();
+            //PortalPowerUp power = GameObject.Find("Player 1").GetComponent<PortalPowerUp>();
+            //power.CreatePortals();
+            CreatePortals();
         }
 
     }
