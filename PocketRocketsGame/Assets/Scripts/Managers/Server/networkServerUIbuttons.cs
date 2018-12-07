@@ -282,8 +282,8 @@ public class networkServerUIbuttons : MonoBehaviour {
     void Update () {
         //sendPoints();
 
-        Debug.Log("Player 1 next gate: " + GameObject.Find("Player 1").GetComponent<PlayerStats>().nextGate);
-        Debug.Log("Player 3 next gate: " + GameObject.Find("Player 3").GetComponent<PlayerStats>().nextGate);
-        Debug.Log("Player 4 next gate: " + GameObject.Find("Player 4").GetComponent<PlayerStats>().nextGate);
+       // Debug.Log("Player 1 next gate: " + GameObject.Find("Player 1").GetComponent<PlayerStats>().nextGate);
+       // Debug.Log("Player 3 next gate: " + GameObject.Find("Player 3").GetComponent<PlayerStats>().nextGate);
+      //  Debug.Log("Player 4 next gate: " + GameObject.Find("Player 4").GetComponent<PlayerStats>().nextGate);
     }
 }

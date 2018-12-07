@@ -31,9 +31,9 @@ public class clientMenuManager : MonoBehaviour {
     }
     // Use this for initialization
     void Start () {
-        joinGamePanel.SetActive(false);
+        joinGamePanel.SetActive(true);
         powerUpSelectionPanel.SetActive(false);
-        vehicleSelectionPanel.SetActive(true);
+        vehicleSelectionPanel.SetActive(false);
         trapSelectionPanel.SetActive(false);
         text.text = "Cupcake";
     }
