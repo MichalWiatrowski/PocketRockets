@@ -240,7 +240,7 @@ public class clientGameManager : MonoBehaviour {
         }
         else if (abiltyType == 1)
         {
-            // activate nessie ability code here
+            // activate cupCake ability code here
             if (amountOfPlayers == 2)
             {
                 networkClientUIbuttons.networkClient.sendActivateVehicleAbiltiy(System.Convert.ToInt16(buttonData[1]), playerIDchoice, networkClientUIbuttons.networkClient.vehicleChoice);

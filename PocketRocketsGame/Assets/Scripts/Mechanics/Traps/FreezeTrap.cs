@@ -6,14 +6,22 @@ public class FreezeTrap : MonoBehaviour {
 
     private float iceTime = 1f;
     private float carDelay = 0.01f;
+    public AudioClip blizzard;
+    private AudioSource blizzSource;
 
     //public GameObject iceEffect;
     //Vector3 effectPos;
+
+    private void Awake()
+    {
+        blizzSource = GetComponentInParent<AudioSource>();
+    }
 
     void Start()
     {
         // hides the ice block untill it is collided with
         GetComponent<MeshRenderer>().enabled = false;
+        //GetComponent<BoxCollider>().enabled = true;
 
         //// offset the effect slightly
         //effectPos = new Vector3(transform.position.x, transform.position.y + 5, transform.position.z);
@@ -28,6 +36,7 @@ public class FreezeTrap : MonoBehaviour {
        if (collided.CompareTag("Car") && collided.GetComponentInParent<PlayerStats>().immune == false)
         {
             // run the trap function when collided with vehicle
+            blizzSource.PlayOneShot(blizzard, 0.1f);
             StartCoroutine(Trap(collided));
         }
     }

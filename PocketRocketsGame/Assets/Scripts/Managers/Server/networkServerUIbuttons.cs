@@ -11,6 +11,9 @@ using UnityEngine.SceneManagement;
 public class networkServerUIbuttons : MonoBehaviour {
 
     public static networkServerUIbuttons networkServer;
+    public AudioClip tankFireClip;
+
+    private AudioSource networkSource;
 
     int sceneIndex = 1;
     bool gameStart = false;
@@ -20,7 +23,6 @@ public class networkServerUIbuttons : MonoBehaviour {
     List<bool> readyClients = new List<bool>(); //for storing client ready states
   
     public List<int> playerVehicles = new List<int>();
-
 
 
     // Use this for initialization
@@ -33,6 +35,7 @@ public class networkServerUIbuttons : MonoBehaviour {
     //this will load the first scene of the game "Menu"
     void Awake()
     {
+        networkSource = GetComponent<AudioSource>();
         //register any necessary handlers
         NetworkServer.RegisterHandler(130, serverReceiveActivateTrap);
         NetworkServer.RegisterHandler(131, serverReceiveActivatePowerUP);
@@ -137,7 +140,7 @@ public class networkServerUIbuttons : MonoBehaviour {
                 //Vehicle ability acvivation goes here for Cup Cake Tank
                 GameObject.Find("Gate" + gateNo + "/JellyTotTrap" + playerTarget).GetComponent<BoxCollider>().enabled = true;
                 GameObject.Find("Gate" + gateNo + "/JellyTotTrap" + playerTarget).GetComponent<MeshRenderer>().enabled = true;
-
+                networkSource.PlayOneShot(tankFireClip);
                 Debug.Log("Fire Tank!!");
                 break;
             case 2:
