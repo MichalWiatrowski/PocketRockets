@@ -13,7 +13,7 @@ public class NessieBubble : MonoBehaviour {
 
     public GameObject bubble;
     private GameObject bubbleInstance;
-    private Vector3 BubblePosition;
+    private Vector3 bubblePosition;
 
     private GameObject tempGate;
     private Vector3 gateValues;
@@ -32,9 +32,9 @@ public class NessieBubble : MonoBehaviour {
         tempGate = gate;
         gateValues = new Vector3(tempGate.transform.position.x, tempGate.transform.position.y, tempGate.transform.position.z);
         GameObject tempTarget = GameObject.Find("Player " + playerTarget);
-        BubblePosition = new Vector3(tempTarget.transform.position.x, trackValues.y + 1.40f, gate.transform.position.z);
+        bubblePosition = new Vector3(tempTarget.transform.position.x, trackValues.y + 1.40f, gate.transform.position.z);
 
-        bubbleInstance = Instantiate(bubble, BubblePosition, transform.rotation) as GameObject;
+        bubbleInstance = Instantiate(bubble, bubblePosition, transform.rotation) as GameObject;
     }
 
     void OnTriggerEnter(Collider collided)

@@ -24,13 +24,13 @@ public class PlayerStats : MonoBehaviour {
     }
     
 
-    public bool getFallingThroughTeleport()
+    public bool GetFallingThroughTeleport()
     {
 
         return fallingThroughTeleport;
     }
 
-    public void setSlowDownFactor(float slowDown)
+    public void SetSlowDownFactor(float slowDown)
     {
         slowDownFactor = slowDown;
     }

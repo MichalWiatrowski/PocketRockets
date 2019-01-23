@@ -48,10 +48,10 @@ public class networkClientUIbuttons : MonoBehaviour {
         client = new NetworkClient();
 
         //Register handlers
-        client.RegisterHandler(120, clientReceiveStartGame);
-        client.RegisterHandler(121, clientReceivePlayerID);
-        client.RegisterHandler(122, clientReceivePoints);
-        client.RegisterHandler(123, clientReceiveNextGate);
+        client.RegisterHandler(120, ClientReceiveStartGame);
+        client.RegisterHandler(121, ClientReceivePlayerID);
+        client.RegisterHandler(122, ClientReceivePoints);
+        client.RegisterHandler(123, ClientReceiveNextGate);
 
         if (!gameStart)
         {
@@ -61,25 +61,25 @@ public class networkClientUIbuttons : MonoBehaviour {
         }
     }
 
-    public int getPlayerID()
+    public int GetPlayerID()
     {
         return playerID;
     }
-    public int getAmountOfPlayers()
+    public int GetAmountOfPlayers()
     {
         return amountOfPlayers;
     }
-    public int getPoints()
+    public int GetPoints()
     {
         return points;
     }
 
-    public int getNextGate()
+    public int GetNextGate()
     {
         return nextGate;
     }
 
-    public void joinGame()
+    public void JoinGame()
     {
         //create a config, add qos channels, then configure the client to have 1 max connection; the server
         ConnectionConfig config = new ConnectionConfig();
@@ -114,62 +114,62 @@ public class networkClientUIbuttons : MonoBehaviour {
     void Connect(string IP, int portNumber)
     {
         client.Connect(IP, portNumber);
-        StartCoroutine(askPlayerID());
+        StartCoroutine(AskPlayerID());
     }
 
-    public void setPowers(int p, int t)
+    public void SetPowers(int p, int t)
     {
         powerUp = p;
         trap = t;
     }
-    public int getTrap()
+    public int GetTrap()
     {
         return trap;
     }
-    public int getPowerUp()
+    public int GetPowerUp()
     {
         return powerUp;
     }
 
-    public void setName()
+    public void SetName()
     {
         name = GameObject.Find("Canvas/joinGamePanel/Name").GetComponent<InputField>().text;
     }
 
-    public string getName()
+    public string GetName()
     {
         return name;
     }
 
-    public void toggleReady()
+    public void ToggleReady()
     {
         clientReady = !clientReady;
     }
 
-    public bool getReady()
+    public bool GetReady()
     {
         return clientReady;
     }
 
-    public int getVehicleChoice()
+    public int GetVehicleChoice()
     {
         return vehicleChoice;
     }
 
-    public void sendActivateTrap(int gate, int playerIDchoice, int trapChoice)
+    public void SendActivateTrap(int gate, int playerIDchoice, int trapChoice)
     {
 
         StringMessage msg = new StringMessage();
         msg.value = playerIDchoice + "|" + gate + "|" + trapChoice;
         client.Send(130, msg);
     }
-    public void sendActivatePowerUP(int powerUP, int playerID)
+    public void SendActivatePowerUP(int powerUP, int playerID)
     {
         StringMessage msg = new StringMessage();
         msg.value = playerID + "|" + powerUP;
         client.Send(131, msg);
     }
-    public void sendActivateVehicleAbiltiy(int gate, int playerIDchoice, int abilityChoice)
+    public void SendActivateVehicleAbiltiy(int gate, int playerIDchoice, int abilityChoice)
     {
 
         StringMessage msg = new StringMessage();
@@ -177,7 +177,7 @@ public class networkClientUIbuttons : MonoBehaviour {
         client.Send(136, msg);
     }
 
-    public void removePoints(int ammount)
+    public void RemovePoints(int ammount)
     {
         points -= ammount;
         StringMessage msg = new StringMessage();
@@ -187,22 +187,22 @@ public class networkClientUIbuttons : MonoBehaviour {
 
    
 
-    public void sendReadyUp(int ready)
+    public void SendReadyUp(int ready)
     {
         StringMessage msg = new StringMessage();
         msg.value = ready + "|" + playerID + '|' + vehicleChoice + '|' + name;
         client.Send(133, msg);
-        sendName();
+        SendName();
     }
 
-    public void sendName()
+    public void SendName()
     {
         StringMessage msg = new StringMessage();
         msg.value = playerID + "|" + name;
         client.Send(135, msg);
     }
 
-    private void clientReceivePlayerID(NetworkMessage message)
+    private void ClientReceivePlayerID(NetworkMessage message)
     {
         IntegerMessage msg = new IntegerMessage();
         msg = message.ReadMessage<IntegerMessage>();
@@ -220,7 +220,7 @@ public class networkClientUIbuttons : MonoBehaviour {
         }
     }
     
-    private void clientReceiveStartGame(NetworkMessage message)
+    private void ClientReceiveStartGame(NetworkMessage message)
     {
         IntegerMessage msg = new IntegerMessage();
         msg = message.ReadMessage<IntegerMessage>();
@@ -234,7 +234,7 @@ public class networkClientUIbuttons : MonoBehaviour {
         UnloadScene(1);
     }
 
-    private void clientReceivePoints(NetworkMessage message)
+    private void ClientReceivePoints(NetworkMessage message)
     {
         // get points from server
         StringMessage msg = new StringMessage();
@@ -247,7 +247,7 @@ public class networkClientUIbuttons : MonoBehaviour {
         //nextGate = System.Convert.ToInt16(points1_points2_points3_points4_nextGate1_2_3_4[(playerID - 1 - amountOfPlayers) + 3]);
 
     }
-    private void clientReceiveNextGate(NetworkMessage message)
+    private void ClientReceiveNextGate(NetworkMessage message)
     {
         // get points from server
         StringMessage msg = new StringMessage();
@@ -261,7 +261,7 @@ public class networkClientUIbuttons : MonoBehaviour {
 
     }
     //ask the server for the player ID after 2 seconds, will add 'loading icon' lets the client to connect to the server first
-    private IEnumerator askPlayerID()
+    private IEnumerator AskPlayerID()
     {
         yield return new WaitForSeconds(2.0f);
         IntegerMessage msg = new IntegerMessage();

@@ -31,17 +31,17 @@ public class serverMenuManager : MonoBehaviour {
        
     }
 
-    public void hostServer()
+    public void HostServer()
     {
-        networkServerUIbuttons.networkServer.hostServer();
+        networkServerUIbuttons.networkServer.HostServer();
 
         mainMenuPanel.SetActive(false);
         preGamePanel.SetActive(true);
     }
 
-    public void startGame()
+    public void StartGame()
     {
-        networkServerUIbuttons.networkServer.hostGame();
+        networkServerUIbuttons.networkServer.HostGame();
        
     }
 }

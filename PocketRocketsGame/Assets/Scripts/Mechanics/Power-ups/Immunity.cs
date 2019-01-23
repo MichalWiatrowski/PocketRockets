@@ -14,11 +14,11 @@ public class Immunity : MonoBehaviour {
             StartCoroutine(  Pickup(collided));
         }
     }
-    public void activateImmunity()
+    public void ActivateImmunity()
     {
-        StartCoroutine(activate());
+        StartCoroutine(Activate());
     }
-    IEnumerator activate()
+    IEnumerator Activate()
     {
         PlayerStats stats = GetComponent<PlayerStats>();
         stats.immune = true;

@@ -22,7 +22,7 @@ public class serverGameManager : MonoBehaviour {
     void Start()
     {
         gameSource.PlayOneShot(raceStartClip, 0.1f);
-        amountOfPlayers = networkServerUIbuttons.networkServer.getPlayerAmount();
+        amountOfPlayers = networkServerUIbuttons.networkServer.GetPlayerAmount();
         
 
         if (amountOfPlayers == 2)

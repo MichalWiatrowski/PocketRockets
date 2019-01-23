@@ -20,7 +20,7 @@ public class players3 : MonoBehaviour {
 		
 	}
 
-    public void setUpButtons(int removePlayerIDchoice)
+    public void SetUpButtons(int removePlayerIDchoice)
     {
         switch (removePlayerIDchoice)
         {
@@ -44,19 +44,19 @@ public class players3 : MonoBehaviour {
 		
 	}
 
-    public void playerButton1Pressed()
+    public void PlayerButton1Pressed()
     {
         string[] buttonData = playerButton1Text.GetComponent<Text>().text.Split(' ');
 
         playerChoice = System.Convert.ToInt16(buttonData[1]);
     }
-    public void playerButton2Pressed()
+    public void PlayerButton2Pressed()
     {
         string[] buttonData = playerButton2Text.GetComponent<Text>().text.Split(' ');
         playerChoice = System.Convert.ToInt16(buttonData[1]);
     }
 
-    public int getPlayerChoice()
+    public int GetPlayerChoice()
     {
         return playerChoice;
     }

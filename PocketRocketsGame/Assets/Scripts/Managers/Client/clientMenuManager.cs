@@ -43,7 +43,7 @@ public class clientMenuManager : MonoBehaviour {
 		
 	}
 
-    public void next()
+    public void Next()
     {
         buttonSource.PlayOneShot(buttonClip);
         //next vehicle code
@@ -69,7 +69,7 @@ public class clientMenuManager : MonoBehaviour {
             }
         } 
     }
-    public void previous()
+    public void Previous()
     {
         buttonSource.PlayOneShot(buttonClip);
         //previous vehicle code
@@ -95,7 +95,7 @@ public class clientMenuManager : MonoBehaviour {
             }
         }  
     }
-    public void ready()
+    public void Ready()
     {
         buttonSource.PlayOneShot(buttonClip);
         int readyNum;
@@ -117,7 +117,7 @@ public class clientMenuManager : MonoBehaviour {
         }
         //networkClientUIbuttons.networkClient.toggleReady();
         networkClientUIbuttons.networkClient.vehicleChoice = vehicleNo;
-        networkClientUIbuttons.networkClient.sendReadyUp(System.Convert.ToInt16(playerReady));
+        networkClientUIbuttons.networkClient.SendReadyUp(System.Convert.ToInt16(playerReady));
 
        if(playerReady)
             readyButton.GetComponent<Image>().color = Color.green;
@@ -126,14 +126,14 @@ public class clientMenuManager : MonoBehaviour {
 
     }
 
-    public void join()
+    public void Join()
     {
         buttonSource.PlayOneShot(buttonClip);
-        networkClientUIbuttons.networkClient.setName();
-        networkClientUIbuttons.networkClient.joinGame();
+        networkClientUIbuttons.networkClient.SetName();
+        networkClientUIbuttons.networkClient.JoinGame();
     }
 
-    public void voidPower()
+    public void VoidPower()
     {
         buttonSource.PlayOneShot(buttonClip);
         powerUP = 1;
@@ -141,7 +141,7 @@ public class clientMenuManager : MonoBehaviour {
         trapSelectionPanel.SetActive(true);
     }
     
-    public void immunityPower()
+    public void ImmunityPower()
     {
         buttonSource.PlayOneShot(buttonClip);
         powerUP = 2;
@@ -149,20 +149,20 @@ public class clientMenuManager : MonoBehaviour {
         trapSelectionPanel.SetActive(true);
     }
 
-    public void freezeTrap()
+    public void FreezeTrap()
     {
         buttonSource.PlayOneShot(buttonClip);
         trap = 1;
-        networkClientUIbuttons.networkClient.setPowers(powerUP, trap);
+        networkClientUIbuttons.networkClient.SetPowers(powerUP, trap);
         trapSelectionPanel.SetActive(false);
         vehicleSelectionPanel.SetActive(true);
     }
 
-    public void wallTrap()
+    public void WallTrap()
     {
         buttonSource.PlayOneShot(buttonClip);
         trap = 2;
-        networkClientUIbuttons.networkClient.setPowers(powerUP, trap);
+        networkClientUIbuttons.networkClient.SetPowers(powerUP, trap);
         trapSelectionPanel.SetActive(false);
         vehicleSelectionPanel.SetActive(true);
     }

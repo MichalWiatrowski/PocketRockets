@@ -37,14 +37,14 @@ public class networkServerUIbuttons : MonoBehaviour {
     {
         networkSource = GetComponent<AudioSource>();
         //register any necessary handlers
-        NetworkServer.RegisterHandler(130, serverReceiveActivateTrap);
-        NetworkServer.RegisterHandler(131, serverReceiveActivatePowerUP);
-        //NetworkServer.RegisterHandler(131, serverReceivePlayerID);
-        NetworkServer.RegisterHandler(132, serverReceiveRequestID);
-        NetworkServer.RegisterHandler(133, serverReceiveReadyUp);
-        NetworkServer.RegisterHandler(134, serverReceiveRemovePoints);
-        NetworkServer.RegisterHandler(135, serverReceiveName);
-        NetworkServer.RegisterHandler(136, serverReceiveVehicleAbility);
+        NetworkServer.RegisterHandler(130, ServerReceiveActivateTrap);
+        NetworkServer.RegisterHandler(131, ServerReceiveActivatePowerUP);
+        //NetworkServer.RegisterHandler(131, ServerReceivePlayerID);
+        NetworkServer.RegisterHandler(132, ServerReceiveRequestID);
+        NetworkServer.RegisterHandler(133, ServerReceiveReadyUp);
+        NetworkServer.RegisterHandler(134, ServerReceiveRemovePoints);
+        NetworkServer.RegisterHandler(135, ServerReceiveName);
+        NetworkServer.RegisterHandler(136, ServerReceiveVehicleAbility);
 
         if (!gameStart)
         {
@@ -56,7 +56,7 @@ public class networkServerUIbuttons : MonoBehaviour {
         }
     }
 
-    public void hostServer()
+    public void HostServer()
     {
         ConnectionConfig config = new ConnectionConfig();
         config.AddChannel(QosType.ReliableSequenced);
@@ -67,7 +67,7 @@ public class networkServerUIbuttons : MonoBehaviour {
       
        
     }
-    public void hostGame()
+    public void HostGame()
     {
         if (readyClients.Contains(false))
         {
@@ -81,13 +81,13 @@ public class networkServerUIbuttons : MonoBehaviour {
                 SceneManager.LoadSceneAsync(sceneIndex, LoadSceneMode.Additive);
                 UnloadScene(1);
 
-                sendStartGame(); // send a message to all cients which will change their scene
+                SendStartGame(); // send a message to all cients which will change their scene
             }
    
         }   
     }
 
-    public int getPlayerAmount()
+    public int GetPlayerAmount()
     {
         return playerID;
     }
@@ -116,7 +116,7 @@ public class networkServerUIbuttons : MonoBehaviour {
         //GUI.Label(new Rect(20, Screen.height - 30, 100, 20), "Ready:" + readyClients[0]);
     }
 
-    void activateTrap(int playerIDchoice, int gateNo, int trapChoice)
+    void ActivateTrap(int playerIDchoice, int gateNo, int trapChoice)
     {
         if (trapChoice == 1)
         GameObject.Find("Gate" + gateNo + "/FreezeTrap" + playerIDchoice).GetComponent<BoxCollider>().enabled = true;
@@ -124,16 +124,16 @@ public class networkServerUIbuttons : MonoBehaviour {
         GameObject.Find("Gate" + gateNo + "/WallTrap" + playerIDchoice).GetComponent<BoxCollider>().enabled = true;
     }
 
-    void activatePowerUP(int player, int powerUP)
+    void ActivatePowerUP(int player, int powerUP)
     {
         if (powerUP == 1)
         GameObject.Find("Player " + player).GetComponent<PortalPowerUp>().CreatePortals();
         else if (powerUP == 2)
-        GameObject.Find("Player " + player).GetComponent<Immunity>().activateImmunity();
+        GameObject.Find("Player " + player).GetComponent<Immunity>().ActivateImmunity();
 
     }
 
-    void activateVehicleAbility(int playerID, int playerTarget, int gateNo, int abilityChoice) {
+    void ActivateVehicleAbility(int playerID, int playerTarget, int gateNo, int abilityChoice) {
 
         switch (abilityChoice) {
             case 1:
@@ -153,14 +153,14 @@ public class networkServerUIbuttons : MonoBehaviour {
                 break;
             case 4:
                 //Vehicle ability acvivation goes here for Crown
-                GameObject.Find("Player " + playerID).GetComponent<Immunity>().activateImmunity();
+                GameObject.Find("Player " + playerID).GetComponent<Immunity>().ActivateImmunity();
                 break;
 
         }
     }
     ////////////////////////////////////Network Messages
 
-    void sendStartGame()
+    void SendStartGame()
     {
         if (NetworkServer.active)
         {
@@ -170,11 +170,11 @@ public class networkServerUIbuttons : MonoBehaviour {
         }
     }
 
-    private void serverReceiveRequestID(NetworkMessage message)
+    private void ServerReceiveRequestID(NetworkMessage message)
     {
-        sendPlayerID();
+        SendPlayerID();
     }
-    private void sendPlayerID()
+    private void SendPlayerID()
     {
         playerID++;
         IntegerMessage msg = new IntegerMessage();
@@ -188,7 +188,7 @@ public class networkServerUIbuttons : MonoBehaviour {
             playerID = 4;
     }
 
-    public void sendPoints_Gate()
+    public void SendPoints_Gate()
     {
         
         int[] playerPoints = new int[playerID];
@@ -213,35 +213,35 @@ public class networkServerUIbuttons : MonoBehaviour {
         NetworkServer.SendToAll(123, gateMsg);
     }
 
-    private void serverReceiveActivateTrap(NetworkMessage message)
+    private void ServerReceiveActivateTrap(NetworkMessage message)
     {
         StringMessage msg = new StringMessage();
         msg.value = message.ReadMessage<StringMessage>().value;
 
         string[] playerID_gateNO_trap = msg.value.Split('|');
 
-        activateTrap(System.Convert.ToInt16(playerID_gateNO_trap[0]), System.Convert.ToInt16(playerID_gateNO_trap[1]), System.Convert.ToInt16(playerID_gateNO_trap[2]));
+        ActivateTrap(System.Convert.ToInt16(playerID_gateNO_trap[0]), System.Convert.ToInt16(playerID_gateNO_trap[1]), System.Convert.ToInt16(playerID_gateNO_trap[2]));
     }
 
-    private void serverReceiveActivatePowerUP(NetworkMessage message)
+    private void ServerReceiveActivatePowerUP(NetworkMessage message)
     {
         StringMessage msg = new StringMessage();
         msg.value = message.ReadMessage<StringMessage>().value;
 
         string[] playerID_power = msg.value.Split('|');
-        activatePowerUP(System.Convert.ToInt16(playerID_power[0]), System.Convert.ToInt16(playerID_power[1]));
+        ActivatePowerUP(System.Convert.ToInt16(playerID_power[0]), System.Convert.ToInt16(playerID_power[1]));
     }
 
-    private void serverReceiveVehicleAbility(NetworkMessage message)
+    private void ServerReceiveVehicleAbility(NetworkMessage message)
     {
         StringMessage msg = new StringMessage();
         msg.value = message.ReadMessage<StringMessage>().value;
 
         string[] vehicleAbility_ = msg.value.Split('|');
-        activateVehicleAbility(System.Convert.ToInt16(vehicleAbility_[0]), System.Convert.ToInt16(vehicleAbility_[1]), System.Convert.ToInt16(vehicleAbility_[2]), System.Convert.ToInt16(vehicleAbility_[3]));
+        ActivateVehicleAbility(System.Convert.ToInt16(vehicleAbility_[0]), System.Convert.ToInt16(vehicleAbility_[1]), System.Convert.ToInt16(vehicleAbility_[2]), System.Convert.ToInt16(vehicleAbility_[3]));
     }
 
-    private void serverReceiveReadyUp(NetworkMessage message)
+    private void ServerReceiveReadyUp(NetworkMessage message)
     {
         StringMessage msg = new StringMessage();
         msg.value = message.ReadMessage<StringMessage>().value;
@@ -253,7 +253,7 @@ public class networkServerUIbuttons : MonoBehaviour {
 
     }
 
-    private void serverReceiveName(NetworkMessage message)
+    private void ServerReceiveName(NetworkMessage message)
     {
         StringMessage msg = new StringMessage();
         msg.value = message.ReadMessage<StringMessage>().value;
@@ -265,7 +265,7 @@ public class networkServerUIbuttons : MonoBehaviour {
 
   
 
-    private void serverReceiveRemovePoints(NetworkMessage message)
+    private void ServerReceiveRemovePoints(NetworkMessage message)
     {
         StringMessage msg = new StringMessage();
         msg.value = message.ReadMessage<StringMessage>().value;
