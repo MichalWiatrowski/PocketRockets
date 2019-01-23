@@ -47,6 +47,6 @@ public class Gate : MonoBehaviour
             yield return new WaitForSeconds(0.1f);
         }
         count++;
-        networkServerUIbuttons.networkServer.sendPoints_Gate();
+        networkServerUIbuttons.networkServer.SendPoints_Gate();
     }
 }

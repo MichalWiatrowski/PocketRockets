@@ -19,7 +19,7 @@ public class CupCakeJellyTot : MonoBehaviour {
 
         if (collided.CompareTag("Car") && collided.GetComponentInParent<PlayerStats>().immune == false)
         {
-            collided.GetComponentInParent<PlayerStats>().setSlowDownFactor(slow);
+            collided.GetComponentInParent<PlayerStats>().SetSlowDownFactor(slow);
             
         }
 
@@ -27,7 +27,7 @@ public class CupCakeJellyTot : MonoBehaviour {
     }
 
     void OnTriggerExit(Collider collided) {
-        collided.GetComponentInParent<PlayerStats>().setSlowDownFactor(1.0f);
+        collided.GetComponentInParent<PlayerStats>().SetSlowDownFactor(1.0f);
     }
 
 

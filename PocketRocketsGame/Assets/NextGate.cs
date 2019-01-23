@@ -16,6 +16,6 @@ public class NextGate : MonoBehaviour {
     void Update()
     {
         // update score to screen
-        nextGate.text = "Next Gate: " + networkClientUIbuttons.networkClient.getNextGate().ToString();
+        nextGate.text = "Next Gate: " + networkClientUIbuttons.networkClient.GetNextGate().ToString();
     }
 }

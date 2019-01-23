@@ -15,6 +15,6 @@ public class Points : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         // update score to screen
-        points.text = networkClientUIbuttons.networkClient.getPoints().ToString();
+        points.text = networkClientUIbuttons.networkClient.GetPoints().ToString();
     }
 }
