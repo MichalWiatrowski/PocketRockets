@@ -39,4 +39,14 @@ public class PlayerStats : MonoBehaviour {
     {
         
     }
-}
+
+    void OnTriggerEnter(Collider collided)
+    {
+        if (collided.CompareTag("Plane"))
+        {
+            Debug.Log("Collided with Plane");
+
+            inTheAir = false;
+        }
+    }
+   }
