@@ -7,7 +7,7 @@ public class PlayerStats : MonoBehaviour {
     // player stat variables
     public string playerName;
     public float speed = 4f;
-    public float defaultSpeed = 0.0f;
+    public float defaultSpeed = 30.0f;
     public float slowDownFactor = 1.0f;
     public bool immune = false;
     public int points = 600;
@@ -20,7 +20,7 @@ public class PlayerStats : MonoBehaviour {
 
     void Start()
     {
-        defaultSpeed = speed;
+        //defaultSpeed = speed;
     }
     
 
