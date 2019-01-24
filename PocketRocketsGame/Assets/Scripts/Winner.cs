@@ -30,7 +30,8 @@ public class Winner : MonoBehaviour {
             stats = players[x].GetComponentInParent<PlayerStats>();
             if (stats.winner == true)
             {
-                winner.text = stats.playerName;
+                winner.fontSize = 70;
+                winner.text = stats.playerName + " Wins!";
             }
         }
     }
