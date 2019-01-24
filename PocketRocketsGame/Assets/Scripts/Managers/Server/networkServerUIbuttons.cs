@@ -13,6 +13,7 @@ public class networkServerUIbuttons : MonoBehaviour {
     public static networkServerUIbuttons networkServer;
     public AudioClip tankFireClip;
 
+    
     private AudioSource networkSource;
 
     int sceneIndex = 1;
@@ -124,12 +125,23 @@ public class networkServerUIbuttons : MonoBehaviour {
         GameObject.Find("Gate" + gateNo + "/WallTrap" + playerIDchoice).GetComponent<BoxCollider>().enabled = true;
     }
 
-    void activatePowerUP(int player, int powerUP)
+
+    void activatePowerUP(int player, int powerUP, int vehicleID)
     {
-        if (powerUP == 1)
-        GameObject.Find("Player " + player).GetComponent<PortalPowerUp>().CreatePortals();
-        else if (powerUP == 2)
-        GameObject.Find("Player " + player).GetComponent<Immunity>().activateImmunity();
+        string vehicle = "";
+
+        if (vehicleID == 1)
+            vehicle = "CupcakeTank";
+        else if (vehicleID == 2)
+            vehicle = "DinoCar";
+        else if (vehicleID == 3)
+            vehicle = "Bathtub1";
+
+            if (powerUP == 1)
+                GameObject.Find("Player " + player + "/" + vehicle).GetComponent<PortalPowerUp>().CreatePortals();
+
+            else if (powerUP == 2)
+                GameObject.Find("Player " + player + "/" + vehicle).GetComponent<Immunity>().activateImmunity();
 
     }
 
@@ -142,6 +154,7 @@ public class networkServerUIbuttons : MonoBehaviour {
                 GameObject.Find("Gate" + gateNo + "/JellyTotTrap" + playerTarget).GetComponent<MeshRenderer>().enabled = true;
                 networkSource.PlayOneShot(tankFireClip);
                 Debug.Log("Fire Tank!!");
+
                 break;
             case 2://Bubble
                 //GameObject.Find("Player " + playerTarget).GetComponentInChildren<NessieBubble>().CreateBubble(GameObject.Find("Gate" + gateNo), playerTarget);
@@ -176,6 +189,8 @@ public class networkServerUIbuttons : MonoBehaviour {
     {
         sendPlayerID();
     }
+
+
     private void sendPlayerID()
     {
         playerID++;
@@ -231,7 +246,7 @@ public class networkServerUIbuttons : MonoBehaviour {
         msg.value = message.ReadMessage<StringMessage>().value;
 
         string[] playerID_power = msg.value.Split('|');
-        activatePowerUP(System.Convert.ToInt16(playerID_power[0]), System.Convert.ToInt16(playerID_power[1]));
+        activatePowerUP(System.Convert.ToInt16(playerID_power[0]), System.Convert.ToInt16(playerID_power[1]), System.Convert.ToInt16(playerID_power[2]));
     }
 
     private void serverReceiveVehicleAbility(NetworkMessage message)

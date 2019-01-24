@@ -5,7 +5,7 @@ using UnityEngine;
 public class FinishGate : MonoBehaviour {
 
     int count = 1;
-    public List<Transform> winText;
+    public Transform winText;
     public AudioClip winningClip;
     private AudioSource winningSource;
 
@@ -32,10 +32,7 @@ public class FinishGate : MonoBehaviour {
         {
             stats.winner = true;
 
-            for (int x = 0; x < winText.Count; x++)
-            {
-                winText[x].gameObject.SetActive(true);
-            }
+            winText.gameObject.SetActive(true);
         }
         count++;
     }

@@ -342,7 +342,7 @@ public class clientGameManager : MonoBehaviour {
         if (points >= powerUPcost[powerUPchoice - 1])
         {
             // activate power up code here
-            networkClientUIbuttons.networkClient.sendActivatePowerUP(powerUPchoice, playerID);
+            networkClientUIbuttons.networkClient.sendActivatePowerUP(powerUPchoice, playerID, vehicleAbility);
             // remove points for trap
             networkClientUIbuttons.networkClient.removePoints(powerUPcost[powerUPchoice - 1]);
         }

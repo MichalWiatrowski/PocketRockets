@@ -21,8 +21,10 @@ public class networkClientUIbuttons : MonoBehaviour {
 
     bool testing = true;
 
-    string testIP = "193.60.172.113";
-    int testPortNum = 52047;
+
+    string testIP = "193.60.172.32";
+    int testPortNum = 51366;
+
 
    
     public int vehicleChoice = 0;
@@ -163,10 +165,10 @@ public class networkClientUIbuttons : MonoBehaviour {
         msg.value = playerIDchoice + "|" + gate + "|" + trapChoice;
         client.Send(130, msg);
     }
-    public void sendActivatePowerUP(int powerUP, int playerID)
+    public void sendActivatePowerUP(int powerUP, int playerID, int abilityChoice)
     {
         StringMessage msg = new StringMessage();
-        msg.value = playerID + "|" + powerUP;
+        msg.value = playerID + "|" + powerUP + "|" + abilityChoice;
         client.Send(131, msg);
     }
     public void sendActivateVehicleAbiltiy(int gate, int playerIDchoice, int abilityChoice)

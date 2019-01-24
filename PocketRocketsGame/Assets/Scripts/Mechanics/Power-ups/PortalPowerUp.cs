@@ -44,16 +44,13 @@ public class PortalPowerUp : MonoBehaviour {
         {
             isPortalActive = true;
             PortalEntrancePosition = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y + 0.2f, gameObject.transform.position.z + 5.0f);
-            entranceInstance = Instantiate(entrancePortal, PortalEntrancePosition, transform.rotation) as GameObject;
+            entranceInstance = (GameObject)Instantiate(entrancePortal, PortalEntrancePosition, transform.rotation);
 
             PortalExitPosition = new Vector3(PortalEntrancePosition.x, PortalEntrancePosition.y + 8.0f, PortalEntrancePosition.z + teleportDistance);
-            exitInstance = Instantiate(exitPortal, PortalExitPosition, transform.rotation) as GameObject;
+            exitInstance = (GameObject)Instantiate(exitPortal, PortalExitPosition, transform.rotation);
             exitInstance.GetComponent<CapsuleCollider>().enabled = false;
         }
     }
-
-    //TODO 
-    //Create Portal when touch screen button is pressed on Phone.
 
     void OnTriggerEnter(Collider collided)
     {
@@ -79,21 +76,21 @@ public class PortalPowerUp : MonoBehaviour {
         if (stats.fallingThroughTeleport == true)
         {
             transform.Translate(0, fallingSpeed * Time.deltaTime, 0);
-            //transform.Translate(0, fallingSpeed * Time.deltaTime, 0);
-           // GetComponentInChildren<BoxCollider>().enabled = false;
+           
+
             GetComponent<BoxCollider>().enabled = false;
             if (transform.position.y <= fallDistanceUnderTrack)
             {
 
-                // transform.Translate(0, 8 + fallingDistance, teleportDistance);
-                // GetComponentsInChildren<Transform>.transform.Translate(0, 8 + fallingDistance, teleportDistance);
+                
                 transform.parent.gameObject.transform.Translate(0, 0, 25); //good parent child relation
-               // transf.transform.Translate(0, 0, 25);
+              
+
+
                 transform.Translate(0, 8 + fallingDistance, 0);
                 stats.fallingThroughTeleport = false;
 
            
-                //GetComponentInChildren<BoxCollider>().enabled = true;
                 GetComponent<BoxCollider>().enabled = true;
                 StartCoroutine(PortalCleanup());
             }
@@ -105,36 +102,22 @@ public class PortalPowerUp : MonoBehaviour {
     {
         yield return new WaitForSeconds(2.0f);
 
-        //entranceInstance.GetComponent<MeshRenderer>().enabled = false;
-       // entranceInstance.GetComponent<CapsuleCollider>().enabled = false;
-
-        ///exitInstance.GetComponent<MeshRenderer>().enabled = false;
-        //exitInstance.GetComponent<CapsuleCollider>().enabled = true;
-
-        Debug.Log("Destroying objects");
+        
 
         isPortalActive = false;
+        Debug.Log("Destroying objects and isPortalActive is: " + isPortalActive);
 
-        GameObject[] portals = GameObject.FindGameObjectsWithTag("Portal");
-
-        foreach (GameObject portal in portals) GameObject.DestroyImmediate(portal);
-        //Destroy(GameObject.FindGameObjectsWithTag("Portal"));
-
+        Destroy(entranceInstance, 1.0f);
+        Destroy(exitInstance, 1.0f);
 
 
-
-        //DestroyImmediate(entranceInstance, true);
-        //DestroyImmediate(exitInstance, true);
     }
 
-    void ManageInput() {
+   public void ManageInput() {
 
         if (Input.GetButtonDown("Fire1"))
         {
-            //PortalPowerUp power = GameObject.Find("Player 1").GetComponent<PortalPowerUp>();
-            //power.CreatePortals();
             CreatePortals();
         }
-
     }
 }

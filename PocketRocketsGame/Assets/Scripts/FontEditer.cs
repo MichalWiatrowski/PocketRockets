@@ -14,7 +14,7 @@ public class FontEditer : MonoBehaviour {
         foreach (Text go in GetText)
         {
             go.font = Resources.Load<Font>("Fonts/JazzCreateBubble");
-            go.fontSize = 22;
+            go.fontSize = 35;
             go.color = Color.magenta;
         }
 
