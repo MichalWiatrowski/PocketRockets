@@ -20,8 +20,8 @@ public class NessieBubbleTrap : MonoBehaviour {
     // Use this for initialization
     void Start () {
         
-        GetComponent<MeshRenderer>().enabled = true;
-        GetComponent<SphereCollider>().enabled = true;
+        GetComponent<MeshRenderer>().enabled = false;
+        GetComponent<SphereCollider>().enabled = false;
         bubbleRiseHeight = transform.position.y + maxBubbleHeight;
     }
 	
@@ -47,6 +47,7 @@ public class NessieBubbleTrap : MonoBehaviour {
 
                     GetComponent<MeshRenderer>().enabled = false;
                     GetComponent<SphereCollider>().enabled = false;
+                    bubbleCollision = false;
                 }
             }
         }
@@ -58,12 +59,14 @@ public class NessieBubbleTrap : MonoBehaviour {
     {
         if (collided.CompareTag("Car"))
         {
-            bubbleCollision = true;
-            tempCar = collided.gameObject;
-            stats = collided.GetComponentInParent<PlayerStats>();
-            Debug.Log("Collided with Bubble");
-            stats.trappedInBubble = true;
-
+            if (bubbleCollision == false)
+            {
+                bubbleCollision = true;
+                tempCar = collided.gameObject;
+                stats = collided.GetComponentInParent<PlayerStats>();
+                Debug.Log("Collided with Bubble");
+                stats.trappedInBubble = true;
+            }
         }
         //if (collided.CompareTag("Plane"))
         //{
