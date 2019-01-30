@@ -12,7 +12,7 @@ public class VehicleJump : MonoBehaviour {
 
     void Start () {
 
-        stats = GetComponent<PlayerStats>();
+        //stats = GetComponent<PlayerStats>();
         rb = GetComponentInChildren<Rigidbody>();
     }
 	
@@ -23,7 +23,7 @@ public class VehicleJump : MonoBehaviour {
 
     void Jump() {
 
-        stats.jumping = true;
+        
         rb.AddForce(0.0f, thrust, 0.0f, ForceMode.Impulse);
     }
 
@@ -33,11 +33,10 @@ public class VehicleJump : MonoBehaviour {
 
         if (Input.GetKeyDown("space"))
         {
-            if (stats.jumping == false)
-            {
+           
                 Jump();
                 print("Input Recieved");
-            }
+            
         }
     }
 }
