@@ -47,6 +47,8 @@ public class PlayerStats : MonoBehaviour {
             Debug.Log("Collided with Plane");
 
             inTheAir = false;
+           GetComponent<Rigidbody>().useGravity = false;
+            GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
         }
     }
    }

@@ -20,8 +20,8 @@ public class NessieBubbleTrap : MonoBehaviour {
     // Use this for initialization
     void Start () {
         
-        GetComponent<MeshRenderer>().enabled = false;
-        GetComponent<SphereCollider>().enabled = false;
+        GetComponent<MeshRenderer>().enabled = true;
+        GetComponent<SphereCollider>().enabled = true;
         bubbleRiseHeight = transform.position.y + maxBubbleHeight;
     }
 	
@@ -31,13 +31,16 @@ public class NessieBubbleTrap : MonoBehaviour {
         if (bubbleCollision == true) {
             if (stats.trappedInBubble == true)
             {
+                tempCar.transform.parent.gameObject.transform.Translate(0, bubbleRiseSpeed * Time.deltaTime, 0);
+
+                
                 //Move Car
                 tempCar.GetComponent<BoxCollider>().enabled = false;
                 tempCar.GetComponent<Rigidbody>().useGravity = false;
-                tempCar.transform.Translate(0, bubbleRiseSpeed * Time.deltaTime, 0);
+               // tempCar.transform.Translate(0, bubbleRiseSpeed * Time.deltaTime, 0);
                 stats.inTheAir = true;
                 //Move Bubble
-                transform.Translate(0, (bubbleRiseSpeed * Time.deltaTime) + 0.03f, 0);
+                transform.Translate(0, (bubbleRiseSpeed * Time.deltaTime), 0);
 
                 if (tempCar.transform.position.y >= maxBubbleHeight)
                 {
@@ -48,6 +51,9 @@ public class NessieBubbleTrap : MonoBehaviour {
                     GetComponent<MeshRenderer>().enabled = false;
                     GetComponent<SphereCollider>().enabled = false;
                     bubbleCollision = false;
+
+                    //tempCar.GetComponentInParent<Rigidbody>().useGravity = true;
+                    tempCar.transform.parent.gameObject.GetComponent<Rigidbody>().useGravity = true;
                 }
             }
         }
@@ -73,6 +79,8 @@ public class NessieBubbleTrap : MonoBehaviour {
         //    Debug.Log("Collided with Plane");
 
         //    stats.inTheAir = false;
+        //    //tempCar.GetComponentInParent<Rigidbody>().useGravity = false;
+        //    tempCar.transform.parent.gameObject.GetComponent<Rigidbody>().useGravity = false;
         //}
 
     }
