@@ -17,6 +17,7 @@ public class PlayerStats : MonoBehaviour {
     public bool trappedInBubble = false;
     public bool inTheAir = false;
     public int nextGate = 1;
+    public bool jumping = false;
 
     void Start()
     {
@@ -39,4 +40,23 @@ public class PlayerStats : MonoBehaviour {
     {
         
     }
-}
+
+    void OnTriggerEnter(Collider collided)
+    {
+        if (collided.CompareTag("Plane"))
+        {
+            Debug.Log("Collided with Plane");
+            jumping = false;
+        }
+    }
+
+    void OnCollisionEnter(Collision collision)
+    {
+        if (collision.collider.CompareTag("Plane"))
+        {
+            Debug.Log("Collided with Plane");
+            jumping = false;
+        }
+
+    }
+    }
