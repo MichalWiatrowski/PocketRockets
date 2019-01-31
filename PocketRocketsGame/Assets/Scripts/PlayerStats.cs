@@ -22,6 +22,7 @@ public class PlayerStats : MonoBehaviour {
     public int nextGate = 1;
     public bool switchLeft = true;
     public bool switchRight = true;
+    public bool jumping = false;
 
     void Start()
     {
@@ -50,9 +51,22 @@ public class PlayerStats : MonoBehaviour {
         {
             Debug.Log("Collided with Plane");
 
+
             inTheAir = false;
            GetComponent<Rigidbody>().useGravity = false;
             GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
+
+            jumping = false;
         }
     }
-   }
+   
+    void OnCollisionEnter(Collision collision)
+    {
+        if (collision.collider.CompareTag("Plane"))
+        {
+            Debug.Log("Collided with Plane");
+            jumping = false;
+        }
+
+    }
+ }

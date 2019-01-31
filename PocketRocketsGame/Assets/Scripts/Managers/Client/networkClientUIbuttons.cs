@@ -23,7 +23,7 @@ public class networkClientUIbuttons : MonoBehaviour {
 
 
     string testIP = "193.60.172.32";
-    int testPortNum = 51366;
+    int testPortNum = 51948;
 
 
    
@@ -165,6 +165,14 @@ public class networkClientUIbuttons : MonoBehaviour {
         msg.value = playerIDchoice + "|" + gate + "|" + trapChoice;
         client.Send(130, msg);
     }
+
+    public void sendJump()
+    {
+        IntegerMessage msg = new IntegerMessage();
+        msg.value = playerID;
+        client.Send(137, msg);
+    }
+
     public void sendActivatePowerUP(int powerUP, int playerID, int abilityChoice)
     {
         StringMessage msg = new StringMessage();
