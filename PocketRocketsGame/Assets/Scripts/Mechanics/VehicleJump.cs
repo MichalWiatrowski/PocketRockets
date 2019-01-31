@@ -13,7 +13,7 @@ public class VehicleJump : MonoBehaviour {
     void Start () {
 
         //stats = GetComponent<PlayerStats>();
-        rb = GetComponentInChildren<Rigidbody>();
+        rb = GetComponent<Rigidbody>();
     }
 	
 	// Update is called once per frame

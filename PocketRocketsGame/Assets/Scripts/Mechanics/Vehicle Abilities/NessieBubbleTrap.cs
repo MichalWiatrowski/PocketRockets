@@ -31,7 +31,7 @@ public class NessieBubbleTrap : MonoBehaviour {
         if (bubbleCollision == true) {
             if (stats.trappedInBubble == true)
             {
-                tempCar.transform.parent.gameObject.transform.Translate(0, bubbleRiseSpeed * Time.deltaTime, 0);
+                tempCar.transform.Translate(0, bubbleRiseSpeed * Time.deltaTime, 0);
 
                 
                 //Move Car
@@ -52,8 +52,6 @@ public class NessieBubbleTrap : MonoBehaviour {
                     GetComponent<SphereCollider>().enabled = false;
                     bubbleCollision = false;
 
-                    //tempCar.GetComponentInParent<Rigidbody>().useGravity = true;
-                    tempCar.transform.parent.gameObject.GetComponent<Rigidbody>().useGravity = true;
                 }
             }
         }
@@ -63,13 +61,13 @@ public class NessieBubbleTrap : MonoBehaviour {
 
     void OnTriggerEnter(Collider collided)
     {
-        if (collided.CompareTag("Car"))
+        if (collided.CompareTag("Player"))
         {
             if (bubbleCollision == false)
             {
                 bubbleCollision = true;
                 tempCar = collided.gameObject;
-                stats = collided.GetComponentInParent<PlayerStats>();
+                stats = collided.GetComponent<PlayerStats>();
                 Debug.Log("Collided with Bubble");
                 stats.trappedInBubble = true;
             }

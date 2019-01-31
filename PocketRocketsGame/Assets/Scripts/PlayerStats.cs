@@ -53,7 +53,7 @@ public class PlayerStats : MonoBehaviour {
 
 
             inTheAir = false;
-           GetComponent<Rigidbody>().useGravity = false;
+           GetComponent<Rigidbody>().useGravity = true;
             GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
 
             jumping = false;
