@@ -46,6 +46,7 @@ public class networkServerUIbuttons : MonoBehaviour {
         NetworkServer.RegisterHandler(134, serverReceiveRemovePoints);
         NetworkServer.RegisterHandler(135, serverReceiveName);
         NetworkServer.RegisterHandler(136, serverReceiveVehicleAbility);
+        NetworkServer.RegisterHandler(137, serverReceiveJump);
 
         if (!gameStart)
         {
@@ -145,6 +146,12 @@ public class networkServerUIbuttons : MonoBehaviour {
 
     }
 
+    void activateJump(int playerID)
+    {
+        Debug.Log(playerID);
+        GameObject.Find("Player " + playerID).GetComponent<VehicleJump>().Jump();
+    }
+
     void activateVehicleAbility(int playerID, int playerTarget, int gateNo, int abilityChoice) {
 
         switch (abilityChoice) {
@@ -171,6 +178,11 @@ public class networkServerUIbuttons : MonoBehaviour {
 
         }
     }
+
+
+
+
+
     ////////////////////////////////////Network Messages
 
     void sendStartGame()
@@ -255,6 +267,12 @@ public class networkServerUIbuttons : MonoBehaviour {
         string[] vehicleAbility_ = msg.value.Split('|');
         activateVehicleAbility(System.Convert.ToInt16(vehicleAbility_[0]), System.Convert.ToInt16(vehicleAbility_[1]), System.Convert.ToInt16(vehicleAbility_[2]), System.Convert.ToInt16(vehicleAbility_[3]));
     }
+
+    private void serverReceiveJump(NetworkMessage message)
+    {
+        activateJump(message.ReadMessage<IntegerMessage>().value);
+    }
+
 
     private void serverReceiveReadyUp(NetworkMessage message)
     {

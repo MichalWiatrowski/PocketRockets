@@ -337,6 +337,11 @@ public class clientGameManager : MonoBehaviour {
             abiltyType = 5;
         }
     }
+
+    public void activateJump()
+    {
+        networkClientUIbuttons.networkClient.sendJump();
+    }
     public void activatePowerUp()
     {
         if (points >= powerUPcost[powerUPchoice - 1])

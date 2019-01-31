@@ -21,7 +21,7 @@ public class VehicleJump : MonoBehaviour {
         ManageInput();
 	}
 
-    void Jump() {
+    public void Jump() {
 
         
         rb.AddForce(0.0f, thrust, 0.0f, ForceMode.Impulse);
