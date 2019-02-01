@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LaneSwitchRight : MonoBehaviour {
+public class LaneSwitch : MonoBehaviour {
 
     private PlayerStats stats;
 
@@ -13,14 +13,17 @@ public class LaneSwitchRight : MonoBehaviour {
 
     void OnTriggerEnter(Collider box)
     {
-        if (box.CompareTag("Car"))
+        if (box.CompareTag("Player"))
         {
-            stats.switchRight = false;
+            stats.switchLeft = false;
         }
     }
 
     void OnTriggerExit(Collider box)
     {
-        stats.switchRight = true;
+        if (box.CompareTag("Player"))
+        {
+            stats.switchLeft = true;
+        }
     }
 }

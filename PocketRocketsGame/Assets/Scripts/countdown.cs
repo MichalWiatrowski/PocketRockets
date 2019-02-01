@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
 
-public class countdown : MonoBehaviour {
+public class Countdown : MonoBehaviour {
 
     public List<Transform> players;
     public Text countText;
@@ -11,10 +11,10 @@ public class countdown : MonoBehaviour {
 
     void Start()
     {
-        StartCoroutine(Countdown());
+        StartCoroutine(CountdownStart());
     }
 
-    IEnumerator Countdown()
+    IEnumerator CountdownStart()
     {
         for (int x = 0; x < players.Count; x++)
         {

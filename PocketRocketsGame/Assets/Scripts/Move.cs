@@ -54,10 +54,10 @@ public class Move : MonoBehaviour {
             tempVec.x = Mathf.Lerp(transform.position.x, newPos.x, 0.1f);
             transform.position = tempVec;
 
-            if (transform.position.x == newPos.x)
+            if (transform.position.x - newPos.x <= 0.1 && transform.position.x - newPos.x >= -0.1)
             {
-                transform.GetComponentInChildren<BoxCollider>().enabled = true;
-                transform.GetComponentInChildren<Rigidbody>().useGravity = true;
+                transform.GetComponentInParent<BoxCollider>().enabled = true;
+                transform.GetComponentInParent<Rigidbody>().useGravity = true;
                 lerp = false;
             }
         }

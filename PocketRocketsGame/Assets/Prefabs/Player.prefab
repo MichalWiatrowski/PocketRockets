@@ -470,7 +470,6 @@ GameObject:
   - component: {fileID: 4901376150132544}
   - component: {fileID: 95614872088051436}
   - component: {fileID: 82899531428340198}
-  - component: {fileID: 114226535200718342}
   m_Layer: 0
   m_Name: DinoCar
   m_TagString: Car
@@ -503,7 +502,6 @@ GameObject:
   - component: {fileID: 4589548685149954}
   - component: {fileID: 95902972208656978}
   - component: {fileID: 82617745103494390}
-  - component: {fileID: 114246243310478662}
   m_Layer: 0
   m_Name: Bathtub1
   m_TagString: Car
@@ -656,7 +654,6 @@ GameObject:
   - component: {fileID: 122295476588789684}
   - component: {fileID: 114562908065432772}
   - component: {fileID: 114519330016382988}
-  - component: {fileID: 114559104013436756}
   - component: {fileID: 65115874163913044}
   - component: {fileID: 114811219852809858}
   - component: {fileID: 54258678111692242}
@@ -728,7 +725,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4239807905227482}
   - component: {fileID: 65361275800366916}
-  - component: {fileID: 114291422220859750}
+  - component: {fileID: 114986435727867512}
   m_Layer: 0
   m_Name: LeftDetection
   m_TagString: Untagged
@@ -1141,7 +1138,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4688284526027714}
   - component: {fileID: 82346016506400866}
-  - component: {fileID: 114437795388686928}
   m_Layer: 0
   m_Name: CupcakeTank
   m_TagString: Car
@@ -4663,66 +4659,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &114226535200718342
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1406610934634922}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fbae2535dc059e742afd0a4388b5af64, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  teleportDistance: 25
-  teleportClip: {fileID: 8300000, guid: 3238cd58c7336b942a70a3d91ccdc695, type: 3}
-  exitPortal: {fileID: 1133396264140134, guid: 3fa11200538f90844b40aad2cff8115a, type: 2}
-  entrancePortal: {fileID: 1133396264140134, guid: 3fa11200538f90844b40aad2cff8115a,
-    type: 2}
---- !u!114 &114246243310478662
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1413325581957204}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fbae2535dc059e742afd0a4388b5af64, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  teleportDistance: 25
-  teleportClip: {fileID: 8300000, guid: 3238cd58c7336b942a70a3d91ccdc695, type: 3}
-  exitPortal: {fileID: 1133396264140134, guid: 3fa11200538f90844b40aad2cff8115a, type: 2}
-  entrancePortal: {fileID: 1133396264140134, guid: 3fa11200538f90844b40aad2cff8115a,
-    type: 2}
---- !u!114 &114291422220859750
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1552874854982296}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 268c151bac871de4886f14a6281dd9c4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  players: []
---- !u!114 &114437795388686928
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1910638423948054}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fbae2535dc059e742afd0a4388b5af64, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  teleportDistance: 25
-  teleportClip: {fileID: 8300000, guid: 3238cd58c7336b942a70a3d91ccdc695, type: 3}
-  exitPortal: {fileID: 1133396264140134, guid: 3fa11200538f90844b40aad2cff8115a, type: 2}
-  entrancePortal: {fileID: 1133396264140134, guid: 3fa11200538f90844b40aad2cff8115a,
-    type: 2}
 --- !u!114 &114519330016382988
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4735,22 +4671,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   immunityTime: 5
---- !u!114 &114559104013436756
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1459783215513326}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fbae2535dc059e742afd0a4388b5af64, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  teleportDistance: 25
-  teleportClip: {fileID: 8300000, guid: 3238cd58c7336b942a70a3d91ccdc695, type: 3}
-  exitPortal: {fileID: 1133396264140134, guid: 3fa11200538f90844b40aad2cff8115a, type: 2}
-  entrancePortal: {fileID: 1133396264140134, guid: 3fa11200538f90844b40aad2cff8115a,
-    type: 2}
 --- !u!114 &114562908065432772
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4841,6 +4761,17 @@ MonoBehaviour:
   switchLeft: 1
   switchRight: 1
   jumping: 0
+--- !u!114 &114986435727867512
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1552874854982296}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b884f836ecef0fe4a9de9ee8b384687a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!122 &122295476588789684
 Halo:
   m_ObjectHideFlags: 1

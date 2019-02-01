@@ -34,8 +34,8 @@ public class LaneSwitchAll : MonoBehaviour {
             move[x].lerp = true;
             stats[x].currentLane = lanes[randLane];
             lanes.RemoveAt(randLane);
-            players[x].GetComponentInChildren<BoxCollider>().enabled = false;
-            players[x].GetComponentInChildren<Rigidbody>().useGravity = false;
+            players[x].GetComponent<BoxCollider>().enabled = false;
+            players[x].GetComponent<Rigidbody>().useGravity = false;
         }
     }
 
