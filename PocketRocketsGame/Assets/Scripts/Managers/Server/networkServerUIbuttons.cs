@@ -47,6 +47,7 @@ public class networkServerUIbuttons : MonoBehaviour {
         NetworkServer.RegisterHandler(135, serverReceiveName);
         NetworkServer.RegisterHandler(136, serverReceiveVehicleAbility);
         NetworkServer.RegisterHandler(137, serverReceiveJump);
+        NetworkServer.RegisterHandler(138, serverReceiveLaneSwitch);
 
         if (!gameStart)
         {
@@ -150,6 +151,18 @@ public class networkServerUIbuttons : MonoBehaviour {
     {
         Debug.Log(playerID);
         GameObject.Find("Player " + playerID).GetComponent<VehicleJump>().Jump();
+    }
+
+    void activateLaneSwitch(int playerID, string direction)
+    {
+        if (direction == "Left")
+        {
+            GameObject.Find("Player " + playerID).GetComponent<Move>().MoveLeft();
+        }
+        else if (direction == "Right")
+        {
+            GameObject.Find("Player " + playerID).GetComponent<Move>().MoveRight();
+        }
     }
 
     void activateVehicleAbility(int playerID, int playerTarget, int gateNo, int abilityChoice) {
@@ -275,6 +288,13 @@ public class networkServerUIbuttons : MonoBehaviour {
         activateJump(message.ReadMessage<IntegerMessage>().value);
     }
 
+    private void serverReceiveLaneSwitch(NetworkMessage message)
+    {
+        StringMessage msg = new StringMessage();
+        msg.value = message.ReadMessage<StringMessage>().value;
+        string[] laneSwitch = msg.value.Split('|');
+        activateLaneSwitch(System.Convert.ToInt16(laneSwitch[0]), laneSwitch[1]);
+    }
 
     private void serverReceiveReadyUp(NetworkMessage message)
     {

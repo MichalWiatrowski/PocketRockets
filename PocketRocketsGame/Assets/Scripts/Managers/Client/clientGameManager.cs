@@ -342,6 +342,17 @@ public class clientGameManager : MonoBehaviour {
     {
         networkClientUIbuttons.networkClient.sendJump();
     }
+
+    public void switchLeft()
+    {
+        networkClientUIbuttons.networkClient.sendLaneSwitch("Left");
+    }
+
+    public void switchRight()
+    {
+        networkClientUIbuttons.networkClient.sendLaneSwitch("Right");
+    }
+
     public void activatePowerUp()
     {
         if (points >= powerUPcost[powerUPchoice - 1])

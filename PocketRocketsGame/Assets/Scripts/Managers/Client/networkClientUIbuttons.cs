@@ -22,8 +22,8 @@ public class networkClientUIbuttons : MonoBehaviour {
     bool testing = true;
 
 
-    string testIP = "193.60.172.124";
-    int testPortNum = 55204;
+    string testIP = "193.60.172.11";
+    int testPortNum = 61472;
 
 
    
@@ -185,6 +185,13 @@ public class networkClientUIbuttons : MonoBehaviour {
         StringMessage msg = new StringMessage();
         msg.value = playerID + "|" + playerIDchoice + "|" + gate + "|" + abilityChoice;
         client.Send(136, msg);
+    }
+
+    public void sendLaneSwitch(string direction)
+    {
+        StringMessage msg = new StringMessage();
+        msg.value = playerID + "|" + direction;
+        client.Send(138, msg);
     }
 
     public void removePoints(int ammount)
