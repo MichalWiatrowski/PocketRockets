@@ -53,7 +53,7 @@ public class PlayerStats : MonoBehaviour {
     {
         if (vehicleID == 0)
         {
-            defaultSpeed = 30;
+            defaultSpeed = 35;
         }
         else if (vehicleID == 1)
         {
@@ -61,7 +61,7 @@ public class PlayerStats : MonoBehaviour {
         }
         else if (vehicleID == 2)
         {
-            defaultSpeed = 40;
+            defaultSpeed = 35;
         }
     }
 

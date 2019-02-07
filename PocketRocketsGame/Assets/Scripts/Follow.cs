@@ -30,7 +30,7 @@ public class Follow : MonoBehaviour {
     void Start () {
         cam = GetComponent<Camera>();
 
-        for (int x = 0; x < 4; x++)
+        for (int x = 0; x < cars.Count; x++)
         {
             if (cars[x].gameObject.activeSelf)
             {
@@ -76,7 +76,7 @@ public class Follow : MonoBehaviour {
         else if (players == 3)
         {
             float temp1 = CompareZ(cars[0].transform.position.z, cars[1].transform.position.z);
-            float backCarZ = CompareZ(temp1, cars[3].transform.position.z);
+            backCarZ = CompareZ(temp1, cars[2].transform.position.z);
         }
         else if (players == 4)
         {
