@@ -12,6 +12,16 @@ public class serverGameManager : MonoBehaviour {
     public List<GameObject> player3Vehicles = new List<GameObject>();
     public List<GameObject> player4Vehicles = new List<GameObject>();
 
+
+    public GameObject player1;
+    public GameObject player2;
+    public GameObject player3;
+    public GameObject player4;
+
+
+
+
+
     private AudioSource gameSource;
 
     void Awake() {
@@ -27,21 +37,32 @@ public class serverGameManager : MonoBehaviour {
 
         if (amountOfPlayers == 2)
         {
-            player1Vehicles[networkServerUIbuttons.networkServer.playerVehicles[0] - 1].SetActive(true);
-            player2Vehicles[networkServerUIbuttons.networkServer.playerVehicles[1] - 1].SetActive(true);
+            player1.transform.GetChild(networkServerUIbuttons.networkServer.playerVehicles[0] - 1).gameObject.SetActive(true);
+            player2.transform.GetChild(networkServerUIbuttons.networkServer.playerVehicles[1] - 1).gameObject.SetActive(true);
+
+            //player1Vehicles[networkServerUIbuttons.networkServer.playerVehicles[0] - 1].SetActive(true);
+            //player2Vehicles[networkServerUIbuttons.networkServer.playerVehicles[1] - 1].SetActive(true);
         }
         else if (amountOfPlayers == 3)
         {
-            player1Vehicles[networkServerUIbuttons.networkServer.playerVehicles[0] - 1].SetActive(true);
-            player2Vehicles[networkServerUIbuttons.networkServer.playerVehicles[1] - 1].SetActive(true);
-            player3Vehicles[networkServerUIbuttons.networkServer.playerVehicles[2] - 1].SetActive(true);
+            player1.transform.GetChild(networkServerUIbuttons.networkServer.playerVehicles[0] - 1).gameObject.SetActive(true);
+            player2.transform.GetChild(networkServerUIbuttons.networkServer.playerVehicles[1] - 1).gameObject.SetActive(true);
+            player3.transform.GetChild(networkServerUIbuttons.networkServer.playerVehicles[2] - 1).gameObject.SetActive(true);
+  
+            //player1Vehicles[networkServerUIbuttons.networkServer.playerVehicles[0] - 1].SetActive(true);
+            //player2Vehicles[networkServerUIbuttons.networkServer.playerVehicles[1] - 1].SetActive(true);
+            //player3Vehicles[networkServerUIbuttons.networkServer.playerVehicles[2] - 1].SetActive(true);
         }
         else if (amountOfPlayers == 4)
         {
-            player1Vehicles[networkServerUIbuttons.networkServer.playerVehicles[0] - 1].SetActive(true);
-            player2Vehicles[networkServerUIbuttons.networkServer.playerVehicles[1] - 1].SetActive(true);
-            player3Vehicles[networkServerUIbuttons.networkServer.playerVehicles[2] - 1].SetActive(true);
-            player4Vehicles[networkServerUIbuttons.networkServer.playerVehicles[3] - 1].SetActive(true);
+            player1.transform.GetChild(networkServerUIbuttons.networkServer.playerVehicles[0] - 1).gameObject.SetActive(true);
+            player2.transform.GetChild(networkServerUIbuttons.networkServer.playerVehicles[1] - 1).gameObject.SetActive(true);
+            player3.transform.GetChild(networkServerUIbuttons.networkServer.playerVehicles[2] - 1).gameObject.SetActive(true);
+            player4.transform.GetChild(networkServerUIbuttons.networkServer.playerVehicles[3] - 1).gameObject.SetActive(true);
+            //player1Vehicles[networkServerUIbuttons.networkServer.playerVehicles[0] - 1].SetActive(true);
+            //player2Vehicles[networkServerUIbuttons.networkServer.playerVehicles[1] - 1].SetActive(true);
+            //player3Vehicles[networkServerUIbuttons.networkServer.playerVehicles[2] - 1].SetActive(true);
+            //player4Vehicles[networkServerUIbuttons.networkServer.playerVehicles[3] - 1].SetActive(true);
         }
         for (int i = 4; i > amountOfPlayers; i--)
         {
@@ -52,14 +73,20 @@ public class serverGameManager : MonoBehaviour {
 
         mainCamera.GetComponent<Follow>().cars.RemoveRange(amountOfPlayers, mainCamera.GetComponent<Follow>().cars.Count - amountOfPlayers);
 
+
+
+
+
+
+
+
+
     }
 
     
     // Update is called once per frame
     void Update () {
 
-      //  Debug.Log("Player 1 next gate: " + GameObject.Find("Player 1").GetComponent<PlayerStats>().nextGate);
-    //    Debug.Log("Player 3 next gate: " + GameObject.Find("Player 3").GetComponent<PlayerStats>().nextGate);
-    ///    Debug.Log("Player 4 next gate: " + GameObject.Find("Player 4").GetComponent<PlayerStats>().nextGate);
+     
     }
 }

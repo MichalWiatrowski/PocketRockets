@@ -8378,7 +8378,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1910638423948054, guid: 1898fe356db3aed499e83a471bda1780, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1459783215513326, guid: 1898fe356db3aed499e83a471bda1780, type: 2}
       propertyPath: m_TagString
@@ -31311,7 +31311,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1910638423948054, guid: 1898fe356db3aed499e83a471bda1780, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1459783215513326, guid: 1898fe356db3aed499e83a471bda1780, type: 2}
       propertyPath: m_TagString
@@ -32729,7 +32729,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1910638423948054, guid: 1898fe356db3aed499e83a471bda1780, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1459783215513326, guid: 1898fe356db3aed499e83a471bda1780, type: 2}
       propertyPath: m_TagString
@@ -48388,6 +48388,10 @@ MonoBehaviour:
   - {fileID: 190876758}
   - {fileID: 1721647649}
   - {fileID: 735991225}
+  player1: {fileID: 1752070438}
+  player2: {fileID: 1103840115}
+  player3: {fileID: 1739438481}
+  player4: {fileID: 1848207538}
 --- !u!4 &778558097
 Transform:
   m_ObjectHideFlags: 0
@@ -73329,7 +73333,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1910638423948054, guid: 1898fe356db3aed499e83a471bda1780, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1459783215513326, guid: 1898fe356db3aed499e83a471bda1780, type: 2}
       propertyPath: m_TagString
