@@ -69,4 +69,16 @@ public class PlayerStats : MonoBehaviour {
         }
 
     }
- }
+
+    public void incrementSpeed(float incrementValue)
+    {
+
+        speed += incrementValue;
+    }
+
+    public void decrementSpeed(float decrementValue)
+    {
+
+        speed -= decrementValue;
+    }
+}
