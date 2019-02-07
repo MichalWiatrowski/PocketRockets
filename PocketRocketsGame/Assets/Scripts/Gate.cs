@@ -9,7 +9,7 @@ public class Gate : MonoBehaviour
     void OnTriggerEnter(Collider collided)
     {
         // check to see if gate is colliding with a vehicle
-        if (collided.CompareTag("Car"))
+        if (collided.CompareTag("Player"))
         {
             StartCoroutine(GatePoints(collided));
         }
@@ -17,9 +17,9 @@ public class Gate : MonoBehaviour
 
     IEnumerator GatePoints(Collider player)
     {
-        PlayerStats stats = player.GetComponentInParent<PlayerStats>();
+        PlayerStats stats = player.GetComponent<PlayerStats>();
 
-        player.GetComponentInParent<PlayerStats>().nextGate = player.GetComponentInParent<PlayerStats>().nextGate + 1;
+        player.GetComponent<PlayerStats>().nextGate = player.GetComponent<PlayerStats>().nextGate + 1;
         // assign vehicle positions based on how many vehicles have passed through gate
         // then assign points
         if (count == 1)

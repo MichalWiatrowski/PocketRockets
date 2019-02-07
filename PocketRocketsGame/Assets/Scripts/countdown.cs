@@ -16,7 +16,7 @@ public class countdown : MonoBehaviour {
 
     IEnumerator CountdownStart()
     {
-        for (int x = 0; x < players.Count; x++)
+        for (int x = 0; x < networkServerUIbuttons.networkServer.getPlayerAmount(); x++)
         {
             stats[x] = players[x].GetComponentInParent<PlayerStats>();
             stats[x].speed = 0;
@@ -41,7 +41,7 @@ public class countdown : MonoBehaviour {
 
         countText.gameObject.SetActive(false);
 
-        for (int x = 0; x < players.Count; x++)
+        for (int x = 0; x < networkServerUIbuttons.networkServer.getPlayerAmount(); x++)
         {
             stats[x].speed = stats[x].getDefaultSpeed();
         }

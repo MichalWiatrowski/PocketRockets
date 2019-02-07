@@ -42,6 +42,12 @@ public class serverGameManager : MonoBehaviour {
 
             player1.GetComponent<PlayerStats>().setUpPlayerStats(networkServerUIbuttons.networkServer.playerVehicles[0] - 1);
             player2.GetComponent<PlayerStats>().setUpPlayerStats(networkServerUIbuttons.networkServer.playerVehicles[1] - 1);
+
+
+            player3.SetActive(false);
+            player4.SetActive(false);
+
+
             //player1Vehicles[networkServerUIbuttons.networkServer.playerVehicles[0] - 1].SetActive(true);
             //player2Vehicles[networkServerUIbuttons.networkServer.playerVehicles[1] - 1].SetActive(true);
         }
@@ -54,7 +60,8 @@ public class serverGameManager : MonoBehaviour {
             player1.GetComponent<PlayerStats>().setUpPlayerStats(networkServerUIbuttons.networkServer.playerVehicles[0] - 1);
             player2.GetComponent<PlayerStats>().setUpPlayerStats(networkServerUIbuttons.networkServer.playerVehicles[1] - 1);
             player3.GetComponent<PlayerStats>().setUpPlayerStats(networkServerUIbuttons.networkServer.playerVehicles[2] - 1);
-          
+
+            player4.SetActive(false);
             //player1Vehicles[networkServerUIbuttons.networkServer.playerVehicles[0] - 1].SetActive(true);
             //player2Vehicles[networkServerUIbuttons.networkServer.playerVehicles[1] - 1].SetActive(true);
             //player3Vehicles[networkServerUIbuttons.networkServer.playerVehicles[2] - 1].SetActive(true);

@@ -139,10 +139,10 @@ public class networkServerUIbuttons : MonoBehaviour {
             vehicle = "Bathtub1";
 
             if (powerUP == 1)
-                GameObject.Find("Player " + player + "/" + vehicle).GetComponent<PortalPowerUp>().CreatePortals();
+                GameObject.Find("Player " + player).GetComponent<PortalPowerUp>().CreatePortals();
 
             else if (powerUP == 2)
-                GameObject.Find("Player " + player + "/" + vehicle).GetComponent<Immunity>().activateImmunity();
+                GameObject.Find("Player " + player).GetComponent<Immunity>().activateImmunity();
 
     }
 

@@ -87,7 +87,7 @@ public class PortalPowerUp : MonoBehaviour {
               
 
 
-                transform.Translate(0, 8 + fallingDistance, 0);
+                transform.Translate(0, 8 + fallingDistance, teleportDistance);
                 stats.fallingThroughTeleport = false;
 
            
@@ -115,9 +115,9 @@ public class PortalPowerUp : MonoBehaviour {
 
    public void ManageInput() {
 
-        //if (Input.GetButtonDown("Fire1"))
-        //{
-        //    CreatePortals();
-        //}
+        if (Input.GetButtonDown("Fire1"))
+        {
+            CreatePortals();
+        }
     }
 }
