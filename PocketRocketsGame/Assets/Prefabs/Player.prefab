@@ -1460,7 +1460,7 @@ Transform:
   m_GameObject: {fileID: 1552874854982296}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -3, y: 0.5, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children: []
   m_Father: {fileID: 4191457741907792}
   m_RootOrder: 3
@@ -1856,7 +1856,7 @@ Transform:
   m_GameObject: {fileID: 1413325581957204}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0.5, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 4574855228329656}
   m_Father: {fileID: 4191457741907792}
@@ -1935,7 +1935,7 @@ Transform:
   m_GameObject: {fileID: 1910638423948054}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 4547824514221646}
   - {fileID: 4953545260334800}
@@ -1964,7 +1964,7 @@ Transform:
   m_GameObject: {fileID: 1079225965242240}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 3, y: 0.5, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children: []
   m_Father: {fileID: 4191457741907792}
   m_RootOrder: 4
@@ -2098,7 +2098,7 @@ Transform:
   m_GameObject: {fileID: 1406610934634922}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0.25, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 4459455335568852}
   - {fileID: 4664198466569300}
@@ -4325,7 +4325,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 2}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: 0.5, z: 0}
 --- !u!65 &65361275800366916
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -4337,7 +4337,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 2}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 1, y: 1, z: 1}
 --- !u!82 &82346016506400866
 AudioSource:
   m_ObjectHideFlags: 1
@@ -4722,7 +4722,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 205235aa2d96b2347a59401efa737cdc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  thrust: 5
 --- !u!114 &114883029041356432
 MonoBehaviour:
   m_ObjectHideFlags: 1

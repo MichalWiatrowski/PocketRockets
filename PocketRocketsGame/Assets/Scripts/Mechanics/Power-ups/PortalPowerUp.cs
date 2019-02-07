@@ -37,7 +37,7 @@ public class PortalPowerUp : MonoBehaviour {
         trackValues = new Vector3(tempPlane.transform.position.x, tempPlane.transform.position.y, tempPlane.transform.position.z);
 
     }
-
+    
    public void CreatePortals()
     {
         if (isPortalActive == false)
@@ -115,9 +115,9 @@ public class PortalPowerUp : MonoBehaviour {
 
    public void ManageInput() {
 
-        if (Input.GetButtonDown("Fire1"))
-        {
-            CreatePortals();
-        }
+        //if (Input.GetButtonDown("Fire1"))
+        //{
+        //    CreatePortals();
+        //}
     }
 }

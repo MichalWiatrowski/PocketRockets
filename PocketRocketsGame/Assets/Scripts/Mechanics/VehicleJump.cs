@@ -5,8 +5,8 @@ using UnityEngine;
 public class VehicleJump : MonoBehaviour {
 
     // Use this for initialization
-    [SerializeField]
-    private float thrust = 15;
+    //[SerializeField]
+    private float thrust = 10;
     private Rigidbody rb;
     private PlayerStats stats;
 
