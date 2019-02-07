@@ -58,7 +58,7 @@ public class NessieBubble : MonoBehaviour {
     void Update () {
         ManageInput();
 
-        bubbleRiseHeight = trackValues.y + maxBubbleHeight; ;
+        bubbleRiseHeight = trackValues.y + maxBubbleHeight;
 
         if (stats.trappedInBubble == true) {
 

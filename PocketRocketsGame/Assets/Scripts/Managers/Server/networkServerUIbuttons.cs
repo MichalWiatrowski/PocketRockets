@@ -46,6 +46,7 @@ public class networkServerUIbuttons : MonoBehaviour {
         NetworkServer.RegisterHandler(134, serverReceiveRemovePoints);
         NetworkServer.RegisterHandler(135, serverReceiveName);
         NetworkServer.RegisterHandler(136, serverReceiveVehicleAbility);
+        NetworkServer.RegisterHandler(137, serverReceiveJump);
 
         if (!gameStart)
         {
@@ -145,10 +146,16 @@ public class networkServerUIbuttons : MonoBehaviour {
 
     }
 
+    void activateJump(int playerID)
+    {
+        Debug.Log(playerID);
+        GameObject.Find("Player " + playerID).GetComponent<VehicleJump>().Jump();
+    }
+
     void activateVehicleAbility(int playerID, int playerTarget, int gateNo, int abilityChoice) {
 
         switch (abilityChoice) {
-            case 1:
+            case 1://Jelly Tot
                 //Vehicle ability acvivation goes here for Cup Cake Tank
                 GameObject.Find("Gate" + gateNo + "/JellyTotTrap" + playerTarget).GetComponent<BoxCollider>().enabled = true;
                 GameObject.Find("Gate" + gateNo + "/JellyTotTrap" + playerTarget).GetComponent<MeshRenderer>().enabled = true;
@@ -156,21 +163,28 @@ public class networkServerUIbuttons : MonoBehaviour {
                 Debug.Log("Fire Tank!!");
 
                 break;
-            case 2:
-                GameObject.Find("Player " + playerTarget).GetComponentInChildren<NessieBubble>().CreateBubble(GameObject.Find("Gate" + gateNo), playerTarget);
+            case 2://Bubble
+                //GameObject.Find("Player " + playerTarget).GetComponentInChildren<NessieBubble>().CreateBubble(GameObject.Find("Gate" + gateNo), playerTarget);
+                GameObject.Find("Gate" + gateNo + "/NessieBubbleTrap" + playerTarget).GetComponent<SphereCollider>().enabled = true;
+                GameObject.Find("Gate" + gateNo + "/NessieBubbleTrap" + playerTarget).GetComponent<MeshRenderer>().enabled = true;
                 Debug.Log("Create Bubble");
                 break;
-            case 3:
+            case 3://Speed Boost
                 //Vehicle ability acvivation goes here for Bath Tub
                 GameObject.Find("Player " + playerID).GetComponent<SpeedBoost>().activateSpeedBoost();
                 break;
-            case 4:
+            case 4://Immunity
                 //Vehicle ability acvivation goes here for Crown
                 GameObject.Find("Player " + playerID).GetComponent<Immunity>().activateImmunity();
                 break;
 
         }
     }
+
+
+
+
+
     ////////////////////////////////////Network Messages
 
     void sendStartGame()
@@ -255,6 +269,12 @@ public class networkServerUIbuttons : MonoBehaviour {
         string[] vehicleAbility_ = msg.value.Split('|');
         activateVehicleAbility(System.Convert.ToInt16(vehicleAbility_[0]), System.Convert.ToInt16(vehicleAbility_[1]), System.Convert.ToInt16(vehicleAbility_[2]), System.Convert.ToInt16(vehicleAbility_[3]));
     }
+
+    private void serverReceiveJump(NetworkMessage message)
+    {
+        activateJump(message.ReadMessage<IntegerMessage>().value);
+    }
+
 
     private void serverReceiveReadyUp(NetworkMessage message)
     {

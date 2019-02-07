@@ -27,12 +27,12 @@ public class PortalPowerUp : MonoBehaviour {
 
     void Awake() {
 
-        portalSource = GetComponent<AudioSource>();
+       // portalSource = GetComponent<AudioSource>();
     }
     void Start()
     {
-        stats = GetComponentInParent<PlayerStats>();
-        transf = GetComponentInParent<Transform>();
+        stats = GetComponent<PlayerStats>();
+        transf = GetComponent<Transform>();
         GameObject tempPlane = GameObject.Find("Plane");
         trackValues = new Vector3(tempPlane.transform.position.x, tempPlane.transform.position.y, tempPlane.transform.position.z);
 
@@ -56,7 +56,7 @@ public class PortalPowerUp : MonoBehaviour {
     {
         if (collided.CompareTag("Portal"))
         {
-            portalSource.PlayOneShot(teleportClip);
+            //portalSource.PlayOneShot(teleportClip);
             Debug.Log("Collided with portal");
             stats.fallingThroughTeleport = true;
         }
@@ -83,7 +83,7 @@ public class PortalPowerUp : MonoBehaviour {
             {
 
                 
-                transform.parent.gameObject.transform.Translate(0, 0, 25); //good parent child relation
+               // transform.parent.gameObject.transform.Translate(0, 0, 25); //good parent child relation
               
 
 
@@ -115,9 +115,9 @@ public class PortalPowerUp : MonoBehaviour {
 
    public void ManageInput() {
 
-        if (Input.GetButtonDown("Fire1"))
-        {
-            CreatePortals();
-        }
+        //if (Input.GetButtonDown("Fire1"))
+        //{
+        //    CreatePortals();
+        //}
     }
 }
