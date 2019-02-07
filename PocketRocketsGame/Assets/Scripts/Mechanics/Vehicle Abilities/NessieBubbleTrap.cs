@@ -20,8 +20,8 @@ public class NessieBubbleTrap : MonoBehaviour {
     // Use this for initialization
     void Start () {
         
-        GetComponent<MeshRenderer>().enabled = true;
-        GetComponent<SphereCollider>().enabled = true;
+        GetComponent<MeshRenderer>().enabled = false;
+        GetComponent<SphereCollider>().enabled = false;
         bubbleRiseHeight = transform.position.y + maxBubbleHeight;
     }
 	
