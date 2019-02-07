@@ -660,7 +660,7 @@ GameObject:
   - component: {fileID: 114731179037650882}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1361,8 +1361,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4688284526027714}
-  - {fileID: 4589548685149954}
   - {fileID: 4901376150132544}
+  - {fileID: 4589548685149954}
   - {fileID: 4239807905227482}
   - {fileID: 4725588247550832}
   m_Father: {fileID: 0}
@@ -1860,7 +1860,7 @@ Transform:
   m_Children:
   - {fileID: 4574855228329656}
   m_Father: {fileID: 4191457741907792}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4649975166740528
 Transform:
@@ -2119,7 +2119,7 @@ Transform:
   - {fileID: 4794816829095026}
   - {fileID: 4160999139074060}
   m_Father: {fileID: 4191457741907792}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4907865643593052
 Transform:
@@ -4747,7 +4747,6 @@ MonoBehaviour:
   currentLane: 0
   playerName: 
   speed: 30
-  defaultSpeed: 30
   slowDownFactor: 1
   immune: 0
   points: 600

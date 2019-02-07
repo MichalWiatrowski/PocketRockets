@@ -34,12 +34,14 @@ public class serverGameManager : MonoBehaviour {
         gameSource.PlayOneShot(raceStartClip, 0.1f);
         amountOfPlayers = networkServerUIbuttons.networkServer.getPlayerAmount();
         
-
+        //enable vehicles
         if (amountOfPlayers == 2)
         {
             player1.transform.GetChild(networkServerUIbuttons.networkServer.playerVehicles[0] - 1).gameObject.SetActive(true);
             player2.transform.GetChild(networkServerUIbuttons.networkServer.playerVehicles[1] - 1).gameObject.SetActive(true);
 
+            player1.GetComponent<PlayerStats>().setUpPlayerStats(networkServerUIbuttons.networkServer.playerVehicles[0] - 1);
+            player2.GetComponent<PlayerStats>().setUpPlayerStats(networkServerUIbuttons.networkServer.playerVehicles[1] - 1);
             //player1Vehicles[networkServerUIbuttons.networkServer.playerVehicles[0] - 1].SetActive(true);
             //player2Vehicles[networkServerUIbuttons.networkServer.playerVehicles[1] - 1].SetActive(true);
         }
@@ -48,7 +50,11 @@ public class serverGameManager : MonoBehaviour {
             player1.transform.GetChild(networkServerUIbuttons.networkServer.playerVehicles[0] - 1).gameObject.SetActive(true);
             player2.transform.GetChild(networkServerUIbuttons.networkServer.playerVehicles[1] - 1).gameObject.SetActive(true);
             player3.transform.GetChild(networkServerUIbuttons.networkServer.playerVehicles[2] - 1).gameObject.SetActive(true);
-  
+
+            player1.GetComponent<PlayerStats>().setUpPlayerStats(networkServerUIbuttons.networkServer.playerVehicles[0] - 1);
+            player2.GetComponent<PlayerStats>().setUpPlayerStats(networkServerUIbuttons.networkServer.playerVehicles[1] - 1);
+            player3.GetComponent<PlayerStats>().setUpPlayerStats(networkServerUIbuttons.networkServer.playerVehicles[2] - 1);
+          
             //player1Vehicles[networkServerUIbuttons.networkServer.playerVehicles[0] - 1].SetActive(true);
             //player2Vehicles[networkServerUIbuttons.networkServer.playerVehicles[1] - 1].SetActive(true);
             //player3Vehicles[networkServerUIbuttons.networkServer.playerVehicles[2] - 1].SetActive(true);
@@ -59,11 +65,21 @@ public class serverGameManager : MonoBehaviour {
             player2.transform.GetChild(networkServerUIbuttons.networkServer.playerVehicles[1] - 1).gameObject.SetActive(true);
             player3.transform.GetChild(networkServerUIbuttons.networkServer.playerVehicles[2] - 1).gameObject.SetActive(true);
             player4.transform.GetChild(networkServerUIbuttons.networkServer.playerVehicles[3] - 1).gameObject.SetActive(true);
+
+
+            player1.GetComponent<PlayerStats>().setUpPlayerStats(networkServerUIbuttons.networkServer.playerVehicles[0] - 1);
+            player2.GetComponent<PlayerStats>().setUpPlayerStats(networkServerUIbuttons.networkServer.playerVehicles[1] - 1);
+            player3.GetComponent<PlayerStats>().setUpPlayerStats(networkServerUIbuttons.networkServer.playerVehicles[2] - 1);
+            player4.GetComponent<PlayerStats>().setUpPlayerStats(networkServerUIbuttons.networkServer.playerVehicles[3] - 1);
+
+
             //player1Vehicles[networkServerUIbuttons.networkServer.playerVehicles[0] - 1].SetActive(true);
             //player2Vehicles[networkServerUIbuttons.networkServer.playerVehicles[1] - 1].SetActive(true);
             //player3Vehicles[networkServerUIbuttons.networkServer.playerVehicles[2] - 1].SetActive(true);
             //player4Vehicles[networkServerUIbuttons.networkServer.playerVehicles[3] - 1].SetActive(true);
         }
+
+        //setup position ui
         for (int i = 4; i > amountOfPlayers; i--)
         {
             GameObject.Find("Player_" + i).SetActive(false);
@@ -71,7 +87,11 @@ public class serverGameManager : MonoBehaviour {
         }
 
 
+        //setup camera
         mainCamera.GetComponent<Follow>().cars.RemoveRange(amountOfPlayers, mainCamera.GetComponent<Follow>().cars.Count - amountOfPlayers);
+
+
+
 
 
 

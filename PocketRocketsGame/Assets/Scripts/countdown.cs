@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
 
-public class Countdown : MonoBehaviour {
+public class countdown : MonoBehaviour {
 
     public List<Transform> players;
     public Text countText;
@@ -43,7 +43,7 @@ public class Countdown : MonoBehaviour {
 
         for (int x = 0; x < players.Count; x++)
         {
-            stats[x].speed = stats[x].defaultSpeed;
+            stats[x].speed = stats[x].getDefaultSpeed();
         }
         
     }

@@ -10,7 +10,7 @@ public class PlayerStats : MonoBehaviour {
     // player stat variables
     public string playerName;
     public float speed = 4f;
-    public float defaultSpeed = 30.0f;
+    private float defaultSpeed = 30.0f;
     public float slowDownFactor = 1.0f;
     public bool immune = false;
     public int points = 600;
@@ -28,10 +28,13 @@ public class PlayerStats : MonoBehaviour {
     {
         //defaultSpeed = speed;
     }
+    private void Update()
+    {
+
+    }
 
     public bool getFallingThroughTeleport()
     {
-
         return fallingThroughTeleport;
     }
 
@@ -40,11 +43,31 @@ public class PlayerStats : MonoBehaviour {
         slowDownFactor = slowDown;
     }
 
-    private void Update()
+    public float getDefaultSpeed()
     {
-        
+        return defaultSpeed;
     }
 
+    //Set up default values based on vehicles
+    public void setUpPlayerStats(int vehicleID)
+    {
+        if (vehicleID == 0)
+        {
+            defaultSpeed = 30;
+        }
+        else if (vehicleID == 1)
+        {
+            defaultSpeed = 35;
+        }
+        else if (vehicleID == 2)
+        {
+            defaultSpeed = 40;
+        }
+    }
+
+
+    /// Colidders
+ 
     void OnTriggerEnter(Collider collided)
     {
         if (collided.CompareTag("Plane"))

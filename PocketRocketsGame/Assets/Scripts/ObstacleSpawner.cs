@@ -53,7 +53,7 @@ public class ObstacleSpawner : MonoBehaviour {
     {
         PlayerStats stats = player.GetComponentInParent<PlayerStats>();
 
-        stats.speed = stats.defaultSpeed;
+        stats.speed = stats.getDefaultSpeed();
     }
 
     // Update is called once per frame

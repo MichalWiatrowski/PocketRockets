@@ -56,7 +56,7 @@ public class FreezeTrap : MonoBehaviour {
         yield return new WaitForSeconds(iceTime);
 
         // return the player to normal speed
-        stats.speed = stats.defaultSpeed;
+        stats.speed = stats.getDefaultSpeed();
 
         // clean up
         Destroy(gameObject);
