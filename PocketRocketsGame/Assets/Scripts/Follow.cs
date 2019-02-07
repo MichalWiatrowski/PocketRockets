@@ -42,7 +42,7 @@ public class Follow : MonoBehaviour {
 	}
 
 	// Update is called once per frame
-	void LateUpdate () {
+	void FixedUpdate () {
         switch (camNum)
         {
             case camNumber.Back :
@@ -66,7 +66,7 @@ public class Follow : MonoBehaviour {
         //MoveCam();
         //Zoom();
 	}
-
+  
     void MoveCam()
     {
         if (players == 2)

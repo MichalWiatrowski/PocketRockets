@@ -6,7 +6,7 @@ public class VehicleJump : MonoBehaviour {
 
     // Use this for initialization
     [SerializeField]
-    private float thrust = 5;
+    private float thrust = 15;
     private Rigidbody rb;
     private PlayerStats stats;
 

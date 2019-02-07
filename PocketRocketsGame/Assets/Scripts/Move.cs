@@ -44,8 +44,12 @@ public class Move : MonoBehaviour {
         // movement
         if (stats.fallingThroughTeleport == false && stats.trappedInBubble == false && stats.inTheAir == false)
         {
-
-            transform.Translate(0f, 0f, (stats.speed / stats.slowDownFactor) * Time.deltaTime);
+            GetComponent<Rigidbody>().velocity = new Vector3(0, GetComponent<Rigidbody>().velocity.y, ((stats.speed / stats.slowDownFactor)));
+            //transform.Translate(0f, 0f, (stats.speed / stats.slowDownFactor) * Time.deltaTime);
+        }
+        else
+        {
+            GetComponent<Rigidbody>().velocity = new Vector3(0, GetComponent<Rigidbody>().velocity.y, 0);
         }
 
         if (lerp)
