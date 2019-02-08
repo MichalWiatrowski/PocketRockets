@@ -8,7 +8,7 @@ using UnityStandardAssets.CrossPlatformInput;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class networkServerUIbuttons : MonoBehaviour {
+public class networkServerUIbuttons : NetworkDiscovery {
 
     public static networkServerUIbuttons networkServer;
     public AudioClip tankFireClip;
@@ -29,13 +29,9 @@ public class networkServerUIbuttons : MonoBehaviour {
     // Use this for initialization
     void Start()
     {
-       
+        //Allows the app to run while in the background/minimised
+        Application.runInBackground = true;
 
-    }
-
-    //this will load the first scene of the game "Menu"
-    void Awake()
-    {
         networkSource = GetComponent<AudioSource>();
         //register any necessary handlers
         NetworkServer.RegisterHandler(130, serverReceiveActivateTrap);
@@ -56,18 +52,33 @@ public class networkServerUIbuttons : MonoBehaviour {
             gameStart = true;
 
         }
+
     }
 
     public void hostServer()
     {
+        //Create config file for the network server
         ConnectionConfig config = new ConnectionConfig();
         config.AddChannel(QosType.ReliableSequenced);
         config.AddChannel(QosType.Unreliable);
         NetworkServer.Configure(config, 4);
+
+      
+
+
+
+
         //start listening on the inputted port number
         NetworkServer.Listen(System.Convert.ToInt32(GameObject.Find("Canvas/mainMenuPanel/portNumber").GetComponent<InputField>().text));
-      
-       
+
+        //The data that will be broadcasted to other network discvovery scripts
+        broadcastData = GameObject.Find("Canvas/mainMenuPanel/portNumber").GetComponent<InputField>().text;
+        //Init the network discovery
+        Initialize();
+
+        //Start this script as a server
+        StartAsServer();
+
     }
     public void hostGame()
     {
