@@ -22,8 +22,8 @@ public class networkClientUIbuttons : MonoBehaviour {
     bool testing = true;
 
 
-    string testIP = "193.60.172.11";
-    int testPortNum = 61472;
+    string testIP = "192.168.0.20";
+    int testPortNum = 50005;
 
 
    

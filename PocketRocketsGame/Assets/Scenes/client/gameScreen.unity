@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311953, g: 0.38074014, b: 0.3587274, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311926, g: 0.38073996, b: 0.35872698, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1743,6 +1743,23 @@ MonoBehaviour:
   playerSelectionPanel4: {fileID: 1363095084}
   playerSelectionPanel3: {fileID: 36374943}
   gateSelectionPanel: {fileID: 571373837}
+  switchButtonL: {fileID: 518488354}
+  switchButtonR: {fileID: 1854699042}
+  abilityButton: {fileID: 1629581690}
+  powerupButton: {fileID: 2096714927}
+  trapButton: {fileID: 1535597915}
+  jumpButton: {fileID: 1550223330}
+  switchCooldown1st: 7
+  switchCooldown2nd: 5
+  switchCooldown3rd: 4
+  switchCooldown4th: 3
+  jumpCooldown1st: 7
+  jumpCooldown2nd: 5
+  jumpCooldown3rd: 4
+  jumpCooldown4th: 3
+  abilityCooldown: 4
+  trapCooldown: 10
+  powerupCooldown: 6
   gateButton1: {fileID: 256965752}
   gateButton2: {fileID: 1786896569}
   gateButton3: {fileID: 1823084980}
