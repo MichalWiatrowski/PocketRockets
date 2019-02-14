@@ -321,6 +321,7 @@ public class clientGameManager : MonoBehaviour {
     {
         if (points >= trapCost[trapChoice - 1])
         {
+            abiltyType = 5;
             switch (amountOfPlayers)
             {
                 case 2:
@@ -334,7 +335,7 @@ public class clientGameManager : MonoBehaviour {
                     break;
             }
             mainSelectionPanel.SetActive(false);
-            abiltyType = 5;
+          
         }
     }
 
