@@ -15,13 +15,16 @@ public class PlayerStats : MonoBehaviour {
     public bool immune = false;
     public int points = 600;
     public int position = 1;
+    public int nextGate = 1;
+    public bool switchLeft = true;
+    public bool switchRight = true;
+  
+
+    //Getters and Seer done
     public bool winner = false;
     public bool fallingThroughTeleport = false;
     public bool trappedInBubble = false;
     public bool inTheAir = false;
-    public int nextGate = 1;
-    public bool switchLeft = true;
-    public bool switchRight = true;
     public bool jumping = false;
 
     void Start()
@@ -29,11 +32,18 @@ public class PlayerStats : MonoBehaviour {
         //defaultSpeed = speed;
     }
 
-    public bool getFallingThroughTeleport()
-    {
+    
+    public bool getFallingThroughTeleport(){ return fallingThroughTeleport;}
+    public void setFallingThroughTeleport(bool flag) { fallingThroughTeleport = flag;}
+    public bool getInTheAir(){ return inTheAir;}
+    public void setInTheAir(bool flag) { inTheAir = flag;}
+    public bool getTrappedInBubble() { return trappedInBubble; }
+    public void setTrappedInBubble(bool flag) { trappedInBubble = flag; }
+    public bool isWinner() { return winner; }
+    public void getIsWinner(bool flag) { winner = flag; }
+    public bool getJumping() { return jumping; }
+    public void setJumping(bool flag) { jumping = flag; }
 
-        return fallingThroughTeleport;
-    }
 
     public void setSlowDownFactor(float slowDown)
     {
