@@ -230,6 +230,20 @@ public class networkServerUIbuttons : MonoBehaviour {
             playerID = 4;
     }
 
+    public void sendPosition()
+    {
+        int[] playerPositions = new int[playerID];
+        StringMessage msg = new StringMessage();
+
+        for (int x = 1; x < playerID + 1; x++)
+        {
+            playerPositions[x - 1] = GameObject.Find("Player " + x).GetComponent<PlayerStats>().position;
+            msg.value += playerPositions[x - 1] + "|";
+        }
+
+        NetworkServer.SendToAll(124, msg);
+    }
+
     public void sendPoints_Gate()
     {
         

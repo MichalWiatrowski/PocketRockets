@@ -6,39 +6,45 @@ using UnityEngine;
 public class PositionTracker : MonoBehaviour
 {
 
-    public List<GameObject> players;
-    GameObject[] playersSorted = new GameObject[4];
+    public List<Transform> players;
     int playerCount = 4;
     float timer = 0;
+    int tempVal = 1;
 
-    //// Use this for initialization
-    //void Start()
-    //{
+    // Use this for initialization
+    void Start()
+    {
 
-    //}
+    }
 
-    //// Update is called once per frame
-    //void Update()
-    //{
-    //    timer += Time.deltaTime;
+    // Update is called once per frame
+    void Update()
+    {
+        timer += Time.deltaTime;
 
-    //    if (timer > 3)
-    //    {
-    //        SortPositions();
-    //    }
-    //}
+        if (timer > 2)
+        {
+            FindPositions();
+            networkServerUIbuttons.networkServer.sendPosition();
+        }
+    }
 
-    //void SortPositions()
-    //{
-    //    playersSorted = playersSorted.OrderBy(players => players.transform.position.z).ToArray();
-
-    //    for (int x = 0; x < playerCount; x++)
-    //    {
-    //        playersSorted[x].GetComponent<PlayerStats>().position = playerCount - x;
-    //    }
-
-    //    timer = 0;
-    //}
+    void FindPositions()
+    {
+        for (int x = 0; x < playerCount; x++)
+        {
+            PlayerStats stats = players[x].GetComponent<PlayerStats>();
+            tempVal = 1;
+            for (int y = 0; y < playerCount; y++)
+            {
+                if (players[x].transform.position.z < players[y].transform.position.z)
+                {
+                    tempVal++;
+                }
+            }
+            stats.position = tempVal;
+        }
+    }
 }
 
 

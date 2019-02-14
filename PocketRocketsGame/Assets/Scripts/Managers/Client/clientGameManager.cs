@@ -38,7 +38,7 @@ public class clientGameManager : MonoBehaviour {
     public int nextGate;
     int amountOfPlayers = 0;
     int playerID = 0;
-    int playerPos = 1;
+    int position = 1;
     int playerIDchoice = 0;
     int points = 0;
     string name;
@@ -92,6 +92,7 @@ public class clientGameManager : MonoBehaviour {
     {
         points = networkClientUIbuttons.networkClient.getPoints();
         nextGate = networkClientUIbuttons.networkClient.getNextGate();
+        position = networkClientUIbuttons.networkClient.getPosition();
         networkClientUIbuttons.networkClient.sendName();
         setUpGateButtons();
     }
@@ -452,7 +453,7 @@ public class clientGameManager : MonoBehaviour {
         onJumpCooldown = true;
 
         // runs cooldown for first position
-        if (playerPos == 1)
+        if (position == 1)
         {
             // loops through for each second in the cooldown
             for (int x = 0; x < jumpCooldown1st; x++)
@@ -465,7 +466,7 @@ public class clientGameManager : MonoBehaviour {
         }
 
         // runs cooldown for second position
-        if (playerPos == 2)
+        if (position == 2)
         {
             for (int x = 0; x < jumpCooldown2nd; x++)
             {
@@ -476,7 +477,7 @@ public class clientGameManager : MonoBehaviour {
         }
 
         // runs cooldown for third position
-        if (playerPos == 3)
+        if (position == 3)
         {
             for (int x = 0; x < jumpCooldown3rd; x++)
             {
@@ -487,7 +488,7 @@ public class clientGameManager : MonoBehaviour {
         }
 
         // runs cooldown for fourth position
-        if (playerPos == 4)
+        if (position == 4)
         {
             for (int x = 0; x < jumpCooldown4th; x++)
             {
@@ -507,7 +508,7 @@ public class clientGameManager : MonoBehaviour {
         onSwitchCooldown = true;
 
         // runs cooldown for first position
-        if (playerPos == 1)
+        if (position == 1)
         {
             // loops through for each second in the cooldown
             for (int x = 0; x < switchCooldown1st; x++)
@@ -521,7 +522,7 @@ public class clientGameManager : MonoBehaviour {
         }
 
         // runs cooldown for second position
-        if (playerPos == 2)
+        if (position == 2)
         {
             for (int x = 0; x < switchCooldown2nd; x++)
             {
@@ -533,7 +534,7 @@ public class clientGameManager : MonoBehaviour {
         }
 
         // runs cooldown for third position
-        if (playerPos == 3)
+        if (position == 3)
         {
             for (int x = 0; x < switchCooldown3rd; x++)
             {
@@ -545,7 +546,7 @@ public class clientGameManager : MonoBehaviour {
         }
 
         // runs cooldown for fourth position
-        if (playerPos == 4)
+        if (position == 4)
         {
             for (int x = 0; x < switchCooldown4th; x++)
             {
