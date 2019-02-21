@@ -8,7 +8,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 
-public class networkClientUIbuttons : MonoBehaviour {
+public class networkClientUIbuttons : NetworkDiscovery {
 
     NetworkClient client;
     public static networkClientUIbuttons networkClient;
@@ -19,14 +19,16 @@ public class networkClientUIbuttons : MonoBehaviour {
 
     bool gameStart = false; //keeps track of when to start the game
 
+    
+ 
     bool testing = false;
 
+    string testIP = "193.60.0.1";
+    int testPortNum = 56743;
 
-    string testIP = "193.60.172.124";
-    int testPortNum = 55204;
+    string discoveryIP = "";
+    int discoveryPort = 0;
 
-
-   
     public int vehicleChoice = 0;
     
 
@@ -61,6 +63,12 @@ public class networkClientUIbuttons : MonoBehaviour {
             SceneManager.LoadSceneAsync(sceneIndex, LoadSceneMode.Additive);
             gameStart = true;
         }
+
+        //Init network discovery
+        Initialize();
+        //Start network discovery as client to search for local servers
+        StartAsClient();
+
     }
 
     public int getPlayerID()
@@ -81,6 +89,7 @@ public class networkClientUIbuttons : MonoBehaviour {
         return nextGate;
     }
 
+   
     public void joinGame()
     {
         //create a config, add qos channels, then configure the client to have 1 max connection; the server
@@ -92,20 +101,38 @@ public class networkClientUIbuttons : MonoBehaviour {
         //connect to the server
         if (testing == false)
         {
-            Connect(GameObject.Find("Canvas/joinGamePanel/IPaddress").GetComponent<InputField>().text, System.Convert.ToInt32(GameObject.Find("Canvas/joinGamePanel/portNumber").GetComponent<InputField>().text));
+            //Connect through network discovery
+            Connect(discoveryIP, discoveryPort);
+
+            //Connect by inputting ip and port into input boxes
+            //Connect(GameObject.Find("Canvas/joinGamePanel/IPaddress").GetComponent<InputField>().text, System.Convert.ToInt32(GameObject.Find("Canvas/joinGamePanel/portNumber").GetComponent<InputField>().text));
         }
-        else {
-            Connect(testIP, testPortNum);
+        else
+        {
+           Connect(testIP, testPortNum);
         }
 
       
     }
-   
+
+    public override void OnReceivedBroadcast(string fromAddress, string data)
+    {
+        Debug.Log("Server Found with IP: " + fromAddress + " and port " + data);
+        //string[] lol = fromAddress.Split(':');
+       // discoveryIP = lol[1];
+        discoveryIP = fromAddress;
+
+        discoveryIP.Remove(0,7);
+        discoveryPort = System.Convert.ToInt32(data);
+    }
 
 
     void OnGUI()
     {
-        GUI.Box(new Rect(10, Screen.height - 100, 100, 160), "Debug Info");
+        GUI.Box(new Rect(10, Screen.height - 140, 100, 200), "Debug Info");
+
+        GUI.Label(new Rect(20, Screen.height - 120, 600, 20), "DiscoveryIP:" + discoveryIP);
+        GUI.Label(new Rect(20, Screen.height - 100, 300, 20), "DiscoveryPort:" + discoveryPort);
 
         GUI.Label(new Rect(20, Screen.height - 80, 100, 20), "Status:" + client.isConnected);
         GUI.Label(new Rect(20, Screen.height - 60, 100, 20), "PlayerID:" + playerID);
@@ -290,7 +317,4 @@ public class networkClientUIbuttons : MonoBehaviour {
         SceneManager.UnloadSceneAsync(scene);
     }
 
-    // Update is called once per frame
-    void Update () {
-    }
 }
