@@ -42,14 +42,16 @@ public class NessieBubble : MonoBehaviour {
         if (collided.CompareTag("Bubble"))
         {
             Debug.Log("Collided with Bubble");
-            stats.trappedInBubble = true;
+            //stats.trappedInBubble = true;
+            stats.setTrappedInBubble(true);
             
         }
          if (collided.CompareTag("Plane"))
         {
             Debug.Log("Collided with Plane");
 
-            stats.inTheAir = false;
+            //stats.inTheAir = false;
+            stats.setInTheAir(false);
         }
 
     }
@@ -60,18 +62,19 @@ public class NessieBubble : MonoBehaviour {
 
         bubbleRiseHeight = trackValues.y + maxBubbleHeight;
 
-        if (stats.trappedInBubble == true) {
+        if (stats.getTrappedInBubble() == true) {
 
             GetComponent<BoxCollider>().enabled = false;
             GetComponent<Rigidbody>().useGravity = false;
             transform.Translate(0, bubbleRiseSpeed * Time.deltaTime, 0);
             //bubbleInstance.GetComponent<Transform>().transform.Translate(0, bubbleRiseSpeed * Time.deltaTime, 0);
             bubbleInstance.transform.Translate(0, bubbleRiseSpeed * Time.deltaTime, 0);
-            stats.inTheAir = true;
+            stats.setInTheAir(true);
 
             if (transform.position.y >= maxBubbleHeight) {
 
-                stats.trappedInBubble = false;
+                //stats.trappedInBubble = false;
+                stats.setTrappedInBubble(false);
                 GetComponent<BoxCollider>().enabled = true;
                 GetComponent<Rigidbody>().useGravity = true;
                 bubbleInstance.GetComponent<MeshRenderer>().enabled = false;

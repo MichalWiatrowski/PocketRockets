@@ -24,8 +24,11 @@ public class networkClientUIbuttons : NetworkDiscovery {
     bool testing = true;
 
 
+
     string testIP = "193.60.172.11";
     int testPortNum = 54412;
+
+
 
 
 

@@ -19,7 +19,7 @@ public class Position : MonoBehaviour {
     // draw players position on screen
     void Update()
     {
-        position.text = stats.position.ToString();
+        position.text = stats.getPosition().ToString();
         
     }
 }

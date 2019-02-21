@@ -42,7 +42,7 @@ public class PositionTracker : MonoBehaviour
                     tempVal++;
                 }
             }
-            stats.position = tempVal;
+            stats.setPosition(tempVal);
         }
     }
 }

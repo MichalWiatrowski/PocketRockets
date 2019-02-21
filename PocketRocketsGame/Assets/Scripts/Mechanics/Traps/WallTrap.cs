@@ -20,12 +20,12 @@ public class WallTrap : MonoBehaviour {
     void OnTriggerEnter(Collider collided)
     {
         // check to see if trap is colliding with a vehicle
-        if (collided.CompareTag("Player") && collided.GetComponent<PlayerStats>().immune == false)
+        if (collided.CompareTag("Player") && collided.GetComponent<PlayerStats>().getImmune() == false)
         {
             crashSource.PlayOneShot(crash, 0.2f);
             // run the trap function when collided with vehicle
             PlayerStats stats = collided.GetComponent<PlayerStats>();
-            stats.speed = 0f;
+            stats.setSpeed(0.0f);
             StartCoroutine( Trap(stats));
         }
     }
@@ -46,7 +46,7 @@ public class WallTrap : MonoBehaviour {
         yield return new WaitForSeconds(wallTime);
 
         // return the player to normal speed
-        stats.speed = stats.getDefaultSpeed();
+        stats.resetSpeed();
 
         // clean up
         Destroy(gameObject);

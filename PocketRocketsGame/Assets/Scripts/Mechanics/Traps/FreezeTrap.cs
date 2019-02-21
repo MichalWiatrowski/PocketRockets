@@ -33,7 +33,7 @@ public class FreezeTrap : MonoBehaviour {
     void OnTriggerEnter(Collider collided)
     {
         // check to see if trap is colliding with a vehicle
-       if (collided.CompareTag("Player") && collided.GetComponent<PlayerStats>().immune == false)
+       if (collided.CompareTag("Player") && collided.GetComponent<PlayerStats>().getImmune() == false)
         {
             // run the trap function when collided with vehicle
             blizzSource.PlayOneShot(blizzard, 0.1f);
@@ -50,13 +50,13 @@ public class FreezeTrap : MonoBehaviour {
         // get information from move script on the vehicles and apply the freeze and reveal the ice
         GetComponent<MeshRenderer>().enabled = true;
         PlayerStats stats = player.GetComponent<PlayerStats>();
-        stats.speed = 0.0f;
+        stats.setSpeed(0.0f);
 
         // how long the player is stoped for
         yield return new WaitForSeconds(iceTime);
 
         // return the player to normal speed
-        stats.speed = stats.getDefaultSpeed();
+        stats.resetSpeed();
 
         // clean up
         Destroy(gameObject);

@@ -20,21 +20,21 @@ public class Move : MonoBehaviour {
 
     public void MoveLeft()
     {
-        if (stats.switchLeft && stats.currentLane != 3)
+        if (stats.getSwitchLeft() && stats.getCurrentLane() != 3)
         {
-            newPos = new Vector3(stats.LANE[stats.currentLane + 1], transform.position.y, transform.position.z);
+            newPos = new Vector3(stats.LANE[stats.getCurrentLane() + 1], transform.position.y, transform.position.z);
             lerp = true;
-            stats.currentLane++;
+            stats.setCurrentLane(stats.getCurrentLane() + 1);
         }
     }
 
     public void MoveRight()
     {
-        if (stats.switchRight && stats.currentLane != 0)
+        if (stats.getSwitchRight() && stats.getCurrentLane() != 0)
         {
-            newPos = new Vector3(stats.LANE[stats.currentLane - 1], transform.position.y, transform.position.z);
+            newPos = new Vector3(stats.LANE[stats.getCurrentLane() - 1], transform.position.y, transform.position.z);
             lerp = true;
-            stats.currentLane--;
+            stats.setCurrentLane(stats.getCurrentLane() - 1);
         }
     }
 
@@ -42,9 +42,9 @@ public class Move : MonoBehaviour {
     void Update () {
 
         // movement
-        if (stats.fallingThroughTeleport == false && stats.trappedInBubble == false && stats.inTheAir == false)
+        if (stats.getFallingThroughTeleport() == false && stats.getTrappedInBubble() == false && stats.getInTheAir() == false)
         {
-            GetComponent<Rigidbody>().velocity = new Vector3(0, GetComponent<Rigidbody>().velocity.y, ((stats.speed / stats.slowDownFactor)));
+            GetComponent<Rigidbody>().velocity = new Vector3(0, GetComponent<Rigidbody>().velocity.y, ((stats.getSpeed() / stats.getSlowDownFactor())));
             //transform.Translate(0f, 0f, (stats.speed / stats.slowDownFactor) * Time.deltaTime);
         }
         else
