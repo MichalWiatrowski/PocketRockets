@@ -28,7 +28,7 @@ public class Winner : MonoBehaviour {
         for (int x = 0; x < players.Count; x++)
         {
 
-            stats = players[x].GetComponentParent<PlayerStats>();
+            stats = players[x].GetComponent<PlayerStats>();
             if (stats.isWinner() == true)
 
             {
