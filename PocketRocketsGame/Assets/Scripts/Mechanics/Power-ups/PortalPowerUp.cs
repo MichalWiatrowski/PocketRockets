@@ -5,7 +5,7 @@ using UnityEngine;
 public class PortalPowerUp : MonoBehaviour {
 
 
-    public float teleportDistance = 25.0f;
+    private float teleportDistance = 40;
     public AudioClip teleportClip;
 
     private float fallingSpeed = -0.35f;

@@ -17,7 +17,7 @@ public class FinishGate : MonoBehaviour {
     void OnTriggerEnter(Collider collided)
     {
         // check to see if trap is colliding with a vehicle
-        if (collided.CompareTag("Car"))
+        if (collided.CompareTag("Player"))
         {
             winningSource.PlayOneShot(winningClip, 0.1f);
             FindWinner(collided);
@@ -26,7 +26,7 @@ public class FinishGate : MonoBehaviour {
 
     void FindWinner(Collider player)
     {
-        PlayerStats stats = player.GetComponentInParent<PlayerStats>();
+        PlayerStats stats = player.GetComponent<PlayerStats>();
 
         if (count == 1)
         {
