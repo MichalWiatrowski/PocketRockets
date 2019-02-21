@@ -370,22 +370,7 @@ public class clientGameManager : MonoBehaviour {
         if (!onJumpCooldown)
         {
 
-            abiltyType = 5;
-            switch (amountOfPlayers)
-            {
-                case 2:
-                    moveToGateSelection();
-                    break;
-                case 3:
-                    playerSelectionPanel3.SetActive(true);
-                    break;
-                case 4:
-                    playerSelectionPanel4.SetActive(true);
-                    break;
-            }
-            mainSelectionPanel.SetActive(false);
-          
-
+  
             networkClientUIbuttons.networkClient.sendJump();
             StartCoroutine(StartJumpCooldown());
 

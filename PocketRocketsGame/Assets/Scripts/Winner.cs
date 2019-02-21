@@ -27,7 +27,7 @@ public class Winner : MonoBehaviour {
     {
         for (int x = 0; x < players.Count; x++)
         {
-            stats = players[x].GetComponentInParent<PlayerStats>();
+            stats = players[x].GetComponent<PlayerStats>();
             if (stats.winner == true)
             {
                 winner.fontSize = 70;

@@ -21,11 +21,11 @@ public class networkClientUIbuttons : NetworkDiscovery {
 
     
  
-    bool testing = false;
+    bool testing = true;
 
 
-    string testIP = "193.60.0.1";
-    int testPortNum = 56743;
+    string testIP = "193.60.172.11";
+    int testPortNum = 54412;
 
 
 
@@ -61,6 +61,7 @@ public class networkClientUIbuttons : NetworkDiscovery {
         client.RegisterHandler(122, clientReceivePoints);
         client.RegisterHandler(123, clientReceiveNextGate);
         client.RegisterHandler(124, clientReceivePosition);
+        client.RegisterHandler(125, clientReceiveRestartGame);
 
         if (!gameStart)
         {
@@ -286,6 +287,20 @@ public class networkClientUIbuttons : NetworkDiscovery {
 
         SceneManager.LoadSceneAsync(2, LoadSceneMode.Additive);
         UnloadScene(1);
+    }
+
+    private void clientReceiveRestartGame(NetworkMessage message)
+    {
+        IntegerMessage msg = new IntegerMessage();
+        msg = message.ReadMessage<IntegerMessage>();
+        amountOfPlayers = msg.value;
+
+        sceneIndex = 1;
+
+        //menuIndex = 2;
+
+        SceneManager.LoadSceneAsync(1, LoadSceneMode.Additive);
+        UnloadScene(2);
     }
 
     private void clientReceivePosition(NetworkMessage message)

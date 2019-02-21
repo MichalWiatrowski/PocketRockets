@@ -20,9 +20,17 @@ public class serverMenuManager : MonoBehaviour {
     void Start()
     {
         menuSource.PlayOneShot(menuMusic);
-        mainMenuPanel.SetActive(true);
-        preGamePanel.SetActive(false);
-
+        if (networkServerUIbuttons.networkServer.getPlayerAmount() > 0)
+        {
+            preGamePanel.SetActive(true);
+            mainMenuPanel.SetActive(false);
+        }
+        else
+        {
+            mainMenuPanel.SetActive(true);
+            preGamePanel.SetActive(false);
+        }
+      
     }
 	
 	// Update is called once per frame

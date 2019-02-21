@@ -16,7 +16,7 @@ public class networkServerUIbuttons : NetworkDiscovery {
     
     private AudioSource networkSource;
 
-    int sceneIndex = 1;
+    public int sceneIndex = 1;
     bool gameStart = false;
 
     private int playerID = 0;
@@ -99,6 +99,15 @@ public class networkServerUIbuttons : NetworkDiscovery {
             }
    
         }   
+    }
+
+    public void restartGame()
+    {
+        sceneIndex = 1;
+        SceneManager.LoadSceneAsync(sceneIndex, LoadSceneMode.Additive);
+        UnloadScene(2);
+
+        sendRestartGame(); // send a message to all cients which will change their scene
     }
 
     public int getPlayerAmount()
@@ -219,6 +228,16 @@ public class networkServerUIbuttons : NetworkDiscovery {
             msg.value = playerID;
             NetworkServer.SendToAll(120, msg);
         }
+    }
+
+    void sendRestartGame()
+    {
+        //if (NetworkServer.active)
+        //{
+            IntegerMessage msg = new IntegerMessage();
+            msg.value = playerID;
+            NetworkServer.SendToAll(125, msg);
+       // }
     }
 
     private void serverReceiveRequestID(NetworkMessage message)

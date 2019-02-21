@@ -34,6 +34,18 @@ public class FinishGate : MonoBehaviour {
 
             winText.gameObject.SetActive(true);
         }
+        else if (count == networkServerUIbuttons.networkServer.getPlayerAmount())
+        {
+            StartCoroutine(RestartGame());
+        }
         count++;
+
+        int test = networkServerUIbuttons.networkServer.getPlayerAmount();
+    }
+
+    IEnumerator RestartGame()
+    {
+        yield return new WaitForSeconds(2);
+        networkServerUIbuttons.networkServer.restartGame();
     }
 }
