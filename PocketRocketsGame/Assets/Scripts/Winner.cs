@@ -28,10 +28,11 @@ public class Winner : MonoBehaviour {
         for (int x = 0; x < players.Count; x++)
         {
             stats = players[x].GetComponentInParent<PlayerStats>();
-            if (stats.winner == true)
+            if (stats.isWinner() == true)
             {
+                
                 winner.fontSize = 70;
-                winner.text = stats.playerName + " Wins!";
+                winner.text = stats.getPlayerName() + " Wins!";
             }
         }
     }

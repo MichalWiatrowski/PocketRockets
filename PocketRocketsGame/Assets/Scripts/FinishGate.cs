@@ -30,7 +30,7 @@ public class FinishGate : MonoBehaviour {
 
         if (count == 1)
         {
-            stats.winner = true;
+            stats.setWinner(true);
 
             winText.gameObject.SetActive(true);
         }

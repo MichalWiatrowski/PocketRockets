@@ -248,7 +248,7 @@ public class networkServerUIbuttons : NetworkDiscovery {
 
         for (int x = 1; x < playerID + 1; x++)
         {
-            playerPositions[x - 1] = GameObject.Find("Player " + x).GetComponent<PlayerStats>().position;
+            playerPositions[x - 1] = GameObject.Find("Player " + x).GetComponent<PlayerStats>().getPosition();
             msg.value += playerPositions[x - 1] + "|";
         }
 
@@ -266,14 +266,14 @@ public class networkServerUIbuttons : NetworkDiscovery {
         // get the points for each player
         for (int x = 1; x < playerID + 1; x++)
         {
-            playerPoints[x - 1] = GameObject.Find("Player " + x).GetComponent<PlayerStats>().points;
-            msg.value += playerPoints[x - 1] + "|";
+            //playerPoints[x - 1] = GameObject.Find("Player " + x).GetComponent<PlayerStats>().points;
+           // msg.value += playerPoints[x - 1] + "|";
         }
 
         for (int x = 1; x < playerID + 1; x++)
         {
-            nextGate[x - 1] = GameObject.Find("Player " + x).GetComponent<PlayerStats>().nextGate;
-            gateMsg.value += nextGate[x - 1] + "|";
+            //nextGate[x - 1] = GameObject.Find("Player " + x).GetComponent<PlayerStats>().nextGate;
+            //gateMsg.value += nextGate[x - 1] + "|";
         }
 
             NetworkServer.SendToAll(122, msg);
@@ -340,7 +340,7 @@ public class networkServerUIbuttons : NetworkDiscovery {
 
         string[] playerID_name = msg.value.Split('|');
         PlayerStats stats = GameObject.Find("Player " + System.Convert.ToInt16(playerID_name[0])).GetComponent<PlayerStats>();
-        stats.playerName = playerID_name[1];
+        stats.setPlayerName(playerID_name[1]);
     }
 
   
@@ -353,7 +353,7 @@ public class networkServerUIbuttons : NetworkDiscovery {
         string[] playerID_ammount = msg.value.Split('|');
 
         PlayerStats stats = GameObject.Find("Player " + System.Convert.ToInt16(playerID_ammount[0])).GetComponent<PlayerStats>();
-        stats.points -= System.Convert.ToInt16(playerID_ammount[1]);
+        //stats.points -= System.Convert.ToInt16(playerID_ammount[1]);
     }
 
    

@@ -14,6 +14,6 @@ public class Name : MonoBehaviour {
 
     void Update()
     {
-        name.text = player.GetComponent<PlayerStats>().playerName;
+        name.text = player.GetComponent<PlayerStats>().getPlayerName();
     }
 }

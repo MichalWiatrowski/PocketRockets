@@ -43,12 +43,13 @@ public class SpeedBoost : MonoBehaviour {
     IEnumerator speedBoost()
     {
         PlayerStats stats = GetComponent<PlayerStats>();
-        stats.speed *= boost;
+        stats.setSpeed(stats.getSpeed() * boost);
 
         yield return new WaitForSeconds(boostTime);
 
         // return vehicle speed to normal after boost
-        stats.speed /= boost;
+        //stats.speed /= boost;
+        stats.setSpeed(stats.getSpeed() / boost);
 
     }
 }

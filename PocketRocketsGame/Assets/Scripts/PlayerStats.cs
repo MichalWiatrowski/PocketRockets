@@ -5,27 +5,27 @@ using UnityEngine;
 public class PlayerStats : MonoBehaviour {
 
     public readonly int[] LANE = { -7, -10, -13, -16 };
-    public int currentLane;
+    private int currentLane;
 
     // player stat variables
-    public string playerName;
-
-    public float speed = 4f;
+    private string playerName;
+    [SerializeField]
+    private float speed = 30f;
     private float defaultSpeed = 30.0f;
-    public float slowDownFactor = 1.0f;
+    private float slowDownFactor = 1.0f;
 
-    public int points = 600;
-    public int position = 1;
-    public int nextGate = 1;
+    private int points = 600;
+    private int position = 1;
+    private int nextGate = 1;
 
-    public bool winner = false;
-    public bool fallingThroughTeleport = false;
-    public bool trappedInBubble = false;
-    public bool inTheAir = false;
-    public bool jumping = false;
-    public bool switchLeft = true;
-    public bool switchRight = true;
-    public bool immune = false;
+    private bool winner = false;
+    private bool fallingThroughTeleport = false;
+    private bool trappedInBubble = false;
+    private bool inTheAir = false;
+    private bool jumping = false;
+    private bool switchLeft = true;
+    private bool switchRight = true;
+    private bool immune = false;
 
     void Start()
     {
@@ -43,7 +43,7 @@ public class PlayerStats : MonoBehaviour {
     public void setTrappedInBubble(bool flag) { trappedInBubble = flag; }
     //Is Winner
     public bool isWinner() { return winner; }
-    public void getIsWinner(bool flag) { winner = flag; }
+    public void setWinner(bool flag) { winner = flag; }
     //Jumping
     public bool getJumping() { return jumping; }
     public void setJumping(bool flag) { jumping = flag; }
@@ -127,6 +127,8 @@ public class PlayerStats : MonoBehaviour {
     //Speed
     public float getSpeed() { return speed; }
     public void setSpeed(float spd) { speed = spd; }
+
+    public void resetSpeed() {speed = defaultSpeed; }
 
     public void incrementSpeed(float incrementValue)
     {

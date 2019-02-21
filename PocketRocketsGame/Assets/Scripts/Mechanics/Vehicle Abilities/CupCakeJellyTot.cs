@@ -17,7 +17,7 @@ public class CupCakeJellyTot : MonoBehaviour {
     void OnTriggerEnter(Collider collided)
     {
 
-        if (collided.CompareTag("Player") && collided.GetComponentInParent<PlayerStats>().immune == false)
+        if (collided.CompareTag("Player") && collided.GetComponentInParent<PlayerStats>().getImmune() == false)
         {
             collided.GetComponent<PlayerStats>().setSlowDownFactor(slow);
             

@@ -15,7 +15,7 @@ public class LaneSwitch : MonoBehaviour {
     {
         if (box.CompareTag("Player"))
         {
-            stats.switchLeft = false;
+            stats.setSwitchLeft(false);
         }
     }
 
@@ -23,7 +23,7 @@ public class LaneSwitch : MonoBehaviour {
     {
         if (box.CompareTag("Player"))
         {
-            stats.switchLeft = true;
+            stats.setSwitchLeft(true);
         }
     }
 }

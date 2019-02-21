@@ -21,11 +21,11 @@ public class Immunity : MonoBehaviour {
     IEnumerator activate()
     {
         PlayerStats stats = GetComponent<PlayerStats>();
-        stats.immune = true;
+        stats.setImmune(true);
 
         yield return new WaitForSeconds(immunityTime);
 
-        stats.immune = false;
+        stats.setImmune(false);
 
        
     }
@@ -34,7 +34,7 @@ public class Immunity : MonoBehaviour {
     IEnumerator Pickup(Collider player) {
         //Get Car Immunity information from immune script and apply immunity.
         PlayerStats stats = player.GetComponent<PlayerStats>();
-        stats.immune = true;
+        stats.setImmune(true);
 
         // "removes" the power up before the timer
         GetComponent<MeshRenderer>().enabled = false;
@@ -43,7 +43,7 @@ public class Immunity : MonoBehaviour {
         yield return new WaitForSeconds(immunityTime);
 
         //Return immunity to normal.
-        stats.immune = false;
+        stats.setImmune(false);
 
         // Clean up
         Destroy(gameObject);

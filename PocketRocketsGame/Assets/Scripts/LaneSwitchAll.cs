@@ -32,7 +32,7 @@ public class LaneSwitchAll : MonoBehaviour {
             randLane = Random.Range(0, 4 - x);
             move[x].newPos = new Vector3(stats[x].LANE[lanes[randLane]], players[x].position.y, players[x].position.z);
             move[x].lerp = true;
-            stats[x].currentLane = lanes[randLane];
+            stats[x].setCurrentLane(lanes[randLane]);
             lanes.RemoveAt(randLane);
             players[x].GetComponent<BoxCollider>().enabled = false;
             players[x].GetComponent<Rigidbody>().useGravity = false;

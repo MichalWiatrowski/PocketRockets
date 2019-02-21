@@ -8,7 +8,7 @@ public class PortalPowerUp : MonoBehaviour {
     private float teleportDistance = 40;
     public AudioClip teleportClip;
 
-    private float fallingSpeed = -0.35f;
+    private float fallingSpeed = -5.0f;
     private float fallingDistance = 2.0f;
     private PlayerStats stats;
     private Transform transf;
@@ -58,7 +58,7 @@ public class PortalPowerUp : MonoBehaviour {
         {
             //portalSource.PlayOneShot(teleportClip);
             Debug.Log("Collided with portal");
-            stats.fallingThroughTeleport = true;
+            stats.setFallingThroughTeleport(true);
         }
 
     }
@@ -73,7 +73,7 @@ public class PortalPowerUp : MonoBehaviour {
         
         fallDistanceUnderTrack = trackValues.y - fallingDistance;
 
-        if (stats.fallingThroughTeleport == true)
+        if (stats.getFallingThroughTeleport() == true)
         {
             transform.Translate(0, fallingSpeed * Time.deltaTime, 0);
            
@@ -88,7 +88,7 @@ public class PortalPowerUp : MonoBehaviour {
 
 
                 transform.Translate(0, 8 + fallingDistance, teleportDistance);
-                stats.fallingThroughTeleport = false;
+                stats.setFallingThroughTeleport(false);
 
            
                 GetComponent<BoxCollider>().enabled = true;

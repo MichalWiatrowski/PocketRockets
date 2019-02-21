@@ -29,7 +29,7 @@ public class NessieBubbleTrap : MonoBehaviour {
 	void Update () {
 
         if (bubbleCollision == true) {
-            if (stats.trappedInBubble == true)
+            if (stats.getTrappedInBubble() == true)
             {
                 tempCar.transform.Translate(0, bubbleRiseSpeed * Time.deltaTime, 0);
 
@@ -38,13 +38,13 @@ public class NessieBubbleTrap : MonoBehaviour {
                 tempCar.GetComponent<BoxCollider>().enabled = false;
                 tempCar.GetComponent<Rigidbody>().useGravity = false;
                // tempCar.transform.Translate(0, bubbleRiseSpeed * Time.deltaTime, 0);
-                stats.inTheAir = true;
+                stats.setInTheAir(true);
                 //Move Bubble
                 transform.Translate(0, (bubbleRiseSpeed * Time.deltaTime), 0);
 
                 if (tempCar.transform.position.y >= maxBubbleHeight)
                 {
-                    stats.trappedInBubble = false;
+                    stats.setTrappedInBubble(false);
                     tempCar.GetComponent<BoxCollider>().enabled = true;
                     tempCar.GetComponent<Rigidbody>().useGravity = true;
 
@@ -69,7 +69,7 @@ public class NessieBubbleTrap : MonoBehaviour {
                 tempCar = collided.gameObject;
                 stats = collided.GetComponent<PlayerStats>();
                 Debug.Log("Collided with Bubble");
-                stats.trappedInBubble = true;
+                stats.setTrappedInBubble(true);
             }
         }
         //if (collided.CompareTag("Plane"))
