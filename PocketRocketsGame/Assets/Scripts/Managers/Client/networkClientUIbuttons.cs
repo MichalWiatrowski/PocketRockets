@@ -23,8 +23,11 @@ public class networkClientUIbuttons : NetworkDiscovery {
  
     bool testing = false;
 
+
     string testIP = "193.60.0.1";
     int testPortNum = 56743;
+
+
 
     string discoveryIP = "";
     int discoveryPort = 0;
@@ -40,6 +43,7 @@ public class networkClientUIbuttons : NetworkDiscovery {
     private int playerID = 0; //keeps the ID of the clients player ID on the server e.g. Player 1 or 2 etc (Set to two for testing nessies ability)
     private int amountOfPlayers = 0; //keeps the track of how many players there are in the game
     private int points = 0;
+    private int position = 0;
     private int nextGate = 1;
 
     //this will load the first scene of the mobile side of the game "Menu"
@@ -56,6 +60,7 @@ public class networkClientUIbuttons : NetworkDiscovery {
         client.RegisterHandler(121, clientReceivePlayerID);
         client.RegisterHandler(122, clientReceivePoints);
         client.RegisterHandler(123, clientReceiveNextGate);
+        client.RegisterHandler(124, clientReceivePosition);
 
         if (!gameStart)
         {
@@ -82,6 +87,11 @@ public class networkClientUIbuttons : NetworkDiscovery {
     public int getPoints()
     {
         return points;
+    }
+
+    public int getPosition()
+    {
+        return position;
     }
 
     public int getNextGate()
@@ -214,6 +224,13 @@ public class networkClientUIbuttons : NetworkDiscovery {
         client.Send(136, msg);
     }
 
+    public void sendLaneSwitch(string direction)
+    {
+        StringMessage msg = new StringMessage();
+        msg.value = playerID + "|" + direction;
+        client.Send(138, msg);
+    }
+
     public void removePoints(int ammount)
     {
         points -= ammount;
@@ -269,6 +286,18 @@ public class networkClientUIbuttons : NetworkDiscovery {
 
         SceneManager.LoadSceneAsync(2, LoadSceneMode.Additive);
         UnloadScene(1);
+    }
+
+    private void clientReceivePosition(NetworkMessage message)
+    {
+        // get position from server
+        StringMessage msg = new StringMessage();
+        msg.value = message.ReadMessage<StringMessage>().value;
+
+        // split into an array of each players
+        string[] position1_2_3_4 = msg.value.Split('|');
+
+        position = System.Convert.ToInt16(position1_2_3_4[playerID - 1]);
     }
 
     private void clientReceivePoints(NetworkMessage message)

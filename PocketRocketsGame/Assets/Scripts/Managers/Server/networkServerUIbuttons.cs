@@ -43,6 +43,7 @@ public class networkServerUIbuttons : NetworkDiscovery {
         NetworkServer.RegisterHandler(135, serverReceiveName);
         NetworkServer.RegisterHandler(136, serverReceiveVehicleAbility);
         NetworkServer.RegisterHandler(137, serverReceiveJump);
+        NetworkServer.RegisterHandler(138, serverReceiveLaneSwitch);
 
         if (!gameStart)
         {
@@ -163,6 +164,18 @@ public class networkServerUIbuttons : NetworkDiscovery {
         GameObject.Find("Player " + playerID).GetComponent<VehicleJump>().Jump();
     }
 
+    void activateLaneSwitch(int playerID, string direction)
+    {
+        if (direction == "Left")
+        {
+            GameObject.Find("Player " + playerID).GetComponent<Move>().MoveLeft();
+        }
+        else if (direction == "Right")
+        {
+            GameObject.Find("Player " + playerID).GetComponent<Move>().MoveRight();
+        }
+    }
+
     void activateVehicleAbility(int playerID, int playerTarget, int gateNo, int abilityChoice) {
 
         switch (abilityChoice) {
@@ -228,6 +241,20 @@ public class networkServerUIbuttons : NetworkDiscovery {
             playerID = 4;
     }
 
+    public void sendPosition()
+    {
+        int[] playerPositions = new int[playerID];
+        StringMessage msg = new StringMessage();
+
+        for (int x = 1; x < playerID + 1; x++)
+        {
+            playerPositions[x - 1] = GameObject.Find("Player " + x).GetComponent<PlayerStats>().position;
+            msg.value += playerPositions[x - 1] + "|";
+        }
+
+        NetworkServer.SendToAll(124, msg);
+    }
+
     public void sendPoints_Gate()
     {
         
@@ -286,6 +313,13 @@ public class networkServerUIbuttons : NetworkDiscovery {
         activateJump(message.ReadMessage<IntegerMessage>().value);
     }
 
+    private void serverReceiveLaneSwitch(NetworkMessage message)
+    {
+        StringMessage msg = new StringMessage();
+        msg.value = message.ReadMessage<StringMessage>().value;
+        string[] laneSwitch = msg.value.Split('|');
+        activateLaneSwitch(System.Convert.ToInt16(laneSwitch[0]), laneSwitch[1]);
+    }
 
     private void serverReceiveReadyUp(NetworkMessage message)
     {

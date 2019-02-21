@@ -27,7 +27,7 @@ public class ObstacleSpawner : MonoBehaviour {
     void OnTriggerEnter(Collider collided)
     {
         // check to see if gate is colliding with a vehicle
-        if (collided.CompareTag("Car"))
+        if (collided.CompareTag("Player"))
         {
             ReduceSpeed(collided);
         }
@@ -36,7 +36,7 @@ public class ObstacleSpawner : MonoBehaviour {
     void OnTriggerExit(Collider collided)
     {
         // check to see if gate is colliding with a vehicle
-        if (collided.CompareTag("Car"))
+        if (collided.CompareTag("Player"))
         {
             IncreaseSpeed(collided);
         }
