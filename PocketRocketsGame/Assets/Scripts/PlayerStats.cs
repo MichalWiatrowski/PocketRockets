@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerStats : MonoBehaviour {
 
     public readonly int[] LANE = { -7, -10, -13, -16 };
-    private int currentLane;
+    private int currentLane = 0;
 
     // player stat variables
     private string playerName;
@@ -30,6 +30,7 @@ public class PlayerStats : MonoBehaviour {
     void Start()
     {
         //defaultSpeed = speed;
+        currentLane = networkServerUIbuttons.networkServer.playerID - 1;
     }
     
     //Falling Through Teleport

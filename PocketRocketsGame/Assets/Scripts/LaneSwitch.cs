@@ -17,6 +17,7 @@ public class LaneSwitch : MonoBehaviour {
         {
             stats.setSwitchLeft(false);
         }
+    
     }
 
     void OnTriggerExit(Collider box)

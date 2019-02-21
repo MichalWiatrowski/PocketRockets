@@ -6,14 +6,16 @@ public class Gate : MonoBehaviour
 {
     int count = 1;
 
-    //void OnTriggerEnter(Collider collided)
-    //{
-    //    // check to see if gate is colliding with a vehicle
-    //    if (collided.CompareTag("Car"))
-    //    {
-    //        StartCoroutine(GatePoints(collided));
-    //    }
-    //}
+    void OnTriggerEnter(Collider collided)
+    {
+        // check to see if gate is colliding with a vehicle
+        if (collided.CompareTag("Player"))
+        {
+            PlayerStats stats = collided.GetComponentInParent<PlayerStats>();
+            stats.setNextGate(stats.getNextGate() + 1);
+            networkServerUIbuttons.networkServer.sendPoints_Gate();
+        }
+    }
 
     //IEnumerator GatePoints(Collider player)
     //{

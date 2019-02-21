@@ -19,7 +19,7 @@ public class networkServerUIbuttons : NetworkDiscovery {
     public int sceneIndex = 1;
     bool gameStart = false;
 
-    private int playerID = 0;
+    public int playerID = 0;
 
     List<bool> readyClients = new List<bool>(); //for storing client ready states
   
@@ -291,11 +291,11 @@ public class networkServerUIbuttons : NetworkDiscovery {
 
         for (int x = 1; x < playerID + 1; x++)
         {
-            //nextGate[x - 1] = GameObject.Find("Player " + x).GetComponent<PlayerStats>().nextGate;
-            //gateMsg.value += nextGate[x - 1] + "|";
+            nextGate[x - 1] = GameObject.Find("Player " + x).GetComponent<PlayerStats>().getNextGate();
+            gateMsg.value += nextGate[x - 1] + "|";
         }
 
-            NetworkServer.SendToAll(122, msg);
+            //NetworkServer.SendToAll(122, msg);
         NetworkServer.SendToAll(123, gateMsg);
     }
 

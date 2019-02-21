@@ -86,6 +86,11 @@ public class serverGameManager : MonoBehaviour {
             //player4Vehicles[networkServerUIbuttons.networkServer.playerVehicles[3] - 1].SetActive(true);
         }
 
+        for (int x = 1; x < 5; x++)
+        {
+            GameObject.Find("Player " + x).GetComponent<PlayerStats>().setCurrentLane(x - 1);
+        }
+
         //setup position ui
         for (int i = 4; i > amountOfPlayers; i--)
         {
