@@ -21,7 +21,7 @@ public class networkServerUIbuttons : NetworkDiscovery {
 
     public int playerID = 0;
 
-    List<bool> readyClients = new List<bool>(); //for storing client ready states
+    public List<bool> readyClients = new List<bool>(); //for storing client ready states
   
     public List<int> playerVehicles = new List<int>();
 

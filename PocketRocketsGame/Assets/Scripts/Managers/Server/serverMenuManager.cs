@@ -39,7 +39,8 @@ public class serverMenuManager : MonoBehaviour {
             mainMenuPanel.SetActive(true);
             preGamePanelRemake.SetActive(false);
         }
-      
+        networkServerUIbuttons.networkServer.readyClients.ForEach(x => x = false);
+        
     }
 	
 	
