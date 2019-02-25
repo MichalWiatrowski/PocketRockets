@@ -79,7 +79,7 @@ public class PortalPowerUp : MonoBehaviour {
            
 
             GetComponent<BoxCollider>().enabled = false;
-            if (transform.position.y <= fallDistanceUnderTrack)
+            if (transform.position.y <= fallDistanceUnderTrack - 2)
             {
 
                 

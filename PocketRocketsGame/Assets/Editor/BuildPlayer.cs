@@ -16,7 +16,7 @@ public class BuildPlayer : MonoBehaviour {
         //Create build options
         BuildPlayerOptions buildPlayerOptions = new BuildPlayerOptions();
         //select scenes for the build
-        buildPlayerOptions.scenes = new[] { "Assets/Scenes/server/serverManagerScene.unity", "Assets/Scenes/server/menu.unity", "Assets/Scenes/server/track.unity" };
+        buildPlayerOptions.scenes = new[] { "Assets/Scenes/server/serverManagerScene.unity", "Assets/Scenes/server/menu.unity", "Assets/Scenes/server/trackNEW.unity" };
         buildPlayerOptions.locationPathName = path + "/server.exe";
         buildPlayerOptions.target = BuildTarget.StandaloneWindows;
         buildPlayerOptions.options = BuildOptions.None;

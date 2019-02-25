@@ -43,6 +43,7 @@ public class Follow : MonoBehaviour {
 
 	// Update is called once per frame
 	void FixedUpdate () {
+        players = cars.Count;
         switch (camNum)
         {
             case camNumber.Back :
