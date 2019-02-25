@@ -39,8 +39,12 @@ public class serverMenuManager : MonoBehaviour {
             mainMenuPanel.SetActive(true);
             preGamePanelRemake.SetActive(false);
         }
-        networkServerUIbuttons.networkServer.readyClients.ForEach(x => x = false);
-        
+       // networkServerUIbuttons.networkServer.readyClients.ForEach(x => x = false);
+       
+        for (int i = 0; i < networkServerUIbuttons.networkServer.readyClients.Count; i++)
+        {
+            networkServerUIbuttons.networkServer.readyClients[i] = false;
+        }
     }
 	
 	
@@ -64,65 +68,23 @@ public class serverMenuManager : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-       
-        if (networkServerUIbuttons.networkServer.getReadyClient()[0] == false)
+     
+       for (int i = 1; i < networkServerUIbuttons.networkServer.readyClients.Count + 1; i++)
         {
-            player1panel.GetComponent<Image>().color = Color.red;
-            player1panel.GetComponentInChildren<Text>().text = "Not Ready";
+            if (networkServerUIbuttons.networkServer.getReadyClient()[i - 1] == false)
+            {
+                GameObject.Find("Canvas/preGamePanelRemake/player" + i + "Panel").GetComponent<Image>().color = Color.red;
+                GameObject.Find("Canvas/preGamePanelRemake/player" + i + "Panel").GetComponentInChildren<Text>().text = "Not Ready";
+            }
+            else
+            {
+                GameObject.Find("Canvas/preGamePanelRemake/player" + i + "Panel").GetComponent<Image>().color = Color.green;
+                GameObject.Find("Canvas/preGamePanelRemake/player" + i + "Panel").GetComponentInChildren<Text>().text = "Ready";
+            }
         }
-        else
-        {
-            player1panel.GetComponent<Image>().color = Color.green;
-            player1panel.GetComponentInChildren<Text>().text = "Ready";
-        }
+        
 
-        ///////////////////////
-        if (networkServerUIbuttons.networkServer.getReadyClient()[1] == false)
-        {
-            player2panel.GetComponent<Image>().color = Color.red;
-            player2panel.GetComponentInChildren<Text>().text = "Not Ready";
-        }
-        else
-        {
-            player2panel.GetComponent<Image>().color = Color.green;
-            player2panel.GetComponentInChildren<Text>().text = "Ready";
-        }
-        ////////////////////////
-        if (networkServerUIbuttons.networkServer.getReadyClient()[2] == false)
-        {
-            player3panel.GetComponent<Image>().color = Color.red;
-            player3panel.GetComponentInChildren<Text>().text = "Not Ready";
-        }
-        else
-        {
-            player3panel.GetComponent<Image>().color = Color.green;
-            player3panel.GetComponentInChildren<Text>().text = "Ready";
-        }
-        ///////////////////////
-        if (networkServerUIbuttons.networkServer.getReadyClient()[3] == false)
-        {
-            player4panel.GetComponent<Image>().color = Color.red;
-            player4panel.GetComponentInChildren<Text>().text = "Not Ready";
-        }
-        else
-        {
-            player4panel.GetComponent<Image>().color = Color.green;
-            player4panel.GetComponentInChildren<Text>().text = "Ready";
-        }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+      
 
     }
 
