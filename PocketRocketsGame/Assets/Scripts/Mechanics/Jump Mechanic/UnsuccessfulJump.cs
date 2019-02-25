@@ -6,9 +6,12 @@ public class UnsuccessfulJump : MonoBehaviour {
 
     [SerializeField]
     private float speedDecrementValue = 1.0f;
+    private ParticleSystem sparks;
 
-    public GameObject smoke;
-
+    void Awake() {
+        sparks = GetComponent<ParticleSystem>();
+        
+    }
     // Use this for initialization
     void Start () {
 
@@ -26,6 +29,7 @@ public class UnsuccessfulJump : MonoBehaviour {
         if (collided.CompareTag("Player"))
         {
             collided.GetComponent<PlayerStats>().decrementSpeed(speedDecrementValue);
+            sparks.Play();
             Debug.Log("Player Collided with Unsuccessful collider");
         }
     }
