@@ -51,6 +51,16 @@ ModelImporter:
     4300012: Wheel004
     4300014: Axel002
     4300016: Body001
+    6400000: Axel002
+    6400002: Axel1
+    6400004: Body001
+    6400006: Cart
+    6400008: Hemlet
+    6400010: Wheel004
+    6400012: Wheel1
+    6400014: Wheel2
+    6400016: Wheel3
+    2186277476908879412: ImportLogs
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -85,10 +95,10 @@ ModelImporter:
     globalScale: 1
     meshCompression: 0
     addColliders: 0
-    importVisibility: 1
+    importVisibility: 0
     importBlendShapes: 1
-    importCameras: 1
-    importLights: 1
+    importCameras: 0
+    importLights: 0
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1

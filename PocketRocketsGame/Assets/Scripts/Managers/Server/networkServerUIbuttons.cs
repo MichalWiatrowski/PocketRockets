@@ -64,10 +64,10 @@ public class networkServerUIbuttons : NetworkDiscovery {
         config.AddChannel(QosType.Unreliable);
         NetworkServer.Configure(config, 4);
 
-      
 
 
 
+        
 
         //start listening on the inputted port number
         NetworkServer.Listen(System.Convert.ToInt32(GameObject.Find("Canvas/mainMenuPanel/portNumber").GetComponent<InputField>().text));
@@ -80,6 +80,14 @@ public class networkServerUIbuttons : NetworkDiscovery {
         //Start this script as a server
         StartAsServer();
 
+    }
+    public void hostGameRemake()
+    {
+
+    }
+    public List<bool> getReadyClient()
+    {
+        return readyClients;
     }
     public void hostGame()
     {
@@ -379,10 +387,6 @@ public class networkServerUIbuttons : NetworkDiscovery {
 
     // Update is called once per frame
     void Update () {
-        //sendPoints();
-
-       // Debug.Log("Player 1 next gate: " + GameObject.Find("Player 1").GetComponent<PlayerStats>().nextGate);
-       // Debug.Log("Player 3 next gate: " + GameObject.Find("Player 3").GetComponent<PlayerStats>().nextGate);
-      //  Debug.Log("Player 4 next gate: " + GameObject.Find("Player 4").GetComponent<PlayerStats>().nextGate);
+       
     }
 }

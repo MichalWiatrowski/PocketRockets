@@ -10,7 +10,7 @@ using UnityEngine.SceneManagement;
 
 public class networkClientUIbuttons : NetworkDiscovery {
 
-    NetworkClient client;
+    public NetworkClient client;
     public static networkClientUIbuttons networkClient;
 
 
@@ -19,14 +19,14 @@ public class networkClientUIbuttons : NetworkDiscovery {
 
     bool gameStart = false; //keeps track of when to start the game
 
-    
- 
+
+
     bool testing = true;
 
 
 
-    string testIP = "193.60.172.11";
-    int testPortNum = 54412;
+    string testIP = "192.168.0.10";
+    int testPortNum = 2500;
 
 
 
