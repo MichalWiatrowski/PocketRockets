@@ -16,6 +16,8 @@ public class LaneSwitchRight : MonoBehaviour {
         if (box.CompareTag("Player"))
         {
             stats.setSwitchRight(false);
+            stats.setSwitchStateR(0);
+            networkServerUIbuttons.networkServer.sendSwitchStateR();
         }
     }
 
@@ -24,6 +26,8 @@ public class LaneSwitchRight : MonoBehaviour {
         if (box.CompareTag("Player"))
         {
             stats.setSwitchRight(true);
+            stats.setSwitchStateR(1);
+            networkServerUIbuttons.networkServer.sendSwitchStateR();
         }
     }
 }

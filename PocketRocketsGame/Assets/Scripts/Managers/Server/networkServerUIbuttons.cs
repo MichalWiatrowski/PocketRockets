@@ -253,6 +253,33 @@ public class networkServerUIbuttons : NetworkDiscovery {
         sendPlayerID();
     }
 
+    public void sendSwitchStateL()
+    {
+        string[] switchStates = new string[playerID];
+        StringMessage msg = new StringMessage();
+
+        for (int x = 1; x < playerID + 1; x++)
+        {
+            switchStates[x - 1] = GameObject.Find("Player " + x).GetComponent<PlayerStats>().getSwitchStateL().ToString();
+            msg.value += switchStates[x - 1] + "|";
+        }
+
+        NetworkServer.SendToAll(126, msg);
+    }
+
+    public void sendSwitchStateR()
+    {
+        string[] switchStates = new string[playerID];
+        StringMessage msg = new StringMessage();
+
+        for (int x = 1; x < playerID + 1; x++)
+        {
+            switchStates[x - 1] = GameObject.Find("Player " + x).GetComponent<PlayerStats>().getSwitchStateR().ToString();
+            msg.value += switchStates[x - 1] + "|";
+        }
+
+        NetworkServer.SendToAll(127, msg);
+    }
 
     private void sendPlayerID()
     {

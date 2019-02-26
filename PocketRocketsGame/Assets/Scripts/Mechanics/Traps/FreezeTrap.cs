@@ -43,17 +43,28 @@ public class FreezeTrap : MonoBehaviour {
 
     IEnumerator Trap(Collider player)
     {
+        PlayerStats stats = player.GetComponent<PlayerStats>();
+
+        // send switch state to the client
+        stats.setSwitchStateL(0);
+        networkServerUIbuttons.networkServer.sendSwitchStateL();
+        stats.setSwitchStateR(0);
+        networkServerUIbuttons.networkServer.sendSwitchStateR();
 
         // delay for when the car needs to stop 
         yield return new WaitForSeconds(carDelay);
 
         // get information from move script on the vehicles and apply the freeze and reveal the ice
         GetComponent<MeshRenderer>().enabled = true;
-        PlayerStats stats = player.GetComponent<PlayerStats>();
         stats.setSpeed(0.0f);
 
         // how long the player is stoped for
         yield return new WaitForSeconds(iceTime);
+
+        stats.setSwitchStateL(1);
+        networkServerUIbuttons.networkServer.sendSwitchStateL();
+        stats.setSwitchStateR(1);
+        networkServerUIbuttons.networkServer.sendSwitchStateR();
 
         // return the player to normal speed
         stats.resetSpeed();

@@ -949,33 +949,6 @@ Prefab:
       propertyPath: m_Name
       value: Player 2
       objectReference: {fileID: 0}
-    - target: {fileID: 1910638423948054, guid: 1898fe356db3aed499e83a471bda1780, type: 2}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1459783215513326, guid: 1898fe356db3aed499e83a471bda1780, type: 2}
-      propertyPath: m_TagString
-      value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 1413325581957204, guid: 1898fe356db3aed499e83a471bda1780, type: 2}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114923579337755216, guid: 1898fe356db3aed499e83a471bda1780,
-        type: 2}
-      propertyPath: speed
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 65361275800366916, guid: 1898fe356db3aed499e83a471bda1780,
-        type: 2}
-      propertyPath: m_Center.y
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 65216742468239724, guid: 1898fe356db3aed499e83a471bda1780,
-        type: 2}
-      propertyPath: m_Center.y
-      value: 0.5
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1898fe356db3aed499e83a471bda1780, type: 2}
   m_IsPrefabParent: 0

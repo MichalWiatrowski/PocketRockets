@@ -26,11 +26,15 @@ public class PlayerStats : MonoBehaviour {
     private bool switchLeft = true;
     private bool switchRight = true;
     private bool immune = false;
+    private int switchStateL = 1;
+    private int switchStateR = 1;
+
+    float timer = 0;
 
     void Start()
     {
         //defaultSpeed = speed;
-        currentLane = networkServerUIbuttons.networkServer.playerID - 1;
+        //currentLane = networkServerUIbuttons.networkServer.playerID - 1;
     }
     
     //Falling Through Teleport
@@ -54,6 +58,12 @@ public class PlayerStats : MonoBehaviour {
     //Switch Right
     public bool getSwitchRight() { return switchRight; }
     public void setSwitchRight(bool flag) { switchRight = flag; }
+    //Switch State L
+    public int getSwitchStateL() { return switchStateL; }
+    public void setSwitchStateL(int flag) { switchStateL = flag; }
+    //Switch State R
+    public int getSwitchStateR() { return switchStateR; }
+    public void setSwitchStateR(int flag) { switchStateR = flag; }
     //Immune
     public bool getImmune() { return immune; }
     public void setImmune(bool flag) { immune = flag; }
@@ -105,7 +115,6 @@ public class PlayerStats : MonoBehaviour {
         if (collided.CompareTag("Plane"))
         {
             Debug.Log("Collided with Plane");
-
 
             inTheAir = false;
             GetComponent<Rigidbody>().useGravity = true;

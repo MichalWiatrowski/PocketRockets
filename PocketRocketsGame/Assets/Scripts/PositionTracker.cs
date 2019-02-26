@@ -22,10 +22,11 @@ public class PositionTracker : MonoBehaviour
     {
         timer += Time.deltaTime;
 
-        if (timer > 2)
+        if (timer > 1)
         {
             FindPositions();
             networkServerUIbuttons.networkServer.sendPosition();
+            timer = 0;
         }
     }
 
