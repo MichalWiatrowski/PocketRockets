@@ -973,8 +973,6 @@ Prefab:
       propertyPath: m_Name
       value: Player 2
       objectReference: {fileID: 0}
-<<<<<<< HEAD
-=======
     - target: {fileID: 0}
       propertyPath: m_IsActive
       value: 0
@@ -1046,7 +1044,6 @@ Prefab:
       propertyPath: m_LocalPosition.y
       value: 0
       objectReference: {fileID: 0}
->>>>>>> cbb101c00464879b732ede1ec7f65d82b7cc703c
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1898fe356db3aed499e83a471bda1780, type: 2}
   m_IsPrefabParent: 0
