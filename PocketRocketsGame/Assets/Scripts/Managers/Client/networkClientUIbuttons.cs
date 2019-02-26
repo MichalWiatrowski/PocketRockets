@@ -26,8 +26,14 @@ public class networkClientUIbuttons : NetworkDiscovery {
     int switchStateL = 1;
     int switchStateR = 1;
 
+<<<<<<< HEAD
     string testIP = "193.60.172.124";
     int testPortNum = 53100;
+=======
+
+    string testIP = "193.60.172.32";
+    int testPortNum = 51651;
+>>>>>>> cbb101c00464879b732ede1ec7f65d82b7cc703c
 
 
 
