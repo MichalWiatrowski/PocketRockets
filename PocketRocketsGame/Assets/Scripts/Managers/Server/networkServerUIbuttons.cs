@@ -199,7 +199,7 @@ public class networkServerUIbuttons : NetworkDiscovery {
             case 1://Jelly Tot
                 //Vehicle ability acvivation goes here for Cup Cake Tank
                 GameObject.Find("Gate" + gateNo + "/JellyTotTrap" + playerTarget).GetComponent<BoxCollider>().enabled = true;
-                GameObject.Find("Gate" + gateNo + "/JellyTotTrap" + playerTarget).GetComponent<MeshRenderer>().enabled = true;
+                GameObject.Find("Gate" + gateNo + "/JellyTotTrap" + playerTarget).GetComponent<MeshRenderer>().enabled = false;
                 networkSource.PlayOneShot(tankFireClip);
                 Debug.Log("Fire Tank!!");
 
@@ -207,7 +207,7 @@ public class networkServerUIbuttons : NetworkDiscovery {
             case 2://Bubble
                 //GameObject.Find("Player " + playerTarget).GetComponentInChildren<NessieBubble>().CreateBubble(GameObject.Find("Gate" + gateNo), playerTarget);
                 GameObject.Find("Gate" + gateNo + "/NessieBubbleTrap" + playerTarget).GetComponent<SphereCollider>().enabled = true;
-                GameObject.Find("Gate" + gateNo + "/NessieBubbleTrap" + playerTarget).GetComponent<MeshRenderer>().enabled = true;
+                GameObject.Find("Gate" + gateNo + "/NessieBubbleTrap" + playerTarget).GetComponent<MeshRenderer>().enabled = false;
                 Debug.Log("Create Bubble");
                 break;
             case 3://Speed Boost

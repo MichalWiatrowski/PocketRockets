@@ -6,8 +6,8 @@ public class NessieBubbleTrap : MonoBehaviour {
 
     [SerializeField]
     private float holdTime = 3.0f;
-    [SerializeField]
-    private float bubbleRiseSpeed = 2.0f;
+    //[SerializeField]
+    private float bubbleRiseSpeed = 8.0f;
     [SerializeField]
     private float maxBubbleHeight = 8.0f;
  
@@ -26,7 +26,7 @@ public class NessieBubbleTrap : MonoBehaviour {
     }
 	
 	// Update is called once per frame
-	void Update () {
+	void FixedUpdate () {
 
         if (bubbleCollision == true) {
             if (stats.getTrappedInBubble() == true)
@@ -65,6 +65,7 @@ public class NessieBubbleTrap : MonoBehaviour {
         {
             if (bubbleCollision == false)
             {
+                GetComponent<MeshRenderer>().enabled = true;
                 bubbleCollision = true;
                 tempCar = collided.gameObject;
                 stats = collided.GetComponent<PlayerStats>();

@@ -22,6 +22,7 @@ public class WallTrap : MonoBehaviour {
         // check to see if trap is colliding with a vehicle
         if (collided.CompareTag("Player") && collided.GetComponent<PlayerStats>().getImmune() == false)
         {
+            GetComponent<MeshRenderer>().enabled = true;
             crashSource.PlayOneShot(crash, 0.2f);
             // run the trap function when collided with vehicle
             PlayerStats stats = collided.GetComponent<PlayerStats>();

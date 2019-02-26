@@ -19,6 +19,7 @@ public class CupCakeJellyTot : MonoBehaviour {
 
         if (collided.CompareTag("Player") && collided.GetComponent<PlayerStats>().getImmune() == false)
         {
+            GetComponent<MeshRenderer>().enabled = true;
             collided.GetComponent<PlayerStats>().setSlowDownFactor(slow);
             
         }

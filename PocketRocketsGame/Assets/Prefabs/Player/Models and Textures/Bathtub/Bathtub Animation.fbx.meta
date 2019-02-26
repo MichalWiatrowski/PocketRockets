@@ -1,0 +1,216 @@
+fileFormatVersion: 2
+guid: c67ac9df061a2694cacd8e95b67d8b76
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: Cylinder001
+    100004: Cylinder002
+    100006: Engine_2
+    100008: Engine_3
+    100010: Engine_Supports_1
+    100012: Engine_Supports_2
+    100014: Legs_Wheels
+    100016: Periscope
+    100018: Propeller_2
+    100020: Propeller_2 1
+    100022: Propeller_Blade_1_1
+    100024: Propeller_Blade_1_1 1
+    100026: Propeller_Blade_1_2
+    100028: Propeller_Blade_1_2 1
+    100030: Propeller_Blade_1_3
+    100032: Propeller_Blade_1_3 1
+    100034: Rudder_Spine_1
+    100036: Rudder_Spine_2
+    100038: Sail
+    100040: Tub_Body
+    400000: //RootNode
+    400002: Cylinder001
+    400004: Cylinder002
+    400006: Engine_2
+    400008: Engine_3
+    400010: Engine_Supports_1
+    400012: Engine_Supports_2
+    400014: Legs_Wheels
+    400016: Periscope
+    400018: Propeller_2
+    400020: Propeller_2 1
+    400022: Propeller_Blade_1_1
+    400024: Propeller_Blade_1_1 1
+    400026: Propeller_Blade_1_2
+    400028: Propeller_Blade_1_2 1
+    400030: Propeller_Blade_1_3
+    400032: Propeller_Blade_1_3 1
+    400034: Rudder_Spine_1
+    400036: Rudder_Spine_2
+    400038: Sail
+    400040: Tub_Body
+    2100000: lambert5
+    2300000: Cylinder001
+    2300002: Cylinder002
+    2300004: Engine_2
+    2300006: Engine_3
+    2300008: Engine_Supports_1
+    2300010: Engine_Supports_2
+    2300012: Legs_Wheels
+    2300014: Propeller_2
+    2300016: Propeller_2 1
+    2300018: Propeller_Blade_1_1
+    2300020: Propeller_Blade_1_1 1
+    2300022: Propeller_Blade_1_2
+    2300024: Propeller_Blade_1_2 1
+    2300026: Propeller_Blade_1_3
+    2300028: Propeller_Blade_1_3 1
+    2300030: Rudder_Spine_1
+    2300032: Rudder_Spine_2
+    2300034: Sail
+    2300036: Tub_Body
+    3300000: Cylinder001
+    3300002: Cylinder002
+    3300004: Engine_2
+    3300006: Engine_3
+    3300008: Engine_Supports_1
+    3300010: Engine_Supports_2
+    3300012: Legs_Wheels
+    3300014: Propeller_2
+    3300016: Propeller_2 1
+    3300018: Propeller_Blade_1_1
+    3300020: Propeller_Blade_1_1 1
+    3300022: Propeller_Blade_1_2
+    3300024: Propeller_Blade_1_2 1
+    3300026: Propeller_Blade_1_3
+    3300028: Propeller_Blade_1_3 1
+    3300030: Rudder_Spine_1
+    3300032: Rudder_Spine_2
+    3300034: Sail
+    3300036: Tub_Body
+    4300000: Cylinder001
+    4300002: Cylinder002
+    4300004: Tub_Body
+    4300006: Engine_Supports_1
+    4300008: Engine_Supports_2
+    4300010: Legs_Wheels
+    4300012: Rudder_Spine_1
+    4300014: Rudder_Spine_2
+    4300016: Sail
+    4300018: Engine_2
+    4300020: Propeller_2
+    4300022: Propeller_Blade_1_1
+    4300024: Propeller_Blade_1_2
+    4300026: Propeller_Blade_1_3
+    4300028: Engine_3
+    4300030: Propeller_2
+    4300032: Propeller_Blade_1_1
+    4300034: Propeller_Blade_1_2
+    4300036: Propeller_Blade_1_3
+    7400000: Take 001
+    9500000: //RootNode
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Take 001
+      takeName: Take 001
+      firstFrame: 0
+      lastFrame: 40
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

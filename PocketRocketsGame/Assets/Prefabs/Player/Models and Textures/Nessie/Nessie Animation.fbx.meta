@@ -1,66 +1,58 @@
 fileFormatVersion: 2
-guid: d867d920fff460548ad1c2f1bb3f99cb
+guid: fc7800a911ea00f4094634aad5118181
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
-    100000: Axel002
-    100002: Axel1
-    100004: Body001
+    100000: Axel1
+    100002: Axel2
+    100004: Body1
     100006: Cart
     100008: Hemlet
     100010: //RootNode
-    100012: Wheel004
-    100014: Wheel1
-    100016: Wheel2
-    100018: Wheel3
-    400000: Axel002
-    400002: Axel1
-    400004: Body001
+    100012: Wheel1
+    100014: Wheel2
+    100016: Wheel4
+    100018: Wheel5
+    400000: Axel1
+    400002: Axel2
+    400004: Body1
     400006: Cart
     400008: Hemlet
     400010: //RootNode
-    400012: Wheel004
-    400014: Wheel1
-    400016: Wheel2
-    400018: Wheel3
+    400012: Wheel1
+    400014: Wheel2
+    400016: Wheel4
+    400018: Wheel5
     2100000: lambert2
-    2300000: Axel002
-    2300002: Axel1
-    2300004: Body001
+    2300000: Axel1
+    2300002: Axel2
+    2300004: Body1
     2300006: Cart
     2300008: Hemlet
-    2300010: Wheel004
-    2300012: Wheel1
-    2300014: Wheel2
-    2300016: Wheel3
-    3300000: Axel002
-    3300002: Axel1
-    3300004: Body001
+    2300010: Wheel1
+    2300012: Wheel2
+    2300014: Wheel4
+    2300016: Wheel5
+    3300000: Axel1
+    3300002: Axel2
+    3300004: Body1
     3300006: Cart
     3300008: Hemlet
-    3300010: Wheel004
-    3300012: Wheel1
-    3300014: Wheel2
-    3300016: Wheel3
-    4300000: Hemlet
-    4300002: Cart
-    4300004: Wheel1
+    3300010: Wheel1
+    3300012: Wheel2
+    3300014: Wheel4
+    3300016: Wheel5
+    4300000: Cart
+    4300002: Hemlet
+    4300004: Body1
     4300006: Axel1
-    4300008: Wheel2
-    4300010: Wheel3
-    4300012: Wheel004
-    4300014: Axel002
-    4300016: Body001
-    6400000: Axel002
-    6400002: Axel1
-    6400004: Body001
-    6400006: Cart
-    6400008: Hemlet
-    6400010: Wheel004
-    6400012: Wheel1
-    6400014: Wheel2
-    6400016: Wheel3
-    2186277476908879412: ImportLogs
+    4300008: Axel2
+    4300010: Wheel1
+    4300012: Wheel2
+    4300014: Wheel4
+    4300016: Wheel5
+    7400000: Take 001
+    9500000: //RootNode
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -88,17 +80,45 @@ ModelImporter:
     animationWrapMode: 0
     extraExposedTransformPaths: []
     extraUserProperties: []
-    clipAnimations: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Take 001
+      takeName: Take 001
+      firstFrame: 1
+      lastFrame: 30
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
     isReadable: 1
   meshes:
     lODScreenPercentages: []
     globalScale: 1
     meshCompression: 0
-    addColliders: 1
-    importVisibility: 0
+    addColliders: 0
+    importVisibility: 1
     importBlendShapes: 1
-    importCameras: 0
-    importLights: 0
+    importCameras: 1
+    importLights: 1
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1
@@ -136,7 +156,7 @@ ModelImporter:
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 0
+  animationType: 2
   humanoidOversampling: 1
   additionalBone: 0
   userData: 

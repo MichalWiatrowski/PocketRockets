@@ -35,6 +35,7 @@ public class FreezeTrap : MonoBehaviour {
         // check to see if trap is colliding with a vehicle
        if (collided.CompareTag("Player") && collided.GetComponent<PlayerStats>().getImmune() == false)
         {
+            GetComponent<MeshRenderer>().enabled = true;
             // run the trap function when collided with vehicle
             blizzSource.PlayOneShot(blizzard, 0.1f);
             StartCoroutine(Trap(collided));
@@ -48,7 +49,7 @@ public class FreezeTrap : MonoBehaviour {
         yield return new WaitForSeconds(carDelay);
 
         // get information from move script on the vehicles and apply the freeze and reveal the ice
-        GetComponent<MeshRenderer>().enabled = true;
+        //GetComponent<MeshRenderer>().enabled = true;
         PlayerStats stats = player.GetComponent<PlayerStats>();
         stats.setSpeed(0.0f);
 
