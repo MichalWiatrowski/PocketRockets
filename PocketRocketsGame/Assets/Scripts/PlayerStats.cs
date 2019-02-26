@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class PlayerStats : MonoBehaviour {
 
-    public readonly int[] LANE = { -7, -10, -13, -16 };
-    private int currentLane = 0;
+    public readonly int[] LANE = { -5, -9, -13, -17 };
+    private int currentLane;
 
     // player stat variables
     private string playerName;

@@ -22,6 +22,11 @@ public class countdown : MonoBehaviour {
             stats[x].setSpeed(0);
         }
 
+        for (int x = 1; x < networkServerUIbuttons.networkServer.getPlayerAmount() + 1; x++)
+        {
+            GameObject.Find("Player " + x).GetComponent<PlayerStats>().setCurrentLane(x - 1);
+        }
+
         countText.gameObject.SetActive(true);
         countText.text = "3";
 

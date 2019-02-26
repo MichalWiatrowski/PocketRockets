@@ -18,10 +18,6 @@ public class serverGameManager : MonoBehaviour {
     public GameObject player3;
     public GameObject player4;
 
-
-
-
-
     private AudioSource gameSource;
 
     void Awake() {
@@ -85,11 +81,6 @@ public class serverGameManager : MonoBehaviour {
             //player3Vehicles[networkServerUIbuttons.networkServer.playerVehicles[2] - 1].SetActive(true);
             //player4Vehicles[networkServerUIbuttons.networkServer.playerVehicles[3] - 1].SetActive(true);
         }
-
-        //for (int x = 1; x < 5; x++)
-        //{
-        //    GameObject.Find("Player " + x).GetComponent<PlayerStats>().setCurrentLane(x - 1);
-        //}
 
         //setup position ui
         for (int i = 4; i > amountOfPlayers; i--)

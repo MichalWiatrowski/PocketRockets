@@ -181,6 +181,7 @@ public class clientMenuManager : MonoBehaviour {
         //networkClientUIbuttons.networkClient.toggleReady();
         networkClientUIbuttons.networkClient.vehicleChoice = vehicleNo;
         networkClientUIbuttons.networkClient.sendReadyUp(System.Convert.ToInt16(playerReady));
+        networkClientUIbuttons.networkClient.sendName();
 
         if (playerReady)
             readyButton.GetComponent<Image>().color = Color.green;
