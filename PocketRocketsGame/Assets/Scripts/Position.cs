@@ -19,7 +19,14 @@ public class Position : MonoBehaviour {
     // draw players position on screen
     void Update()
     {
-        position.text = stats.getPosition().ToString();
-        
+        if (player.gameObject.activeSelf)
+        {
+            transform.gameObject.SetActive(true);
+            position.text = stats.getPosition().ToString();
+        }
+        else
+        {
+            transform.gameObject.SetActive(false);
+        }
     }
 }

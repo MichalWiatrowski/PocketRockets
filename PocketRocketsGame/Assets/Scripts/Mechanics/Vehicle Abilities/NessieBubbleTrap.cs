@@ -29,6 +29,12 @@ public class NessieBubbleTrap : MonoBehaviour {
 	void FixedUpdate () {
 
         if (bubbleCollision == true) {
+
+            stats.setSwitchStateL(0);
+            networkServerUIbuttons.networkServer.sendSwitchStateL();
+            stats.setSwitchStateR(0);
+            networkServerUIbuttons.networkServer.sendSwitchStateR();
+
             if (stats.getTrappedInBubble() == true)
             {
                 tempCar.transform.Translate(0, bubbleRiseSpeed * Time.deltaTime, 0);
@@ -44,6 +50,11 @@ public class NessieBubbleTrap : MonoBehaviour {
 
                 if (tempCar.transform.position.y >= maxBubbleHeight)
                 {
+                    stats.setSwitchStateL(1);
+                    networkServerUIbuttons.networkServer.sendSwitchStateL();
+                    stats.setSwitchStateR(1);
+                    networkServerUIbuttons.networkServer.sendSwitchStateR();
+
                     stats.setTrappedInBubble(false);
                     tempCar.GetComponent<BoxCollider>().enabled = true;
                     tempCar.GetComponent<Rigidbody>().useGravity = true;

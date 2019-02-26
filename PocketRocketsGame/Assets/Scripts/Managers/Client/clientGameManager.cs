@@ -162,11 +162,18 @@ public class clientGameManager : MonoBehaviour {
             if (amountOfPlayers == 2)
             {
                 networkClientUIbuttons.networkClient.sendActivateVehicleAbiltiy(System.Convert.ToInt16(buttonData[1]), playerIDchoice, networkClientUIbuttons.networkClient.vehicleChoice);
+                StartCoroutine(StartAbilityCooldown());
             }
             else if (amountOfPlayers == 3)
+            {
                 networkClientUIbuttons.networkClient.sendActivateVehicleAbiltiy(System.Convert.ToInt16(buttonData[1]), GetComponent<players3>().getPlayerChoice(), networkClientUIbuttons.networkClient.vehicleChoice);
+                StartCoroutine(StartAbilityCooldown());
+            }
             else if (amountOfPlayers == 4)
+            {
                 networkClientUIbuttons.networkClient.sendActivateVehicleAbiltiy(System.Convert.ToInt16(buttonData[1]), GetComponent<players4>().getPlayerChoice(), networkClientUIbuttons.networkClient.vehicleChoice);
+                StartCoroutine(StartAbilityCooldown());
+            }
             gateSelectionPanel.SetActive(false);
             mainSelectionPanel.SetActive(true);
         }
@@ -176,11 +183,18 @@ public class clientGameManager : MonoBehaviour {
             if (amountOfPlayers == 2)
             {
                 networkClientUIbuttons.networkClient.sendActivateVehicleAbiltiy(System.Convert.ToInt16(buttonData[1]), playerIDchoice, networkClientUIbuttons.networkClient.vehicleChoice);
+                StartCoroutine(StartAbilityCooldown());
             }
             else if (amountOfPlayers == 3)
+            {
                 networkClientUIbuttons.networkClient.sendActivateVehicleAbiltiy(System.Convert.ToInt16(buttonData[1]), GetComponent<players3>().getPlayerChoice(), networkClientUIbuttons.networkClient.vehicleChoice);
+                StartCoroutine(StartAbilityCooldown());
+            }
             else if (amountOfPlayers == 4)
+            {
                 networkClientUIbuttons.networkClient.sendActivateVehicleAbiltiy(System.Convert.ToInt16(buttonData[1]), GetComponent<players4>().getPlayerChoice(), networkClientUIbuttons.networkClient.vehicleChoice);
+                StartCoroutine(StartAbilityCooldown());
+            }
             gateSelectionPanel.SetActive(false);
             mainSelectionPanel.SetActive(true);
 
@@ -209,11 +223,18 @@ public class clientGameManager : MonoBehaviour {
             if (amountOfPlayers == 2)
             {
                 networkClientUIbuttons.networkClient.sendActivateVehicleAbiltiy(System.Convert.ToInt16(buttonData[1]), playerIDchoice, networkClientUIbuttons.networkClient.vehicleChoice);
+                StartCoroutine(StartAbilityCooldown());
             }
             else if (amountOfPlayers == 3)
+            {
                 networkClientUIbuttons.networkClient.sendActivateVehicleAbiltiy(System.Convert.ToInt16(buttonData[1]), GetComponent<players3>().getPlayerChoice(), networkClientUIbuttons.networkClient.vehicleChoice);
+                StartCoroutine(StartAbilityCooldown());
+            }
             else if (amountOfPlayers == 4)
+            {
                 networkClientUIbuttons.networkClient.sendActivateVehicleAbiltiy(System.Convert.ToInt16(buttonData[1]), GetComponent<players4>().getPlayerChoice(), networkClientUIbuttons.networkClient.vehicleChoice);
+                StartCoroutine(StartAbilityCooldown());
+            }
             gateSelectionPanel.SetActive(false);
             mainSelectionPanel.SetActive(true);
         }
@@ -223,11 +244,18 @@ public class clientGameManager : MonoBehaviour {
             if (amountOfPlayers == 2)
             {
                 networkClientUIbuttons.networkClient.sendActivateVehicleAbiltiy(System.Convert.ToInt16(buttonData[1]), playerIDchoice, networkClientUIbuttons.networkClient.vehicleChoice);
+                StartCoroutine(StartAbilityCooldown());
             }
             else if (amountOfPlayers == 3)
+            {
                 networkClientUIbuttons.networkClient.sendActivateVehicleAbiltiy(System.Convert.ToInt16(buttonData[1]), GetComponent<players3>().getPlayerChoice(), networkClientUIbuttons.networkClient.vehicleChoice);
+                StartCoroutine(StartAbilityCooldown());
+            }
             else if (amountOfPlayers == 4)
+            {
                 networkClientUIbuttons.networkClient.sendActivateVehicleAbiltiy(System.Convert.ToInt16(buttonData[1]), GetComponent<players4>().getPlayerChoice(), networkClientUIbuttons.networkClient.vehicleChoice);
+                StartCoroutine(StartAbilityCooldown());
+            }
             gateSelectionPanel.SetActive(false);
             mainSelectionPanel.SetActive(true);
 
@@ -257,11 +285,18 @@ public class clientGameManager : MonoBehaviour {
             if (amountOfPlayers == 2)
             {
                 networkClientUIbuttons.networkClient.sendActivateVehicleAbiltiy(System.Convert.ToInt16(buttonData[1]), playerIDchoice, networkClientUIbuttons.networkClient.vehicleChoice);
+                StartCoroutine(StartAbilityCooldown());
             }
             else if (amountOfPlayers == 3)
+            {
                 networkClientUIbuttons.networkClient.sendActivateVehicleAbiltiy(System.Convert.ToInt16(buttonData[1]), GetComponent<players3>().getPlayerChoice(), networkClientUIbuttons.networkClient.vehicleChoice);
+                StartCoroutine(StartAbilityCooldown());
+            }
             else if (amountOfPlayers == 4)
+            {
                 networkClientUIbuttons.networkClient.sendActivateVehicleAbiltiy(System.Convert.ToInt16(buttonData[1]), GetComponent<players4>().getPlayerChoice(), networkClientUIbuttons.networkClient.vehicleChoice);
+                StartCoroutine(StartAbilityCooldown());
+            }
             gateSelectionPanel.SetActive(false);
             mainSelectionPanel.SetActive(true);
         }
@@ -271,11 +306,18 @@ public class clientGameManager : MonoBehaviour {
             if (amountOfPlayers == 2)
             {
                 networkClientUIbuttons.networkClient.sendActivateVehicleAbiltiy(System.Convert.ToInt16(buttonData[1]), playerIDchoice, networkClientUIbuttons.networkClient.vehicleChoice);
+                StartCoroutine(StartAbilityCooldown());
             }
             else if (amountOfPlayers == 3)
+            {
                 networkClientUIbuttons.networkClient.sendActivateVehicleAbiltiy(System.Convert.ToInt16(buttonData[1]), GetComponent<players3>().getPlayerChoice(), networkClientUIbuttons.networkClient.vehicleChoice);
+                StartCoroutine(StartAbilityCooldown());
+            }
             else if (amountOfPlayers == 4)
+            {
                 networkClientUIbuttons.networkClient.sendActivateVehicleAbiltiy(System.Convert.ToInt16(buttonData[1]), GetComponent<players4>().getPlayerChoice(), networkClientUIbuttons.networkClient.vehicleChoice);
+                StartCoroutine(StartAbilityCooldown());
+            }
             gateSelectionPanel.SetActive(false);
             mainSelectionPanel.SetActive(true);
 
@@ -304,11 +346,18 @@ public class clientGameManager : MonoBehaviour {
             if (amountOfPlayers == 2)
             {
                 networkClientUIbuttons.networkClient.sendActivateVehicleAbiltiy(System.Convert.ToInt16(buttonData[1]), playerIDchoice, networkClientUIbuttons.networkClient.vehicleChoice);
+                StartCoroutine(StartAbilityCooldown());
             }
             else if (amountOfPlayers == 3)
+            {
                 networkClientUIbuttons.networkClient.sendActivateVehicleAbiltiy(System.Convert.ToInt16(buttonData[1]), GetComponent<players3>().getPlayerChoice(), networkClientUIbuttons.networkClient.vehicleChoice);
+                StartCoroutine(StartAbilityCooldown());
+            }
             else if (amountOfPlayers == 4)
+            {
                 networkClientUIbuttons.networkClient.sendActivateVehicleAbiltiy(System.Convert.ToInt16(buttonData[1]), GetComponent<players4>().getPlayerChoice(), networkClientUIbuttons.networkClient.vehicleChoice);
+                StartCoroutine(StartAbilityCooldown());
+            }
             gateSelectionPanel.SetActive(false);
             mainSelectionPanel.SetActive(true);
         }
@@ -318,12 +367,19 @@ public class clientGameManager : MonoBehaviour {
             if (amountOfPlayers == 2)
             {
                 networkClientUIbuttons.networkClient.sendActivateVehicleAbiltiy(System.Convert.ToInt16(buttonData[1]), playerIDchoice, networkClientUIbuttons.networkClient.vehicleChoice);
+                StartCoroutine(StartAbilityCooldown());
             }
             else if (amountOfPlayers == 3)
+            {
                 networkClientUIbuttons.networkClient.sendActivateVehicleAbiltiy(System.Convert.ToInt16(buttonData[1]), GetComponent<players3>().getPlayerChoice(), networkClientUIbuttons.networkClient.vehicleChoice);
+                StartCoroutine(StartAbilityCooldown());
+            }
             else if (amountOfPlayers == 4)
+            {
                 networkClientUIbuttons.networkClient.sendActivateVehicleAbiltiy(System.Convert.ToInt16(buttonData[1]), GetComponent<players4>().getPlayerChoice(), networkClientUIbuttons.networkClient.vehicleChoice);
-            gateSelectionPanel.SetActive(false);
+                StartCoroutine(StartAbilityCooldown());
+            }
+                gateSelectionPanel.SetActive(false);
             mainSelectionPanel.SetActive(true);
 
         }
@@ -346,41 +402,40 @@ public class clientGameManager : MonoBehaviour {
 
     public void activateTrap()
     {
-       // if (points >= trapCost[trapChoice - 1])
-       // {
-                switch (amountOfPlayers)
-                {
-                    case 2:
-                        moveToGateSelection();
-                        break;
-                    case 3:
-                        playerSelectionPanel3.SetActive(true);
-                        break;
-                    case 4:
-                        playerSelectionPanel4.SetActive(true);
-                        break;
-                }
-                mainSelectionPanel.SetActive(false);
-                abiltyType = 5;
-       // }
+        if (!onTrapCooldown)
+        {
+            isAbility = false;
+            switch (amountOfPlayers)
+            {
+                case 2:
+                    moveToGateSelection();
+                    break;
+                case 3:
+                    playerSelectionPanel3.SetActive(true);
+                    break;
+                case 4:
+                    playerSelectionPanel4.SetActive(true);
+                    break;
+            }
+            mainSelectionPanel.SetActive(false);
+            abiltyType = 5;
+        }
     }
 
     public void activateJump()
     {
         if (!onJumpCooldown)
         {
-
-  
             networkClientUIbuttons.networkClient.sendJump();
             StartCoroutine(StartJumpCooldown());
-
+            //StartCoroutine(StartJumpSwitchCooldown());
         }
     }
 
     public void switchLeft()
     {
         // send switch lane to network if there is no cooldown
-        if (!onSwitchCooldown)
+        if (!onSwitchCooldown && networkClientUIbuttons.networkClient.getSwitchStateL() == 1)
         {
             networkClientUIbuttons.networkClient.sendLaneSwitch("Left");
             StartCoroutine(StartSwitchCooldown());
@@ -390,14 +445,14 @@ public class clientGameManager : MonoBehaviour {
     public void switchRight()
     {
         // send switch lane to network if there is no cooldown
-        if (!onSwitchCooldown)
+        if (!onSwitchCooldown && networkClientUIbuttons.networkClient.getSwitchStateR() == 1)
         {
             networkClientUIbuttons.networkClient.sendLaneSwitch("Right");
             StartCoroutine(StartSwitchCooldown());
         }
     }
 
-    IEnumerator StartAbilityCooldown()
+    public IEnumerator StartAbilityCooldown()
     {
         onAbilityCooldown = true;
 
@@ -451,6 +506,17 @@ public class clientGameManager : MonoBehaviour {
         onTrapCooldown = false;
     }
 
+    IEnumerator StartJumpSwitchCooldown()
+    {
+        networkClientUIbuttons.networkClient.setSwitchStateL(0);
+        networkClientUIbuttons.networkClient.setSwitchStateR(0);
+
+        yield return new WaitForSeconds(2);
+
+        networkClientUIbuttons.networkClient.setSwitchStateL(1);
+        networkClientUIbuttons.networkClient.setSwitchStateR(1);
+    }
+
     IEnumerator StartJumpCooldown()
     {
         onJumpCooldown = true;
@@ -467,9 +533,8 @@ public class clientGameManager : MonoBehaviour {
                 yield return new WaitForSeconds(1);
             }
         }
-
         // runs cooldown for second position
-        if (position == 2)
+        else if (position == 2)
         {
             for (int x = 0; x < jumpCooldown2nd; x++)
             {
@@ -478,9 +543,8 @@ public class clientGameManager : MonoBehaviour {
                 yield return new WaitForSeconds(1);
             }
         }
-
         // runs cooldown for third position
-        if (position == 3)
+        else if (position == 3)
         {
             for (int x = 0; x < jumpCooldown3rd; x++)
             {
@@ -489,9 +553,8 @@ public class clientGameManager : MonoBehaviour {
                 yield return new WaitForSeconds(1);
             }
         }
-
         // runs cooldown for fourth position
-        if (position == 4)
+        else if (position == 4)
         {
             for (int x = 0; x < jumpCooldown4th; x++)
             {
@@ -523,9 +586,8 @@ public class clientGameManager : MonoBehaviour {
                 yield return new WaitForSeconds(1);
             }
         }
-
         // runs cooldown for second position
-        if (position == 2)
+        else if (position == 2)
         {
             for (int x = 0; x < switchCooldown2nd; x++)
             {
@@ -535,9 +597,8 @@ public class clientGameManager : MonoBehaviour {
                 yield return new WaitForSeconds(1);
             }
         }
-
         // runs cooldown for third position
-        if (position == 3)
+        else if (position == 3)
         {
             for (int x = 0; x < switchCooldown3rd; x++)
             {
@@ -547,9 +608,8 @@ public class clientGameManager : MonoBehaviour {
                 yield return new WaitForSeconds(1);
             }
         }
-
         // runs cooldown for fourth position
-        if (position == 4)
+        else if (position == 4)
         {
             for (int x = 0; x < switchCooldown4th; x++)
             {
@@ -583,9 +643,10 @@ public class clientGameManager : MonoBehaviour {
     }
     public void activateVehicleAbility()
     {
-        abiltyType = networkClientUIbuttons.networkClient.getVehicleChoice();
-        isAbility = true;
-
+        if (!onAbilityCooldown)
+        {
+            abiltyType = networkClientUIbuttons.networkClient.getVehicleChoice();
+            isAbility = true;
             if (abiltyType == 2)
             {
                 switch (amountOfPlayers)
@@ -623,7 +684,7 @@ public class clientGameManager : MonoBehaviour {
             {
                 finishActivation(playerIDchoice, 0);
             }
-      
+        }
        
     }
    
@@ -632,32 +693,27 @@ public class clientGameManager : MonoBehaviour {
     {
         if (isAbility == false)
         {
-            if (!onTrapCooldown)
-            {
                 networkClientUIbuttons.networkClient.sendActivateTrap(gateChoice, playerIDchoice, trapChoice);
                 // remove points for trap
                 networkClientUIbuttons.networkClient.removePoints(trapCost[trapChoice - 1]);
                 gateSelectionPanel.SetActive(false);
                 mainSelectionPanel.SetActive(true);
                 StartCoroutine(StartTrapCooldown());
-            }
         }
         else {
-            if (!onAbilityCooldown)
-            {
                 if (vehicleAbility == 3)
                 {
                     networkClientUIbuttons.networkClient.sendActivateVehicleAbiltiy(0, playerID, vehicleAbility);
+                    isAbility = false;
                     StartCoroutine(StartAbilityCooldown());
                 }
                 else
                 {
                     networkClientUIbuttons.networkClient.sendActivateVehicleAbiltiy(gateChoice, playerIDchoice, vehicleAbility);
-                    StartCoroutine(StartAbilityCooldown());
                     isAbility = false;
                     gateSelectionPanel.SetActive(false);
                     mainSelectionPanel.SetActive(true);
-                }
+                    StartCoroutine(StartAbilityCooldown());
             }
         }
     }

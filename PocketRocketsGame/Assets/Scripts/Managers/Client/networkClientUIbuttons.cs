@@ -23,13 +23,12 @@ public class networkClientUIbuttons : NetworkDiscovery {
 
     bool testing = true;
 
+    int switchStateL = 1;
+    int switchStateR = 1;
 
 
-    string testIP = "193.60.172.32";
-    int testPortNum = 51861;
-
-
-
+    string testIP = "193.60.172.124";
+    int testPortNum = 53100;
 
 
     string discoveryIP = "";
@@ -65,6 +64,8 @@ public class networkClientUIbuttons : NetworkDiscovery {
         client.RegisterHandler(123, clientReceiveNextGate);
         client.RegisterHandler(124, clientReceivePosition);
         client.RegisterHandler(125, clientReceiveRestartGame);
+        client.RegisterHandler(126, clientReceiveSwitchStateL);
+        client.RegisterHandler(127, clientReceiveSwitchStateR);
 
         if (!gameStart)
         {
@@ -103,7 +104,20 @@ public class networkClientUIbuttons : NetworkDiscovery {
         return nextGate;
     }
 
-   
+    public int getSwitchStateL()
+    {
+        return switchStateL;
+    }
+
+    public int getSwitchStateR()
+    {
+        return switchStateR;
+    }
+
+    public void setSwitchStateL(int flag) { switchStateL = flag; }
+    public void setSwitchStateR(int flag) { switchStateR = flag; }
+
+
     public void joinGame()
     {
         //create a config, add qos channels, then configure the client to have 1 max connection; the server
@@ -222,7 +236,6 @@ public class networkClientUIbuttons : NetworkDiscovery {
     }
     public void sendActivateVehicleAbiltiy(int gate, int playerIDchoice, int abilityChoice)
     {
-
         StringMessage msg = new StringMessage();
         msg.value = playerID + "|" + playerIDchoice + "|" + gate + "|" + abilityChoice;
         client.Send(136, msg);
@@ -290,6 +303,28 @@ public class networkClientUIbuttons : NetworkDiscovery {
 
         SceneManager.LoadSceneAsync(2, LoadSceneMode.Additive);
         UnloadScene(1);
+    }
+
+    private void clientReceiveSwitchStateL(NetworkMessage message)
+    {
+        StringMessage msg = new StringMessage();
+        msg.value = message.ReadMessage<StringMessage>().value;
+
+        // split into an array of each players
+        string[] state1_2_3_4 = msg.value.Split('|');
+
+        switchStateL = System.Convert.ToInt16(state1_2_3_4[playerID - 1]);
+    }
+
+    private void clientReceiveSwitchStateR(NetworkMessage message)
+    {
+        StringMessage msg = new StringMessage();
+        msg.value = message.ReadMessage<StringMessage>().value;
+
+        // split into an array of each players
+        string[] state1_2_3_4 = msg.value.Split('|');
+
+        switchStateR = System.Convert.ToInt16(state1_2_3_4[playerID - 1]);
     }
 
     private void clientReceiveRestartGame(NetworkMessage message)
