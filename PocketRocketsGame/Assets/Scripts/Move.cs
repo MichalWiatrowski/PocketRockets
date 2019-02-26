@@ -20,7 +20,7 @@ public class Move : MonoBehaviour {
 
     public void MoveLeft()
     {
-        //if (stats.getSwitchLeft() && stats.getCurrentLane() != 3)
+        if (stats.getSwitchLeft() && stats.getCurrentLane() != 3)
         {
             newPos = new Vector3(stats.LANE[stats.getCurrentLane() + 1], transform.position.y, transform.position.z);
             lerp = true;
