@@ -30,7 +30,7 @@ public class BuildPlayer : MonoBehaviour {
        // proc.Start();
     }
 
-    [MenuItem("Pocket Rocket Tools/Build/Build Client")]
+    [MenuItem("Pocket Rocket Tools/Build/Build Client/Windows")]
 
 
     public static void BuildClientGame()
@@ -54,5 +54,27 @@ public class BuildPlayer : MonoBehaviour {
         // proc.Start();
     }
 
+    [MenuItem("Pocket Rocket Tools/Build/Build Client/Android")]
+
+    public static void BuildClientGameAndroid()
+    {
+        //Select the directory to build the client file
+        string path = EditorUtility.SaveFolderPanel("Choose Location of Built Client APK", "", "");
+
+        //Create build options
+        BuildPlayerOptions buildPlayerOptions = new BuildPlayerOptions();
+        //select scenes for the build
+        buildPlayerOptions.scenes = new[] { "Assets/Scenes/client/clientManagerScene.unity", "Assets/Scenes/client/menu.unity", "Assets/Scenes/client/gameScreen.unity" };
+        buildPlayerOptions.locationPathName = path + "/controller.apk";
+        buildPlayerOptions.target = BuildTarget.Android;
+        buildPlayerOptions.options = BuildOptions.None;
+        // Build the player.
+        BuildPipeline.BuildPlayer(buildPlayerOptions);
+
+        // Run the game (Process class from System.Diagnostics).
+        //Process proc = new Process();
+        // proc.StartInfo.FileName = path + "/Client.exe";
+        // proc.Start();
+    }
 
 }
