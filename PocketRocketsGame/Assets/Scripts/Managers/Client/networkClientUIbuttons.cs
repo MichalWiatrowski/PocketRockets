@@ -21,7 +21,7 @@ public class networkClientUIbuttons : NetworkDiscovery {
 
 
 
-    bool testing = true;
+    bool testing = false;
 
     int switchStateL = 1;
     int switchStateR = 1;
