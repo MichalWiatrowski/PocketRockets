@@ -21,14 +21,14 @@ public class networkClientUIbuttons : NetworkDiscovery {
 
 
 
-    bool testing = false;
+    bool testing = true;
 
     int switchStateL = 1;
     int switchStateR = 1;
 
 
-    string testIP = "192.168.0.20";
-    int testPortNum = 53100;
+    string testIP = "193.60.172.113";
+    int testPortNum = 53131;
 
 
     string discoveryIP = "";
