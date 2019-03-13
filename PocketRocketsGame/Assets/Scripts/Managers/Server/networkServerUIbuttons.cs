@@ -301,14 +301,16 @@ public class networkServerUIbuttons : NetworkDiscovery {
                 break;
 
             }
+            else
+            {
+                message.conn.Disconnect();
+                break;
+            }
         }
-        //playerID++;
+      
         
             
-       
-
-        if (playerID > 4)
-            playerID = 4;
+     
     }
 
     public void sendPosition()
@@ -334,12 +336,7 @@ public class networkServerUIbuttons : NetworkDiscovery {
         StringMessage msg = new StringMessage();
         StringMessage gateMsg = new StringMessage();
         // get the points for each player
-        for (int x = 1; x < playerID + 1; x++)
-        {
-            //playerPoints[x - 1] = GameObject.Find("Player " + x).GetComponent<PlayerStats>().points;
-           // msg.value += playerPoints[x - 1] + "|";
-        }
-
+    
         for (int x = 1; x < playerID + 1; x++)
         {
             nextGate[x - 1] = GameObject.Find("Player " + x).GetComponent<PlayerStats>().getNextGate();
