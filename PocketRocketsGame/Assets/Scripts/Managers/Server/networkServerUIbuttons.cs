@@ -75,10 +75,10 @@ public class networkServerUIbuttons : NetworkDiscovery {
         //The data that will be broadcasted to other network discvovery scripts
         broadcastData = GameObject.Find("Canvas/mainMenuPanel/portNumber").GetComponent<InputField>().text;
         //Init the network discovery
-        Initialize();
+        //Initialize();
 
         //Start this script as a server
-        StartAsServer();
+        //StartAsServer();
 
     }
     public void hostGameRemake()
@@ -298,12 +298,21 @@ public class networkServerUIbuttons : NetworkDiscovery {
     public void sendPosition()
     {
         int[] playerPositions = new int[playerID];
+        int[] playerSpeedStacks = new int[playerID];
         StringMessage msg = new StringMessage();
 
         for (int x = 1; x < playerID + 1; x++)
         {
             playerPositions[x - 1] = GameObject.Find("Player " + x).GetComponent<PlayerStats>().getPosition();
-            msg.value += playerPositions[x - 1] + "|";
+            //playerSpeedStacks[x - 1] = GameObject.Find("Player " + x).GetComponent<PlayerStats>().getStackingSpeedBuff();
+            msg.value += playerPositions[x - 1] + "|" ;
+        }
+
+        for (int x = 1; x < playerID + 1; x++)
+        {
+            //playerPositions[x - 1] = GameObject.Find("Player " + x).GetComponent<PlayerStats>().getPosition();
+            playerSpeedStacks[x - 1] = GameObject.Find("Player " + x).GetComponent<PlayerStats>().getStackingSpeedBuff();
+            msg.value += playerSpeedStacks[x - 1] + "|";
         }
 
         NetworkServer.SendToAll(124, msg);

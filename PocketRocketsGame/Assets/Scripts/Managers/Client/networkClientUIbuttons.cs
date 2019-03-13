@@ -16,7 +16,6 @@ public class networkClientUIbuttons : NetworkDiscovery {
 
     int sceneIndex = 1;
     int menuIndex = 1;
-
     bool gameStart = false; //keeps track of when to start the game
 
 
@@ -27,8 +26,8 @@ public class networkClientUIbuttons : NetworkDiscovery {
     int switchStateR = 1;
 
 
-    string testIP = "193.60.172.113";
-    int testPortNum = 53131;
+    string testIP = "193.60.172.121";
+    int testPortNum = 52631;
 
 
     string discoveryIP = "";
@@ -47,6 +46,7 @@ public class networkClientUIbuttons : NetworkDiscovery {
     private int points = 0;
     private int position = 0;
     private int nextGate = 1;
+    private int speedStack = 0;
 
     //this will load the first scene of the mobile side of the game "Menu"
     void Awake()
@@ -97,6 +97,11 @@ public class networkClientUIbuttons : NetworkDiscovery {
     public int getPosition()
     {
         return position;
+    }
+
+    public int getSpeedStack()
+    {
+        return speedStack;
     }
 
     public int getNextGate()
@@ -348,9 +353,11 @@ public class networkClientUIbuttons : NetworkDiscovery {
         msg.value = message.ReadMessage<StringMessage>().value;
 
         // split into an array of each players
-        string[] position1_2_3_4 = msg.value.Split('|');
+        //string[] position1_2_3_4 = msg.value.Split('|');
+        string[] positionAndSpeedStack = msg.value.Split('|');
 
-        position = System.Convert.ToInt16(position1_2_3_4[playerID - 1]);
+        position = System.Convert.ToInt16(positionAndSpeedStack[playerID - 1]);
+        speedStack = System.Convert.ToInt16(positionAndSpeedStack[playerID + 3]);
     }
 
     private void clientReceivePoints(NetworkMessage message)

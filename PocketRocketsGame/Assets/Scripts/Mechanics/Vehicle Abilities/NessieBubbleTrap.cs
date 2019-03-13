@@ -72,7 +72,7 @@ public class NessieBubbleTrap : MonoBehaviour {
 
     void OnTriggerEnter(Collider collided)
     {
-        if (collided.CompareTag("Player"))
+        if (collided.CompareTag("Player") && collided.GetComponent<PlayerStats>().getImmune() == false)
         {
             if (bubbleCollision == false)
             {

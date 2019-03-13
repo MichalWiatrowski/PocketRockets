@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class CupCakeJellyTot : MonoBehaviour {
-    public float slow = 2.0f;
+
+    [SerializeField]
+    private float slowFactor = 0.5f;
 	// Use this for initialization
 	void Start () {
         GetComponent<MeshRenderer>().enabled = false;
@@ -20,7 +22,7 @@ public class CupCakeJellyTot : MonoBehaviour {
         if (collided.CompareTag("Player") && collided.GetComponent<PlayerStats>().getImmune() == false)
         {
             GetComponent<MeshRenderer>().enabled = true;
-            collided.GetComponent<PlayerStats>().setSlowDownFactor(slow);
+            collided.GetComponent<PlayerStats>().setSlowDownFactor(slowFactor);
             
         }
 
@@ -28,7 +30,7 @@ public class CupCakeJellyTot : MonoBehaviour {
     }
 
     void OnTriggerExit(Collider collided) {
-        collided.GetComponent<PlayerStats>().setSlowDownFactor(1.0f);
+        collided.GetComponent<PlayerStats>().resetSlowDownFactor();
     }
 
 

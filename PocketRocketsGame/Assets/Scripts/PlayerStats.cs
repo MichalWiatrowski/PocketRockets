@@ -13,6 +13,7 @@ public class PlayerStats : MonoBehaviour {
     private float speed = 30f;
     private float defaultSpeed = 30.0f;
     private float slowDownFactor = 1.0f;
+    private float speedStack = 0.0f;
 
     private int points = 600;
     private int position = 1;
@@ -73,6 +74,7 @@ public class PlayerStats : MonoBehaviour {
     //Slow down Factor
     public float getSlowDownFactor() { return slowDownFactor; }
     public void setSlowDownFactor(float slowDown){ slowDownFactor = slowDown; }
+    public void resetSlowDownFactor() { slowDownFactor = 1.0f; }
     //Name
     public string getPlayerName() {  return playerName; }
     public void setPlayerName(string name) { playerName = name; }
@@ -140,15 +142,28 @@ public class PlayerStats : MonoBehaviour {
 
     public void resetSpeed() {speed = defaultSpeed; }
 
-    public void incrementSpeed(float incrementValue)
+    public void incrementSpeedStack(float incrementValue)
     {
-
-        speed += incrementValue;
+        if(speedStack < 0)
+        {
+            speedStack = 0;
+        }
+        speedStack += incrementValue;
+        Debug.Log("Speed stack has been increased : " + getStackingSpeedBuff());
     }
 
-    public void decrementSpeed(float decrementValue)
+    public void decrementSpeedStack(float decrementValue)
     {
+        if (speedStack > 0) {
+            speedStack = 0;
+        }
+        speedStack -= decrementValue;
+        Debug.Log("Speed stack has been reduced : " + getStackingSpeedBuff());
+    }
 
-        speed -= decrementValue;
+    public int getStackingSpeedBuff() {
+
+
+        return System.Convert.ToInt16(speedStack);
     }
 }

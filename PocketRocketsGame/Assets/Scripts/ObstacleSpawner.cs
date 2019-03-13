@@ -10,10 +10,10 @@ public class ObstacleSpawner : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        lanes.Add(-7);
-        lanes.Add(-10);
+        lanes.Add(-5);
+        lanes.Add(-9);
         lanes.Add(-13);
-        lanes.Add(-16);
+        lanes.Add(-17);
         SetRandPos();
 	}
 
@@ -21,7 +21,8 @@ public class ObstacleSpawner : MonoBehaviour {
     {
         randLane = Random.Range(0, 4);
         randZ = Random.Range(-70, 2100);
-        transform.Translate(lanes[randLane], 0f, randZ);
+       // transform.Translate(lanes[randLane], 0f, randZ);
+        transform.SetPositionAndRotation(new Vector3 (lanes[randLane], -0.5f, randZ), new Quaternion(0.0f, 0.0f, 0.0f, 0.0f));
     }
 
     void OnTriggerEnter(Collider collided)
@@ -46,14 +47,17 @@ public class ObstacleSpawner : MonoBehaviour {
     {
         PlayerStats stats = player.GetComponentInParent<PlayerStats>();
 
-        stats.setSpeed(stats.getSpeed() * 0.9f);
+        //stats.setSpeed(stats.getSpeed() * 0.9f);
+        stats.setSlowDownFactor(0.9f);
     }
 
     void IncreaseSpeed(Collider player)
     {
         PlayerStats stats = player.GetComponentInParent<PlayerStats>();
 
-        stats.setSpeed(stats.getDefaultSpeed());
+        //stats.setSpeed(stats.getDefaultSpeed());
+       // stats.setSlowDownFactor(1.0f);
+        stats.resetSlowDownFactor();
     }
 
     // Update is called once per frame

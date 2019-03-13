@@ -21,7 +21,7 @@ public class SuccessfulJump : MonoBehaviour {
     {
         if (collided.CompareTag("Player"))
         {
-            collided.GetComponent<PlayerStats>().incrementSpeed(speedIncrementValue);
+            collided.GetComponent<PlayerStats>().incrementSpeedStack(speedIncrementValue);
             Debug.Log("Player Collided with Successful collider");
         }
     }
