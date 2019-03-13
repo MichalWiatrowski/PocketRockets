@@ -8,7 +8,7 @@ using UnityStandardAssets.CrossPlatformInput;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class networkServerUIbuttons : NetworkDiscovery {
+public class networkServerUIbuttons : NetworkManager {
 
     public static networkServerUIbuttons networkServer;
     public AudioClip tankFireClip;
@@ -20,11 +20,12 @@ public class networkServerUIbuttons : NetworkDiscovery {
     bool gameStart = false;
 
     public int playerID = 0;
-
+    int[] playerIDTest = new int[4] { 1, 2, 3, 4 };
+    int[] playersConnected = new int[4] { 0, 0, 0, 0 };
     public List<bool> readyClients = new List<bool>(); //for storing client ready states
   
     public List<int> playerVehicles = new List<int>();
-
+    
 
     // Use this for initialization
     void Start()
@@ -44,7 +45,7 @@ public class networkServerUIbuttons : NetworkDiscovery {
         NetworkServer.RegisterHandler(136, serverReceiveVehicleAbility);
         NetworkServer.RegisterHandler(137, serverReceiveJump);
         NetworkServer.RegisterHandler(138, serverReceiveLaneSwitch);
-
+       // MsgType.
         if (!gameStart)
         {
             networkServer = this;
@@ -62,23 +63,21 @@ public class networkServerUIbuttons : NetworkDiscovery {
         ConnectionConfig config = new ConnectionConfig();
         config.AddChannel(QosType.ReliableSequenced);
         config.AddChannel(QosType.Unreliable);
+
+
         NetworkServer.Configure(config, 4);
 
-
-
-
         
+        
+       // NetworkManager.singleton.networkPort = System.Convert.ToInt32(GameObject.Find("Canvas/mainMenuPanel/portNumber").GetComponent<InputField>().text);
 
+        //StartServer(config, 4);
         //start listening on the inputted port number
         NetworkServer.Listen(System.Convert.ToInt32(GameObject.Find("Canvas/mainMenuPanel/portNumber").GetComponent<InputField>().text));
 
         //The data that will be broadcasted to other network discvovery scripts
-        broadcastData = GameObject.Find("Canvas/mainMenuPanel/portNumber").GetComponent<InputField>().text;
-        //Init the network discovery
-        Initialize();
-
-        //Start this script as a server
-        StartAsServer();
+        GetComponent<serverNetworkDiscovery>().broadcastData = GameObject.Find("Canvas/mainMenuPanel/portNumber").GetComponent<InputField>().text;
+        GetComponent<serverNetworkDiscovery>().Init();
 
     }
     public void hostGameRemake()
@@ -283,13 +282,25 @@ public class networkServerUIbuttons : NetworkDiscovery {
 
     private void sendPlayerID()
     {
-        playerID++;
         IntegerMessage msg = new IntegerMessage();
-            msg.value = playerID;
+     
+        for (int i = 0; i < 4; i++)
+        {
+            if (playersConnected[i] == 0)
+            {
+                
+                msg.value = playerIDTest[i];
+                NetworkServer.SendToClient(playerIDTest[i], 121, msg);
+                readyClients.Add(false);
+                playerVehicles.Add(1);
+                break;
+
+            }
+        }
+        //playerID++;
+        
             
-            NetworkServer.SendToClient(playerID, 121, msg);
-        readyClients.Add(false);
-        playerVehicles.Add(1);
+       
 
         if (playerID > 4)
             playerID = 4;

@@ -8,7 +8,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 
-public class networkClientUIbuttons : NetworkDiscovery {
+public class networkClientUIbuttons : NetworkManager {
 
     public NetworkClient client;
     public static networkClientUIbuttons networkClient;
@@ -21,7 +21,7 @@ public class networkClientUIbuttons : NetworkDiscovery {
 
 
 
-    bool testing = true;
+    bool testing = false;
 
     int switchStateL = 1;
     int switchStateR = 1;
@@ -31,8 +31,8 @@ public class networkClientUIbuttons : NetworkDiscovery {
     int testPortNum = 53131;
 
 
-    string discoveryIP = "";
-    int discoveryPort = 0;
+    public string discoveryIP = "";
+    public int discoveryPort = 0;
 
     public int vehicleChoice = 0;
     
@@ -49,23 +49,22 @@ public class networkClientUIbuttons : NetworkDiscovery {
     private int nextGate = 1;
 
     //this will load the first scene of the mobile side of the game "Menu"
-    void Awake()
-    {
-    }
+    
     // Use this for initialization
     void Start()
     {
         client = new NetworkClient();
 
         //Register handlers
-        client.RegisterHandler(120, clientReceiveStartGame);
-        client.RegisterHandler(121, clientReceivePlayerID);
-        client.RegisterHandler(122, clientReceivePoints);
-        client.RegisterHandler(123, clientReceiveNextGate);
-        client.RegisterHandler(124, clientReceivePosition);
-        client.RegisterHandler(125, clientReceiveRestartGame);
-        client.RegisterHandler(126, clientReceiveSwitchStateL);
-        client.RegisterHandler(127, clientReceiveSwitchStateR);
+        singleton.client.RegisterHandler(120, clientReceiveStartGame);
+        singleton.client.RegisterHandler(121, clientReceivePlayerID);
+        singleton.client.RegisterHandler(122, clientReceivePoints);
+        singleton.client.RegisterHandler(123, clientReceiveNextGate);
+        singleton.client.RegisterHandler(124, clientReceivePosition);
+        singleton.client.RegisterHandler(125, clientReceiveRestartGame);
+        singleton.client.RegisterHandler(126, clientReceiveSwitchStateL);
+        singleton.client.RegisterHandler(127, clientReceiveSwitchStateR);
+       // client.RegisterHandler(MsgType.Connect, OnConnect);
 
         if (!gameStart)
         {
@@ -74,11 +73,27 @@ public class networkClientUIbuttons : NetworkDiscovery {
             gameStart = true;
         }
 
-        //Init network discovery
-        Initialize();
-        //Start network discovery as client to search for local servers
-        StartAsClient();
+       
 
+    }
+
+    public override void OnClientConnect(NetworkConnection conn)
+    {
+        IntegerMessage msg = new IntegerMessage();
+        Debug.Log("i am connected boish" + conn.connectionId);
+        NetworkManager.singleton.client.Send(132, msg);
+        //client.Send(132, msg);
+        base.OnClientConnect(conn);
+    }
+
+
+    void OnConnect(NetworkMessage message)
+    {
+        IntegerMessage msg = new IntegerMessage();
+        client.Send(132, msg);
+        //askPlayerID();
+      Debug.Log("Client has sucessfully connected to the server");
+       Debug.Log(message.ReadMessage<StringMessage>().value);
     }
 
     public int getPlayerID()
@@ -124,7 +139,7 @@ public class networkClientUIbuttons : NetworkDiscovery {
         ConnectionConfig config = new ConnectionConfig();
         config.AddChannel(QosType.ReliableSequenced);
         config.AddChannel(QosType.Unreliable);
-        client.Configure(config, 1);
+        //client.Configure(config, 1);
 
         //connect to the server
         if (testing == false)
@@ -143,35 +158,35 @@ public class networkClientUIbuttons : NetworkDiscovery {
       
     }
 
-    public override void OnReceivedBroadcast(string fromAddress, string data)
-    {
-        Debug.Log("Server Found with IP: " + fromAddress + " and port " + data);
-        //string[] lol = fromAddress.Split(':');
-       // discoveryIP = lol[1];
-        discoveryIP = fromAddress;
-
-        discoveryIP.Remove(0,7);
-        discoveryPort = System.Convert.ToInt32(data);
-    }
+    
 
 
     void OnGUI()
     {
-    //    GUI.Box(new Rect(10, Screen.height - 140, 100, 200), "Debug Info");
+        GUI.Box(new Rect(10, Screen.height - 140, 100, 200), "Debug Info");
 
-    //    GUI.Label(new Rect(20, Screen.height - 120, 600, 20), "DiscoveryIP:" + discoveryIP);
-    //    GUI.Label(new Rect(20, Screen.height - 100, 300, 20), "DiscoveryPort:" + discoveryPort);
+        GUI.Label(new Rect(20, Screen.height - 120, 600, 20), "DiscoveryIP:" + discoveryIP);
+        GUI.Label(new Rect(20, Screen.height - 100, 300, 20), "DiscoveryPort:" + discoveryPort);
 
-    //    GUI.Label(new Rect(20, Screen.height - 80, 100, 20), "Status:" + client.isConnected);
-    //    GUI.Label(new Rect(20, Screen.height - 60, 100, 20), "PlayerID:" + playerID);
-    //    GUI.Label(new Rect(20, Screen.height - 40, 100, 20), "ready:" + System.Convert.ToInt16(clientReady));
-    //    GUI.Label(new Rect(20, Screen.height - 20, 100, 20), "points:" + points);
+        GUI.Label(new Rect(20, Screen.height - 80, 100, 20), "Status:" + client.isConnected);
+        GUI.Label(new Rect(20, Screen.height - 60, 100, 20), "PlayerID:" + playerID);
+        GUI.Label(new Rect(20, Screen.height - 40, 100, 20), "ready:" + System.Convert.ToInt16(clientReady));
+        GUI.Label(new Rect(20, Screen.height - 20, 100, 20), "points:" + points);
     }
 
     void Connect(string IP, int portNumber)
     {
-        client.Connect(IP, portNumber);
-        StartCoroutine(askPlayerID());
+        ConnectionConfig config = new ConnectionConfig();
+        config.AddChannel(QosType.ReliableSequenced);
+        config.AddChannel(QosType.Unreliable);
+
+        NetworkManager.singleton.networkPort = portNumber;
+        NetworkManager.singleton.networkAddress = IP;
+        NetworkManager.singleton.StartClient();
+
+
+        //client.Connect(IP, portNumber);
+       // StartCoroutine(askPlayerID());
     }
 
     public void setPowers(int p, int t)
@@ -275,6 +290,7 @@ public class networkClientUIbuttons : NetworkDiscovery {
 
     private void clientReceivePlayerID(NetworkMessage message)
     {
+        Debug.Log("hmmmmmmmmm");
         IntegerMessage msg = new IntegerMessage();
         msg = message.ReadMessage<IntegerMessage>();
         
