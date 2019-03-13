@@ -27,8 +27,8 @@ public class networkClientUIbuttons : NetworkDiscovery {
     int switchStateR = 1;
 
 
-    string testIP = "193.60.172.113";
-    int testPortNum = 53131;
+    string testIP = "127.0.0.1";
+    int testPortNum = 2500;
 
 
     string discoveryIP = "";
@@ -157,15 +157,15 @@ public class networkClientUIbuttons : NetworkDiscovery {
 
     void OnGUI()
     {
-    //    GUI.Box(new Rect(10, Screen.height - 140, 100, 200), "Debug Info");
+        GUI.Box(new Rect(10, Screen.height - 140, 100, 200), "Debug Info");
 
-    //    GUI.Label(new Rect(20, Screen.height - 120, 600, 20), "DiscoveryIP:" + discoveryIP);
-    //    GUI.Label(new Rect(20, Screen.height - 100, 300, 20), "DiscoveryPort:" + discoveryPort);
+        GUI.Label(new Rect(20, Screen.height - 120, 600, 20), "DiscoveryIP:" + discoveryIP);
+        GUI.Label(new Rect(20, Screen.height - 100, 300, 20), "DiscoveryPort:" + discoveryPort);
 
-    //    GUI.Label(new Rect(20, Screen.height - 80, 100, 20), "Status:" + client.isConnected);
-    //    GUI.Label(new Rect(20, Screen.height - 60, 100, 20), "PlayerID:" + playerID);
-    //    GUI.Label(new Rect(20, Screen.height - 40, 100, 20), "ready:" + System.Convert.ToInt16(clientReady));
-    //    GUI.Label(new Rect(20, Screen.height - 20, 100, 20), "points:" + points);
+        GUI.Label(new Rect(20, Screen.height - 80, 100, 20), "Status:" + client.isConnected);
+        GUI.Label(new Rect(20, Screen.height - 60, 100, 20), "PlayerID:" + playerID);
+        GUI.Label(new Rect(20, Screen.height - 40, 100, 20), "ready:" + System.Convert.ToInt16(clientReady));
+        GUI.Label(new Rect(20, Screen.height - 20, 100, 20), "points:" + points);
     }
 
     void Connect(string IP, int portNumber)
