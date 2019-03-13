@@ -7,6 +7,7 @@ public class players4 : MonoBehaviour {
     public GameObject playerButton1;
     public GameObject playerButton2;
     public GameObject playerButton3;
+    public GameObject playerButton4;
 
     
 
@@ -21,30 +22,30 @@ public class players4 : MonoBehaviour {
 	
     public void setUpButtons(int removePlayerIDchoice)
     {
-        switch (removePlayerIDchoice)
-        {
-            case 1:
-                playerButton1.GetComponent<Text>().text = "Player 2";
-                playerButton2.GetComponent<Text>().text = "Player 3";
-                playerButton3.GetComponent<Text>().text = "Player 4";
-                break;
-            case 2:
-                playerButton1.GetComponent<Text>().text = "Player 1";
-                playerButton2.GetComponent<Text>().text = "Player 3";
-                playerButton3.GetComponent<Text>().text = "Player 4";
-                break;
-            case 3:
-                playerButton1.GetComponent<Text>().text = "Player 1";
-                playerButton2.GetComponent<Text>().text = "Player 2";
-                playerButton3.GetComponent<Text>().text = "Player 4";
+        //switch (removePlayerIDchoice)
+        //{
+        //    case 1:
+        //        playerButton1.GetComponent<Text>().text = "Player 2";
+        //        playerButton2.GetComponent<Text>().text = "Player 3";
+        //        playerButton3.GetComponent<Text>().text = "Player 4";
+        //        break;
+        //    case 2:
+        //        playerButton1.GetComponent<Text>().text = "Player 1";
+        //        playerButton2.GetComponent<Text>().text = "Player 3";
+        //        playerButton3.GetComponent<Text>().text = "Player 4";
+        //        break;
+        //    case 3:
+        //        playerButton1.GetComponent<Text>().text = "Player 1";
+        //        playerButton2.GetComponent<Text>().text = "Player 2";
+        //        playerButton3.GetComponent<Text>().text = "Player 4";
 
-                break;
-            case 4:
-                playerButton1.GetComponent<Text>().text = "Player 1";
-                playerButton2.GetComponent<Text>().text = "Player 2";
-                playerButton3.GetComponent<Text>().text = "Player 3";
-                break;
-        }
+        //        break;
+        //    case 4:
+        //        playerButton1.GetComponent<Text>().text = "Player 1";
+        //        playerButton2.GetComponent<Text>().text = "Player 2";
+        //        playerButton3.GetComponent<Text>().text = "Player 3";
+        //        break;
+        //}
     }
 
     public void playerButton1Pressed()
@@ -63,12 +64,17 @@ public class players4 : MonoBehaviour {
         string[] buttonData = playerButton3.GetComponent<Text>().text.Split(' ');
         playerChoice = System.Convert.ToInt16(buttonData[1]);
     }
+    public void playerButton4Pressed()
+    {
+        string[] buttonData = playerButton4.GetComponent<Text>().text.Split(' ');
+        playerChoice = System.Convert.ToInt16(buttonData[1]);
+    }
 
     //public void gateButton1Pressed()
     //{
     //    string[] buttonData = gateButton1.GetComponent<Text>().text.Split(' ');
     //    GetComponent<clientGameManager>().finishActivation(playerChoice, System.Convert.ToInt16(buttonData[1]));
-     
+
     //    playerChoice = 0;
     //}
 
@@ -76,7 +82,7 @@ public class players4 : MonoBehaviour {
     //{
     //    string[] buttonData = gateButton2.GetComponent<Text>().text.Split(' ');
     //    GetComponent<clientGameManager>().finishActivation(playerChoice, System.Convert.ToInt16(buttonData[1]));
-      
+
     //    playerChoice = 0;
     //}
 
@@ -84,7 +90,7 @@ public class players4 : MonoBehaviour {
     //{
     //    string[] buttonData = gateButton3.GetComponent<Text>().text.Split(' ');
     //    GetComponent<clientGameManager>().finishActivation(playerChoice, System.Convert.ToInt16(buttonData[1]));
-      
+
     //    playerChoice = 0;
     //}
 
@@ -92,7 +98,7 @@ public class players4 : MonoBehaviour {
     //{
     //    string[] buttonData = gateButton4.GetComponent<Text>().text.Split(' ');
     //    GetComponent<clientGameManager>().finishActivation(playerChoice, System.Convert.ToInt16(buttonData[1]));
-     
+
     //    playerChoice = 0;
     //}
 

@@ -373,10 +373,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cars:
-  - {fileID: 1752070439}
-  - {fileID: 1103840116}
-  - {fileID: 1739438482}
   - {fileID: 1848207539}
+  - {fileID: 1739438482}
+  - {fileID: 1103840116}
+  - {fileID: 1752070439}
   smoothing: 0.2
   minZoom: 20
   maxZoom: 50
@@ -980,7 +980,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1459783215513326, guid: 1898fe356db3aed499e83a471bda1780, type: 2}
       propertyPath: m_Name
-      value: Player 1
+      value: Player 4
       objectReference: {fileID: 0}
     - target: {fileID: 1685751196320482, guid: 1898fe356db3aed499e83a471bda1780, type: 2}
       propertyPath: m_IsActive
@@ -1149,7 +1149,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ea89422a4f664d4ea597fcd9c50381b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 1103840115}
+  player: {fileID: 1739438481}
   name: {fileID: 227436331}
 --- !u!4 &260680220 stripped
 Transform:
@@ -1292,7 +1292,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f4889429d6953f47827c80d2ac6b720, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 1752070439}
+  player: {fileID: 1848207539}
   position: {fileID: 344311555}
 --- !u!1 &438989467
 GameObject:
@@ -1380,7 +1380,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ea89422a4f664d4ea597fcd9c50381b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 1752070438}
+  player: {fileID: 1848207538}
   name: {fileID: 438989469}
 --- !u!1 &495348214
 GameObject:
@@ -1429,7 +1429,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f4889429d6953f47827c80d2ac6b720, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 1103840116}
+  player: {fileID: 1739438482}
   position: {fileID: 495348217}
 --- !u!114 &495348217
 MonoBehaviour:
@@ -1511,7 +1511,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1459783215513326, guid: 1898fe356db3aed499e83a471bda1780, type: 2}
       propertyPath: m_Name
-      value: Player 4
+      value: Player 1
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_IsActive
@@ -1613,10 +1613,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   players:
-  - {fileID: 1752070439}
-  - {fileID: 1103840116}
-  - {fileID: 1739438482}
   - {fileID: 1848207539}
+  - {fileID: 1739438482}
+  - {fileID: 1103840116}
+  - {fileID: 1752070439}
   winningClip: {fileID: 0}
   winner: {fileID: 571429713}
 --- !u!114 &571429713
@@ -1744,7 +1744,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ea89422a4f664d4ea597fcd9c50381b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 1739438481}
+  player: {fileID: 1103840115}
   name: {fileID: 581464019}
 --- !u!1001 &631510532
 Prefab:
@@ -2257,10 +2257,10 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  player1: {fileID: 1752070438}
-  player2: {fileID: 1103840115}
-  player3: {fileID: 1739438481}
-  player4: {fileID: 1848207538}
+  player1: {fileID: 1848207538}
+  player2: {fileID: 1739438481}
+  player3: {fileID: 1103840115}
+  player4: {fileID: 1752070438}
 --- !u!4 &778558097
 Transform:
   m_ObjectHideFlags: 0
@@ -3022,7 +3022,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ea89422a4f664d4ea597fcd9c50381b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 1848207538}
+  player: {fileID: 1752070438}
   name: {fileID: 948272309}
 --- !u!1 &967551829
 GameObject:
@@ -3151,10 +3151,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   players:
-  - {fileID: 1752070439}
-  - {fileID: 1103840116}
-  - {fileID: 1739438482}
   - {fileID: 1848207539}
+  - {fileID: 1739438482}
+  - {fileID: 1103840116}
+  - {fileID: 1752070439}
   countText: {fileID: 999944381}
 --- !u!114 &999944381
 MonoBehaviour:
@@ -3242,22 +3242,22 @@ Prefab:
         type: 2}
       propertyPath: cars.Array.data[0]
       value: 
-      objectReference: {fileID: 1752070439}
+      objectReference: {fileID: 1848207539}
     - target: {fileID: 114946045715807518, guid: 75429edd559c0fe429ae2f0268191cca,
         type: 2}
       propertyPath: cars.Array.data[1]
       value: 
-      objectReference: {fileID: 1103840116}
+      objectReference: {fileID: 1739438482}
     - target: {fileID: 114946045715807518, guid: 75429edd559c0fe429ae2f0268191cca,
         type: 2}
       propertyPath: cars.Array.data[2]
       value: 
-      objectReference: {fileID: 1739438482}
+      objectReference: {fileID: 1103840116}
     - target: {fileID: 114946045715807518, guid: 75429edd559c0fe429ae2f0268191cca,
         type: 2}
       propertyPath: cars.Array.data[3]
       value: 
-      objectReference: {fileID: 1848207539}
+      objectReference: {fileID: 1752070439}
     - target: {fileID: 20992849947390508, guid: 75429edd559c0fe429ae2f0268191cca,
         type: 2}
       propertyPath: m_AllowMSAA
@@ -3337,7 +3337,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f4889429d6953f47827c80d2ac6b720, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 1848207539}
+  player: {fileID: 1752070439}
   position: {fileID: 1050761184}
 --- !u!114 &1050761184
 MonoBehaviour:
@@ -3562,7 +3562,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f4889429d6953f47827c80d2ac6b720, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 1739438482}
+  player: {fileID: 1103840116}
   position: {fileID: 1135017474}
 --- !u!114 &1135017474
 MonoBehaviour:
@@ -4184,7 +4184,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1459783215513326, guid: 1898fe356db3aed499e83a471bda1780, type: 2}
       propertyPath: m_Name
-      value: Player 3
+      value: Player 2
       objectReference: {fileID: 0}
     - target: {fileID: 1459783215513326, guid: 1898fe356db3aed499e83a471bda1780, type: 2}
       propertyPath: m_IsActive
@@ -5548,7 +5548,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1459783215513326, guid: 1898fe356db3aed499e83a471bda1780, type: 2}
       propertyPath: m_Name
-      value: Player 2
+      value: Player 3
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_IsActive

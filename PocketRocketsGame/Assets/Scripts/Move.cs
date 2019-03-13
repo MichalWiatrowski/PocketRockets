@@ -20,21 +20,21 @@ public class Move : MonoBehaviour {
 
     public void MoveLeft()
     {
-        if (stats.getSwitchLeft() && stats.getCurrentLane() != 3)
+        if (stats.getSwitchLeft() && stats.getCurrentLane() != 0)
         {
-            newPos = new Vector3(stats.LANE[stats.getCurrentLane() + 1], transform.position.y, transform.position.z);
+            newPos = new Vector3(stats.LANE[stats.getCurrentLane() - 1], transform.position.y, transform.position.z);
             lerp = true;
-            stats.setCurrentLane(stats.getCurrentLane() + 1);
+            stats.setCurrentLane(stats.getCurrentLane() - 1);
         }
     }
 
     public void MoveRight()
     {
-        if (stats.getSwitchRight() && stats.getCurrentLane() != 0)
+        if (stats.getSwitchRight() && stats.getCurrentLane() != 3)
         {
-            newPos = new Vector3(stats.LANE[stats.getCurrentLane() - 1], transform.position.y, transform.position.z);
+            newPos = new Vector3(stats.LANE[stats.getCurrentLane() + 1], transform.position.y, transform.position.z);
             lerp = true;
-            stats.setCurrentLane(stats.getCurrentLane() - 1);
+            stats.setCurrentLane(stats.getCurrentLane() + 1);
         }
     }
 

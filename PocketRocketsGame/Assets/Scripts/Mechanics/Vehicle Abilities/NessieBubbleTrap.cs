@@ -74,12 +74,12 @@ public class NessieBubbleTrap : MonoBehaviour {
     {
         if (collided.CompareTag("Player"))
         {
-            if (bubbleCollision == false)
+            stats = collided.GetComponent<PlayerStats>();
+            if (bubbleCollision == false && !stats.getImmune())
             {
                 GetComponent<MeshRenderer>().enabled = true;
                 bubbleCollision = true;
                 tempCar = collided.gameObject;
-                stats = collided.GetComponent<PlayerStats>();
                 Debug.Log("Collided with Bubble");
                 stats.setTrappedInBubble(true);
             }

@@ -64,21 +64,16 @@ public class networkServerUIbuttons : NetworkDiscovery {
         config.AddChannel(QosType.Unreliable);
         NetworkServer.Configure(config, 4);
 
-
-
-
-        
-
         //start listening on the inputted port number
         NetworkServer.Listen(System.Convert.ToInt32(GameObject.Find("Canvas/mainMenuPanel/portNumber").GetComponent<InputField>().text));
 
         //The data that will be broadcasted to other network discvovery scripts
         broadcastData = GameObject.Find("Canvas/mainMenuPanel/portNumber").GetComponent<InputField>().text;
         //Init the network discovery
-        Initialize();
+        //Initialize();
 
         //Start this script as a server
-        StartAsServer();
+        //StartAsServer();
 
     }
     public void hostGameRemake()

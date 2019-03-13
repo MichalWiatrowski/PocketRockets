@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerStats : MonoBehaviour {
 
-    public readonly int[] LANE = { -5, -9, -13, -17 };
+    public readonly int[] LANE = { -17, -13, -9, -5 };
     private int currentLane;
 
     // player stat variables

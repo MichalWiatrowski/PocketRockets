@@ -120,7 +120,7 @@ public class clientGameManager : MonoBehaviour {
         else if (amountOfPlayers == 3)
         {
             //call function for 3 players
-            GetComponent<players3>().setUpButtons(networkClientUIbuttons.networkClient.getPlayerID());
+            GetComponent<players4>().setUpButtons(networkClientUIbuttons.networkClient.getPlayerID());
         }
         else if (amountOfPlayers == 4)
         {
@@ -161,12 +161,12 @@ public class clientGameManager : MonoBehaviour {
             // activate nessie ability code here
             if (amountOfPlayers == 2)
             {
-                networkClientUIbuttons.networkClient.sendActivateVehicleAbiltiy(System.Convert.ToInt16(buttonData[1]), playerIDchoice, networkClientUIbuttons.networkClient.vehicleChoice);
+                networkClientUIbuttons.networkClient.sendActivateVehicleAbiltiy(System.Convert.ToInt16(buttonData[1]), GetComponent<players4>().getPlayerChoice(), networkClientUIbuttons.networkClient.vehicleChoice);
                 StartCoroutine(StartAbilityCooldown());
             }
             else if (amountOfPlayers == 3)
             {
-                networkClientUIbuttons.networkClient.sendActivateVehicleAbiltiy(System.Convert.ToInt16(buttonData[1]), GetComponent<players3>().getPlayerChoice(), networkClientUIbuttons.networkClient.vehicleChoice);
+                networkClientUIbuttons.networkClient.sendActivateVehicleAbiltiy(System.Convert.ToInt16(buttonData[1]), GetComponent<players4>().getPlayerChoice(), networkClientUIbuttons.networkClient.vehicleChoice);
                 StartCoroutine(StartAbilityCooldown());
             }
             else if (amountOfPlayers == 4)
@@ -182,12 +182,12 @@ public class clientGameManager : MonoBehaviour {
             // activate nessie ability code here
             if (amountOfPlayers == 2)
             {
-                networkClientUIbuttons.networkClient.sendActivateVehicleAbiltiy(System.Convert.ToInt16(buttonData[1]), playerIDchoice, networkClientUIbuttons.networkClient.vehicleChoice);
+                networkClientUIbuttons.networkClient.sendActivateVehicleAbiltiy(System.Convert.ToInt16(buttonData[1]), GetComponent<players4>().getPlayerChoice(), networkClientUIbuttons.networkClient.vehicleChoice);
                 StartCoroutine(StartAbilityCooldown());
             }
             else if (amountOfPlayers == 3)
             {
-                networkClientUIbuttons.networkClient.sendActivateVehicleAbiltiy(System.Convert.ToInt16(buttonData[1]), GetComponent<players3>().getPlayerChoice(), networkClientUIbuttons.networkClient.vehicleChoice);
+                networkClientUIbuttons.networkClient.sendActivateVehicleAbiltiy(System.Convert.ToInt16(buttonData[1]), GetComponent<players4>().getPlayerChoice(), networkClientUIbuttons.networkClient.vehicleChoice);
                 StartCoroutine(StartAbilityCooldown());
             }
             else if (amountOfPlayers == 4)
@@ -203,10 +203,10 @@ public class clientGameManager : MonoBehaviour {
         {
             if (amountOfPlayers == 2)
             {
-                finishActivation(playerIDchoice, System.Convert.ToInt16(buttonData[1]));
+                finishActivation(GetComponent<players4>().getPlayerChoice(), System.Convert.ToInt16(buttonData[1]));
             }
             else if (amountOfPlayers == 3)
-                finishActivation(GetComponent<players3>().getPlayerChoice(), System.Convert.ToInt16(buttonData[1]));
+                finishActivation(GetComponent<players4>().getPlayerChoice(), System.Convert.ToInt16(buttonData[1]));
             else if (amountOfPlayers == 4)
                 finishActivation(GetComponent<players4>().getPlayerChoice(), System.Convert.ToInt16(buttonData[1]));
         }
@@ -222,12 +222,12 @@ public class clientGameManager : MonoBehaviour {
             // activate nessie ability code here
             if (amountOfPlayers == 2)
             {
-                networkClientUIbuttons.networkClient.sendActivateVehicleAbiltiy(System.Convert.ToInt16(buttonData[1]), playerIDchoice, networkClientUIbuttons.networkClient.vehicleChoice);
+                networkClientUIbuttons.networkClient.sendActivateVehicleAbiltiy(System.Convert.ToInt16(buttonData[1]), GetComponent<players4>().getPlayerChoice(), networkClientUIbuttons.networkClient.vehicleChoice);
                 StartCoroutine(StartAbilityCooldown());
             }
             else if (amountOfPlayers == 3)
             {
-                networkClientUIbuttons.networkClient.sendActivateVehicleAbiltiy(System.Convert.ToInt16(buttonData[1]), GetComponent<players3>().getPlayerChoice(), networkClientUIbuttons.networkClient.vehicleChoice);
+                networkClientUIbuttons.networkClient.sendActivateVehicleAbiltiy(System.Convert.ToInt16(buttonData[1]), GetComponent<players4>().getPlayerChoice(), networkClientUIbuttons.networkClient.vehicleChoice);
                 StartCoroutine(StartAbilityCooldown());
             }
             else if (amountOfPlayers == 4)
@@ -243,12 +243,12 @@ public class clientGameManager : MonoBehaviour {
             // activate nessie ability code here
             if (amountOfPlayers == 2)
             {
-                networkClientUIbuttons.networkClient.sendActivateVehicleAbiltiy(System.Convert.ToInt16(buttonData[1]), playerIDchoice, networkClientUIbuttons.networkClient.vehicleChoice);
+                networkClientUIbuttons.networkClient.sendActivateVehicleAbiltiy(System.Convert.ToInt16(buttonData[1]), GetComponent<players4>().getPlayerChoice(), networkClientUIbuttons.networkClient.vehicleChoice);
                 StartCoroutine(StartAbilityCooldown());
             }
             else if (amountOfPlayers == 3)
             {
-                networkClientUIbuttons.networkClient.sendActivateVehicleAbiltiy(System.Convert.ToInt16(buttonData[1]), GetComponent<players3>().getPlayerChoice(), networkClientUIbuttons.networkClient.vehicleChoice);
+                networkClientUIbuttons.networkClient.sendActivateVehicleAbiltiy(System.Convert.ToInt16(buttonData[1]), GetComponent<players4>().getPlayerChoice(), networkClientUIbuttons.networkClient.vehicleChoice);
                 StartCoroutine(StartAbilityCooldown());
             }
             else if (amountOfPlayers == 4)
@@ -264,10 +264,10 @@ public class clientGameManager : MonoBehaviour {
         {
             if (amountOfPlayers == 2)
             {
-                finishActivation(playerIDchoice, System.Convert.ToInt16(buttonData[1]));
+                finishActivation(GetComponent<players4>().getPlayerChoice(), System.Convert.ToInt16(buttonData[1]));
             }
             else if (amountOfPlayers == 3)
-                finishActivation(GetComponent<players3>().getPlayerChoice(), System.Convert.ToInt16(buttonData[1]));
+                finishActivation(GetComponent<players4>().getPlayerChoice(), System.Convert.ToInt16(buttonData[1]));
             else if (amountOfPlayers == 4)
                 finishActivation(GetComponent<players4>().getPlayerChoice(), System.Convert.ToInt16(buttonData[1]));
         }
@@ -284,12 +284,12 @@ public class clientGameManager : MonoBehaviour {
             // activate nessie ability code here
             if (amountOfPlayers == 2)
             {
-                networkClientUIbuttons.networkClient.sendActivateVehicleAbiltiy(System.Convert.ToInt16(buttonData[1]), playerIDchoice, networkClientUIbuttons.networkClient.vehicleChoice);
+                networkClientUIbuttons.networkClient.sendActivateVehicleAbiltiy(System.Convert.ToInt16(buttonData[1]), GetComponent<players4>().getPlayerChoice(), networkClientUIbuttons.networkClient.vehicleChoice);
                 StartCoroutine(StartAbilityCooldown());
             }
             else if (amountOfPlayers == 3)
             {
-                networkClientUIbuttons.networkClient.sendActivateVehicleAbiltiy(System.Convert.ToInt16(buttonData[1]), GetComponent<players3>().getPlayerChoice(), networkClientUIbuttons.networkClient.vehicleChoice);
+                networkClientUIbuttons.networkClient.sendActivateVehicleAbiltiy(System.Convert.ToInt16(buttonData[1]), GetComponent<players4>().getPlayerChoice(), networkClientUIbuttons.networkClient.vehicleChoice);
                 StartCoroutine(StartAbilityCooldown());
             }
             else if (amountOfPlayers == 4)
@@ -305,12 +305,12 @@ public class clientGameManager : MonoBehaviour {
             // activate cupCake ability code here
             if (amountOfPlayers == 2)
             {
-                networkClientUIbuttons.networkClient.sendActivateVehicleAbiltiy(System.Convert.ToInt16(buttonData[1]), playerIDchoice, networkClientUIbuttons.networkClient.vehicleChoice);
+                networkClientUIbuttons.networkClient.sendActivateVehicleAbiltiy(System.Convert.ToInt16(buttonData[1]), GetComponent<players4>().getPlayerChoice(), networkClientUIbuttons.networkClient.vehicleChoice);
                 StartCoroutine(StartAbilityCooldown());
             }
             else if (amountOfPlayers == 3)
             {
-                networkClientUIbuttons.networkClient.sendActivateVehicleAbiltiy(System.Convert.ToInt16(buttonData[1]), GetComponent<players3>().getPlayerChoice(), networkClientUIbuttons.networkClient.vehicleChoice);
+                networkClientUIbuttons.networkClient.sendActivateVehicleAbiltiy(System.Convert.ToInt16(buttonData[1]), GetComponent<players4>().getPlayerChoice(), networkClientUIbuttons.networkClient.vehicleChoice);
                 StartCoroutine(StartAbilityCooldown());
             }
             else if (amountOfPlayers == 4)
@@ -326,10 +326,10 @@ public class clientGameManager : MonoBehaviour {
         {
             if (amountOfPlayers == 2)
             {
-                finishActivation(playerIDchoice, System.Convert.ToInt16(buttonData[1]));
+                finishActivation(GetComponent<players4>().getPlayerChoice(), System.Convert.ToInt16(buttonData[1]));
             }
             else if (amountOfPlayers == 3)
-                finishActivation(GetComponent<players3>().getPlayerChoice(), System.Convert.ToInt16(buttonData[1]));
+                finishActivation(GetComponent<players4>().getPlayerChoice(), System.Convert.ToInt16(buttonData[1]));
             else if (amountOfPlayers == 4)
                 finishActivation(GetComponent<players4>().getPlayerChoice(), System.Convert.ToInt16(buttonData[1]));
         }
@@ -345,12 +345,12 @@ public class clientGameManager : MonoBehaviour {
             // activate nessie ability code here
             if (amountOfPlayers == 2)
             {
-                networkClientUIbuttons.networkClient.sendActivateVehicleAbiltiy(System.Convert.ToInt16(buttonData[1]), playerIDchoice, networkClientUIbuttons.networkClient.vehicleChoice);
+                networkClientUIbuttons.networkClient.sendActivateVehicleAbiltiy(System.Convert.ToInt16(buttonData[1]), GetComponent<players4>().getPlayerChoice(), networkClientUIbuttons.networkClient.vehicleChoice);
                 StartCoroutine(StartAbilityCooldown());
             }
             else if (amountOfPlayers == 3)
             {
-                networkClientUIbuttons.networkClient.sendActivateVehicleAbiltiy(System.Convert.ToInt16(buttonData[1]), GetComponent<players3>().getPlayerChoice(), networkClientUIbuttons.networkClient.vehicleChoice);
+                networkClientUIbuttons.networkClient.sendActivateVehicleAbiltiy(System.Convert.ToInt16(buttonData[1]), GetComponent<players4>().getPlayerChoice(), networkClientUIbuttons.networkClient.vehicleChoice);
                 StartCoroutine(StartAbilityCooldown());
             }
             else if (amountOfPlayers == 4)
@@ -366,12 +366,12 @@ public class clientGameManager : MonoBehaviour {
             // activate nessie ability code here
             if (amountOfPlayers == 2)
             {
-                networkClientUIbuttons.networkClient.sendActivateVehicleAbiltiy(System.Convert.ToInt16(buttonData[1]), playerIDchoice, networkClientUIbuttons.networkClient.vehicleChoice);
+                networkClientUIbuttons.networkClient.sendActivateVehicleAbiltiy(System.Convert.ToInt16(buttonData[1]), GetComponent<players4>().getPlayerChoice(), networkClientUIbuttons.networkClient.vehicleChoice);
                 StartCoroutine(StartAbilityCooldown());
             }
             else if (amountOfPlayers == 3)
             {
-                networkClientUIbuttons.networkClient.sendActivateVehicleAbiltiy(System.Convert.ToInt16(buttonData[1]), GetComponent<players3>().getPlayerChoice(), networkClientUIbuttons.networkClient.vehicleChoice);
+                networkClientUIbuttons.networkClient.sendActivateVehicleAbiltiy(System.Convert.ToInt16(buttonData[1]), GetComponent<players4>().getPlayerChoice(), networkClientUIbuttons.networkClient.vehicleChoice);
                 StartCoroutine(StartAbilityCooldown());
             }
             else if (amountOfPlayers == 4)
@@ -387,10 +387,10 @@ public class clientGameManager : MonoBehaviour {
         {
             if (amountOfPlayers == 2)
             {
-                finishActivation(playerIDchoice, System.Convert.ToInt16(buttonData[1]));
+                finishActivation(GetComponent<players4>().getPlayerChoice(), System.Convert.ToInt16(buttonData[1]));
             }
             else if (amountOfPlayers == 3)
-                finishActivation(GetComponent<players3>().getPlayerChoice(), System.Convert.ToInt16(buttonData[1]));
+                finishActivation(GetComponent<players4>().getPlayerChoice(), System.Convert.ToInt16(buttonData[1]));
             else if (amountOfPlayers == 4)
                 finishActivation(GetComponent<players4>().getPlayerChoice(), System.Convert.ToInt16(buttonData[1]));
         }
@@ -408,10 +408,10 @@ public class clientGameManager : MonoBehaviour {
             switch (amountOfPlayers)
             {
                 case 2:
-                    moveToGateSelection();
+                    playerSelectionPanel4.SetActive(true);
                     break;
                 case 3:
-                    playerSelectionPanel3.SetActive(true);
+                    playerSelectionPanel4.SetActive(true);
                     break;
                 case 4:
                     playerSelectionPanel4.SetActive(true);
@@ -652,10 +652,10 @@ public class clientGameManager : MonoBehaviour {
                 switch (amountOfPlayers)
                 {
                     case 2:
-                        moveToGateSelection();
+                        playerSelectionPanel4.SetActive(true);
                         break;
                     case 3:
-                        playerSelectionPanel3.SetActive(true);
+                        playerSelectionPanel4.SetActive(true);
                         break;
                     case 4:
                         playerSelectionPanel4.SetActive(true);
@@ -668,10 +668,10 @@ public class clientGameManager : MonoBehaviour {
                 switch (amountOfPlayers)
                 {
                     case 2:
-                        moveToGateSelection();
+                        playerSelectionPanel4.SetActive(true);
                         break;
                     case 3:
-                        playerSelectionPanel3.SetActive(true);
+                        playerSelectionPanel4.SetActive(true);
                         break;
                     case 4:
                         playerSelectionPanel4.SetActive(true);

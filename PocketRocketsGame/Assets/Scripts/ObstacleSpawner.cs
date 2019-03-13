@@ -10,10 +10,10 @@ public class ObstacleSpawner : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        lanes.Add(-7);
-        lanes.Add(-10);
+        lanes.Add(-17);
         lanes.Add(-13);
-        lanes.Add(-16);
+        lanes.Add(-9);
+        lanes.Add(-5);
         SetRandPos();
 	}
 
@@ -21,7 +21,7 @@ public class ObstacleSpawner : MonoBehaviour {
     {
         randLane = Random.Range(0, 4);
         randZ = Random.Range(-70, 2100);
-        transform.Translate(lanes[randLane], 0f, randZ);
+        transform.SetPositionAndRotation(new Vector3(lanes[randLane], -1.0f, randZ), new Quaternion(0, 0, 0, 0));
     }
 
     void OnTriggerEnter(Collider collided)
