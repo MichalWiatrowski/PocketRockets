@@ -2,14 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-public class clientGameManager : MonoBehaviour {
+
+public class clientGameManager2 : MonoBehaviour {
+
     public GameObject mainSelectionPanel;
-
     public GameObject gateSelectionPanel;
-
     public GameObject laneSelectionPanel;
-
-
 
     public GameObject switchButtonL;
     public GameObject switchButtonR;
@@ -37,15 +35,20 @@ public class clientGameManager : MonoBehaviour {
     public GameObject gateButton3;
     public GameObject gateButton4;
 
+    public GameObject laneButton1;
+    public GameObject laneButton2;
+    public GameObject laneButton3;
+    public GameObject laneButton4;
+
     public Text gateText;
     public int nextGate;
 
-    int laneChoice = 0;
 
+    int laneChoice = 0;
     int amountOfPlayers = 0;
     int playerID = 0;
+
     int position = 1;
-    //int laneChoice = 0;
     int points = 0;
     string name;
     private bool isAbility = false;
@@ -56,6 +59,7 @@ public class clientGameManager : MonoBehaviour {
     private bool onPowerupCooldown = false;
 
 
+
     private int abiltyType = 1;
     int powerUPchoice = 0; // will store the selected powerup ID; 1 for void, 2 for immunity
     int[] powerUPcost = new int[2]; // stores the cost for each powerup
@@ -64,14 +68,14 @@ public class clientGameManager : MonoBehaviour {
     int vehicleAbility = 0;// will store the selected vehicle ability ID; 1 for nessieBubble
     int[] abilityCost = new int[1]; // stores the cost for each vehicle (will be increased in size when more abilitys have been implemented)
     // Use this for initialization
-    void Start()
-    {
+
+    void Start () {
         amountOfPlayers = networkClientUIbuttons.networkClient.getAmountOfPlayers();
         playerID = networkClientUIbuttons.networkClient.getPlayerID();
 
         powerUPchoice = networkClientUIbuttons.networkClient.getPowerUp();
         trapChoice = networkClientUIbuttons.networkClient.getTrap();
-     
+
 
         powerUPcost[0] = 200;
         powerUPcost[1] = 200;
@@ -88,82 +92,170 @@ public class clientGameManager : MonoBehaviour {
         gateSelectionPanel.SetActive(false);
 
         setUpGateButtons();
-      
- 
     }
-
-    // Update is called once per frame
-    void Update()
-    {
+	
+	// Update is called once per frame
+	void Update () {
         points = networkClientUIbuttons.networkClient.getPoints();
         nextGate = networkClientUIbuttons.networkClient.getNextGate();
         position = networkClientUIbuttons.networkClient.getPosition();
         networkClientUIbuttons.networkClient.sendName();
         setUpGateButtons();
     }
- 
- 
-    // gate buttons, so far fixed support for 4 gates
-    //TODO add dynamic buttons e.g. will only display gate numbers in front not behind
+
     void setUpGateButtons()
     {
-        gateButton1.GetComponent<Text>().text = "Gate " + networkClientUIbuttons.networkClient.getNextGate().ToString();
-        gateButton2.GetComponent<Text>().text = "Gate " + (networkClientUIbuttons.networkClient.getNextGate() + 1).ToString();
-        gateButton3.GetComponent<Text>().text = "Gate " + (networkClientUIbuttons.networkClient.getNextGate() + 2).ToString();
-        gateButton4.GetComponent<Text>().text = "Gate " + (networkClientUIbuttons.networkClient.getNextGate() + 3).ToString();
+        gateButton1.GetComponentInChildren<Text>().text = "Gate " + networkClientUIbuttons.networkClient.getNextGate().ToString();
+        gateButton2.GetComponentInChildren<Text>().text = "Gate " + (networkClientUIbuttons.networkClient.getNextGate() + 1).ToString();
+        gateButton3.GetComponentInChildren<Text>().text = "Gate " + (networkClientUIbuttons.networkClient.getNextGate() + 2).ToString();
+        gateButton4.GetComponentInChildren<Text>().text = "Gate " + (networkClientUIbuttons.networkClient.getNextGate() + 3).ToString();
     }
 
     public void moveToGateSelection()
     {
         laneSelectionPanel.SetActive(false);
-   
+
         gateSelectionPanel.SetActive(true);
     }
 
-    public void gateButtonPressed()
+    public void gateButton1Pressed()
     {
-        string[] buttonData = gateButton1.GetComponent<Text>().text.Split(' ');
+        string[] buttonData = gateButton1.GetComponentInChildren<Text>().text.Split(' ');
 
-        if (abiltyType == 2) 
+        if (abiltyType == 2)
         {
 
             networkClientUIbuttons.networkClient.sendActivateVehicleAbiltiy(System.Convert.ToInt16(buttonData[1]), laneChoice, networkClientUIbuttons.networkClient.vehicleChoice);
-            
+
             gateSelectionPanel.SetActive(false);
             mainSelectionPanel.SetActive(true);
         }
         else if (abiltyType == 1)
         {
-          
+
             networkClientUIbuttons.networkClient.sendActivateVehicleAbiltiy(System.Convert.ToInt16(buttonData[1]), laneChoice, networkClientUIbuttons.networkClient.vehicleChoice);
-             StartCoroutine(StartAbilityCooldown());
-         
+            StartCoroutine(StartAbilityCooldown());
+
             gateSelectionPanel.SetActive(false);
             mainSelectionPanel.SetActive(true);
 
         }
         else if (abiltyType == 5)
         {
-                finishActivation( System.Convert.ToInt16(buttonData[1]));
+            finishActivation(System.Convert.ToInt16(buttonData[1]));
+        }
+        abiltyType = 0;
+    }
+    public void gateButton2Pressed()
+    {
+        string[] buttonData = gateButton2.GetComponentInChildren<Text>().text.Split(' ');
+
+        if (abiltyType == 2)
+        {
+
+            networkClientUIbuttons.networkClient.sendActivateVehicleAbiltiy(System.Convert.ToInt16(buttonData[1]), laneChoice, networkClientUIbuttons.networkClient.vehicleChoice);
+
+            gateSelectionPanel.SetActive(false);
+            mainSelectionPanel.SetActive(true);
+        }
+        else if (abiltyType == 1)
+        {
+
+            networkClientUIbuttons.networkClient.sendActivateVehicleAbiltiy(System.Convert.ToInt16(buttonData[1]), laneChoice, networkClientUIbuttons.networkClient.vehicleChoice);
+            StartCoroutine(StartAbilityCooldown());
+
+            gateSelectionPanel.SetActive(false);
+            mainSelectionPanel.SetActive(true);
+
+        }
+        else if (abiltyType == 5)
+        {
+            finishActivation(System.Convert.ToInt16(buttonData[1]));
+        }
+        abiltyType = 0;
+    }
+    public void gateButton3Pressed()
+    {
+        string[] buttonData = gateButton3.GetComponentInChildren<Text>().text.Split(' ');
+
+        if (abiltyType == 2)
+        {
+
+            networkClientUIbuttons.networkClient.sendActivateVehicleAbiltiy(System.Convert.ToInt16(buttonData[1]), laneChoice, networkClientUIbuttons.networkClient.vehicleChoice);
+
+            gateSelectionPanel.SetActive(false);
+            mainSelectionPanel.SetActive(true);
+        }
+        else if (abiltyType == 1)
+        {
+
+            networkClientUIbuttons.networkClient.sendActivateVehicleAbiltiy(System.Convert.ToInt16(buttonData[1]), laneChoice, networkClientUIbuttons.networkClient.vehicleChoice);
+            StartCoroutine(StartAbilityCooldown());
+
+            gateSelectionPanel.SetActive(false);
+            mainSelectionPanel.SetActive(true);
+
+        }
+        else if (abiltyType == 5)
+        {
+            finishActivation(System.Convert.ToInt16(buttonData[1]));
+        }
+        abiltyType = 0;
+    }
+    public void gateButton4Pressed()
+    {
+        string[] buttonData = gateButton4.GetComponentInChildren<Text>().text.Split(' ');
+
+        if (abiltyType == 2)
+        {
+
+            networkClientUIbuttons.networkClient.sendActivateVehicleAbiltiy(System.Convert.ToInt16(buttonData[1]), laneChoice, networkClientUIbuttons.networkClient.vehicleChoice);
+
+            gateSelectionPanel.SetActive(false);
+            mainSelectionPanel.SetActive(true);
+        }
+        else if (abiltyType == 1)
+        {
+
+            networkClientUIbuttons.networkClient.sendActivateVehicleAbiltiy(System.Convert.ToInt16(buttonData[1]), laneChoice, networkClientUIbuttons.networkClient.vehicleChoice);
+            StartCoroutine(StartAbilityCooldown());
+
+            gateSelectionPanel.SetActive(false);
+            mainSelectionPanel.SetActive(true);
+
+        }
+        else if (abiltyType == 5)
+        {
+            finishActivation(System.Convert.ToInt16(buttonData[1]));
         }
         abiltyType = 0;
     }
 
-   
-
-    
-
-    public void activateTrap()
+    public void laneButton1Pressed()
     {
-        if (!onTrapCooldown)
-        {
-            isAbility = false;
-
-            laneSelectionPanel.SetActive(true);
-            mainSelectionPanel.SetActive(false);
-            abiltyType = 5;
-        }
+        string[] buttonData = laneButton1.GetComponentInChildren<Text>().text.Split(' ');
+        laneChoice = System.Convert.ToInt16(buttonData[1]);
+        moveToGateSelection();
     }
+    public void laneButton2Pressed()
+    {
+        string[] buttonData = laneButton2.GetComponentInChildren<Text>().text.Split(' ');
+        laneChoice = System.Convert.ToInt16(buttonData[1]);
+        moveToGateSelection();
+    }
+    public void laneButton3Pressed()
+    {
+        string[] buttonData = laneButton3.GetComponentInChildren<Text>().text.Split(' ');
+        laneChoice = System.Convert.ToInt16(buttonData[1]);
+        moveToGateSelection();
+    }
+    public void laneButton4Pressed()
+    {
+        string[] buttonData = laneButton4.GetComponentInChildren<Text>().text.Split(' ');
+        laneChoice = System.Convert.ToInt16(buttonData[1]);
+        moveToGateSelection();
+    }
+   
 
     public void activateJump()
     {
@@ -204,11 +296,11 @@ public class clientGameManager : MonoBehaviour {
         {
             int text = abilityCooldown - x;
             // sets the UI text to show cooldown time
-            abilityButton.GetComponent<Text>().text = text.ToString();
+            abilityButton.GetComponentInChildren<Text>().text = text.ToString();
             yield return new WaitForSeconds(1);
         }
 
-        abilityButton.GetComponent<Text>().text = "Vehicle Ability!";
+        abilityButton.GetComponentInChildren<Text>().text = "Vehicle Ability!";
 
         onAbilityCooldown = false;
     }
@@ -222,11 +314,11 @@ public class clientGameManager : MonoBehaviour {
         {
             int text = powerupCooldown - x;
             // sets the UI text to show cooldown time
-            powerupButton.GetComponent<Text>().text = text.ToString();
+            powerupButton.GetComponentInChildren<Text>().text = text.ToString();
             yield return new WaitForSeconds(1);
         }
 
-        powerupButton.GetComponent<Text>().text = "Power-Up!";
+        powerupButton.GetComponentInChildren<Text>().text = "Power-Up!";
 
         onPowerupCooldown = false;
     }
@@ -240,11 +332,11 @@ public class clientGameManager : MonoBehaviour {
         {
             int text = trapCooldown - x;
             // sets the UI text to show cooldown time
-            trapButton.GetComponent<Text>().text = text.ToString();
+            trapButton.GetComponentInChildren<Text>().text = text.ToString();
             yield return new WaitForSeconds(1);
         }
 
-        trapButton.GetComponent<Text>().text = "Activate Trap!";
+        trapButton.GetComponentInChildren<Text>().text = "Activate Trap!";
 
         onTrapCooldown = false;
     }
@@ -272,7 +364,7 @@ public class clientGameManager : MonoBehaviour {
             {
                 int text = jumpCooldown1st - x;
                 // sets the UI text to show cooldown time
-                jumpButton.GetComponent<Text>().text = text.ToString();
+                jumpButton.GetComponentInChildren<Text>().text = text.ToString();
                 yield return new WaitForSeconds(1);
             }
         }
@@ -282,7 +374,7 @@ public class clientGameManager : MonoBehaviour {
             for (int x = 0; x < jumpCooldown2nd; x++)
             {
                 int text = jumpCooldown2nd - x;
-                jumpButton.GetComponent<Text>().text = text.ToString();
+                jumpButton.GetComponentInChildren<Text>().text = text.ToString();
                 yield return new WaitForSeconds(1);
             }
         }
@@ -292,7 +384,7 @@ public class clientGameManager : MonoBehaviour {
             for (int x = 0; x < jumpCooldown3rd; x++)
             {
                 int text = jumpCooldown3rd - x;
-                jumpButton.GetComponent<Text>().text = text.ToString();
+                jumpButton.GetComponentInChildren<Text>().text = text.ToString();
                 yield return new WaitForSeconds(1);
             }
         }
@@ -302,12 +394,12 @@ public class clientGameManager : MonoBehaviour {
             for (int x = 0; x < jumpCooldown4th; x++)
             {
                 int text = jumpCooldown4th - x;
-                jumpButton.GetComponent<Text>().text = text.ToString();
+                jumpButton.GetComponentInChildren<Text>().text = text.ToString();
                 yield return new WaitForSeconds(1);
             }
         }
 
-        jumpButton.GetComponent<Text>().text = "Jump!";
+        jumpButton.GetComponentInChildren<Text>().text = "Jump!";
 
         onJumpCooldown = false;
     }
@@ -324,8 +416,8 @@ public class clientGameManager : MonoBehaviour {
             {
                 int text = switchCooldown1st - x;
                 // sets the UI text to show cooldown time
-                switchButtonL.GetComponent<Text>().text = text.ToString();
-                switchButtonR.GetComponent<Text>().text = text.ToString();
+                switchButtonL.GetComponentInChildren<Text>().text = text.ToString();
+                switchButtonR.GetComponentInChildren<Text>().text = text.ToString();
                 yield return new WaitForSeconds(1);
             }
         }
@@ -335,8 +427,8 @@ public class clientGameManager : MonoBehaviour {
             for (int x = 0; x < switchCooldown2nd; x++)
             {
                 int text = switchCooldown2nd - x;
-                switchButtonL.GetComponent<Text>().text = text.ToString();
-                switchButtonR.GetComponent<Text>().text = text.ToString();
+                switchButtonL.GetComponentInChildren<Text>().text = text.ToString();
+                switchButtonR.GetComponentInChildren<Text>().text = text.ToString();
                 yield return new WaitForSeconds(1);
             }
         }
@@ -346,8 +438,8 @@ public class clientGameManager : MonoBehaviour {
             for (int x = 0; x < switchCooldown3rd; x++)
             {
                 int text = switchCooldown3rd - x;
-                switchButtonL.GetComponent<Text>().text = text.ToString();
-                switchButtonR.GetComponent<Text>().text = text.ToString();
+                switchButtonL.GetComponentInChildren<Text>().text = text.ToString();
+                switchButtonR.GetComponentInChildren<Text>().text = text.ToString();
                 yield return new WaitForSeconds(1);
             }
         }
@@ -357,32 +449,44 @@ public class clientGameManager : MonoBehaviour {
             for (int x = 0; x < switchCooldown4th; x++)
             {
                 int text = switchCooldown4th - x;
-                switchButtonL.GetComponent<Text>().text = text.ToString();
-                switchButtonR.GetComponent<Text>().text = text.ToString();
+                switchButtonL.GetComponentInChildren<Text>().text = text.ToString();
+                switchButtonR.GetComponentInChildren<Text>().text = text.ToString();
                 yield return new WaitForSeconds(1);
             }
         }
-        
+
         // reset the cooldown bool and the UI text when cooldown is complete
-        switchButtonL.GetComponent<Text>().text = "Left";
-        switchButtonR.GetComponent<Text>().text = "Right";
+        switchButtonL.GetComponentInChildren<Text>().text = "Left";
+        switchButtonR.GetComponentInChildren<Text>().text = "Right";
 
         onSwitchCooldown = false;
     }
 
+    public void activateTrap()
+    {
+        if (!onTrapCooldown)
+        {
+            isAbility = false;
+
+            laneSelectionPanel.SetActive(true);
+            mainSelectionPanel.SetActive(false);
+            abiltyType = 5;
+        }
+    }
+
     public void activatePowerUp()
     {
-       // if (points >= powerUPcost[powerUPchoice - 1])
-       // {
-            if (!onPowerupCooldown)
-            {
-                // activate power up code here
-                networkClientUIbuttons.networkClient.sendActivatePowerUP(powerUPchoice, playerID, vehicleAbility);
-                // remove points for trap
-                //networkClientUIbuttons.networkClient.removePoints(powerUPcost[powerUPchoice - 1]);
-                StartCoroutine(StartPowerupCooldown());
-            }
-       // }
+        // if (points >= powerUPcost[powerUPchoice - 1])
+        // {
+        if (!onPowerupCooldown)
+        {
+            // activate power up code here
+            networkClientUIbuttons.networkClient.sendActivatePowerUP(powerUPchoice, playerID, vehicleAbility);
+            // remove points for trap
+            //networkClientUIbuttons.networkClient.removePoints(powerUPcost[powerUPchoice - 1]);
+            StartCoroutine(StartPowerupCooldown());
+        }
+        // }
     }
     public void activateVehicleAbility()
     {
@@ -406,38 +510,39 @@ public class clientGameManager : MonoBehaviour {
                 finishActivation(0);
             }
         }
-       
+
     }
-   
+
 
     public void finishActivation(int gateChoice)
     {
+        
         if (isAbility == false)
         {
-                networkClientUIbuttons.networkClient.sendActivateTrap(gateChoice, laneChoice, trapChoice);
-                // remove points for trap
-                networkClientUIbuttons.networkClient.removePoints(trapCost[trapChoice - 1]);
+            networkClientUIbuttons.networkClient.sendActivateTrap(gateChoice, laneChoice, trapChoice);
+            // remove points for trap
+            networkClientUIbuttons.networkClient.removePoints(trapCost[trapChoice - 1]);
+            gateSelectionPanel.SetActive(false);
+            mainSelectionPanel.SetActive(true);
+            StartCoroutine(StartTrapCooldown());
+        }
+        else
+        {
+            if (vehicleAbility == 3)
+            {
+                networkClientUIbuttons.networkClient.sendActivateVehicleAbiltiy(0, playerID, vehicleAbility);
+                isAbility = false;
+                StartCoroutine(StartAbilityCooldown());
+            }
+            else
+            {
+                networkClientUIbuttons.networkClient.sendActivateVehicleAbiltiy(gateChoice, laneChoice, vehicleAbility);
+                isAbility = false;
                 gateSelectionPanel.SetActive(false);
                 mainSelectionPanel.SetActive(true);
-                StartCoroutine(StartTrapCooldown());
-        }
-        else {
-                if (vehicleAbility == 3)
-                {
-                    networkClientUIbuttons.networkClient.sendActivateVehicleAbiltiy(0, playerID, vehicleAbility);
-                    isAbility = false;
-                    StartCoroutine(StartAbilityCooldown());
-                }
-                else
-                {
-                    networkClientUIbuttons.networkClient.sendActivateVehicleAbiltiy(gateChoice, laneChoice, vehicleAbility);
-                    isAbility = false;
-                    gateSelectionPanel.SetActive(false);
-                    mainSelectionPanel.SetActive(true);
-                    StartCoroutine(StartAbilityCooldown());
+                StartCoroutine(StartAbilityCooldown());
             }
         }
+        laneChoice = 0;
     }
-
-    
 }

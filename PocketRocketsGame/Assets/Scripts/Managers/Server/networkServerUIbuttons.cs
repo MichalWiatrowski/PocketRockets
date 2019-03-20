@@ -19,7 +19,7 @@ public class networkServerUIbuttons : NetworkManager {
     public int sceneIndex = 1;
     bool gameStart = false;
 
-    public int playerID = 0;
+    public int playersAmount = 0;
 
     public List<int> playerConnectionID = new List<int> { -1, -1, -1, -1 };
     // int[] playerConnectionID = new int[4] { -1, -1, -1, -1 };
@@ -50,7 +50,10 @@ public class networkServerUIbuttons : NetworkManager {
         NetworkServer.RegisterHandler(136, serverReceiveVehicleAbility);
         NetworkServer.RegisterHandler(137, serverReceiveJump);
         NetworkServer.RegisterHandler(138, serverReceiveLaneSwitch);
-       // MsgType.
+
+        maxDelay = 0.4f;
+
+    
         if (!gameStart)
         {
             networkServer = this;
@@ -138,7 +141,9 @@ public class networkServerUIbuttons : NetworkManager {
                 SceneManager.LoadSceneAsync(sceneIndex, LoadSceneMode.Additive);
                 UnloadScene(1);
 
-                sendStartGame(); // send a message to all cients which will change their scene
+
+        singleton.maxConnections = getPlayerAmount();
+        sendStartGame(); // send a message to all cients which will change their scene
            // }
    
        // }   
@@ -150,6 +155,15 @@ public class networkServerUIbuttons : NetworkManager {
         SceneManager.LoadSceneAsync(sceneIndex, LoadSceneMode.Additive);
         UnloadScene(2);
 
+        for (int i = 0; i < 4; i++)
+        {
+            if (playersConnected[i] == 1)
+            {
+                readyClientsTest[i] = 0;
+            }
+        }
+        singleton.maxConnections = 4;
+      
         sendRestartGame(); // send a message to all cients which will change their scene
     }
 
@@ -184,7 +198,7 @@ public class networkServerUIbuttons : NetworkManager {
         GUI.Box(new Rect(10, Screen.height - 100, 200, 100), "Debug Info");
         GUI.Label(new Rect(20, Screen.height - 85, 100, 20), "Status:" + NetworkServer.active);
         GUI.Label(new Rect(20, Screen.height - 60, 100, 20), "player cars" + ( playerVehiclesTest.Count ));
-       GUI.Label(new Rect(20, Screen.height - 45, 100, 20), "PlayerID:" + playerID);
+        //GUI.Label(new Rect(20, Screen.height - 45, 100, 20), "PlayerID:" + playerID);
         //GUI.Label(new Rect(20, Screen.height - 85, 100, 20), "player 1" + playerVehiclesTest[0]);
         //GUI.Label(new Rect(20, Screen.height - 60, 100, 20), "player 2" + playerVehiclesTest[1]);
         //GUI.Label(new Rect(20, Screen.height - 45, 100, 20), "player 3" + playerVehiclesTest[1]);
@@ -277,7 +291,16 @@ public class networkServerUIbuttons : NetworkManager {
         if (NetworkServer.active)
         {
             IntegerMessage msg = new IntegerMessage();
-            msg.value = playerID;
+            int index = 0;
+            for (int i = 0; i < 4; i++)
+            {
+                if (playersConnected[i] == 1)
+                {
+                    index++;
+                }
+            }
+            msg.value = index;
+            
             NetworkServer.SendToAll(120, msg);
         }
     }
@@ -287,7 +310,7 @@ public class networkServerUIbuttons : NetworkManager {
         //if (NetworkServer.active)
         //{
             IntegerMessage msg = new IntegerMessage();
-            msg.value = playerID;
+            msg.value = playersAmount;
             NetworkServer.SendToAll(125, msg);
        // }
     }
@@ -300,27 +323,37 @@ public class networkServerUIbuttons : NetworkManager {
 
     public void sendSwitchStateL()
     {
-        string[] switchStates = new string[playerID];
+        string[] switchStates = new string[4];
         StringMessage msg = new StringMessage();
 
-        for (int x = 1; x < playerID + 1; x++)
+        //for (int x = 1; x < playerID + 1; x++)
+        //{
+        //    switchStates[x - 1] = GameObject.Find("Player " + x).GetComponent<PlayerStats>().getSwitchStateL().ToString();
+        //    msg.value += switchStates[x - 1] + "|";
+        //}
+        for (int i = 0; i < 4; i++)
         {
-            switchStates[x - 1] = GameObject.Find("Player " + x).GetComponent<PlayerStats>().getSwitchStateL().ToString();
-            msg.value += switchStates[x - 1] + "|";
+            if (playersConnected[i] == 1)
+            {
+                switchStates[i] = GameObject.Find("Player " + (i + 1)).GetComponent<PlayerStats>().getSwitchStateL().ToString();
+                msg.value += switchStates[i] + "|";
+            }
         }
-
         NetworkServer.SendToAll(126, msg);
     }
 
     public void sendSwitchStateR()
     {
-        string[] switchStates = new string[playerID];
+        string[] switchStates = new string[4];
         StringMessage msg = new StringMessage();
 
-        for (int x = 1; x < playerID + 1; x++)
+        for (int i = 0; i < 4; i++)
         {
-            switchStates[x - 1] = GameObject.Find("Player " + x).GetComponent<PlayerStats>().getSwitchStateR().ToString();
-            msg.value += switchStates[x - 1] + "|";
+            if (playersConnected[i] == 1)
+            {
+                switchStates[i] = GameObject.Find("Player " + (i + 1)).GetComponent<PlayerStats>().getSwitchStateR().ToString();
+                msg.value += switchStates[i] + "|";
+            }
         }
 
         NetworkServer.SendToAll(127, msg);
@@ -365,35 +398,49 @@ public class networkServerUIbuttons : NetworkManager {
 
     public void sendPosition()
     {
-        int[] playerPositions = new int[playerID];
+        int[] playerPositions = new int[4];
         StringMessage msg = new StringMessage();
 
-        for (int x = 1; x < playerID + 1; x++)
+        //for (int x = 1; x < playerID + 1; x++)
+        //{
+        //    playerPositions[x - 1] = GameObject.Find("Player " + x).GetComponent<PlayerStats>().getPosition();
+        //    msg.value += playerPositions[x - 1] + "|";
+        //}
+        for (int i = 0; i < 4; i++)
         {
-            playerPositions[x - 1] = GameObject.Find("Player " + x).GetComponent<PlayerStats>().getPosition();
-            msg.value += playerPositions[x - 1] + "|";
+            if (playersConnected[i] == 1)
+            {
+                playerPositions[i] = GameObject.Find("Player " + (i + 1)).GetComponent<PlayerStats>().getPosition();
+                msg.value += playerPositions[i] + "|";
+            }
         }
-
         NetworkServer.SendToAll(124, msg);
     }
 
     public void sendPoints_Gate()
     {
         
-        int[] playerPoints = new int[playerID];
-        int[] nextGate = new int[playerID];
+        int[] playerPoints = new int[4];
+        int[] nextGate = new int[4];
 
         StringMessage msg = new StringMessage();
         StringMessage gateMsg = new StringMessage();
         // get the points for each player
     
-        for (int x = 1; x < playerID + 1; x++)
+        //for (int x = 1; x < playerID + 1; x++)
+        //{
+        //    nextGate[x - 1] = GameObject.Find("Player " + x).GetComponent<PlayerStats>().getNextGate();
+        //    gateMsg.value += nextGate[x - 1] + "|";
+        //}
+        for (int i = 0; i < 4; i++)
         {
-            nextGate[x - 1] = GameObject.Find("Player " + x).GetComponent<PlayerStats>().getNextGate();
-            gateMsg.value += nextGate[x - 1] + "|";
+            if (playersConnected[i] == 1)
+            {
+                nextGate[i] = GameObject.Find("Player " + (i + 1)).GetComponent<PlayerStats>().getNextGate();
+                gateMsg.value += nextGate[i] + "|";
+            }
         }
 
-            //NetworkServer.SendToAll(122, msg);
         NetworkServer.SendToAll(123, gateMsg);
     }
 
