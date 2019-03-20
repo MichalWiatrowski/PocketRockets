@@ -41,10 +41,10 @@ public class serverMenuManager : MonoBehaviour {
         }
        // networkServerUIbuttons.networkServer.readyClients.ForEach(x => x = false);
        
-        for (int i = 0; i < networkServerUIbuttons.networkServer.readyClients.Count; i++)
-        {
-            networkServerUIbuttons.networkServer.readyClients[i] = false;
-        }
+       // for (int i = 0; i < 4; i++)
+       // {
+         //   networkServerUIbuttons.networkServer.readyClients[i] = 0;
+       // }
     }
 	
 	
@@ -69,17 +69,23 @@ public class serverMenuManager : MonoBehaviour {
     void Update()
     {
      
-       for (int i = 1; i < networkServerUIbuttons.networkServer.readyClients.Count + 1; i++)
+
+       for (int i = 0; i < 4; i++)
         {
-            if (networkServerUIbuttons.networkServer.getReadyClient()[i - 1] == false)
+            if (networkServerUIbuttons.networkServer.readyClientsTest[i] == 0)
             {
-                GameObject.Find("Canvas/preGamePanelRemake/player" + i + "Panel").GetComponent<Image>().color = Color.red;
-                GameObject.Find("Canvas/preGamePanelRemake/player" + i + "Panel").GetComponentInChildren<Text>().text = "Not Ready";
+                GameObject.Find("Canvas/preGamePanelRemake/player" + (i + 1) + "Panel").GetComponent<Image>().color = Color.red;
+                GameObject.Find("Canvas/preGamePanelRemake/player" + (i + 1) + "Panel").GetComponentInChildren<Text>().text = "Not Ready";
             }
-            else
+            else if (networkServerUIbuttons.networkServer.readyClientsTest[i] == 1)
             {
-                GameObject.Find("Canvas/preGamePanelRemake/player" + i + "Panel").GetComponent<Image>().color = Color.green;
-                GameObject.Find("Canvas/preGamePanelRemake/player" + i + "Panel").GetComponentInChildren<Text>().text = "Ready";
+                GameObject.Find("Canvas/preGamePanelRemake/player" + (i + 1) + "Panel").GetComponent<Image>().color = Color.green;
+                GameObject.Find("Canvas/preGamePanelRemake/player" + (i + 1) + "Panel").GetComponentInChildren<Text>().text = "Ready";
+            }
+            else if (networkServerUIbuttons.networkServer.readyClientsTest[i] == -1)
+            {
+                GameObject.Find("Canvas/preGamePanelRemake/player" + (i + 1) + "Panel").GetComponent<Image>().color = Color.gray;
+                GameObject.Find("Canvas/preGamePanelRemake/player" + (i + 1) + "Panel").GetComponentInChildren<Text>().text = "Not Connected";
             }
         }
         

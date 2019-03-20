@@ -16,18 +16,30 @@ public class countdown : MonoBehaviour {
 
     IEnumerator CountdownStart()
     {
-        for (int x = 0; x < networkServerUIbuttons.networkServer.getPlayerAmount(); x++)
+        //for (int x = 0; x < networkServerUIbuttons.networkServer.getPlayerAmount(); x++)
+        //{
+        //    stats[x] = players[x].GetComponent<PlayerStats>();
+        //    stats[x].setSpeed(0);
+        //}
+
+        //for (int x = 1; x < networkServerUIbuttons.networkServer.getPlayerAmount() + 1; x++)
+        //{
+        //    GameObject.Find("Player " + x).GetComponent<PlayerStats>().setCurrentLane(x - 1);
+        //}
+
+        for (int i = 0; i < 4; i++)
         {
-            stats[x] = players[x].GetComponentInParent<PlayerStats>();
-            stats[x].setSpeed(0);
+            if (networkServerUIbuttons.networkServer.playersConnected[i] == 1)
+            {
+                stats[i] = players[i].GetComponent<PlayerStats>();
+                stats[i].setSpeed(0);
+                stats[i].setCurrentLane(i);
+                
+            }
         }
 
-        for (int x = 1; x < networkServerUIbuttons.networkServer.getPlayerAmount() + 1; x++)
-        {
-            GameObject.Find("Player " + x).GetComponent<PlayerStats>().setCurrentLane(x - 1);
-        }
 
-        countText.gameObject.SetActive(true);
+            countText.gameObject.SetActive(true);
         countText.text = "3";
 
         yield return new WaitForSeconds(1);
@@ -46,10 +58,19 @@ public class countdown : MonoBehaviour {
 
         countText.gameObject.SetActive(false);
 
-        for (int x = 0; x < networkServerUIbuttons.networkServer.getPlayerAmount(); x++)
+        //for (int x = 0; x < networkServerUIbuttons.networkServer.getPlayerAmount(); x++)
+        //{
+        //    stats[x].resetSpeed();
+        //}
+
+
+        for (int i = 0; i < 4; i++)
         {
-            stats[x].resetSpeed();
+            if (networkServerUIbuttons.networkServer.playersConnected[i] == 1)
+            {
+                stats[i].resetSpeed();
+            }
         }
-        
+
     }
 }

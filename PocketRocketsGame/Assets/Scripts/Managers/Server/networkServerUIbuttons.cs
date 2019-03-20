@@ -25,9 +25,11 @@ public class networkServerUIbuttons : NetworkManager {
     // int[] playerConnectionID = new int[4] { -1, -1, -1, -1 };
     public List<int> playerIDTest = new List<int> { 1, 2, 3, 4 };
     public List<int> playersConnected = new List<int> { 0, 0, 0, 0 };
-    public List<bool> readyClients = new List<bool>(); //for storing client ready states
+
+    public List<int>  readyClientsTest = new List<int>{ -1, -1, -1, -1 };
+    //public List<bool>  readyClientsTest = new List<bool>(); //for storing client ready states
   
-    public List<int> playerVehicles = new List<int>();
+    public List<int> playerVehiclesTest = new List<int> { 9, 9, 9, 9 };
     
 
     // Use this for initialization
@@ -97,24 +99,39 @@ public class networkServerUIbuttons : NetworkManager {
     public override void OnServerDisconnect(NetworkConnection conn)
     {
         Debug.Log("player with id " + conn.connectionId + " has disconnected");
+
+        for (int i =0; i < 4; i++)
+        {
+            if (playerConnectionID[i] == conn.connectionId)
+            {
+                playerConnectionID[i] = -1;
+                readyClientsTest[i] = -1;
+                playerVehiclesTest[i] = 1;
+                playersConnected[i] = 0;
+            }
+        }
+
+
+
+
         base.OnServerDisconnect(conn);
     }
     public void hostGameRemake()
     {
 
     }
-    public List<bool> getReadyClient()
+    public List<int> getReadyClient()
     {
-        return readyClients;
+        return  readyClientsTest;
     }
     public void hostGame()
     {
-        if (readyClients.Contains(false))
-        {
-            // say clients not ready code
-        }
-        else
-        {
+        //if ( readyClientsTest.Contains())
+        //{
+        //    // say clients not ready code
+        //}
+        //else
+        //{
            // if (playerID > 1)
            // {
                 sceneIndex = 2;
@@ -124,7 +141,7 @@ public class networkServerUIbuttons : NetworkManager {
                 sendStartGame(); // send a message to all cients which will change their scene
            // }
    
-        }   
+       // }   
     }
 
     public void restartGame()
@@ -166,9 +183,12 @@ public class networkServerUIbuttons : NetworkManager {
         //Debug information
         GUI.Box(new Rect(10, Screen.height - 100, 200, 100), "Debug Info");
         GUI.Label(new Rect(20, Screen.height - 85, 100, 20), "Status:" + NetworkServer.active);
-        //GUI.Label(new Rect(20, Screen.height - 60, 100, 20), "Connected:" + (NetworkServer.connections.Count));
-        GUI.Label(new Rect(20, Screen.height - 45, 100, 20), "PlayerID:" + playerID);
-        //GUI.Label(new Rect(20, Screen.height - 30, 100, 20), "Ready:" + readyClients[0]);
+        GUI.Label(new Rect(20, Screen.height - 60, 100, 20), "player cars" + ( playerVehiclesTest.Count ));
+       GUI.Label(new Rect(20, Screen.height - 45, 100, 20), "PlayerID:" + playerID);
+        //GUI.Label(new Rect(20, Screen.height - 85, 100, 20), "player 1" + playerVehiclesTest[0]);
+        //GUI.Label(new Rect(20, Screen.height - 60, 100, 20), "player 2" + playerVehiclesTest[1]);
+        //GUI.Label(new Rect(20, Screen.height - 45, 100, 20), "player 3" + playerVehiclesTest[1]);
+        //GUI.Label(new Rect(20, Screen.height - 30, 100, 20), "Ready:" +  readyClientsTest[0]);
     }
 
     void activateTrap(int playerIDchoice, int gateNo, int trapChoice)
@@ -324,9 +344,9 @@ public class networkServerUIbuttons : NetworkManager {
                     msg.value = playerIDTest[i];
                     NetworkServer.SendToClient(conn.connectionId, 121, msg);
 
-
-                    readyClients.Add(false);
-                    playerVehicles.Add(1);
+                     readyClientsTest[i] = 0;
+                    // readyClientsTest.Add(false);
+                    //playerVehiclesTest.Add(1);
                     playerConnectionID[i] = conn.connectionId;
                     playersConnected[i] = 1;
                     break;
@@ -424,8 +444,8 @@ public class networkServerUIbuttons : NetworkManager {
         msg.value = message.ReadMessage<StringMessage>().value;
 
         string[] ready_playerID_vehicle_PlayerName = msg.value.Split('|');
-        readyClients[System.Convert.ToInt16(ready_playerID_vehicle_PlayerName[1]) - 1] = System.Convert.ToBoolean(System.Convert.ToInt16(ready_playerID_vehicle_PlayerName[0]));
-        playerVehicles[System.Convert.ToInt16(ready_playerID_vehicle_PlayerName[1]) - 1] = System.Convert.ToInt16(ready_playerID_vehicle_PlayerName[2]);
+         readyClientsTest[System.Convert.ToInt16(ready_playerID_vehicle_PlayerName[1]) - 1] = System.Convert.ToInt16(ready_playerID_vehicle_PlayerName[0]);
+        playerVehiclesTest[System.Convert.ToInt16(ready_playerID_vehicle_PlayerName[1]) - 1] = System.Convert.ToInt16(ready_playerID_vehicle_PlayerName[2]);
 
 
     }
