@@ -141,7 +141,7 @@ public class networkServerUIbuttons : NetworkManager {
                 SceneManager.LoadSceneAsync(sceneIndex, LoadSceneMode.Additive);
                 UnloadScene(1);
 
-
+        GetComponent<networkDiscoveryServer>().StopBroadcast();
         singleton.maxConnections = getPlayerAmount();
         sendStartGame(); // send a message to all cients which will change their scene
            // }
@@ -162,8 +162,8 @@ public class networkServerUIbuttons : NetworkManager {
                 readyClientsTest[i] = 0;
             }
         }
-        singleton.maxConnections = 4;
-      
+
+        GetComponent<networkDiscoveryServer>().StartAsServer();
         sendRestartGame(); // send a message to all cients which will change their scene
     }
 
