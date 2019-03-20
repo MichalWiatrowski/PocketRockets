@@ -8,9 +8,9 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 
-public class networkClientUIbuttons : NetworkDiscovery {
+public class networkClientUIbuttons : NetworkManager {
 
-    public NetworkClient client;
+    //public NetworkClient client;
     public static networkClientUIbuttons networkClient;
 
 
@@ -31,8 +31,8 @@ public class networkClientUIbuttons : NetworkDiscovery {
     int testPortNum = 2500;
 
 
-    string discoveryIP = "";
-    int discoveryPort = 0;
+    public string discoveryIP = "";
+    public int discoveryPort = 0;
 
     public int vehicleChoice = 0;
     
@@ -48,16 +48,40 @@ public class networkClientUIbuttons : NetworkDiscovery {
     private int position = 0;
     private int nextGate = 1;
 
-    //this will load the first scene of the mobile side of the game "Menu"
-    void Awake()
-    {
-    }
+   
     // Use this for initialization
     void Start()
     {
-        client = new NetworkClient();
+         client = new NetworkClient();
 
-        //Register handlers
+        
+        ////Register handlers
+        //client.RegisterHandler(120, clientReceiveStartGame);
+        //client.RegisterHandler(121, clientReceivePlayerID);
+        //client.RegisterHandler(122, clientReceivePoints);
+        //client.RegisterHandler(123, clientReceiveNextGate);
+        //client.RegisterHandler(124, clientReceivePosition);
+        //client.RegisterHandler(125, clientReceiveRestartGame);
+        //client.RegisterHandler(126, clientReceiveSwitchStateL);
+        //client.RegisterHandler(127, clientReceiveSwitchStateR);
+        
+      
+        if (!gameStart)
+        {
+            networkClient = this;
+            SceneManager.LoadSceneAsync(sceneIndex, LoadSceneMode.Additive);
+            gameStart = true;
+        }
+
+        GetComponent<networkDiscoveryClient>().init();
+
+    }
+
+    public override void OnStartClient(NetworkClient client)
+    {
+        base.OnStartClient(client);
+
+        //When the client is started, register all the handlers now
         client.RegisterHandler(120, clientReceiveStartGame);
         client.RegisterHandler(121, clientReceivePlayerID);
         client.RegisterHandler(122, clientReceivePoints);
@@ -67,20 +91,8 @@ public class networkClientUIbuttons : NetworkDiscovery {
         client.RegisterHandler(126, clientReceiveSwitchStateL);
         client.RegisterHandler(127, clientReceiveSwitchStateR);
 
-        if (!gameStart)
-        {
-            networkClient = this;
-            SceneManager.LoadSceneAsync(sceneIndex, LoadSceneMode.Additive);
-            gameStart = true;
-        }
-
-        //Init network discovery
-        Initialize();
-        //Start network discovery as client to search for local servers
-        StartAsClient();
 
     }
-
     public int getPlayerID()
     {
         return playerID;
@@ -118,42 +130,42 @@ public class networkClientUIbuttons : NetworkDiscovery {
     public void setSwitchStateR(int flag) { switchStateR = flag; }
 
 
+    public override void OnClientConnect(NetworkConnection conn)
+    {
+        Debug.Log("lol i connected and the id is" + conn.connectionId);
+        base.OnClientConnect(conn);
+    }
+
+
     public void joinGame()
     {
-        //create a config, add qos channels, then configure the client to have 1 max connection; the server
-        ConnectionConfig config = new ConnectionConfig();
-        config.AddChannel(QosType.ReliableSequenced);
-        config.AddChannel(QosType.Unreliable);
-        client.Configure(config, 1);
-
-        //connect to the server
-        if (testing == false)
+        if (client.isConnected == false)
         {
-            //Connect through network discovery
-            Connect(discoveryIP, discoveryPort);
+            //create a config, add qos channels, then configure the client to have 1 max connection; the server
+            ConnectionConfig config = new ConnectionConfig();
+            config.AddChannel(QosType.ReliableSequenced);
+            config.AddChannel(QosType.Unreliable);
+            client.Configure(config, 4);
 
-            //Connect by inputting ip and port into input boxes
-            //Connect(GameObject.Find("Canvas/joinGamePanel/IPaddress").GetComponent<InputField>().text, System.Convert.ToInt32(GameObject.Find("Canvas/joinGamePanel/portNumber").GetComponent<InputField>().text));
-        }
-        else
-        {
-           Connect(testIP, testPortNum);
-        }
+            //connect to the server
+            if (testing == false)
+            {
+                //Connect through network discovery
+                Connect(discoveryIP, discoveryPort);
 
-      
+                //Connect by inputting ip and port into input boxes
+                //Connect(GameObject.Find("Canvas/joinGamePanel/IPaddress").GetComponent<InputField>().text, System.Convert.ToInt32(GameObject.Find("Canvas/joinGamePanel/portNumber").GetComponent<InputField>().text));
+            }
+            else
+            {
+                Connect(testIP, testPortNum);
+            }
+
+        }
     }
 
-    public override void OnReceivedBroadcast(string fromAddress, string data)
-    {
-        Debug.Log("Server Found with IP: " + fromAddress + " and port " + data);
-        //string[] lol = fromAddress.Split(':');
-       // discoveryIP = lol[1];
-        discoveryIP = fromAddress;
-
-        discoveryIP.Remove(0,7);
-        discoveryPort = System.Convert.ToInt32(data);
-    }
-
+    
+    
 
     void OnGUI()
     {
@@ -170,8 +182,14 @@ public class networkClientUIbuttons : NetworkDiscovery {
 
     void Connect(string IP, int portNumber)
     {
-        client.Connect(IP, portNumber);
-        StartCoroutine(askPlayerID());
+        NetworkManager.singleton.networkAddress = IP;
+        NetworkManager.singleton.networkPort = portNumber;
+
+
+        NetworkManager.singleton.StartClient();
+
+        //client.Connect(IP, portNumber);
+        //StartCoroutine(askPlayerID());
     }
 
     public void setPowers(int p, int t)

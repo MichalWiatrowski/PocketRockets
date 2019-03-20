@@ -8,7 +8,7 @@ using UnityStandardAssets.CrossPlatformInput;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class networkServerUIbuttons : NetworkDiscovery {
+public class networkServerUIbuttons : NetworkManager {
 
     public static networkServerUIbuttons networkServer;
     public AudioClip tankFireClip;
@@ -20,8 +20,11 @@ public class networkServerUIbuttons : NetworkDiscovery {
     bool gameStart = false;
 
     public int playerID = 0;
-    int[] playerIDTest = new int[4] { 1, 2, 3, 4 };
-    int[] playersConnected = new int[4] { 0, 0, 0, 0 };
+
+    public List<int> playerConnectionID = new List<int> { -1, -1, -1, -1 };
+    // int[] playerConnectionID = new int[4] { -1, -1, -1, -1 };
+    public List<int> playerIDTest = new List<int> { 1, 2, 3, 4 };
+    public List<int> playersConnected = new List<int> { 0, 0, 0, 0 };
     public List<bool> readyClients = new List<bool>(); //for storing client ready states
   
     public List<int> playerVehicles = new List<int>();
@@ -67,21 +70,34 @@ public class networkServerUIbuttons : NetworkDiscovery {
 
         NetworkServer.Configure(config, 4);
 
-        
-        
-       
-        
+
+        NetworkManager.singleton.networkPort = System.Convert.ToInt32(GameObject.Find("Canvas/mainMenuPanel/portNumber").GetComponent<InputField>().text);
+
+
         //start listening on the inputted port number
-        NetworkServer.Listen(System.Convert.ToInt32(GameObject.Find("Canvas/mainMenuPanel/portNumber").GetComponent<InputField>().text));
+        //NetworkServer.Listen(System.Convert.ToInt32(GameObject.Find("Canvas/mainMenuPanel/portNumber").GetComponent<InputField>().text));
 
         //The data that will be broadcasted to other network discvovery scripts
-        broadcastData = GameObject.Find("Canvas/mainMenuPanel/portNumber").GetComponent<InputField>().text;
-   
-        //Init network discovery
-        Initialize();
-        //Start network discovery as client to search for local servers
-        StartAsServer();
+        GetComponent<networkDiscoveryServer>().broadcastData = GameObject.Find("Canvas/mainMenuPanel/portNumber").GetComponent<InputField>().text;
 
+        GetComponent<networkDiscoveryServer>().init();
+
+
+        NetworkManager.singleton.StartServer(config, 4);
+      
+    }
+
+
+    public override void OnServerConnect(NetworkConnection conn)
+    {
+        //Debug.Log("someone connected and id is " + conn.connectionId);
+        sendPlayerID(conn);
+        base.OnServerConnect(conn);
+    }
+    public override void OnServerDisconnect(NetworkConnection conn)
+    {
+        Debug.Log("player with id " + conn.connectionId + " has disconnected");
+        base.OnServerDisconnect(conn);
     }
     public void hostGameRemake()
     {
@@ -99,14 +115,14 @@ public class networkServerUIbuttons : NetworkDiscovery {
         }
         else
         {
-            if (playerID > 1)
-            {
+           // if (playerID > 1)
+           // {
                 sceneIndex = 2;
                 SceneManager.LoadSceneAsync(sceneIndex, LoadSceneMode.Additive);
                 UnloadScene(1);
 
                 sendStartGame(); // send a message to all cients which will change their scene
-            }
+           // }
    
         }   
     }
@@ -122,7 +138,13 @@ public class networkServerUIbuttons : NetworkDiscovery {
 
     public int getPlayerAmount()
     {
-        return playerID;
+        int playerAmount = 0;
+        for (int i = 0; i < 4; i++)
+        {
+            if (playersConnected[i] == 1)
+                playerAmount++;
+        }
+        return playerAmount;
     }
     
  
@@ -144,7 +166,7 @@ public class networkServerUIbuttons : NetworkDiscovery {
         //Debug information
         GUI.Box(new Rect(10, Screen.height - 100, 200, 100), "Debug Info");
         GUI.Label(new Rect(20, Screen.height - 85, 100, 20), "Status:" + NetworkServer.active);
-        GUI.Label(new Rect(20, Screen.height - 60, 100, 20), "Connected:" + (NetworkServer.connections.Count));
+        //GUI.Label(new Rect(20, Screen.height - 60, 100, 20), "Connected:" + (NetworkServer.connections.Count));
         GUI.Label(new Rect(20, Screen.height - 45, 100, 20), "PlayerID:" + playerID);
         //GUI.Label(new Rect(20, Screen.height - 30, 100, 20), "Ready:" + readyClients[0]);
     }
@@ -253,7 +275,7 @@ public class networkServerUIbuttons : NetworkDiscovery {
     private void serverReceiveRequestID(NetworkMessage message)
     {
         Debug.Log(message.conn.connectionId);
-        sendPlayerID(message);
+        //sendPlayerID(message.conn);
     }
 
     public void sendSwitchStateL()
@@ -284,33 +306,41 @@ public class networkServerUIbuttons : NetworkDiscovery {
         NetworkServer.SendToAll(127, msg);
     }
 
-    private void sendPlayerID(NetworkMessage message)
+    private void sendPlayerID(NetworkConnection conn)
     {
         IntegerMessage msg = new IntegerMessage();
      
-        for (int i = 0; i < 4; i++)
+        if (!playersConnected.Contains(0))
         {
-            if (playersConnected[i] == 0)
+            conn.Disconnect();
+        }
+        else
+        {
+            for (int i = 0; i < 4; i++)
             {
-                
-                msg.value = playerIDTest[i];
-                NetworkServer.SendToClient(message.conn.connectionId, 121, msg);
-                readyClients.Add(false);
-                playerVehicles.Add(1);
-                playersConnected[i] = 1;
-                break;
+                if (playersConnected[i] == 0)
+                {
+
+                    msg.value = playerIDTest[i];
+                    NetworkServer.SendToClient(conn.connectionId, 121, msg);
+
+
+                    readyClients.Add(false);
+                    playerVehicles.Add(1);
+                    playerConnectionID[i] = conn.connectionId;
+                    playersConnected[i] = 1;
+                    break;
+
+                }
 
             }
-            else
-            {
-                message.conn.Disconnect();
-                break;
-            }
         }
+        
+        
       
         
-            
-     
+
+
     }
 
     public void sendPosition()
