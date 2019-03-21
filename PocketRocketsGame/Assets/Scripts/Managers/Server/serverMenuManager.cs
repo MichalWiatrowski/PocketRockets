@@ -53,6 +53,10 @@ public class serverMenuManager : MonoBehaviour {
     {
         networkServerUIbuttons.networkServer.hostServer();
 
+        for (int i = 0; i < 4; i++)
+        {
+            networkServerUIbuttons.networkServer.readyClientsTest[i] = -2;
+        }
         mainMenuPanel.SetActive(false);
         //preGamePanel.SetActive(true);
         preGamePanelRemake.SetActive(true);
@@ -82,7 +86,7 @@ public class serverMenuManager : MonoBehaviour {
                 GameObject.Find("Canvas/preGamePanelRemake/player" + (i + 1) + "Panel").GetComponent<Image>().color = Color.green;
                 GameObject.Find("Canvas/preGamePanelRemake/player" + (i + 1) + "Panel").GetComponentInChildren<Text>().text = "Ready";
             }
-            else if (networkServerUIbuttons.networkServer.readyClientsTest[i] == -1)
+            else if (networkServerUIbuttons.networkServer.readyClientsTest[i] == -2)
             {
                 GameObject.Find("Canvas/preGamePanelRemake/player" + (i + 1) + "Panel").GetComponent<Image>().color = Color.gray;
                 GameObject.Find("Canvas/preGamePanelRemake/player" + (i + 1) + "Panel").GetComponentInChildren<Text>().text = "Not Connected";

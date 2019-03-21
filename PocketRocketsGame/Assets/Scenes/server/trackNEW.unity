@@ -4141,6 +4141,11 @@ Prefab:
       propertyPath: m_Name
       value: Gate10
       objectReference: {fileID: 0}
+    - target: {fileID: 114675699579021320, guid: 04236c8bc74780149a513c70ec4e1639,
+        type: 2}
+      propertyPath: winningClip
+      value: 
+      objectReference: {fileID: 8300000, guid: f2a8fe1d83bd8d5428f333b4fbdec07e, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 04236c8bc74780149a513c70ec4e1639, type: 2}
   m_IsPrefabParent: 0
