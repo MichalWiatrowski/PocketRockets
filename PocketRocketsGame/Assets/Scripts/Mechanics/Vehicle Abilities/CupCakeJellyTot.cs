@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class CupCakeJellyTot : MonoBehaviour {
-    public float slow = 2.0f;
+    public float slow = 0.5f;
 	// Use this for initialization
 	void Start () {
         GetComponent<MeshRenderer>().enabled = false;

@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Move : MonoBehaviour {
+public class Move : MonoBehaviour
+{
 
     private PlayerStats stats;
     private Vector3 trackValues;
@@ -39,12 +40,13 @@ public class Move : MonoBehaviour {
     }
 
     // Update is called once per frame
-    void Update () {
+    void Update()
+    {
 
         // movement
         if (stats.getFallingThroughTeleport() == false && stats.getTrappedInBubble() == false && stats.getInTheAir() == false)
         {
-            GetComponent<Rigidbody>().velocity = new Vector3(0, GetComponent<Rigidbody>().velocity.y, ((stats.getSpeed() / stats.getSlowDownFactor())));
+            GetComponent<Rigidbody>().velocity = new Vector3(0, GetComponent<Rigidbody>().velocity.y, ((stats.getSpeed() + stats.getStackingSpeedBuff()) * stats.getSlowDownFactor()));
             //transform.Translate(0f, 0f, (stats.speed / stats.slowDownFactor) * Time.deltaTime);
         }
         else
@@ -65,5 +67,5 @@ public class Move : MonoBehaviour {
                 lerp = false;
             }
         }
-	}
+    }
 }
