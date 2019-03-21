@@ -10,10 +10,10 @@ public class ObstacleSpawner : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        lanes.Add(-7);
-        lanes.Add(-10);
+        lanes.Add(-17);
         lanes.Add(-13);
-        lanes.Add(-16);
+        lanes.Add(-9);
+        lanes.Add(-5);
         SetRandPos();
 	}
 
@@ -46,14 +46,15 @@ public class ObstacleSpawner : MonoBehaviour {
     {
         PlayerStats stats = player.GetComponentInParent<PlayerStats>();
 
-        stats.setSpeed(stats.getSpeed() * 0.9f);
+        stats.setSlowDownFactor(0.9f);
     }
 
     void IncreaseSpeed(Collider player)
     {
         PlayerStats stats = player.GetComponentInParent<PlayerStats>();
 
-        stats.setSpeed(stats.getDefaultSpeed());
+        stats.resetSlowDownFactor();
+       // stats.setSpeed(stats.getDefaultSpeed());
     }
 
     // Update is called once per frame

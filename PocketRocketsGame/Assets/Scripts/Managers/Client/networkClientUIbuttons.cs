@@ -32,8 +32,8 @@ public class
 
 
 
-    string testIP = "193.60.172.101";
-    int testPortNum = 53131;
+    string testIP = "127.0.0.1";
+    int testPortNum = 2555;
 
 
     public string discoveryIP = "";

@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerStats : MonoBehaviour {
+public class PlayerStats : MonoBehaviour
+{
 
     public readonly int[] LANE = { -17, -13, -9, -5 };
     private int currentLane;
@@ -13,6 +14,7 @@ public class PlayerStats : MonoBehaviour {
     private float speed = 30f;
     private float defaultSpeed = 30.0f;
     private float slowDownFactor = 1.0f;
+    private float speedStack = 0.0f;
 
     private int points = 600;
     private int position = 1;
@@ -36,13 +38,13 @@ public class PlayerStats : MonoBehaviour {
         //defaultSpeed = speed;
         //currentLane = networkServerUIbuttons.networkServer.playerID - 1;
     }
-    
+
     //Falling Through Teleport
-    public bool getFallingThroughTeleport(){ return fallingThroughTeleport;}
-    public void setFallingThroughTeleport(bool flag) { fallingThroughTeleport = flag;}
+    public bool getFallingThroughTeleport() { return fallingThroughTeleport; }
+    public void setFallingThroughTeleport(bool flag) { fallingThroughTeleport = flag; }
     //In The Air
-    public bool getInTheAir(){ return inTheAir;}
-    public void setInTheAir(bool flag) { inTheAir = flag;}
+    public bool getInTheAir() { return inTheAir; }
+    public void setInTheAir(bool flag) { inTheAir = flag; }
     //Trapped in Bubble
     public bool getTrappedInBubble() { return trappedInBubble; }
     public void setTrappedInBubble(bool flag) { trappedInBubble = flag; }
@@ -72,9 +74,10 @@ public class PlayerStats : MonoBehaviour {
     public void setDefaultSpeed(float spd) { defaultSpeed = spd; }
     //Slow down Factor
     public float getSlowDownFactor() { return slowDownFactor; }
-    public void setSlowDownFactor(float slowDown){ slowDownFactor = slowDown; }
+    public void setSlowDownFactor(float slowDown) { slowDownFactor = slowDown; }
+    public void resetSlowDownFactor() { slowDownFactor = 1.0f; }
     //Name
-    public string getPlayerName() {  return playerName; }
+    public string getPlayerName() { return playerName; }
     public void setPlayerName(string name) { playerName = name; }
     //Points
     public int getPoints() { return points; }
@@ -89,7 +92,7 @@ public class PlayerStats : MonoBehaviour {
     public int getCurrentLane() { return currentLane; }
     public void setCurrentLane(int currLane) { currentLane = currLane; }
 
- 
+
     //Set up default values based on vehicles
     public void setUpPlayerStats(int vehicleID)
     {
@@ -109,7 +112,7 @@ public class PlayerStats : MonoBehaviour {
 
 
     /// Colidders
- 
+
     void OnTriggerEnter(Collider collided)
     {
         if (collided.CompareTag("Plane"))
@@ -123,7 +126,7 @@ public class PlayerStats : MonoBehaviour {
             jumping = false;
         }
     }
-   
+
     void OnCollisionEnter(Collision collision)
     {
         if (collision.collider.CompareTag("Plane"))
@@ -138,17 +141,32 @@ public class PlayerStats : MonoBehaviour {
     public float getSpeed() { return speed; }
     public void setSpeed(float spd) { speed = spd; }
 
-    public void resetSpeed() {speed = defaultSpeed; }
+    public void resetSpeed() { speed = defaultSpeed; }
 
-    public void incrementSpeed(float incrementValue)
+    public void incrementSpeedStack(float incrementValue)
     {
-
-        speed += incrementValue;
+        if (speedStack < 0)
+        {
+            speedStack = 0;
+        }
+        speedStack += incrementValue;
+        Debug.Log("Speed stack has been increased : " + getStackingSpeedBuff());
     }
 
-    public void decrementSpeed(float decrementValue)
+    public void decrementSpeedStack(float decrementValue)
+    {
+        if (speedStack > 0)
+        {
+            speedStack = 0;
+        }
+        speedStack -= decrementValue;
+        Debug.Log("Speed stack has been reduced : " + getStackingSpeedBuff());
+    }
+
+    public int getStackingSpeedBuff()
     {
 
-        speed -= decrementValue;
+
+        return System.Convert.ToInt16(speedStack);
     }
 }

@@ -28,7 +28,7 @@ public class UnsuccessfulJump : MonoBehaviour {
     {
         if (collided.CompareTag("Player"))
         {
-            collided.GetComponent<PlayerStats>().decrementSpeed(speedDecrementValue);
+            collided.GetComponent<PlayerStats>().decrementSpeedStack(speedDecrementValue);
             sparks.Play();
             Debug.Log("Player Collided with Unsuccessful collider");
         }
