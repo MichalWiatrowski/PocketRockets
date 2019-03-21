@@ -16,6 +16,7 @@ public class networkServerUIbuttons : NetworkManager {
     
     private AudioSource networkSource;
 
+    int defaultPortNumber = 2555;
     public int sceneIndex = 1;
     bool gameStart = false;
 
@@ -30,6 +31,8 @@ public class networkServerUIbuttons : NetworkManager {
     //public List<bool>  readyClientsTest = new List<bool>(); //for storing client ready states
   
     public List<int> playerVehiclesTest = new List<int> { 9, 9, 9, 9 };
+
+    public List<string> playerNames = new List<string> { "", "", "", "" };
     
 
     // Use this for initialization
@@ -73,22 +76,28 @@ public class networkServerUIbuttons : NetworkManager {
         config.AddChannel(QosType.Unreliable);
 
 
-        NetworkServer.Configure(config, 4);
 
 
-        NetworkManager.singleton.networkPort = System.Convert.ToInt32(GameObject.Find("Canvas/mainMenuPanel/portNumber").GetComponent<InputField>().text);
+
+        NetworkManager.singleton.networkPort = defaultPortNumber;
+
+        while (!NetworkManager.singleton.StartServer(config, 4))
+        {
+            defaultPortNumber += 10;
+        }
 
 
-        //start listening on the inputted port number
-        //NetworkServer.Listen(System.Convert.ToInt32(GameObject.Find("Canvas/mainMenuPanel/portNumber").GetComponent<InputField>().text));
+
+
+
 
         //The data that will be broadcasted to other network discvovery scripts
-        GetComponent<networkDiscoveryServer>().broadcastData = GameObject.Find("Canvas/mainMenuPanel/portNumber").GetComponent<InputField>().text;
+        GetComponent<networkDiscoveryServer>().broadcastData = System.Convert.ToString(defaultPortNumber);
 
         GetComponent<networkDiscoveryServer>().init();
 
 
-        NetworkManager.singleton.StartServer(config, 4);
+       
       
     }
 
@@ -504,8 +513,16 @@ public class networkServerUIbuttons : NetworkManager {
         msg.value = message.ReadMessage<StringMessage>().value;
 
         string[] playerID_name = msg.value.Split('|');
-        PlayerStats stats = GameObject.Find("Player " + System.Convert.ToInt16(playerID_name[0])).GetComponent<PlayerStats>();
-        stats.setPlayerName(playerID_name[1]);
+
+        for (int i = 0; i <4; i++)
+        {
+            if (message.conn.connectionId == playerConnectionID[i])
+            {
+                playerNames[i] = playerID_name[1];
+            }
+        }
+        //PlayerStats stats = GameObject.Find("Player " + System.Convert.ToInt16(playerID_name[0])).GetComponent<PlayerStats>();
+        //stats.setPlayerName(playerID_name[1]);
     }
 
   

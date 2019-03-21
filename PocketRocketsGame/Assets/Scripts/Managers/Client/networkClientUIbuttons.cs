@@ -8,7 +8,11 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 
-public class networkClientUIbuttons : NetworkManager {
+public class 
+
+
+    
+    networkClientUIbuttons : NetworkManager {
 
     //public NetworkClient client;
     public static networkClientUIbuttons networkClient;
@@ -28,7 +32,7 @@ public class networkClientUIbuttons : NetworkManager {
 
 
     string testIP = "127.0.0.1";
-    int testPortNum = 2500;
+    int testPortNum = 2555;
 
 
     public string discoveryIP = "";
@@ -94,7 +98,14 @@ public class networkClientUIbuttons : NetworkManager {
 
     }
 
+    //public override void OnClientDisconnect(NetworkConnection conn)
+    //{
+    //    base.OnClientDisconnect(conn);
 
+
+    //    UnloadScene(SceneManager.GetActiveScene().buildIndex);
+    //    SceneManager.LoadScene(0); //load manager scene
+    //}
 
     public int getPlayerID()
     {
