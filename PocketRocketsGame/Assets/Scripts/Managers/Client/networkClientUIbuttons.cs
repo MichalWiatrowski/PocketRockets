@@ -27,8 +27,8 @@ public class networkClientUIbuttons : NetworkManager {
     int switchStateR = 1;
 
 
-    string testIP = "127.0.0.1";
-    int testPortNum = 2500;
+    string testIP = "193.60.172.101";
+    int testPortNum = 53131;
 
 
     public string discoveryIP = "";

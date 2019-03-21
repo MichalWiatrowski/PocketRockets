@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 65370996535749500}
   - component: {fileID: 114629559804189208}
   m_Layer: 0
-  m_Name: JellyTotTrap4
+  m_Name: JellyTotTrap1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 65695601102564366}
   - component: {fileID: 114195061848782426}
   m_Layer: 0
-  m_Name: JellyTotTrap3
+  m_Name: JellyTotTrap2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -62,7 +62,7 @@ GameObject:
   - component: {fileID: 65944485332955722}
   - component: {fileID: 114413160111455202}
   m_Layer: 0
-  m_Name: WallTrap4
+  m_Name: WallTrap1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -81,7 +81,7 @@ GameObject:
   - component: {fileID: 65524611859051976}
   - component: {fileID: 114865518423940874}
   m_Layer: 0
-  m_Name: FreezeTrap3
+  m_Name: FreezeTrap2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -100,7 +100,7 @@ GameObject:
   - component: {fileID: 65159983429009974}
   - component: {fileID: 114908088696258802}
   m_Layer: 0
-  m_Name: JellyTotTrap2
+  m_Name: JellyTotTrap3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -119,7 +119,7 @@ GameObject:
   - component: {fileID: 65906133029998338}
   - component: {fileID: 114005939806938540}
   m_Layer: 0
-  m_Name: FreezeTrap2
+  m_Name: FreezeTrap3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -138,7 +138,7 @@ GameObject:
   - component: {fileID: 65599687714498176}
   - component: {fileID: 114821299303965118}
   m_Layer: 0
-  m_Name: FreezeTrap4
+  m_Name: FreezeTrap1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -157,7 +157,7 @@ GameObject:
   - component: {fileID: 135074540840378664}
   - component: {fileID: 114184289188371676}
   m_Layer: 0
-  m_Name: NessieBubbleTrap1
+  m_Name: NessieBubbleTrap4
   m_TagString: Bubble
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -176,7 +176,7 @@ GameObject:
   - component: {fileID: 65115492884773266}
   - component: {fileID: 114291769090945766}
   m_Layer: 0
-  m_Name: FreezeTrap1
+  m_Name: FreezeTrap4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -195,7 +195,7 @@ GameObject:
   - component: {fileID: 135349666230144686}
   - component: {fileID: 114345569350523054}
   m_Layer: 0
-  m_Name: NessieBubbleTrap3
+  m_Name: NessieBubbleTrap2
   m_TagString: Bubble
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -235,7 +235,7 @@ GameObject:
   - component: {fileID: 65305165552212494}
   - component: {fileID: 114300255386085986}
   m_Layer: 0
-  m_Name: WallTrap3
+  m_Name: WallTrap2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -254,7 +254,7 @@ GameObject:
   - component: {fileID: 65209434968626978}
   - component: {fileID: 114061667070745592}
   m_Layer: 0
-  m_Name: JellyTotTrap1
+  m_Name: JellyTotTrap4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -273,7 +273,7 @@ GameObject:
   - component: {fileID: 135715332550926486}
   - component: {fileID: 114137672795344418}
   m_Layer: 0
-  m_Name: NessieBubbleTrap2
+  m_Name: NessieBubbleTrap3
   m_TagString: Bubble
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -292,7 +292,7 @@ GameObject:
   - component: {fileID: 65075193848110798}
   - component: {fileID: 114127307787081090}
   m_Layer: 0
-  m_Name: WallTrap1
+  m_Name: WallTrap4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -311,7 +311,7 @@ GameObject:
   - component: {fileID: 135434781061515338}
   - component: {fileID: 114093556450977490}
   m_Layer: 0
-  m_Name: NessieBubbleTrap4
+  m_Name: NessieBubbleTrap1
   m_TagString: Bubble
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -330,7 +330,7 @@ GameObject:
   - component: {fileID: 65180791844626392}
   - component: {fileID: 114669051832939866}
   m_Layer: 0
-  m_Name: WallTrap2
+  m_Name: WallTrap3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

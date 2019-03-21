@@ -21,7 +21,7 @@ public class ObstacleSpawner : MonoBehaviour {
     {
         randLane = Random.Range(0, 4);
         randZ = Random.Range(-70, 2100);
-        transform.Translate(lanes[randLane], 0f, randZ);
+        transform.SetPositionAndRotation(new Vector3(lanes[randLane], -1.0f, randZ), new Quaternion(0, 0, 0, 0));
     }
 
     void OnTriggerEnter(Collider collided)
