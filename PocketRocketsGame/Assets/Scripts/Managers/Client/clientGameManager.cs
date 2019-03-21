@@ -98,7 +98,7 @@ public class clientGameManager : MonoBehaviour {
         points = networkClientUIbuttons.networkClient.getPoints();
         nextGate = networkClientUIbuttons.networkClient.getNextGate();
         position = networkClientUIbuttons.networkClient.getPosition();
-        //networkClientUIbuttons.networkClient.sendName();
+        networkClientUIbuttons.networkClient.sendName();
         setUpGateButtons();
     }
  

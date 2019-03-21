@@ -65,14 +65,7 @@ public class serverGameManager : MonoBehaviour {
 
         }
 
-        for (int i = 0; i < 4; i++)
-        {
-            if (networkServerUIbuttons.networkServer.playersConnected[i] == 1)
-            {
-                GameObject.Find("Player " + (i + 1)).GetComponent<PlayerStats>().setPlayerName(networkServerUIbuttons.networkServer.playerNames[i]);
-              
-            }
-        }
+
     }
 
     
