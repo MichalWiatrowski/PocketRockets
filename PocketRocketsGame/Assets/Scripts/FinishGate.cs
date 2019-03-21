@@ -14,12 +14,12 @@ public class FinishGate : MonoBehaviour {
         winningSource = GetComponent<AudioSource>();
     }
 
-    void OnTriggerEnter(Collider collided)
+   void OnTriggerEnter(Collider collided)
     {
-        // check to see if trap is colliding with a vehicle
+       // check to see if trap is colliding with a vehicle
         if (collided.CompareTag("Player"))
         {
-            winningSource.PlayOneShot(winningClip, 0.1f);
+            //winningSource.PlayOneShot(winningClip, 0.1f);
             FindWinner(collided);
         }
     }
