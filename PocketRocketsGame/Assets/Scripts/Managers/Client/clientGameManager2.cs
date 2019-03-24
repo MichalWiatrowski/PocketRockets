@@ -126,6 +126,7 @@ public class clientGameManager2 : MonoBehaviour {
         {
 
             networkClientUIbuttons.networkClient.sendActivateVehicleAbiltiy(System.Convert.ToInt16(buttonData[1]), laneChoice, networkClientUIbuttons.networkClient.vehicleChoice);
+            StartCoroutine(StartAbilityCooldown());
 
             gateSelectionPanel.SetActive(false);
             mainSelectionPanel.SetActive(true);
@@ -154,6 +155,7 @@ public class clientGameManager2 : MonoBehaviour {
         {
 
             networkClientUIbuttons.networkClient.sendActivateVehicleAbiltiy(System.Convert.ToInt16(buttonData[1]), laneChoice, networkClientUIbuttons.networkClient.vehicleChoice);
+            StartCoroutine(StartAbilityCooldown());
 
             gateSelectionPanel.SetActive(false);
             mainSelectionPanel.SetActive(true);
@@ -182,6 +184,7 @@ public class clientGameManager2 : MonoBehaviour {
         {
 
             networkClientUIbuttons.networkClient.sendActivateVehicleAbiltiy(System.Convert.ToInt16(buttonData[1]), laneChoice, networkClientUIbuttons.networkClient.vehicleChoice);
+            StartCoroutine(StartAbilityCooldown());
 
             gateSelectionPanel.SetActive(false);
             mainSelectionPanel.SetActive(true);
@@ -210,6 +213,7 @@ public class clientGameManager2 : MonoBehaviour {
         {
 
             networkClientUIbuttons.networkClient.sendActivateVehicleAbiltiy(System.Convert.ToInt16(buttonData[1]), laneChoice, networkClientUIbuttons.networkClient.vehicleChoice);
+            StartCoroutine(StartAbilityCooldown());
 
             gateSelectionPanel.SetActive(false);
             mainSelectionPanel.SetActive(true);
@@ -263,7 +267,7 @@ public class clientGameManager2 : MonoBehaviour {
         {
             networkClientUIbuttons.networkClient.sendJump();
             StartCoroutine(StartJumpCooldown());
-            //StartCoroutine(StartJumpSwitchCooldown());
+            StartCoroutine(StartJumpSwitchCooldown());
         }
     }
 

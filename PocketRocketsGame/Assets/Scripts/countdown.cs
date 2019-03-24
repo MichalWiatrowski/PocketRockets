@@ -34,12 +34,17 @@ public class countdown : MonoBehaviour {
                 stats[i] = players[i].GetComponent<PlayerStats>();
                 stats[i].setSpeed(0);
                 stats[i].setCurrentLane(i);
-                
+                stats[i].setSwitchLeft(false);
+                stats[i].setSwitchStateL(0);
+                stats[i].setSwitchRight(false);
+                stats[i].setSwitchStateR(0);
             }
         }
+        networkServerUIbuttons.networkServer.sendSwitchStateL();
+        networkServerUIbuttons.networkServer.sendSwitchStateR();
 
 
-            countText.gameObject.SetActive(true);
+        countText.gameObject.SetActive(true);
         countText.text = "3";
 
         yield return new WaitForSeconds(1);
@@ -69,8 +74,12 @@ public class countdown : MonoBehaviour {
             if (networkServerUIbuttons.networkServer.playersConnected[i] == 1)
             {
                 stats[i].resetSpeed();
+                stats[i].setSwitchRight(true);
+                stats[i].setSwitchStateR(1);
             }
         }
+        networkServerUIbuttons.networkServer.sendSwitchStateL();
+        networkServerUIbuttons.networkServer.sendSwitchStateR();
 
     }
 }

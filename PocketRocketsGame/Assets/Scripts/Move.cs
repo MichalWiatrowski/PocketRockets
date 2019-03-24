@@ -6,6 +6,7 @@ public class Move : MonoBehaviour {
 
     private PlayerStats stats;
     private Vector3 trackValues;
+    private float timer = 0;
 
     public Vector3 newPos;
     public bool lerp = false;
@@ -20,7 +21,7 @@ public class Move : MonoBehaviour {
 
     public void MoveLeft()
     {
-        if (stats.getSwitchLeft() && stats.getCurrentLane() != 0)
+        if (stats.getSwitchLeft())
         {
             newPos = new Vector3(stats.LANE[stats.getCurrentLane() - 1], transform.position.y, transform.position.z);
             lerp = true;
@@ -30,7 +31,7 @@ public class Move : MonoBehaviour {
 
     public void MoveRight()
     {
-        if (stats.getSwitchRight() && stats.getCurrentLane() != 3)
+        if (stats.getSwitchRight())
         {
             newPos = new Vector3(stats.LANE[stats.getCurrentLane() + 1], transform.position.y, transform.position.z);
             lerp = true;
@@ -65,5 +66,28 @@ public class Move : MonoBehaviour {
                 lerp = false;
             }
         }
-	}
+
+        if (stats.getCurrentLane() == 0)
+        {
+            timer += Time.deltaTime;
+
+            if (timer > 1)
+            {
+                stats.setSwitchLeft(false);
+                stats.setSwitchStateL(0);
+                networkServerUIbuttons.networkServer.sendSwitchStateL();
+            }
+        }
+        else if (stats.getCurrentLane() == 3)
+        {
+            timer += Time.deltaTime;
+
+            if (timer > 1)
+            {
+                stats.setSwitchRight(false);
+                stats.setSwitchStateR(0);
+                networkServerUIbuttons.networkServer.sendSwitchStateR();
+            }
+        }
+    }
 }

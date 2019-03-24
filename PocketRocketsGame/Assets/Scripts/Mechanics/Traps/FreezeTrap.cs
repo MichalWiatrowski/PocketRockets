@@ -45,6 +45,7 @@ public class FreezeTrap : MonoBehaviour {
     IEnumerator Trap(Collider player)
     {
         PlayerStats stats = player.GetComponent<PlayerStats>();
+        gameObject.GetComponent<BoxCollider>().enabled = false;
 
         // send switch state to the client
         stats.setSwitchStateL(0);

@@ -35,6 +35,7 @@ public class WallTrap : MonoBehaviour {
     {
         // start moving the wall up
         moving = true;
+        gameObject.GetComponent<BoxCollider>().enabled = false;
 
         stats.setSwitchStateL(0);
         networkServerUIbuttons.networkServer.sendSwitchStateL();
