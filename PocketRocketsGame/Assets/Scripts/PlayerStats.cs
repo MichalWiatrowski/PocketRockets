@@ -37,6 +37,7 @@ public class PlayerStats : MonoBehaviour
     {
         //defaultSpeed = speed;
         //currentLane = networkServerUIbuttons.networkServer.playerID - 1;
+        speedStack = 0.0f;
     }
 
     //Falling Through Teleport
@@ -145,28 +146,27 @@ public class PlayerStats : MonoBehaviour
 
     public void incrementSpeedStack(float incrementValue)
     {
-        if (speedStack < 0)
+        if (speedStack < 0.0f)
         {
-            speedStack = 0;
+            speedStack = 0.0f;
         }
+
         speedStack += incrementValue;
         Debug.Log("Speed stack has been increased : " + getStackingSpeedBuff());
     }
 
     public void decrementSpeedStack(float decrementValue)
     {
-        if (speedStack > 0)
+        if (speedStack > 0.0f)
         {
-            speedStack = 0;
+            speedStack = 0.0f;
         }
         speedStack -= decrementValue;
         Debug.Log("Speed stack has been reduced : " + getStackingSpeedBuff());
     }
 
-    public int getStackingSpeedBuff()
+    public float getStackingSpeedBuff()
     {
-
-
-        return System.Convert.ToInt16(speedStack);
+        return speedStack;
     }
 }
