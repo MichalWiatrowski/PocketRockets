@@ -16,7 +16,14 @@ public class NessieBubbleTrap : MonoBehaviour {
     private bool bubbleCollision = false;
     private GameObject tempCar;
 
+    private AudioSource bubbleSource;
+    public AudioClip enterBubble;
+    public AudioClip bubblePop;
 
+    private void Awake()
+    {
+        bubbleSource = GetComponentInParent<AudioSource>();
+    }
     // Use this for initialization
     void Start () {
         
@@ -55,6 +62,7 @@ public class NessieBubbleTrap : MonoBehaviour {
                     stats.setSwitchStateR(1);
                     networkServerUIbuttons.networkServer.sendSwitchStateR();
 
+                    bubbleSource.PlayOneShot(bubblePop);
                     stats.setTrappedInBubble(false);
                     tempCar.GetComponent<BoxCollider>().enabled = true;
                     tempCar.GetComponent<Rigidbody>().useGravity = true;
@@ -76,6 +84,7 @@ public class NessieBubbleTrap : MonoBehaviour {
         {
             if (bubbleCollision == false)
             {
+                bubbleSource.PlayOneShot(enterBubble);
                 GetComponent<MeshRenderer>().enabled = true;
                 bubbleCollision = true;
                 tempCar = collided.gameObject;

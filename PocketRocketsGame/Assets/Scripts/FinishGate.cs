@@ -19,7 +19,7 @@ public class FinishGate : MonoBehaviour {
        // check to see if trap is colliding with a vehicle
         if (collided.CompareTag("Player"))
         {
-            //winningSource.PlayOneShot(winningClip, 0.1f);
+            winningSource.PlayOneShot(winningClip, 0.1f);
             FindWinner(collided);
         }
     }

@@ -4,8 +4,17 @@ using UnityEngine;
 
 public class CupCakeJellyTot : MonoBehaviour {
     public float slow = 0.5f;
-	// Use this for initialization
-	void Start () {
+
+    private AudioSource sludgeSource;
+    public AudioClip totSludge;
+
+
+    private void Awake()
+    {
+        sludgeSource = GetComponentInParent<AudioSource>();
+    }
+    // Use this for initialization
+    void Start () {
         GetComponent<MeshRenderer>().enabled = false;
     }
 	
@@ -19,6 +28,7 @@ public class CupCakeJellyTot : MonoBehaviour {
 
         if (collided.CompareTag("Player") && collided.GetComponent<PlayerStats>().getImmune() == false)
         {
+            sludgeSource.PlayOneShot(totSludge);
             GetComponent<MeshRenderer>().enabled = true;
             collided.GetComponent<PlayerStats>().setSlowDownFactor(slow);
             

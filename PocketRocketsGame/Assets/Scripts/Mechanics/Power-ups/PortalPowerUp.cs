@@ -27,7 +27,7 @@ public class PortalPowerUp : MonoBehaviour {
 
     void Awake() {
 
-       // portalSource = GetComponent<AudioSource>();
+        portalSource = GetComponent<AudioSource>();
     }
     void Start()
     {
@@ -56,7 +56,7 @@ public class PortalPowerUp : MonoBehaviour {
     {
         if (collided.CompareTag("Portal"))
         {
-            //portalSource.PlayOneShot(teleportClip);
+            portalSource.PlayOneShot(teleportClip);
             Debug.Log("Collided with portal");
             stats.setFallingThroughTeleport(true);
         }
