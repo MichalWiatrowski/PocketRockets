@@ -117,7 +117,7 @@ public class networkServerUIbuttons : NetworkManager {
             if (playerConnectionID[i] == conn.connectionId)
             {
                 playerConnectionID[i] = -1;
-                readyClientsTest[i] = -1;
+                readyClientsTest[i] = -2;
                 playerVehiclesTest[i] = 1;
                 playersConnected[i] = 0;
             }
