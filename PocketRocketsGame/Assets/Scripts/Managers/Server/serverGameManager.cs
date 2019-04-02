@@ -27,7 +27,7 @@ public class serverGameManager : MonoBehaviour {
     // Use this for initialization
     void Start()
     {
-        gameSource.PlayOneShot(raceStartClip, 0.1f);
+        //gameSource.PlayOneShot(raceStartClip, 0.1f);
         amountOfPlayers = networkServerUIbuttons.networkServer.getPlayerAmount();
         
 
