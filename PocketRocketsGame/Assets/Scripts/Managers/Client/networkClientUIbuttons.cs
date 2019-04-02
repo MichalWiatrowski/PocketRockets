@@ -99,14 +99,26 @@ public class
 
     }
 
-    //public override void OnClientDisconnect(NetworkConnection conn)
-    //{
-    //    base.OnClientDisconnect(conn);
+    //Hard restart the application when disconnected (temporary)
+    public override void OnClientDisconnect(NetworkConnection conn)
+    {
+        base.OnClientDisconnect(conn);
 
 
-    //    UnloadScene(SceneManager.GetActiveScene().buildIndex);
-    //    SceneManager.LoadScene(0); //load manager scene
-    //}
+        int c = SceneManager.sceneCount;
+        for (int i = 0; i < c; i++)
+        {
+            Scene scene = SceneManager.GetSceneAt(i);
+            print(scene.name);
+            if (scene.name != "clientManagerScene")
+            {
+                SceneManager.UnloadSceneAsync(scene);
+            }
+        }
+        SceneManager.LoadScene(0);
+    }
+
+
 
     public int getPlayerID()
     {
@@ -189,7 +201,7 @@ public class
         GUI.Label(new Rect(20, Screen.height - 120, 600, 20), "DiscoveryIP:" + discoveryIP);
         GUI.Label(new Rect(20, Screen.height - 100, 300, 20), "DiscoveryPort:" + discoveryPort);
 
-        GUI.Label(new Rect(20, Screen.height - 80, 100, 20), "Status:" + client.isConnected);
+        //GUI.Label(new Rect(20, Screen.height - 80, 100, 20), "Status:" + client.isConnected);
         GUI.Label(new Rect(20, Screen.height - 60, 100, 20), "PlayerID:" + playerID);
         GUI.Label(new Rect(20, Screen.height - 40, 100, 20), "Tilt X:" + Input.acceleration.x);
         GUI.Label(new Rect(20, Screen.height - 20, 100, 20), "points:" + points);
