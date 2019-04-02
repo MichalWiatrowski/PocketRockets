@@ -395,7 +395,7 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 1001824284}
   m_GameObject: {fileID: 97981075}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ff26db721962cdf4a8edcdfa9a767d2a, type: 3}
   m_Name: 
@@ -2929,6 +2929,11 @@ Prefab:
       propertyPath: behindCam
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114642860619988932, guid: 75429edd559c0fe429ae2f0268191cca,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 75429edd559c0fe429ae2f0268191cca, type: 2}
   m_IsPrefabParent: 0
@@ -5403,31 +5408,6 @@ Prefab:
       propertyPath: m_Name
       value: Gate1
       objectReference: {fileID: 0}
-    - target: {fileID: 65370996535749500, guid: 1388dba7e31312449ae21108cfa563a0,
-        type: 2}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114629559804189208, guid: 1388dba7e31312449ae21108cfa563a0,
-        type: 2}
-      propertyPath: totSludge
-      value: 
-      objectReference: {fileID: 8300000, guid: b3d8c367872f0474fbb8d351b52c2c51, type: 3}
-    - target: {fileID: 114195061848782426, guid: 1388dba7e31312449ae21108cfa563a0,
-        type: 2}
-      propertyPath: totSludge
-      value: 
-      objectReference: {fileID: 8300000, guid: b3d8c367872f0474fbb8d351b52c2c51, type: 3}
-    - target: {fileID: 114908088696258802, guid: 1388dba7e31312449ae21108cfa563a0,
-        type: 2}
-      propertyPath: totSludge
-      value: 
-      objectReference: {fileID: 8300000, guid: b3d8c367872f0474fbb8d351b52c2c51, type: 3}
-    - target: {fileID: 114061667070745592, guid: 1388dba7e31312449ae21108cfa563a0,
-        type: 2}
-      propertyPath: totSludge
-      value: 
-      objectReference: {fileID: 8300000, guid: b3d8c367872f0474fbb8d351b52c2c51, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1388dba7e31312449ae21108cfa563a0, type: 2}
   m_IsPrefabParent: 0
