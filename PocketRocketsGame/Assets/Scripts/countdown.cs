@@ -9,6 +9,9 @@ public class countdown : MonoBehaviour {
     public Text countText;
     PlayerStats[] stats = new PlayerStats[4];
 
+    public AudioClip startClip;
+    public GameObject Camera;
+
     void Start()
     {
         StartCoroutine(CountdownStart());
@@ -16,17 +19,8 @@ public class countdown : MonoBehaviour {
 
     IEnumerator CountdownStart()
     {
-        //for (int x = 0; x < networkServerUIbuttons.networkServer.getPlayerAmount(); x++)
-        //{
-        //    stats[x] = players[x].GetComponent<PlayerStats>();
-        //    stats[x].setSpeed(0);
-        //}
 
-        //for (int x = 1; x < networkServerUIbuttons.networkServer.getPlayerAmount() + 1; x++)
-        //{
-        //    GameObject.Find("Player " + x).GetComponent<PlayerStats>().setCurrentLane(x - 1);
-        //}
-
+        Camera.transform.GetComponent<AudioSource>().PlayOneShot(startClip);
         for (int i = 0; i < 4; i++)
         {
             if (networkServerUIbuttons.networkServer.playersConnected[i] == 1)
@@ -43,31 +37,49 @@ public class countdown : MonoBehaviour {
         networkServerUIbuttons.networkServer.sendSwitchStateL();
         networkServerUIbuttons.networkServer.sendSwitchStateR();
 
+        Color newColour = countText.color;
 
         countText.gameObject.SetActive(true);
         countText.text = "3";
 
-        yield return new WaitForSeconds(1);
+        for (float i = 0; i < 1; i += 0.1f)
+        {
+            yield return new WaitForSeconds(0.1f);
+            newColour.a = 1.0f - i;
+            countText.color = newColour;
+        }
+
 
         countText.text = "2";
 
-        yield return new WaitForSeconds(1);
+        for (float i = 0; i < 1; i += 0.1f)
+        {
+            yield return new WaitForSeconds(0.1f);
+            newColour.a = 1.0f - i;
+            countText.color = newColour;
+        }
 
         countText.text = "1";
 
-        yield return new WaitForSeconds(1);
+        for (float i = 0; i < 1; i += 0.1f)
+        {
+            yield return new WaitForSeconds(0.1f);
+            newColour.a = 1.0f - i;
+            countText.color = newColour;
+        }
 
         countText.text = "Go!";
 
-        yield return new WaitForSeconds(1);
+        for (float i = 0; i < 1; i += 0.1f)
+        {
+            yield return new WaitForSeconds(0.1f);
+            newColour.a = 1.0f - i;
+            countText.color = newColour;
+        }
 
         countText.gameObject.SetActive(false);
 
-        //for (int x = 0; x < networkServerUIbuttons.networkServer.getPlayerAmount(); x++)
-        //{
-        //    stats[x].resetSpeed();
-        //}
-
+       
 
         for (int i = 0; i < 4; i++)
         {

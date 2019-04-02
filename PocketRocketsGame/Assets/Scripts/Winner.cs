@@ -6,16 +6,10 @@ using UnityEngine;
 public class Winner : MonoBehaviour {
 
     public List<Transform> players;
-    public AudioClip winningClip;
+
     PlayerStats stats;
     public Text winner;
 
-    private AudioSource winningSource;
-
-    void Awake()
-    {
-        winningSource = GetComponent<AudioSource>();
-    }
     // get the players stats
     void Start()
     {

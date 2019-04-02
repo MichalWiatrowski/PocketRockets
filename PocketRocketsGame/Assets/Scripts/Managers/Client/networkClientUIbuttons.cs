@@ -25,7 +25,7 @@ public class
 
 
 
-    bool testing = false;
+    bool testing = true;
 
     int switchStateL = 1;
     int switchStateR = 1;

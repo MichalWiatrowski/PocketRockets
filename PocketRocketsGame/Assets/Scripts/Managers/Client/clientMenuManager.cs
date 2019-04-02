@@ -257,6 +257,9 @@ public class clientMenuManager : MonoBehaviour {
             menuIndex = 3;
         }
     }
-
+    public void disconnect()
+    {
+        networkClientUIbuttons.networkClient.client.Disconnect();
+    }
 
 }
