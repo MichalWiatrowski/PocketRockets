@@ -99,8 +99,26 @@ public class clientGameManager2 : MonoBehaviour {
         points = networkClientUIbuttons.networkClient.getPoints();
         nextGate = networkClientUIbuttons.networkClient.getNextGate();
         position = networkClientUIbuttons.networkClient.getPosition();
-        networkClientUIbuttons.networkClient.sendName();
+       // networkClientUIbuttons.networkClient.sendName();
         setUpGateButtons();
+
+
+        if (Input.acceleration.x > 0.5)
+        {
+            switchRight();
+        }
+        else if (Input.acceleration.x < -0.5)
+        {
+            switchLeft();
+        }
+
+
+
+
+
+
+
+
     }
 
     void setUpGateButtons()

@@ -25,7 +25,7 @@ public class
 
 
 
-    bool testing = true;
+    bool testing = false;
 
     int switchStateL = 1;
     int switchStateR = 1;
@@ -191,7 +191,7 @@ public class
 
         GUI.Label(new Rect(20, Screen.height - 80, 100, 20), "Status:" + client.isConnected);
         GUI.Label(new Rect(20, Screen.height - 60, 100, 20), "PlayerID:" + playerID);
-        GUI.Label(new Rect(20, Screen.height - 40, 100, 20), "ready:" + System.Convert.ToInt16(clientReady));
+        GUI.Label(new Rect(20, Screen.height - 40, 100, 20), "Tilt X:" + Input.acceleration.x);
         GUI.Label(new Rect(20, Screen.height - 20, 100, 20), "points:" + points);
     }
 
