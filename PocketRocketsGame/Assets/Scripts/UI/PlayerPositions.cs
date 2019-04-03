@@ -14,12 +14,14 @@ public class PlayerPositions : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        for (int j = 0; j < players.Count; j++)
+
+        for (int i = 0; i < 4; i++)
         {
-            if (players[j].gameObject.activeSelf)
+            if (networkServerUIbuttons.networkServer.playersConnected[i] == 1)
             {
                 playerCount++;
             }
+
         }
 
         Debug.Log("Player count is: " + playerCount);
@@ -36,28 +38,31 @@ public class PlayerPositions : MonoBehaviour {
             textAssigned[3] = true;
             positionImages[3].SetActive(false);
 
+
         }
         else if (playerCount == 2)
         {
-
-            positionTextList[3].text = "";
-            textAssigned[3] = true;
-            positionImages[3].SetActive(false);
 
             positionTextList[2].text = "";
             textAssigned[2] = true;
             positionImages[2].SetActive(false);
 
+            positionTextList[3].text = "";
+            textAssigned[3] = true;
+            positionImages[3].SetActive(false);
+
         }
 
     }
+
     private void Awake()
     {
     }
+
     // Update is called once per frame
     void Update () {
 
-        for (int x = 0; x < players.Count; x++)
+        for (int x = 0; x < playerCount; x++)
         {
             switch (players[x].GetComponent<PlayerStats>().getPosition())
             {
@@ -101,7 +106,8 @@ public class PlayerPositions : MonoBehaviour {
             positionTextList[textboxPosition + 2].text = players[iPos].GetComponent<PlayerStats>().getPlayerName();
             textAssigned[textboxPosition + 2] = true;
         }
-        else {
+        else if (textAssigned[textboxPosition + 3] == false)
+        {
             positionTextList[textboxPosition + 3].text = players[iPos].GetComponent<PlayerStats>().getPlayerName();
             textAssigned[textboxPosition + 3] = true;
 
