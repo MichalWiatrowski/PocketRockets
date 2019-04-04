@@ -26,6 +26,10 @@ public class Move : MonoBehaviour {
             newPos = new Vector3(stats.LANE[stats.getCurrentLane() - 1], transform.position.y, transform.position.z);
             lerp = true;
             stats.setCurrentLane(stats.getCurrentLane() - 1);
+            if (stats.getCurrentLane() == 2)
+            {
+                stats.setSendSwitchState(true);
+            }
         }
     }
 
@@ -36,6 +40,10 @@ public class Move : MonoBehaviour {
             newPos = new Vector3(stats.LANE[stats.getCurrentLane() + 1], transform.position.y, transform.position.z);
             lerp = true;
             stats.setCurrentLane(stats.getCurrentLane() + 1);
+            if (stats.getCurrentLane() == 1)
+            {
+                stats.setSendSwitchState(true);
+            }
         }
     }
 
@@ -87,6 +95,19 @@ public class Move : MonoBehaviour {
                 stats.setSwitchRight(false);
                 stats.setSwitchStateR(0);
                 networkServerUIbuttons.networkServer.sendSwitchStateR();
+            }
+        }
+        else
+        {
+            if (stats.getSendSwitchState())
+            { 
+                stats.setSwitchLeft(true);
+                stats.setSwitchStateL(1);
+                networkServerUIbuttons.networkServer.sendSwitchStateL();
+                stats.setSwitchRight(true);
+                stats.setSwitchStateR(1);
+                networkServerUIbuttons.networkServer.sendSwitchStateR();
+                stats.setSendSwitchState(false);
             }
         }
     }
