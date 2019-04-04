@@ -78,7 +78,7 @@ public class PortalPowerUp : MonoBehaviour {
             transform.Translate(0, fallingSpeed * Time.deltaTime, 0);
            
 
-            GetComponent<BoxCollider>().enabled = false;
+            GetComponent<BoxCollider>().isTrigger = true;
             if (transform.position.y <= fallDistanceUnderTrack - 2)
             {
 
@@ -90,8 +90,8 @@ public class PortalPowerUp : MonoBehaviour {
                 transform.Translate(0, 8 + fallingDistance, teleportDistance);
                 stats.setFallingThroughTeleport(false);
 
-           
-                GetComponent<BoxCollider>().enabled = true;
+
+                GetComponent<BoxCollider>().isTrigger = false;
                 StartCoroutine(PortalCleanup());
             }
         }
