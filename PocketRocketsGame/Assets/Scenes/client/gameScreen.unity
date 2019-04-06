@@ -655,7 +655,7 @@ RectTransform:
   m_Children:
   - {fileID: 1535597916}
   m_Father: {fileID: 461591346}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -733,7 +733,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 05fd70266ed611f44a7adc4401d09a98, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ad553ab3635412a48a3877cdc3ec3b92, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -869,8 +869,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 1740902263}
   - {fileID: 381242788}
+  - {fileID: 1740902263}
   - {fileID: 632803893}
   m_Father: {fileID: 972833620}
   m_RootOrder: 0
@@ -976,7 +976,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Left
+  m_Text: 
 --- !u!222 &518488357
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1309,7 +1309,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 589b6b5657a12d54ab256caf9ac4210b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 66ab99de02783f8419d403935833cbb9, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3061,7 +3061,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Activate Trap!
+  m_Text: 
 --- !u!222 &1535597918
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3135,7 +3135,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Jump!
+  m_Text: 
 --- !u!222 &1550223333
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3209,7 +3209,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Vehicle Ability!
+  m_Text: 
 --- !u!222 &1629581693
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3416,7 +3416,7 @@ RectTransform:
   m_Children:
   - {fileID: 2096714928}
   m_Father: {fileID: 461591346}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -3494,7 +3494,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: b0823985cd338a6439df302773203819, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 8fe324883671a654a8c174f4844ef29d, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3723,7 +3723,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Right
+  m_Text: 
 --- !u!222 &1854699045
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4229,7 +4229,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Power-Up!
+  m_Text: 
 --- !u!222 &2096714930
 CanvasRenderer:
   m_ObjectHideFlags: 0

@@ -322,7 +322,7 @@ public class clientGameManager2 : MonoBehaviour {
             yield return new WaitForSeconds(1);
         }
 
-        abilityButton.GetComponentInChildren<Text>().text = "Vehicle Ability!";
+        abilityButton.GetComponentInChildren<Text>().text = "";
 
         onAbilityCooldown = false;
     }
@@ -340,7 +340,7 @@ public class clientGameManager2 : MonoBehaviour {
             yield return new WaitForSeconds(1);
         }
 
-        powerupButton.GetComponentInChildren<Text>().text = "Power-Up!";
+        powerupButton.GetComponentInChildren<Text>().text = "";
 
         onPowerupCooldown = false;
     }
@@ -358,7 +358,7 @@ public class clientGameManager2 : MonoBehaviour {
             yield return new WaitForSeconds(1);
         }
 
-        trapButton.GetComponentInChildren<Text>().text = "Activate Trap!";
+        trapButton.GetComponentInChildren<Text>().text = "";
 
         onTrapCooldown = false;
     }
@@ -421,7 +421,7 @@ public class clientGameManager2 : MonoBehaviour {
             }
         }
 
-        jumpButton.GetComponentInChildren<Text>().text = "Jump!";
+        jumpButton.GetComponentInChildren<Text>().text = "";
 
         onJumpCooldown = false;
     }
@@ -478,8 +478,8 @@ public class clientGameManager2 : MonoBehaviour {
         }
 
         // reset the cooldown bool and the UI text when cooldown is complete
-        switchButtonL.GetComponentInChildren<Text>().text = "Left";
-        switchButtonR.GetComponentInChildren<Text>().text = "Right";
+        switchButtonL.GetComponentInChildren<Text>().text = "";
+        switchButtonR.GetComponentInChildren<Text>().text = "";
 
         onSwitchCooldown = false;
     }

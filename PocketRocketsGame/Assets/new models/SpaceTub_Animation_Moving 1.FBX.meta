@@ -1,0 +1,242 @@
+fileFormatVersion: 2
+guid: eccd54a2abe2e7f4da1e15cebcd74ca2
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: Back_Tentacle1
+    100002: Back_Tentacle2
+    100004: Back_Tentacle3
+    100006: Back_Tentacles
+    100008: Body
+    100010: Engine1
+    100012: Engine2
+    100014: Engines_Legs
+    100016: Eye002
+    100018: Eye003
+    100020: Eye004
+    100022: Eye005
+    100024: Eye006
+    100026: Eye007
+    100028: Eye1
+    100030: Eyes
+    100032: Front_Leg
+    100034: Front_Leg001
+    100036: Front_Leg002
+    100038: Front_Tentacle_L
+    100040: Front_Tentacle_M
+    100042: Front_Tentacle_R
+    100044: Front_Tentacles
+    100046: //RootNode
+    100048: Tentacle_Rocket_L
+    100050: Tentacle_Rocket_R
+    100052: Tentacle_Water_L
+    100054: Tentacle_Water_R
+    400000: Back_Tentacle1
+    400002: Back_Tentacle2
+    400004: Back_Tentacle3
+    400006: Back_Tentacles
+    400008: Body
+    400010: Engine1
+    400012: Engine2
+    400014: Engines_Legs
+    400016: Eye002
+    400018: Eye003
+    400020: Eye004
+    400022: Eye005
+    400024: Eye006
+    400026: Eye007
+    400028: Eye1
+    400030: Eyes
+    400032: Front_Leg
+    400034: Front_Leg001
+    400036: Front_Leg002
+    400038: Front_Tentacle_L
+    400040: Front_Tentacle_M
+    400042: Front_Tentacle_R
+    400044: Front_Tentacles
+    400046: //RootNode
+    400048: Tentacle_Rocket_L
+    400050: Tentacle_Rocket_R
+    400052: Tentacle_Water_L
+    400054: Tentacle_Water_R
+    2100000: lambert7
+    2300000: Back_Tentacle1
+    2300002: Back_Tentacle2
+    2300004: Back_Tentacle3
+    2300006: Body
+    2300008: Engine1
+    2300010: Engine2
+    2300012: Eye002
+    2300014: Eye003
+    2300016: Eye004
+    2300018: Eye005
+    2300020: Eye006
+    2300022: Eye007
+    2300024: Eye1
+    2300026: Front_Leg
+    2300028: Front_Leg001
+    2300030: Front_Leg002
+    2300032: Front_Tentacle_L
+    2300034: Front_Tentacle_M
+    2300036: Front_Tentacle_R
+    2300038: Tentacle_Rocket_L
+    2300040: Tentacle_Rocket_R
+    2300042: Tentacle_Water_L
+    2300044: Tentacle_Water_R
+    3300000: Back_Tentacle1
+    3300002: Back_Tentacle2
+    3300004: Back_Tentacle3
+    3300006: Body
+    3300008: Engine1
+    3300010: Engine2
+    3300012: Eye002
+    3300014: Eye003
+    3300016: Eye004
+    3300018: Eye005
+    3300020: Eye006
+    3300022: Eye007
+    3300024: Eye1
+    3300026: Front_Leg
+    3300028: Front_Leg001
+    3300030: Front_Leg002
+    3300032: Front_Tentacle_L
+    3300034: Front_Tentacle_M
+    3300036: Front_Tentacle_R
+    3300038: Tentacle_Rocket_L
+    3300040: Tentacle_Rocket_R
+    3300042: Tentacle_Water_L
+    3300044: Tentacle_Water_R
+    4300000: Body
+    4300002: Back_Tentacle1
+    4300004: Back_Tentacle2
+    4300006: Back_Tentacle3
+    4300008: Tentacle_Rocket_L
+    4300010: Engine1
+    4300012: Tentacle_Rocket_R
+    4300014: Engine2
+    4300016: Front_Leg
+    4300018: Front_Leg001
+    4300020: Front_Leg002
+    4300022: Tentacle_Water_L
+    4300024: Tentacle_Water_R
+    4300026: Front_Tentacle_L
+    4300028: Front_Tentacle_M
+    4300030: Front_Tentacle_R
+    4300032: Eye1
+    4300034: Eye002
+    4300036: Eye003
+    4300038: Eye004
+    4300040: Eye005
+    4300042: Eye006
+    4300044: Eye007
+    7400000: Take 001
+    9500000: //RootNode
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Take 001
+      takeName: Take 001
+      firstFrame: 60
+      lastFrame: 95
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
