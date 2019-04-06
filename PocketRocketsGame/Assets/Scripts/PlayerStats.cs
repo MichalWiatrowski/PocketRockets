@@ -30,6 +30,7 @@ public class PlayerStats : MonoBehaviour
     private bool immune = false;
     private int switchStateL = 1;
     private int switchStateR = 1;
+    private bool sendSwitchState = false;
 
     float timer = 0;
 
@@ -67,6 +68,9 @@ public class PlayerStats : MonoBehaviour
     //Switch State R
     public int getSwitchStateR() { return switchStateR; }
     public void setSwitchStateR(int flag) { switchStateR = flag; }
+    //Send Switch State
+    public bool getSendSwitchState() { return sendSwitchState; }
+    public void setSendSwitchState(bool flag) { sendSwitchState = flag; }
     //Immune
     public bool getImmune() { return immune; }
     public void setImmune(bool flag) { immune = flag; }

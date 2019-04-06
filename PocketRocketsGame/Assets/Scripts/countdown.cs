@@ -88,6 +88,8 @@ public class countdown : MonoBehaviour {
                 stats[i].resetSpeed();
                 stats[i].setSwitchRight(true);
                 stats[i].setSwitchStateR(1);
+                stats[i].setSwitchLeft(true);
+                stats[i].setSwitchStateL(1);
             }
         }
         networkServerUIbuttons.networkServer.sendSwitchStateL();
