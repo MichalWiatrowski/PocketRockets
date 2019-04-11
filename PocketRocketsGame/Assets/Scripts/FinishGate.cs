@@ -1,14 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class FinishGate : MonoBehaviour {
 
+    public GameObject winnerScreen;
     int count = 1;
     public Transform winText;
     public AudioClip winningClip;
     private AudioSource winningSource;
-
+    public GameObject sceneManager;
     void Awake()
     {
         winningSource = GetComponent<AudioSource>();
@@ -36,11 +38,27 @@ public class FinishGate : MonoBehaviour {
         }
         else if (count == networkServerUIbuttons.networkServer.getPlayerAmount())
         {
-            StartCoroutine(RestartGame());
+            sceneManager.GetComponent<serverGameManager>().gameStarted = false;
+            winnerScreen.transform.localScale = new Vector3(1, 1, 1);
+
+            //StartCoroutine(RestartGame());
         }
+
+       
+            winnerScreen.transform.GetChild(0).GetChild(count - 1).GetChild(0).GetComponent<Text>().text = stats.getPlayerName();
+            winnerScreen.transform.GetChild(0).GetChild(count - 1).GetChild(1).GetComponent<Text>().text = "" + count;
+            winnerScreen.transform.GetChild(0).GetChild(count - 1).GetChild(2).GetComponent<Text>().text = "" + stats.getPlayerTime();
+       
+        
+
+
+
         count++;
 
         int test = networkServerUIbuttons.networkServer.getPlayerAmount();
+
+
+       
     }
 
     IEnumerator RestartGame()

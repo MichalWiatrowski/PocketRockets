@@ -7,11 +7,10 @@ public class serverGameManager : MonoBehaviour {
     private int amountOfPlayers = 0;
     public GameObject mainCamera;
     public AudioClip raceStartClip;
-    public List<GameObject> player1Vehicles = new List<GameObject>();
-    public List<GameObject> player2Vehicles = new List<GameObject>();
-    public List<GameObject> player3Vehicles = new List<GameObject>();
-    public List<GameObject> player4Vehicles = new List<GameObject>();
+    public bool gameStarted = false;
 
+    public GameObject winnerScreen;
+    public GameObject timerText;
 
     public GameObject player1;
     public GameObject player2;
@@ -20,6 +19,7 @@ public class serverGameManager : MonoBehaviour {
 
     private AudioSource gameSource;
 
+    float gameTimer = 0.0f;
     void Awake() {
     gameSource= GetComponent<AudioSource>();
 
@@ -29,7 +29,10 @@ public class serverGameManager : MonoBehaviour {
     {
         //gameSource.PlayOneShot(raceStartClip, 0.1f);
         amountOfPlayers = networkServerUIbuttons.networkServer.getPlayerAmount();
-        
+
+        //make the winner screen not visable by reducing its scale to 0
+        winnerScreen.transform.localScale = new Vector3(0, 0, 0);
+
 
         for (int i = 0; i < 4; i++)
         {
@@ -50,7 +53,10 @@ public class serverGameManager : MonoBehaviour {
         Debug.Log("count " + mainCamera.GetComponent<Follow>().cars.Count);
         Debug.Log("amount " + amountOfPlayers);
 
-
+        for (int i = 4; i > amountOfPlayers; i--)
+        {
+            winnerScreen.transform.GetChild(0).GetChild(i - 1).gameObject.SetActive(false);
+        }
 
         //setup camera
 
@@ -75,10 +81,26 @@ public class serverGameManager : MonoBehaviour {
         }
     }
 
-    
+    public void restartGame()
+    {
+        networkServerUIbuttons.networkServer.restartGame();
+    }
     // Update is called once per frame
     void Update () {
 
-     
+        if (gameStarted == true)
+        {
+            for (int i = 0; i < 4; i++)
+            {
+                if (networkServerUIbuttons.networkServer.playersConnected[i] == 1)
+                {
+                    GameObject.Find("Player " + (i + 1)).GetComponent<PlayerStats>().setPlayerTime(Time.deltaTime);
+
+                }
+            }
+            gameTimer += Time.deltaTime;
+            timerText.GetComponent<Text>().text = "Time: " + gameTimer;
+        }
+        
     }
 }

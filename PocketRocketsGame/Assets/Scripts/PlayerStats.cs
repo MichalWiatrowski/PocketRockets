@@ -19,6 +19,7 @@ public class PlayerStats : MonoBehaviour
     private int points = 600;
     private int position = 1;
     private int nextGate = 1;
+    private float playerTime = 0.0f;
 
     private bool winner = false;
     private bool fallingThroughTeleport = false;
@@ -41,6 +42,15 @@ public class PlayerStats : MonoBehaviour
         speedStack = 0.0f;
     }
 
+
+    public void setPlayerTime(float newTime)
+    {
+        playerTime += newTime;
+    }
+    public float getPlayerTime()
+    {
+        return playerTime;
+    }
     //Falling Through Teleport
     public bool getFallingThroughTeleport() { return fallingThroughTeleport; }
     public void setFallingThroughTeleport(bool flag) { fallingThroughTeleport = flag; }

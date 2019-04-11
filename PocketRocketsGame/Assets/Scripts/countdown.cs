@@ -12,6 +12,7 @@ public class countdown : MonoBehaviour {
     public AudioClip startClip;
     public GameObject Camera;
 
+    public GameObject sceneManager;
     void Start()
     {
         StartCoroutine(CountdownStart());
@@ -95,5 +96,6 @@ public class countdown : MonoBehaviour {
         networkServerUIbuttons.networkServer.sendSwitchStateL();
         networkServerUIbuttons.networkServer.sendSwitchStateR();
 
+        sceneManager.GetComponent<serverGameManager>().gameStarted = true;
     }
 }

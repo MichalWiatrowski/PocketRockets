@@ -201,25 +201,25 @@ public class networkServerUIbuttons : NetworkManager {
         SceneManager.UnloadSceneAsync(scene);
     }
 
-    void OnGUI()
-    {
-        //Debug information
-        GUI.Box(new Rect(10, Screen.height - 120, 300, 200), "Debug Info");
-        GUI.Label(new Rect(20, Screen.height - 100, 100, 20), "Status:" + NetworkServer.active);
-        GUI.Label(new Rect(20, Screen.height - 75, 100, 20), "player cars" + ( playerVehiclesTest.Count ));
+    //void OnGUI()
+    //{
+    //    //Debug information
+    //    GUI.Box(new Rect(10, Screen.height - 120, 300, 200), "Debug Info");
+    //    GUI.Label(new Rect(20, Screen.height - 100, 100, 20), "Status:" + NetworkServer.active);
+    //    GUI.Label(new Rect(20, Screen.height - 75, 100, 20), "player cars" + ( playerVehiclesTest.Count ));
 
-        GUI.Label(new Rect(20, Screen.height - 60, 300, 20), "player 1 Stack: " + GameObject.Find("Player " + 1).GetComponent<PlayerStats>().getStackingSpeedBuff());
-        GUI.Label(new Rect(20, Screen.height - 45, 300, 20), "player 2 Stack: " + GameObject.Find("Player " + 2).GetComponent<PlayerStats>().getStackingSpeedBuff());
-        GUI.Label(new Rect(20, Screen.height - 30, 300, 20), "player 3 Stack: " + GameObject.Find("Player " + 3).GetComponent<PlayerStats>().getStackingSpeedBuff());
-        GUI.Label(new Rect(20, Screen.height - 15, 300, 20), "player 4 Stack: " + GameObject.Find("Player " + 4).GetComponent<PlayerStats>().getStackingSpeedBuff());
+    //    GUI.Label(new Rect(20, Screen.height - 60, 300, 20), "player 1 Stack: " + GameObject.Find("Player " + 1).GetComponent<PlayerStats>().getStackingSpeedBuff());
+    //    GUI.Label(new Rect(20, Screen.height - 45, 300, 20), "player 2 Stack: " + GameObject.Find("Player " + 2).GetComponent<PlayerStats>().getStackingSpeedBuff());
+    //    GUI.Label(new Rect(20, Screen.height - 30, 300, 20), "player 3 Stack: " + GameObject.Find("Player " + 3).GetComponent<PlayerStats>().getStackingSpeedBuff());
+    //    GUI.Label(new Rect(20, Screen.height - 15, 300, 20), "player 4 Stack: " + GameObject.Find("Player " + 4).GetComponent<PlayerStats>().getStackingSpeedBuff());
 
 
-        //GUI.Label(new Rect(20, Screen.height - 45, 100, 20), "PlayerID:" + playerID);
-        //GUI.Label(new Rect(20, Screen.height - 85, 100, 20), "player 1" + playerVehiclesTest[0]);
-        //GUI.Label(new Rect(20, Screen.height - 60, 100, 20), "player 2" + playerVehiclesTest[1]);
-        //GUI.Label(new Rect(20, Screen.height - 45, 100, 20), "player 3" + playerVehiclesTest[1]);
-        //GUI.Label(new Rect(20, Screen.height - 30, 100, 20), "Ready:" +  readyClientsTest[0]);
-    }
+    //    //GUI.Label(new Rect(20, Screen.height - 45, 100, 20), "PlayerID:" + playerID);
+    //    //GUI.Label(new Rect(20, Screen.height - 85, 100, 20), "player 1" + playerVehiclesTest[0]);
+    //    //GUI.Label(new Rect(20, Screen.height - 60, 100, 20), "player 2" + playerVehiclesTest[1]);
+    //    //GUI.Label(new Rect(20, Screen.height - 45, 100, 20), "player 3" + playerVehiclesTest[1]);
+    //    //GUI.Label(new Rect(20, Screen.height - 30, 100, 20), "Ready:" +  readyClientsTest[0]);
+    //}
 
     void activateTrap(int playerIDchoice, int gateNo, int trapChoice)
     {
