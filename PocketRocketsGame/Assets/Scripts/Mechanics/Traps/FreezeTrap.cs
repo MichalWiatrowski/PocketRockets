@@ -47,6 +47,7 @@ public class FreezeTrap : MonoBehaviour {
         PlayerStats stats = player.GetComponent<PlayerStats>();
         gameObject.GetComponent<BoxCollider>().enabled = false;
 
+        stats.setTrapped(true);
         // send switch state to the client
         stats.setSwitchStateL(0);
         networkServerUIbuttons.networkServer.sendSwitchStateL();
@@ -75,6 +76,7 @@ public class FreezeTrap : MonoBehaviour {
 
         // return the player to normal speed
         stats.resetSpeed();
+        stats.setTrapped(false);
 
         // clean up
         Destroy(gameObject);

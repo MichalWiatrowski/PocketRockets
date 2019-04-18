@@ -29,14 +29,8 @@ public class countdown : MonoBehaviour {
                 stats[i] = players[i].GetComponent<PlayerStats>();
                 stats[i].setSpeed(0);
                 stats[i].setCurrentLane(i);
-                stats[i].setSwitchLeft(false);
-                stats[i].setSwitchStateL(0);
-                stats[i].setSwitchRight(false);
-                stats[i].setSwitchStateR(0);
             }
         }
-        networkServerUIbuttons.networkServer.sendSwitchStateL();
-        networkServerUIbuttons.networkServer.sendSwitchStateR();
 
         Color newColour = countText.color;
 
@@ -84,17 +78,8 @@ public class countdown : MonoBehaviour {
 
         for (int i = 0; i < 4; i++)
         {
-            if (networkServerUIbuttons.networkServer.playersConnected[i] == 1)
-            {
-                stats[i].resetSpeed();
-                stats[i].setSwitchRight(true);
-                stats[i].setSwitchStateR(1);
-                stats[i].setSwitchLeft(true);
-                stats[i].setSwitchStateL(1);
-            }
+            if (networkServerUIbuttons.networkServer.playersConnected[i] == 1) stats[i].resetSpeed();
         }
-        networkServerUIbuttons.networkServer.sendSwitchStateL();
-        networkServerUIbuttons.networkServer.sendSwitchStateR();
 
         sceneManager.GetComponent<serverGameManager>().gameStarted = true;
     }

@@ -37,6 +37,7 @@ public class WallTrap : MonoBehaviour {
         moving = true;
         gameObject.GetComponent<BoxCollider>().enabled = false;
 
+        stats.setTrapped(true);
         stats.setSwitchStateL(0);
         networkServerUIbuttons.networkServer.sendSwitchStateL();
         stats.setSwitchStateR(0);
@@ -59,6 +60,7 @@ public class WallTrap : MonoBehaviour {
 
         // return the player to normal speed
         stats.resetSpeed();
+        stats.setTrapped(false);
 
         // clean up
         Destroy(gameObject);
