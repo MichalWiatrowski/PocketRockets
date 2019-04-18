@@ -23,7 +23,7 @@ public class PlayerStats : MonoBehaviour
 
     private bool winner = false;
     private bool fallingThroughTeleport = false;
-    private bool trappedInBubble = false;
+    private bool trapped = false;
     private bool inTheAir = false;
     private bool jumping = false;
     private bool switchLeft = true;
@@ -58,8 +58,8 @@ public class PlayerStats : MonoBehaviour
     public bool getInTheAir() { return inTheAir; }
     public void setInTheAir(bool flag) { inTheAir = flag; }
     //Trapped in Bubble
-    public bool getTrappedInBubble() { return trappedInBubble; }
-    public void setTrappedInBubble(bool flag) { trappedInBubble = flag; }
+    public bool getTrapped() { return trapped; }
+    public void setTrapped(bool flag) { trapped = flag; }
     //Is Winner
     public bool isWinner() { return winner; }
     public void setWinner(bool flag) { winner = flag; }

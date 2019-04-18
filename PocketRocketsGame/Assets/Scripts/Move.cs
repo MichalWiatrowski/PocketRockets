@@ -51,7 +51,7 @@ public class Move : MonoBehaviour {
     void Update () {
 
         // movement
-        if (stats.getFallingThroughTeleport() == false && stats.getTrappedInBubble() == false && stats.getInTheAir() == false)
+        if (stats.getFallingThroughTeleport() == false && stats.getTrapped() == false && stats.getInTheAir() == false)
         {
             GetComponent<Rigidbody>().velocity = new Vector3(0, GetComponent<Rigidbody>().velocity.y, ((stats.getSpeed() + stats.getStackingSpeedBuff()) * stats.getSlowDownFactor()));
             //transform.Translate(0f, 0f, (stats.speed / stats.slowDownFactor) * Time.deltaTime);

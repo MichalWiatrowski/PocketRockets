@@ -42,7 +42,7 @@ public class NessieBubbleTrap : MonoBehaviour {
             stats.setSwitchStateR(0);
             networkServerUIbuttons.networkServer.sendSwitchStateR();
 
-            if (stats.getTrappedInBubble() == true)
+            if (stats.getTrapped() == true)
             {
                 tempCar.transform.Translate(0, bubbleRiseSpeed * Time.deltaTime, 0);
 
@@ -63,7 +63,7 @@ public class NessieBubbleTrap : MonoBehaviour {
                     networkServerUIbuttons.networkServer.sendSwitchStateR();
 
                     bubbleSource.PlayOneShot(bubblePop);
-                    stats.setTrappedInBubble(false);
+                    stats.setTrapped(false);
                     tempCar.GetComponent<BoxCollider>().enabled = true;
                     tempCar.GetComponent<Rigidbody>().useGravity = true;
 
@@ -90,7 +90,7 @@ public class NessieBubbleTrap : MonoBehaviour {
                 tempCar = collided.gameObject;
                 stats = collided.GetComponent<PlayerStats>();
                 Debug.Log("Collided with Bubble");
-                stats.setTrappedInBubble(true);
+                stats.setTrapped(true);
             }
         }
         //if (collided.CompareTag("Plane"))
