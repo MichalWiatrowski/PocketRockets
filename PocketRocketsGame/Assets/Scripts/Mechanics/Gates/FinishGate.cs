@@ -40,7 +40,7 @@ public class FinishGate : MonoBehaviour {
         {
             sceneManager.GetComponent<serverGameManager>().gameStarted = false;
             winnerScreen.transform.localScale = new Vector3(1, 1, 1);
-
+            winnerScreen.gameObject.SetActive(true);
             //StartCoroutine(RestartGame());
         }
 
