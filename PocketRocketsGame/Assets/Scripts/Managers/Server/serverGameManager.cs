@@ -99,7 +99,9 @@ public class serverGameManager : MonoBehaviour {
                 }
             }
             gameTimer += Time.deltaTime;
-            timerText.GetComponent<Text>().text = "Time: " + gameTimer;
+            double temp = gameTimer;
+            temp = System.Math.Round(gameTimer, 3);
+            timerText.GetComponent<Text>().text = "Time: " + temp;
         }
         
     }

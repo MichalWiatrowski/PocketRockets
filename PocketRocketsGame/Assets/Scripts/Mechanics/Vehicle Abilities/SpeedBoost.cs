@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class SpeedBoost : MonoBehaviour {
 
-    public float boost = 1.6f;
-    public float boostTime = 3f;
+    public float boost = 1.4f;
+    public float boostTime = 1.5f;
 
     //void OnTriggerEnter (Collider collided)
     //{
