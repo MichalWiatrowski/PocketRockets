@@ -136,16 +136,17 @@ public class networkServerUIbuttons : NetworkManager {
     {
         return  readyClientsTest;
     }
+
     public void hostGame()
     {
-        //if ( readyClientsTest.Contains())
-        //{
-        //    // say clients not ready code
-        //}
-        //else
-        //{
-           // if (playerID > 1)
-           // {
+        if (readyClientsTest.Contains(0))
+        {
+            // say clients not ready code
+        }
+        else
+        {
+            if (getPlayerAmount() > 1)
+            {
                 sceneIndex = 2;
                 SceneManager.LoadSceneAsync(sceneIndex, LoadSceneMode.Additive);
                 UnloadScene(1);
@@ -153,9 +154,9 @@ public class networkServerUIbuttons : NetworkManager {
         GetComponent<networkDiscoveryServer>().StopBroadcast();
         singleton.maxConnections = getPlayerAmount();
         sendStartGame(); // send a message to all cients which will change their scene
-           // }
+           }
    
-       // }   
+        }   
     }
 
     public void restartGame()
